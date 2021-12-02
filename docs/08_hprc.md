@@ -19,23 +19,29 @@ Whether you are submitting batch or interactive jobs, you are required to provid
 #### 8.1.1 Sample HPRC Batch Submission Script
 
 The following is a submission script for a Matlab job that will run for 5 minutes on one processor. Note that an allocation is required to submit jobs to HPRC. Users familiar with submitting jobs to ACI-b will note only minor differences in this script.  
-`#!/bin/bash  
+```
+#!/bin/bash  
 #PBS -l nodes=1:ppn=1  
 #PBS -l walltime=5:00  
-#PBS -q hprc`
+#PBS -q hprc
+#PBS -A ics-hprc  
 
-`#PBS -A ics-hprc  
 # Get started  
 echo "Job started on ‘hostname‘ at ‘date‘"  
+
 # Load in matlab  
 module purge  
 module load matlab  
+
 # Go to the correct place  
 cd $PBS_O_WORKDIR  
+
 # Run the job itself - a matlab script called runThis.m  
 matlab-bin -nodisplay -nosplash < runThis.m > log.matlabRun  
+
 # Finish up  
-echo "Job Ended at ‘date‘"`
+echo "Job Ended at ‘date‘"
+```
 
   
 
@@ -87,7 +93,8 @@ UBUNTU_CODENAME=bionic`
 
 Here is an example where the container is specified within your submission script:
 
-`#PBS -l walltime=1:30:00  
+```
+#PBS -l walltime=1:30:00  
 #PBS -l nodes=1:ppn=8  
 #PBS -l mem=8gb  
 #PBS -j oe  
@@ -96,9 +103,9 @@ Here is an example where the container is specified within your submission scrip
 #PBS -M abf123@psu.edu  
 #PBS -q hprc  
 #PBS -A ics-hprc  
-#PBS -v SINGULARITY_CONTAINER="/storage/work/abc123/singularity/bionic-base.simg"`
+#PBS -v SINGULARITY_CONTAINER="/storage/work/abc123/singularity/bionic-base.simg"
+```
 
-  
 
 #### 8.4 Specifying a Custom Bash Environment on HPRC
 
@@ -110,7 +117,8 @@ Here’s an example on the command line:
 
 Here’s an example within the submission script:
 
-`#PBS -l walltime=1:30:00  
+```
+#PBS -l walltime=1:30:00  
 #PBS -l nodes=1:ppn=8  
 #PBS -l mem=8gb  
 #PBS -j oe  
@@ -120,5 +128,6 @@ Here’s an example within the submission script:
 #PBS -q hprc  
 #PBS -A ics-hprc  
 #PBS -v SINGULARITY_CONTAINER="/storage/work/abc123/singularity/bionic-base.simg"  
-#PBS -v BASH_ENV="/storage/abc123/.bashrc_ubuntu"`
+#PBS -v BASH_ENV="/storage/abc123/.bashrc_ubuntu"
+```
 

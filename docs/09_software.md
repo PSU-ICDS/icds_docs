@@ -25,19 +25,19 @@ Requests for software to be placed on the system stack can be made to the i-ASK 
 
 Because of the module families, it is hard to view all of the available software on the system. The software list can be found on the [software stack webpage](https://www.icds.psu.edu/computing-services/software/) or by looking in the directory where the software modules are:
 
-<pre>ls /opt/aci/sw/</pre>
+`ls /opt/aci/sw/`
 
 ##### 9.3.1 COMSOL
 
 To open COMSOL, first log into ACI-i using Open OnDemand. More information regarding how to do this can be found in [section 5.4.1](https://www.icds.psu.edu/computing-services/ics-aci-user-guide/#05-04-connecting-aci). Next open a terminal by going to the top left corner and clicking on
 
-<pre>Applications -> System Tools -> Terminal</pre>
+`Applications -> System Tools -> Terminal`
 
 In the terminal window type the following commands:
 
-<pre>module load comsol
+`module load comsol
 comsol
-</pre>
+`
 
 The graphical user interface for COMSOL should now be opened and COMSOL can be used as usual. However, it is worth mentioning that ACI-i is only intended to run short jobs. Often researchers will use ACI-i to develop and test their COMSOL models before submitting them as jobs on the more computational powerful ACI-b cluster. Running a COMSOL model on the ACI-b system is a relatively straightforward process. To do so, first create your model (often done using the GUI in ACI-i). Next log into ACI-b, and submit your job to the scheduler. For information on submitting a job to ACI-b, see [section 7](https://www.icds.psu.edu/computing-services/ics-aci-user-guide/#07-00-running-jobs-on-aci-b).  
 
@@ -73,14 +73,14 @@ An example of a PBS script to submit a COMSOL job:
 	echo " "
 	echo "Job Ended at ‘date‘"
 	echo " "
-</pre>
+`
 
 More information on options used for submitting comsol jobs using the command line can be found by typing the commands:
 
-<pre>
+`
 	module load comsol
 	comsol -h
-</pre>
+`
 
 ##### 9.3.2 Julia
 
@@ -88,10 +88,10 @@ Julia is a high-level, high-performance dynamic programming language for numeric
 
 The system Julia module is compiled with the GCC compiler. Using Julia requires the gcc module to be loaded:
 
-<pre>$ module load gcc
+`$ module load gcc
 $ module load julia
 $ julia
-</pre>
+`
 
 Example Julia Code:
 
@@ -127,7 +127,7 @@ savefig("winston.svg")
 
 # we used svg here because it respects the width and height specified above
 
-</pre>
+`
 
 An example PBS submission script for a julia simulation can be found:
 
@@ -169,15 +169,15 @@ echo "Job Ended at ‘date‘"
 
 echo " "
 
-</pre>
+`
 
 ##### 9.3.3 Matlab
 
 Matlab is a widely used programming environment and language. The GUI can be accessed on ACI-i using the following commands:
 
-<pre>module load matlab
+`module load matlab
 matlab
-</pre>
+`
 
 Matlab can also be run in batch mode, either on the command line or submitted as a job. Jobs run in batch mode must have an *.m file. An example that writes a random matrix as a .csv file:
 
@@ -199,7 +199,7 @@ RandomMatrix = rand(5);
 
 csvwrite(’output.csv’,RandomMatrix)
 
-</pre>
+`
 
 This can be saved as Example.m and submitted to ACI-b using the following submission script:
 
@@ -249,7 +249,7 @@ echo "Job Ended at ‘date‘"
 
 echo " "
 
-</pre>
+`
 
 For more information about Matlab, please refer to the [Matlab website](https://www.mathworks.com/products/matlab.html).  
 
@@ -259,7 +259,7 @@ Mathematica builds in unprecedentedly powerful algorithms across all areas many 
 
 The Mathematica module can be loaded with the command
 
-<pre>module load mathematica</pre>
+`module load mathematica`
 
 A sample Mathematica code for printing random numbers into a text file:
 
@@ -267,7 +267,7 @@ A sample Mathematica code for printing random numbers into a text file:
 
 Quit [ ]
 
-</pre>
+`
 
 More examples of Mathematica code can be found [here.](https://www.wolfram.com/language/gallery/)
 
@@ -317,7 +317,7 @@ echo "Job Ended at ‘date‘"
 
 echo " "
 
-</pre>
+`
 
 An additional PBS submission script sample for Mathematica is given here:
 
@@ -363,7 +363,7 @@ echo "Job Ended at ‘date‘"
 
 echo "
 
-</pre>
+`
 
 ##### 9.3.5 Stata
 
@@ -380,19 +380,19 @@ Setup:
 
 In Linux, load the module with the following command before you start working with Stata:
 
-<pre>module load stata</pre>
+`module load stata`
 
 Note that this command will load the current version. Other available versions can be checked by following command:
 
-<pre>module avail stata</pre>
+`module avail stata`
 
 Usage To start Stata , type:
 
-<pre>stata-mp</pre>
+`stata-mp`
 
 Use only ACI-i for interactive jobs. If you are remotely connecting to our systems via Open OnDemand, we recommend using the GUI version of Stata:
 
-<pre>xstata-mp</pre>
+`xstata-mp`
 
 Batch usage: Sample PBS script is given below:
 
@@ -442,11 +442,11 @@ echo "Job Ended at ‘date‘"
 
 echo " "
 
-</pre>
+`
 
 You can use stata-mp by substituting the stata command with the following:
 
-<pre>stata-mp -b do jobName.do</pre>
+`stata-mp -b do jobName.do`
 
 ##### 9.3.6 Python
 
@@ -466,7 +466,7 @@ sys.exit(0)
 
 #end of jobName.py
 
-</pre>
+`
 
 This script can be submitted as a job on ACI-b with the following script:
 
@@ -510,7 +510,7 @@ echo "Job Ended at ‘date‘"
 
 echo " "
 
-</pre>
+`
 
 For more information, please feel free to refer to the [Python website](https://www.python.org/).  
 
@@ -566,7 +566,7 @@ instance Persistent instance command group
 CONTAINER USAGE OPTIONS:
 see singularity help <command></command>
 For any additional help or support visit the Singularity
-website: https://www.sylabs.io</pre>
+website: https://www.sylabs.io`
 
 _9.3.7.2 Images supported_
 
@@ -629,7 +629,7 @@ ________________________________________
     (__)\       )\/\
         ||----w |
         ||     ||
-</pre>
+`
 
 This example presents problems in certain cases, because the image does not have access to the data on the Roar system:
 
@@ -661,7 +661,7 @@ WARNING: Could not chdir to home: /storage/home/cjb47
 Singularity: Invoking an interactive shell within container...
 Singularity lolcow:/> cd ~
 bash: cd: /storage/home/cjb47: No such file or directory
-</pre>
+`
 
 We can note the first issue, the non-existent bind paths. For this type of image, add the bind paths by slightly modifying the images. This can be done by writing a simple set of instructions, which are used to create an image. This set of instructions is called a recipe, in Singularity terminology.
 
@@ -680,7 +680,7 @@ mkdir -p /storage/work
 mkdir -p /gpfs/group
 mkdir -p /gpfs/scratch
 mkdir -p /var/spool/torque
-</pre>
+`
 
 We build the image in an environment where we have sudo access (not Roar):
 
@@ -703,7 +703,7 @@ Skipping checks
 Building Singularity image...
 Singularity container built: ./lolcow.simg
 Cleaning up...
-</pre>
+`
 
 Next, transfer the image to Roar using scp, and run it:
 
@@ -728,7 +728,7 @@ _________________________________________
     (__)\       )\/\
         ||----w |
         ||     ||
-</pre>
+`
 
 Note that we are now able to access our data on the local Roar locations.
 
@@ -738,7 +738,7 @@ Singularity: Invoking an interactive shell within container...
 Singularity lolcow.simg:/gpfs/group/dml129/default/cjb47/singularity/images> cd ~
 Singularity lolcow.simg:~> pwd
 /storage/home/cjb47
-</pre>
+`
 
 ##### 9.3.7.5 Ways of using Singularity containers
 
@@ -774,7 +774,7 @@ cd $PBS_O_WORKDIR
 mpirun --hostfile $PBS_NODEFILE --np 40 singularity run /path/to/lammps_mpi.simg   in.
 ˓→friction \
 > out.friction
-</pre>
+`
 
 _Interactive Shells:_
 
@@ -789,7 +789,7 @@ Singularity: Invoking an interactive shell within container...
 Singularity ubuntu_aci.simg:/gpfs/group/dml129/default/cjb47/singularity/images> cat /
 ˓→etc/issue
 Ubuntu 16.04.5 LTS \n \l
-</pre>
+`
 
 You will be able to interact with directories that have been bound.
 
@@ -842,7 +842,7 @@ Type 'demo()' for some demos, 'help()' for on-line help, or
 Type 'q()' to quit R.
 > q()
 Save workspace image? [y/n/c]: n
-</pre>
+`
 
 _Running a Container:_
 
@@ -851,7 +851,7 @@ Some containers may have one or more runscripts, which allow a user to define a 
 <pre class="script">[cjb47@comp-bc-0226 images]$ singularity run ./hello-world-aci.simg
 ** NOTE: Singularity is in a testing phase on ACI-b and is currently unsupported.
 Hello there cjb47, from ICDS
-</pre>
+`
 
 A container may have multiple runscripts; in Singularity terminology, this is known as an "application." Here is an example, including instructions for interacting with applications:
 
@@ -868,7 +868,7 @@ Q: What is the square root of 4b^2?
 [cjb47@comp-sc-0120 images]$ singularity run --app lolcat ./multiapps-aci.simg file
 ** NOTE: Singularity is in a testing phase on ACI-b and is currently unsupported.
 Hello from lolcat
-</pre>
+`
 
 _Working with Files:_
 
@@ -883,7 +883,7 @@ mkdir -p /storage/work
 mkdir -p /gpfs/group
 mkdir -p /gpfs/scratch
 mkdir -p /var/spool/torque
-</pre>
+`
 
 ##### 9.3.7.6 More information on building Singularity containers
 
@@ -922,7 +922,7 @@ mkdir -p /var/spool/torque
 mkdir -p /run/user/1000/dconf
 touch /run/user/1000/dconf/user
 %runscript
-</pre>
+`
 
 Here is a screenshot of an editor running within that container on an ACI-b compute node:
 
@@ -968,7 +968,7 @@ mkdir -p /gpfs/scratch
 mkdir -p /var/spool/torque
 %runscript
 /opt/lammps/src/lmp_mpi "$@"
-</pre>
+`
 
 Here is an example of an MPI run:
 
@@ -1070,7 +1070,7 @@ Ave neighs/atom = 8.36195
 Neighbor list builds = 720
 Dangerous builds = 0
 Total wall time: 0:00:06
-</pre>
+`
 
 _Images with GPU Support_
 

@@ -60,18 +60,18 @@ There are also some special characters to be aware of that will be helpful.
 
 Most commands have a manual that show all of the different ways the command can be used. For example,
 
-<pre>man ls</pre>
+`man ls`
 
 shows all of the info for the `ls` command. You can use the arrows to scroll through the manual and the letter `q` for quit. Some commands will also provide a shortened version of the manual showing the available flags if an incorrect flag is used. For example,
 
-<pre>mam-list-funds -banana</pre>
+`mam-list-funds -banana`
 
 brings up a list of all of the flags available for `mam-list-funds`. Any non-working flag will allow for this. Note that this doesn’t give information about what the flags do, just what the flags are. This may be enough to remind you of something you had done previously.  
 
 All shells utilize configuration files. For BASH, this is split between 2 files: `~/.bash_profile` and `~/.bashrc`.  
 (NOTE: `~/` in Linux is a way to specify your own home directory!). The `.bash_profile` file is always parsed when a terminal is open, including with an SSH session. To connect the two in such a way that `.bashrc` will always be sourced for a session, make sure this code is included in your `~/.bash_profile`:
 
-<pre>if [ -f ~/.bashrc ]; then . ~/.bashrc fi</pre>
+`if [ -f ~/.bashrc ]; then . ~/.bashrc fi`
 
 ##### <span class="titlemark">5.1.2</span> Alternative Shells
 
@@ -83,25 +83,25 @@ Environment variables are values that pertain to certain aspects of an operating
 
 You can print the environment variable to the screen using the `echo` command:
 
-<pre>echo $HOME</pre>
+`echo $HOME`
 
 A good way to view environment variables that are set is by using the `env` command
 
-<pre>env</pre>
+`env`
 
 which outputs all of the variables currently in use.  
 
 To change the value of an existing variable or to create and set a new variable, we use `export`. For example, to set a variable called `workDir` to a directory called here within your home directory, the command would be:
 
-<pre>export workDir=$HOME/here</pre>
+`export workDir=$HOME/here`
 
 Once this environment variable is set, you are able to use this. For example, to change to this directory, the command would be:
 
-<pre>cd $workDir</pre>
+`cd $workDir`
 
 For something like PATH where you really do not want to overwrite what values are already stored, you can append values with
 
-<pre>export PATH=$PATH:/new/dir/path/</pre>
+`export PATH=$PATH:/new/dir/path/`
 
 In lists of values, the colon (`:`) is used as the delimiter. The dollar sign (`$`) is used to reference variables, so that export command essentially appends the new directory to the list of existing directories searched for executables. It is possible to prepend as well, which may come in handy if you compile a different version of an existing command.  
 
@@ -143,37 +143,37 @@ module load gcc/8.3.1
 
 module avail
 
-</pre>
+`
 
 ##### <span class="titlemark">5.2.2</span> Using Modules
 
 You can load modules into your environment with the command with the module load command. For example, to load the gcc module, you can use the command:
 
-<pre>module load gcc/8.3.1</pre>
+`module load gcc/8.3.1`
 
 Note that the version number is not required. Each software will have a default module that will be loaded if no version number is provided. However, it is recommended that you put the version number so that you know and have a record of what version is being used.  
 
 You can view the modules that you currently have open using the module list command:
 
-<pre>module list</pre>
+`module list`
 
 You can also unload modules that you do not need in the same way:
 
-<pre>module unload gcc/8.3.1</pre>
+`module unload gcc/8.3.1`
 
 It is also possible to remove all of your loaded modules at once using purge:
 
-<pre>module purge</pre>
+`module purge`
 
 ##### <span class="titlemark">5.2.3</span> Querying Modules
 
 You can view the available modules using the command:
 
-<pre>module avail</pre>
+`module avail`
 
 Note that this only looks at the available modules, which may be limited by module family based on modules are currently loaded. You can search all of the modules using `module spider`. For example, to search for VASP, you can use the command
 
-<pre>module spider vasp</pre>
+`module spider vasp`
 
 which will search through all module names and module files to return anything related to vasp.  
 
@@ -184,7 +184,7 @@ example, the information about the hdf5 module, which was built using the gcc mo
 
 module show hdf5/1.10.7
 
-</pre>
+`
 
 The output of this is shown:
 
@@ -215,7 +215,7 @@ pushenv("HDF5","/opt/aci/sw/hdf5/1.8.18_gcc-8.3.1")
 
 pushenv("HDF","/opt/aci/sw/hdf5/1.8.18_gcc-8.3.1")
 
-</pre>
+`
 
 Note that this tells you some information about the software, gives a website for more help and shows the environment variables that are modified. The environment manipulation section can be very helpful for users who are compiling codes and linking to libraries as these paths indicate where the relevant objects may be found.  
 
@@ -223,16 +223,16 @@ Note that this tells you some information about the software, gives a website fo
 
 Most shells have a configuration file that allows you to set aliases (nicknames for commands both simple or complex), set environment variables, and automatically execute programs and commands. In this case we are interested in the last mentioned feature: automating commands at login. For BASH there are two files at play: `~/.bash_profile` and `~/.bashrc.` To force your bashrc to be sourced in every opened terminal and SSH session, include this code in your bash_profile:
 
-<pre>if [ -f ~/.bashrc ]; then
+`if [ -f ~/.bashrc ]; then
 
 . ~/.bashrc
 
 fi
-</pre>
+`
 
 Once that has been done, you can add whatever automated module loads you want in the .bashrc file by including:
 
-<pre>module load <module name>/<version></pre>
+`module load <module name>/<version>`
 
 The version specification is optional, excluding it will cause whatever the default version is to be loaded. Other shells have similar configuration methods that are detailed in online documentation.
 
@@ -242,11 +242,11 @@ The version specification is optional, excluding it will cause whatever the defa
 
 Users can connect to ACI-b with the hostname
 
-<pre>submit.aci.ics.psu.edu</pre>
+`submit.aci.ics.psu.edu`
 
 using `ssh`. Users  connecting with ssh are encouraged to use the secure x-window forwarding flag (`-Y`) if x-windows will be used during the session. Note that the screen may not show * symbols for each keystroke when your password is being entered. (In this example, the username is "abc123".)
 
-<pre>ssh -Y abc123@submit.aci.ics.psu.edu</pre>
+`ssh -Y abc123@submit.aci.ics.psu.edu`
 
   
 
@@ -277,11 +277,11 @@ PORTAL.ACI.ICS.PSU.EDU
 
 Users can connect to HPRC from ACI-b head nodes, with the host name
 
-<pre>submit.aci.ics.psu.edu</pre>
+`submit.aci.ics.psu.edu`
 
 …using ssh. Users connecting with ssh are encouraged to use the secure x-window forwarding flag (-Y) if x-windows will be used during the session. Note that the screen may not show * symbols for each keystroke when your password is being entered. (In this example, the username is "abc123".)
 
-<pre>ssh -Y abc123@submit.aci.ics.psu.edu</pre>
+`ssh -Y abc123@submit.aci.ics.psu.edu`
 
   
 
@@ -296,21 +296,21 @@ There are two main command-line SSH commands to transfer files: `scp` and `sftp`
 **scp**  
 To copy one or more local files up to the Roar server, the `scp` syntax would be:
 
-<pre>scp local_file <username>@datamgr.aci.ics.psu.edu:<target_directory></pre>
+`scp local_file <username>@datamgr.aci.ics.psu.edu:<target_directory>`
 
 The default port for scp is set to 22\. If you use this port you will be automatically directed to Duo Push authentication during 2FA.  
 
 For user abc123 to copy the local files foo.c and foo.h into their home directory on the host aci-b.aci.ics.psu.edu, the following command would be used:
 
-<pre>[abc123@local ~]$ scp foo.c foo.h abc123@datamgr.aci.ics.psu.edu:~/.</pre>
+`[abc123@local ~]$ scp foo.c foo.h abc123@datamgr.aci.ics.psu.edu:~/.`
 
 The <span class="cmbx-10">-r</span> (recursive) flag can be used to transfer directories.
 
-<pre>[abc123@local ~]$ scp -r dirA abc123@datamgr.aci.ics.psu.edu:~/.</pre>
+`[abc123@local ~]$ scp -r dirA abc123@datamgr.aci.ics.psu.edu:~/.`
 
 Users can also copy files from Roar onto their own computer using
 
-<pre>[abc123@local ~]$ scp abc123@datamgr.aci.ics.psu.edu:~/fileA .</pre>
+`[abc123@local ~]$ scp abc123@datamgr.aci.ics.psu.edu:~/fileA .`
 
 **sftp**  
 `sftp` is an interactive command that uses the same syntax as a standard command-line ftp client. It differs from a standard ftp client in that the authentication and the data transfer happen through the SSH protocol rather than the FTP protocol. The SSH protocol is encrypted whereas the FTP protocol is not.  
@@ -328,7 +328,7 @@ There are a number of basic commands that are used inside of `stfp`:
 
 The syntax for calling `sftp` is:
 
-<pre>sftp username@hostname</pre>
+`sftp username@hostname`
 
 To choose between different options for 2FA you have to set the port to 1022 using P flag similar to `ssh`.  
 
@@ -418,44 +418,44 @@ data.txt
 
 sftp>
 
-</pre>
+`
 
 **rsync**  
 `rsync` is a utility that can be used to copy files and for keeping files the same on different systems as a rudimentary version control system. The benefit to using `rsync` over `scp` is that if an `scp` is stopped for any reason (poor wireless connection, large files, etc) the restart will begin as if no files were copied over. The `rsync` utility will only copy the files that were not successfully moved over in the previous command. Once you have SSH access between two machines, you can synchronize dir1 folder ( home directory in this example) from local to a remote computer by using syntax:
 
-<pre>rsync -a ~/dir1 username@remote_host:destination_directory</pre>
+`rsync -a ~/dir1 username@remote_host:destination_directory`
 
 where remote host is the Roar host name as in scp command. If dir1 were on the remote system instead of the local system, the syntax would be:
 
-<pre>rsync -a username@remote_host:/home/username/dir1 place_on_local_machine</pre>
+`rsync -a username@remote_host:/home/username/dir1 place_on_local_machine`
 
 If you are transferring files that have not been compressed yet, like text files, you can reduce the network transfer by adding compression with the `-z` option:
 
-<pre>rsync -az source_dir username@remote_host:target_dir</pre>
+`rsync -az source_dir username@remote_host:target_dir`
 
 The -P flag is very helpful. It combines the flags -progress and -partial. The former gives you a progress bar for the transfers and the latter allows you to resume interrupted transfers:
 
-<pre>rsync -azP source_dir username@remote_host:target_dir</pre>
+`rsync -azP source_dir username@remote_host:target_dir`
 
 In order to keep two directories synchronized it is necessary to delete files from the destination directory if they are removed from the source. rsync does not delete anything from the destination directory by default. To change this behavior use the `-delete` option:
 
-<pre>rsync -a --delete source_dir username@remote_host:taget_dir</pre>
+`rsync -a --delete source_dir username@remote_host:taget_dir`
 
 If you wish to exclude certain files or directories located inside a directory you are syncing, you can do so by specifying them in a comma-separated list following `-exclude=` option:
 
-<pre>rsync -a --exclude=pattern_to_exclude source_dir username@remote_host:target_dir
+`rsync -a --exclude=pattern_to_exclude source_dir username@remote_host:target_dir
 
-</pre>
+`
 
 One common pitfall that can affect users transferring files between systems with different usernames and groups can be the permissions assigned to the files being `rsync`-ed. The `--chmod` option can be used both to set the permissions for the user, group and other independently, as well as to set any directory permissions for inheritance of files created within the directory after the transfer is complete.  Multiple commands can be strung together using commas. For example, the following will provide full permissions for the user, read and execute permissions for others in the group and will cause all of the future files created within any directories being transferred to inherit the group that the directory has.
 
-<pre>rsync -a--chmod u=rwx,g=rx,Dg+s source_dir username@remote_host:target_dir</pre>
+`rsync -a--chmod u=rwx,g=rx,Dg+s source_dir username@remote_host:target_dir`
 
 ##### <span class="titlemark">5.6.2</span> Graphical File Transfer
 
 WinSCP and FileZilla provide a free secure FTP (SFTP) and secure copy (SCP) client with graphical interface for Windows, Linux and Mac using SSH, allowing users to transfer files to and from our cluster file system using a drag-and-drop interface. Please use either the SCP or SFTP protocol with port 22 with the data manager nodes
 
-<pre>datamgr.aci.ics.psu.edu</pre>
+`datamgr.aci.ics.psu.edu`
 
 to transfer files. Please note that your two factor authentication is required.  
 
@@ -481,7 +481,7 @@ There are other specialized data-transfer software available for specific needs,
 
 File permissions can be seen using the `-l` flag for ls:
 
-<pre>ls -l</pre>
+`ls -l`
 
 The letters at the beginning indicate the file or folder permissions while the third and fourth columns show the owner and group associated with the file. The letters used are typically rwx, for read, write and execute. These are grouped in sets of three, the first set for the owner, the second for the group and the third for the entire world. Users may change permissions using the chmod command. An excellent overview of how to change permissions using chmod can be found [here.](http://catcode.com/teachmod/)
 
