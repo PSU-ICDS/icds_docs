@@ -7,16 +7,16 @@ Hosted by readthedocs and rendered using Mkdocs
 
 Important links:
 
-https://docs.readthedocs.io/en/stable/tutorial/
-https://docs.readthedocs.io/en/stable/intro/getting-started-with-mkdocs.html
-https://www.mkdocs.org/user-guide/
-https://www.markdownguide.org/tools/mkdocs/
+- https://docs.readthedocs.io/en/stable/tutorial/
+- https://docs.readthedocs.io/en/stable/intro/getting-started-with-mkdocs.html
+- https://www.mkdocs.org/user-guide/
+- https://www.markdownguide.org/tools/mkdocs/
 
 Converters:
-[HTML -> Markdown](https://www.browserling.com/tools/html-to-markdown)
-[HTML table -> Markdown](https://jmalarcon.github.io/markdowntables/)
+- [HTML -> Markdown](https://www.browserling.com/tools/html-to-markdown)
+- [HTML table -> Markdown](https://jmalarcon.github.io/markdowntables/)
 
 
 Documentation versions available:
-original - current ICDS Docs
-latest - Modified ICDS Docs
+- original - current ICDS Docs
+- latest - Modified ICDS Docs

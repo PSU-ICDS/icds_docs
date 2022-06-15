@@ -2,6 +2,12 @@
 title: Introduction
 ---
 
+>
+> **NOTE:** This documentation is currently being edited and may be incomplete. To see the 
+> original documentation, please switch to the "original" version by using the 
+> dropdown box found in the lower right corner.
+>
+
 ### 1 Introduction
 
 Computational and data sciences are a fast growing mode of discovery, in addition to traditional theory and experiment, because they provides a unique virtual laboratory to investigate complex problems that are otherwise impossible or impractical to address. Such problems can range from understanding the physics of the origins of the universe, the genomic/molecular basis of disease, or the socioeconomic impacts of a digital society; to designing smart structures and nanoscale tailored materials; or to developing systems for clean energy or realtime responses to threats. The intellectual strength of computational science lies with its universality – all research domains benefit from it. The expectation is that The Institute for Computational and Data Sciences will succeed both in facilitating research across a broad spectrum of disciplines and in securing significant external resources for cyberscience-related research for years to come.  
