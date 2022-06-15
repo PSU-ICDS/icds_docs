@@ -20,7 +20,7 @@ Your repository will have a master branch, where the current production code usu
 
 You can your own compile code for running on Roar. A basic compilation might look like
 
-<pre>gcc -O2 -lm -o hello.out hello.c <\pre></pre>
+`gcc -O2 -lm -o hello.out hello.c <\pre>`
 
 where the gnu compiler is used to compile a C code in the file hello.c.
 
@@ -63,7 +63,7 @@ Intel Math Kernel Library (MKL) consists of commonly used mathematical operation
 
 The MKL module can be loaded using the command
 
-<pre>module load mkl</pre>
+`module load mkl`
 
 ##### <span class="titlemark">6.3.2</span> LAPACK
 
@@ -71,9 +71,9 @@ LAPACK (Linear Algebra Package) is a software library used for numerical linear 
 
 You can load the LAPACK module using the commands:
 
-<pre>module load gcc/5.3.1
+`module load gcc/5.3.1
 module load lapack/3.6.0
-</pre>
+`
 
 ##### <span class="titlemark">6.3.3</span> BLAS
 
@@ -81,7 +81,7 @@ BLAS (Basic Linear Algebra Subprograms) is a collection of low level matrix and 
 
 The BLAS module can be loaded with the command
 
-<pre>module load blas</pre>
+`module load blas`
 
 ##### <span class="titlemark">6.3.5</span> Boost
 
@@ -89,7 +89,7 @@ Boost is a C++ library that contains many useful functions covering a wide range
 
 You can load Boost with the command
 
-<pre>module load boost</pre>
+`module load boost`
 
 ##### <span class="titlemark">6.3.6</span> PETsc
 
@@ -97,6 +97,6 @@ The Portable, Extensible Toolkit for Scientific Computation (PETsc, pronounced P
 
 You can load the PETsc module using the command
 
-<pre>module load petsc/3.8.3</pre>
+`module load petsc/3.8.3`
 
 More information on features, tutorials, manuals, etc can be found on the [website.](http://www.mcs.anl.gov/petsc/)

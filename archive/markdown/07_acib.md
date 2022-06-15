@@ -36,7 +36,8 @@ scivybridge|Intel Xeon E5-2680v2 2.8GHz|256 GB Total|
 
 The following is a submission script for a Matlab job that will run for 5 minutes on one processor using the open queue.
 
-<pre class="script">#!/bin/bash
+```
+#!/bin/bash
 
 #PBS -l nodes=1:ppn=1
 
@@ -66,11 +67,11 @@ matlab-bin -nodisplay -nosplash < runThis.m > log.matlabRun
 
 echo "Job Ended at $(date)"
 
-</pre>
+```
 
 This script would be submitted using the command
 
-<pre>qsub subScript.pbs</pre>
+`qsub subScript.pbs`
 
 from the directory containing the submission and matlab scripts.  
 
@@ -80,11 +81,12 @@ from the directory containing the submission and matlab scripts.
 
 Interactive jobs may be submitted to ACI-b using the -I (for interactive) flag. Interactive jobs require resource requests and an allocation. An interactive job can be submitted using a command similar to:
 
-<pre>qsub -A open -l walltime=1:00:00 -l nodes=1:ppn=2 -I</pre>
+`qsub -A open -l walltime=1:00:00 -l nodes=1:ppn=2 -I`
 
 The job will be given a job ID and your session will wait until this job has the resources to start. You will then be placed on the compute node and given a usable terminal session within your current session. For example a user submitting an interactive job may see
 
-<pre class="script">[abc123@aci-lgn-001 ~]$ qsub I l nodes=1:ppn=1 l walltime=4:00:00 -A open
+```
+[abc123@aci-lgn-001 ~]$ qsub I l nodes=1:ppn=1 l walltime=4:00:00 -A open
 
 qsub: waiting for job <span style="word-wrap: break-word;">2449840.torque01.util.production.int.aci.ics.psu.edu</span> u to start
 
@@ -92,7 +94,7 @@ qsub: job <span style="word-wrap: break-word;">2449840.torque01.util.production.
 
 [abc123@comp-bc-0267 ~]$
 
-</pre>
+```
 
 Note that the node the user is on changes from log-in node (aci-lgn-001) to a basic core compute node (comp-bc-0267) when the job starts. You can ask for x-windows to be displayed using the `-X` flag with the `qsub` command, as long as you have logged into ACI-b using the `-Y` flag with `ssh`. Note that some users experiencing difficulty with interactive x-windows on ACI-b jobs will often use an Open OnDemand interactive session to connect to ACI-i, and then `ssh` with the `-Y` flag to ACI-b from ACI-i.  
 
@@ -104,7 +106,7 @@ It is recommended that you compile your code using an interactive job on the nod
 
 Jobs submitted will automatically have several PBS environment variables created that can be used within the job submission script and scripts within the job. A full list of PBS environment variables can be used by viewing the output of
 
-<pre>env | grep PBS > log.pbsEnvVars</pre>
+`env | grep PBS > log.pbsEnvVars`
 
 run within a submitted job.
 
@@ -120,29 +122,29 @@ run within a submitted job.
 
 There are several ways to view existing jobs. The `qstat` command can give some basic information about your own queued and running jobs.
 
-<pre>qstat</pre>
+`qstat`
 
 Some helpful flags are `-u` (user), `-s` (status), `-n` (to show the nodes running jobs are placed on) and -f to show more information for a specified job. For example, to view more information about job 536, you can use the command
 
-<pre>qstat -f 536</pre>
+`qstat -f 536`
 
 Common status for jobs are Q for queued, R for running, E for ending, H for being held and C for complete.  
 
 You can also view all of the jobs running, waiting and being held using the showq command:
 
-<pre>showq</pre>
+`showq`
 
 It may be helpful for you to view all of the jobs running on an allocation. For example, if you are a member of the abc123_a_g_sc_default allocation, you can view the running and queued jobs using the command:
 
-<pre>showq -w acct=abc123_a_g_sc_default</pre>
+`showq -w acct=abc123_a_g_sc_default`
 
 You may delete your jobs using the qdel command. For example, the job 546 may be deleted using the command:
 
-<pre>qdel 546</pre>
+`qdel 546`
 
 Jobs that are not responding may require being purged from the nodes. You can do this with the `-p` flag:
 
-<pre>qdel -p 546</pre>
+`qdel -p 546`
 
 Note that you are only able to delete your own jobs, not other users.  
 
@@ -150,7 +152,7 @@ Note that you are only able to delete your own jobs, not other users.
 
 You can use the checkjob command to view some additional information about queued and running jobs. For example, to give very verbose information about job 548, you can use the command:
 
-<pre>checkjob 548 -v -v</pre>
+`checkjob 548 -v -v`
 
   
 
@@ -227,19 +229,19 @@ At this point, no core-hours are available, and no jobs can be run against the a
 
 Users are able to see their allocations with the balance using the command mam-list-funds. This is typically used with the -h flag to show the allocation and balance in hours.
 
-<pre>mam-list-funds -h</pre>
+`mam-list-funds -h`
 
 The allocation topology, end date and node-type can be shown using the mam-list-accounts command.
 
-<pre>mam-list-accounts</pre>
+`mam-list-accounts`
 
 Note that this shows you expired allocations as well. The second column (Active) will show True for active allocations and False for expired allocations.  
 
 Users interested in their own usage may want to investigate several of the other mam commands:
 
-<pre>mam-list-usagerecords
+`mam-list-usagerecords
 mam-list-transactions
-</pre>
+`
 
   
 
@@ -264,7 +266,8 @@ Where:
 **GPU job script example**  
 Here is an example GPU job script that requests a single GPU and simply calls nvidia-smi:
 
-<pre class="script">#!/bin/bash
+```
+#!/bin/bash
 #PBS -l nodes=1:ppn=1:gpus=1
 #PBS -l walltime=2:00
 #PBS -l pmem=1gb
@@ -284,13 +287,14 @@ nvidia-smi
 # Finish up
 echo " "
 echo "Job Ended at `date`"
-</pre>
+```
 
 ##### <span class="titlemark">7.5.2</span> GPU Monitoring
 
 You may want to monitor the status of a node’s GPU. The nvidia-smi command provides basic monitoring capabilities and will provide information such as GPU and memory utilization, power consumption, running processes, etc. Example output for this command:
 
-<pre class="script">$ nvidia-smi
+```
+$ nvidia-smi
 Mon Oct  8 15:03:53 2018
 +-----------------------------------------------------------------------------+
 | NVIDIA-SMI 390.30                 Driver Version: 390.30                    |
@@ -317,7 +321,7 @@ Mon Oct  8 15:03:53 2018
 |=============================================================================|
 |  No running processes found                                                 |
 +-----------------------------------------------------------------------------+
-</pre>
+```
 
 ##### <span class="titlemark">7.5.3</span> CUDA
 

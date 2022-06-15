@@ -1,3 +1,4 @@
+
 ---
 title: System Overview
 ---
@@ -10,13 +11,13 @@ Roar is a heterogeneous cluster that consists of multiple node-types connected t
 
 ACI-b, the batch portion of Roar, is used to submit jobs to dedicated resources. ACI-b has the hostname
 
-<pre>submit.aci.ics.psu.edu</pre>
+`submit.aci.ics.psu.edu`
 
 and can be logged into using `ssh`. Users will be placed on a head node, which is not intended for heavy processing. The head node should only be used to submit jobs.  
 
 Typically, a job submission script including the resource requests and the commands is submitted. A job scheduler will wait until dedicated resources are available for this job. Jobs are submitted either to the Open Queue allocation, which any Penn State student/faculty/staff are able to use, or to a paid allocation. Jobs are typically submitted with the qsub command:
 
-<pre>qsub subScript.pbs</pre>
+`qsub subScript.pbs`
 
 ##### <span class="titlemark">3.1.1</span> Types of ACI-b Nodes
 
@@ -72,7 +73,7 @@ ACI-i is open to any and all users, regardless of allocation.
 
 HPRC is the hybrid-cloud portion of Roar, utilizing virtual cores at a lower cost. HPRC jobs are submitted from ACI-b head nodes, with the host name
 
-<pre>submit.aci.ics.psu.edu</pre>
+`submit.aci.ics.psu.edu`
 
 …and can be logged into using ssh.
 
@@ -80,7 +81,7 @@ Users will be placed on a head node, which is not intended for heavy processing.
 
 Typically, a job submission script including the resource requests and the commands is submitted. A job scheduler will wait until dedicated resources are available for this job. Jobs are typically submitted with the qsub command:
 
-<pre>qsub subScript.pbs</pre>
+`qsub subScript.pbs`
 
   
 
@@ -115,11 +116,11 @@ The data manager nodes are dedicated to file transfers, both within Roar and bet
 
 The data manager hostname is
 
-<pre>datamgr.aci.ics.psu.edu</pre>
+`datamgr.aci.ics.psu.edu`
 
 For example, to connect to data manager, you can use the command
 
-<pre>ssh datamgr.aci.ics.psu.edu</pre>
+`ssh datamgr.aci.ics.psu.edu`
 
 to log in. After logging in, you can perform your file transfer.
 
