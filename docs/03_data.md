@@ -23,7 +23,7 @@ and Nearline storage can be found in [Transferring Data to and between ICDS
 resources](#transfer).
 
 |Storage|Quota|Backup Policy|
-|--- |--- |--- |--- |
+|--- |--- |--- |
 |Home|16 GB  
 500,000 files|Daily snapshot|
 |Work|128 GB  
@@ -75,11 +75,10 @@ To access the Data Management nodes:
 <a name="transfer"></a>
 # Transferring Data to, from, and between ICDS Resources
 
-Use of traditional remote file transfer tools such as [command line utilities]
-(#cli-transfer) and [drag and drop applications](#gui-transfer) are supported. 
-Additionally, ICDS offers [Globus optimized Endpoints](#globus). Globus is a 
-robust data transfer service and is the recommended solution for large scale 
-data transfers.
+Use of traditional remote file transfer tools such as [Command Line Tools] 
+and [drag and drop applications](#gui-transfer) are supported. Additionally, 
+ICDS offers [Globus optimized Endpoints](#globus). Globus is a robust data 
+transfer service and is the recommended solution for large scale data transfers.
 
 To use other specialized data-transfer software, such as Aspera. [Contact our 
 iASK Support Team](mailto: iask@ics.psu.edu) for additional information and 
