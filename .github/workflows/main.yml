@@ -1,11 +1,15 @@
 name: 'Upstream Sync'
 
 on:
- # schedule:
- #   - cron:  '0,5,10,15,20,25,30,35,40,45,50,55 * * * *'
-    # run every minute
+ # run every 15 minutes
+ schedule:
+    - cron:  '0,5,10,15,20,25,30,35,40,45,50,55 * * * *'
     
-  workflow_dispatch:  # button?
+ # manual deployment
+ # workflow_dispatch: 
+
+# using repository dispatch (webhooks)
+
 
 jobs:
   sync_latest_from_upstream:
@@ -36,7 +40,7 @@ jobs:
         upstream_repo_access_token: ${{ secrets.UPSTREAM_REPO_SECRET }}
 
         # Set test_mode true to run tests instead of the true action!!
-        test_mode: true
+        # test_mode: true
       
     # Step 3: Display a sample message based on the sync output var 'has_new_commits'
     - name: New commits found
