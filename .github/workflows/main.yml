@@ -32,7 +32,7 @@ jobs:
         # REQUIRED 'target_repo_token' exactly like this!
         target_repo_token: ${{ secrets.GITHUB_TOKEN }}
         upstream_sync_branch: main
-        upstream_sync_repo: ICDS-Roar/icds-docs
+        upstream_sync_repo: PSU-ICDS/icds-docs
         upstream_repo_access_token: ${{ secrets.UPSTREAM_REPO_SECRET }}
 
         # Set test_mode true to run tests instead of the true action!!
