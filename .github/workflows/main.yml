@@ -24,13 +24,13 @@ jobs:
       with:
         # optional: set the branch to checkout,
         # sync action checks out your 'target_sync_branch' anyway
-        ref:  main
+        ref:  main 
 
     # REQUIRED step
     # Step 2: run the sync action
     - name: Sync upstream changes
       id: sync
-      uses: aormsby/Fork-Sync-With-Upstream-action@v3.2
+      uses: aormsby/Fork-Sync-With-Upstream-action@v3.1
       with:
         target_sync_branch: main
         # REQUIRED 'target_repo_token' exactly like this!
