@@ -30,7 +30,7 @@ jobs:
     # Step 2: run the sync action
     - name: Sync upstream changes
       id: sync
-      uses: aormsby/Fork-Sync-With-Upstream-action@v3.1
+      uses: aormsby/Fork-Sync-With-Upstream-action@v3.2
       with:
         target_sync_branch: main
         # REQUIRED 'target_repo_token' exactly like this!
@@ -38,6 +38,7 @@ jobs:
         upstream_sync_branch: main
         upstream_sync_repo: PSU-ICDS/icds_docs
         upstream_repo_access_token: ${{ secrets.UPSTREAM_REPO_SECRET }}
+        upstream_pull_args: '--unshallow'
 
         # Set test_mode true to run tests instead of the true action!!
         # test_mode: true
