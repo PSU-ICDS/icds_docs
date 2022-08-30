@@ -6,7 +6,7 @@ on:
     - cron:  '*/5 * * * *'
     
  # manual deployment
- # workflow_dispatch: 
+ workflow_dispatch: 
 
 # using repository dispatch (webhooks)
 
