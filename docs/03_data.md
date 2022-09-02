@@ -71,6 +71,27 @@ optimized for effiecent data transfer.
 To access the Data Management nodes:
 
 
+# Old Content
+----
+#### 3.6 Data Manager
+
+The data manager nodes are dedicated to file transfers, both within Roar and between Roar and other systems. For active storage, it can be used with command line file-transfer tools, such as `rsync`, `sftp` or `scp`, as well as with Globus, WinSCP, or FileZilla.  
+
+The data manager hostname is
+
+`datamgr.aci.ics.psu.edu`
+
+For example, to connect to data manager, you can use the command
+
+`ssh datamgr.aci.ics.psu.edu`
+
+to log in. After logging in, you can perform your file transfer.
+
+**Important:** Do not use tools that attempt to mirror or replicate directory and file trees (such as rsync) into archive storage. Using such tools with archive storage can result in system degradations that negatively impact all users of our shared system.
+
+  
+----
+
 
 <a name="transfer"></a>
 # Transferring Data to, from, and between ICDS Resources
@@ -137,14 +158,28 @@ using P flag similar to `ssh`.
 
 ### rsync
 
-RSYNC SHOULD NOT BE USED WITH NEARLINE!
-
 `rsync` is a utility that can be used to copy files and for keeping files the 
 same on different systems as a rudimentary version control system. The benefit 
-to using `rsync` over `scp` is that if an `scp` is stopped for any reason 
-(poor wireless connection, large files, etc) the restart will begin as if no 
-files were copied over. The `rsync` utility will only copy the files that were 
-not successfully moved over in the previous command. Once you have SSH access 
+to using `rsync` over `scp` is that `rsync` will only copy the files that were 
+not successfully synced or have been changed since the previous run. 
+
+** NOTE: `rsync` should NOT be used with Nearline/archival storage. Doing so can
+cause poor performance for all users. **
+
+Using the `rsync` utility follows a similar format as `scp`. To transfer file(s) 
+from a remote host to local storage:
+`$ rsync <user id>@<host>:/path/to/source/file /path/to/target/file`
+
+And to transfer files from local storage to a remote host:
+
+
+To transfer a local directory to Roar, the command would look like:
+`$ rsync ./directory user_id@submit.hpc.psu.edu:/storage/work/user_id`
+
+Helpful flags or options for `rsync` include:
+ - `-a` : archive - allows synchronization of a complete directory
+
+Once you have SSH access 
 between two machines, you can synchronize dir1 folder ( home directory in this 
 example) from local to a remote computer by using syntax:
 
