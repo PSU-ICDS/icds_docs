@@ -68,3 +68,52 @@ For Windows users, you may need to install an SSH client. Suggested clients incl
 
 
 
+# Old Content Below
+
+
+#### 5.3 Connecting to ACI-b
+
+Users can connect to ACI-b with the hostname
+
+`submit.aci.ics.psu.edu`
+
+using `ssh`. Users  connecting with ssh are encouraged to use the secure x-window forwarding flag (`-Y`) if x-windows will be used during the session. Note that the screen may not show * symbols for each keystroke when your password is being entered. (In this example, the username is "abc123".)
+
+`ssh -Y abc123@submit.aci.ics.psu.edu`
+
+  
+
+#### 5.4 Connecting to ACI-i
+
+Users connect to ACI-i with Open OnDemand.
+
+  
+
+#### 5.4.1 Open OnDemand
+
+Open OnDemand lets you utilize Penn State’s high performance computing resources in a graphical, menu-based environment that doesn’t require using an ssh client. Interacting with Roar with Open OnDemand looks and feels like the desktop or web-based applications you’re used to.
+
+Open OnDemand is accessed through your web browser, so there’s nothing to download or install.  
+Simply go to this web address:
+
+PORTAL.ACI.ICS.PSU.EDU
+
+**Note:** When accessing Roar on Open OnDemand, you’ll see a CILogon screen before you can enter your Penn State ID and password. Simply click the **Log On** button to proceed.
+
+### Introduction to Using Open OnDemand on Roar (formerly known as ICDS-ACI)
+
+<iframe loading="lazy" src="https://www.youtube.com/embed/ekiz0o94pwQ" allowfullscreen="allowfullscreen" width="560" height="315" frameborder="0"><span data-mce-type="bookmark" style="display: inline-block; width: 0px; overflow: hidden; line-height: 0;" class="mce_SELRES_start">﻿</span></iframe>
+
+  
+
+#### 5.5 Connecting to HPRC
+
+Users can connect to HPRC from ACI-b head nodes, with the host name
+
+`submit.aci.ics.psu.edu`
+
+…using ssh. Users connecting with ssh are encouraged to use the secure x-window forwarding flag (-Y) if x-windows will be used during the session. Note that the screen may not show * symbols for each keystroke when your password is being entered. (In this example, the username is "abc123".)
+
+`ssh -Y abc123@submit.aci.ics.psu.edu`
+
+  
