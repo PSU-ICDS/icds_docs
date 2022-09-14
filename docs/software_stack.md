@@ -2,12 +2,8 @@
 title: Software on Roar
 ---
 
-## 99.1 Roar Software Stack
 
-Many common research software packages are already installed and available for Roar users. Most of this software is installed on the Roar software stack as software modules which can be loaded and unloaded with relative ease. Be sure to reserve compute nodes and/or processors to run research sofware because running computationally expensive software on submit nodes will drastically reduce computing performance.
-
-
-### 99.1.1 Using Software Modules
+## Using Software Modules
 
 All modules, available versions, and defualt versions on the software stack are viewed and loaded with the following commands:
 
@@ -30,8 +26,20 @@ $ module load gcc
 $ module avail
 ```
 
+Describe these functionalities:
+```
+$ module list
+$ module spider
+$ module show
+```
 
-## 99.3 RISE Software Stack
+
+### Central Software Stack
+
+Many common research software packages are already installed and available for Roar users. Most of this software is installed on the Roar software stack as software modules which can be loaded and unloaded with relative ease. Be sure to reserve compute nodes and/or processors to run research sofware because running computationally expensive software on submit nodes will drastically reduce computing performance.
+
+
+### RISE Software Stack
 
 If a software package or a specific version is not available on the main software stack, it may be available in the RISE software stack which is also accessible to Roar users. After specifying this alternate software location, the modules in the RISE software stack are accessible just like any module on the main software stack.
 
@@ -41,36 +49,24 @@ $ module avail
 ```
 
 
-## 99.4 User Software Stack
 
-Users are able to install software into their own home and work directories as well as in group spaces. ICDS strongly recommends that research groups who compute in multiple locations do this for all of their software so that the version can be consistent across platforms.  
 
-The i-ASK Center can provide guidance for the installation of many software packages.  
-  
+## User Software
 
-### 99.4.1 Local User Installations
+Users are able to install software into their own home and work directories as well as in group spaces. ICDS strongly recommends that research groups who compute in multiple locations do this for all of their software so that the version can be consistent across platforms. The i-ASK Center can provide guidance for the installation of many software packages.
 
-### 99.4.2 Group Installations
 
-### 99.4.3 Installation Methods
+### Custom Modules
 
-#### 99.4.3.1 User Module
+Roar now uses the Lmod environment modules system. Environment Modules provide a convenient way to dynamically change the users environment through modulefiles. This includes easily adding or removing directories to the `PATH`, `LD_LIBRARY_PATH`, `MANPATH`, and `INFOPATH` environment variables. A modulefile contains the necessary information to allow a user to run a particular application or provide access to a particular library. All of this can be done dynamically without logging out and back in. Modulefiles for applications modify the users path to make access easy. Modulefiles for library packages provide environment variables that specify where the library and header files can be found. Learn more about modules on [TACC’s website](https://www.tacc.utexas.edu/research-development/tacc-projects/lmod).
 
-#### 99.4.3.2 Singularity Containers
 
-#### 99.4.3.3 Anaconda Environment
+### Anaconda Environments
 
 
 
 
-
-
-
-
-
-
-
-9.3.7 Singularity
+### Containers
 
 Singularity is a _container_ system developed for use on high-performance computing clusters. Container computing allows the creation of a virtual-machine-like environment, which gives the user access to different configurations of software for use on clusters.
 
@@ -86,15 +82,12 @@ This may help if you need to run a container without having sudo access, but kee
 
 Before getting started with using Singularity on Roar, you will need to install Singularity on a system for which you have root access. [Singularity’s official user guide](https://www.sylabs.io/docs/) provides instructions for doing this. Roar uses version 2.6.0 of Singularity.
 
-
 Note: Docker Integration
 Singularity supports Docker natively and directly. This means that nearly all Docker images can be used directly as long as the required functionality does not require root access; however, most applications do not require this. We provide an example in the next section, Obtaining pre-built images.
 
 9.3.7.3 Obtaining Pre-built Images
 
 Images built by others users, sometimes the developers of the desired software itself, are among the best choices for a base image and, in many cases, may be all a researcher needs to do to have an image that gives the desired outcome.
-
-
 
 We can note the first issue, the non-existent bind paths. For this type of image, add the bind paths by slightly modifying the images. This can be done by writing a simple set of instructions, which are used to create an image. This set of instructions is called a recipe, in Singularity terminology.
 
@@ -140,7 +133,6 @@ Cleaning up...
 ```
 
 
-
 9.3.7.5 Ways of using Singularity containers
 
 Once a container has been built and is placed on Roar, you can use it in a variety of ways. Here, we explain a few ways, including:
@@ -151,7 +143,6 @@ Once a container has been built and is placed on Roar, you can use it in a varie
 *   Executing commands
 *   Running a container
 *   Working with files
-
 
 
 Working with Files:
@@ -180,4 +171,9 @@ Following are several other use cases:
 *   Images with GPU support
 *   Running Services
 *   Using sandbox and writable images
+
+
+
+### Compiling
+
 
