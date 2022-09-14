@@ -2,12 +2,12 @@
 title: Software on Roar
 ---
 
-#### 99.1 Roar Software Stack
+## 99.1 Roar Software Stack
 
 Many common research software packages are already installed and available for Roar users. Most of this software is installed on the Roar software stack as software modules which can be loaded and unloaded with relative ease. Be sure to reserve compute nodes and/or processors to run research sofware because running computationally expensive software on submit nodes will drastically reduce computing performance.
 
 
-##### 99.1.1 Using Software Modules
+### 99.1.1 Using Software Modules
 
 All modules, available versions, and defualt versions on the software stack are viewed and loaded with the following commands:
 
@@ -31,7 +31,7 @@ $ module avail
 ```
 
 
-#### 99.3 RISE Software Stack
+## 99.3 RISE Software Stack
 
 If a software package or a specific version is not available on the main software stack, it may be available in the RISE software stack which is also accessible to Roar users. After specifying this alternate software location, the modules in the RISE software stack are accessible just like any module on the main software stack.
 
@@ -41,24 +41,24 @@ $ module avail
 ```
 
 
-#### 99.4 User Software Stack
+## 99.4 User Software Stack
 
 Users are able to install software into their own home and work directories as well as in group spaces. ICDS strongly recommends that research groups who compute in multiple locations do this for all of their software so that the version can be consistent across platforms.  
 
 The i-ASK Center can provide guidance for the installation of many software packages.  
   
 
-##### 99.4.1 Local User Installations
+### 99.4.1 Local User Installations
 
-##### 99.4.2 Group Installations
+### 99.4.2 Group Installations
 
-##### 99.4.3 Installation Methods
+### 99.4.3 Installation Methods
 
-###### 99.4.3.1 User Module
+#### 99.4.3.1 User Module
 
-###### 99.4.3.2 Singularity Containers
+#### 99.4.3.2 Singularity Containers
 
-###### 99.4.3.3 Anaconda Environment
+#### 99.4.3.3 Anaconda Environment
 
 
 
@@ -104,7 +104,7 @@ In order to handle the bind paths, it is very helpful to start with a recipe to 
 
 We can also start with a recipe and add the correct binding paths for ACI-b. Here is a simple example to handle the bind points using the lolcow image.
 
-`
+```
 <pre class="script">BOOTSTRAP: docker
 FROM: godlovedc/lolcow
 %post
@@ -114,10 +114,10 @@ mkdir -p /storage/work
 mkdir -p /gpfs/group
 mkdir -p /gpfs/scratch
 mkdir -p /var/spool/torque
-`
+```
 
 We build the image in an environment where we have sudo access (not Roar):
-`
+```
 <pre class="script">[cjb47@localhost simple_bind]$ sudo singularity build ./lolcow.simg ./lolcow.recipe
 Building into existing container: ./lolcow.simg
 Using container recipe deffile: ./lolcow.recipe
@@ -137,7 +137,7 @@ Skipping checks
 Building Singularity image...
 Singularity container built: ./lolcow.simg
 Cleaning up...
-`
+```
 
 
 
@@ -159,7 +159,7 @@ Working with Files:
 As long as there are corresponding binding points, you will be able to reach files on the host from within the container. Since Roar has user storage in non-standard locations (compared to distribution default), you will need to add the appropriate locations to a recipe.
 
 In the following example, we need binding for ACI-b:
-
+```
 <pre class="script">%post
 #ACI mappings so you can access your files.
 mkdir -p /storage/home
@@ -167,7 +167,7 @@ mkdir -p /storage/work
 mkdir -p /gpfs/group
 mkdir -p /gpfs/scratch
 mkdir -p /var/spool/torque
-`
+```
 
 9.3.7.6 More information on building Singularity containers
 
