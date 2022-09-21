@@ -27,24 +27,36 @@ the system updates and the user is able to login.
 
 #### 2.1.1 Accounts for Outside Collaborators
 
-Users who do not have Penn State ID but are collaborators from other institutions need to acquire a Penn State SLIM account before they sign up for a Roar account and Duo. To request SLIM account, please follow these [instructions](https://www.icds.psu.edu/computing-services/account-setup/).  
+Users who do not have Penn State ID but are collaborators from other institutions 
+need to acquire a Penn State SLIM account before they sign up for a Roar account 
+and Duo. To request SLIM account, please follow these [instructions](https://www.icds.psu.edu/computing-services/account-setup/).  
 
-You will need to wait for your SLIM access account to be created before you can proceed to request your Roar account or sign up for two-factor authentication.
+You will need to wait for your SLIM access account to be created before you can 
+proceed to request your Roar account or sign up for two-factor authentication.
 
 #### 2.1.2 Adding an existing user to an existing SLA
 
-To gain access to an allocation or a group storage, have the PI send an email to the i-ASK Center ([iask@ics.psu.edu](mailto:iask@ics.psu.edu)) stating the user IDs (ex. abc123) and the allocation(s) and group storage(s) you wish to add them to. Explicit permission must be granted before access is granted.
+To gain access to an allocation or a group storage, have the PI send an email 
+to the i-ASK Center ([iask@ics.psu.edu](mailto:iask@ics.psu.edu)) stating the 
+user IDs (ex. abc123) and the allocation(s) and group storage(s) you wish to add 
+them to. Explicit permission must be granted before access is granted.
 
-The users who have access to an allocation are placed in an allocation group. Users can see all of the groups they are in by using the `id` command.
+The users who have access to an allocation are placed in an allocation group. 
+Users can see all of the groups they are in by using the `id` command.
 
 ### 2.2 Connecting to Roar
 
-Roar is a heterogeneous cluster that consists of multiple node-types connected to a common file system. The primary portions are ACI-b, the batch portion of the cluster; ACI-i, the interactive portion; and the data-manager nodes.
+Roar is a heterogeneous cluster that consists of multiple node-types connected to 
+a common file system. The primary portions are ACI-b, the batch portion of the 
+cluster; ACI-i, the interactive portion; and the data-manager nodes.
 
 **ACI-b**, the batch portion of Roar, is used to submit jobs to dedicated resources 
 and is connected to by using a Secure SHell (SSH) connection.
 
-**ACI-i** provides a set of interactive cores that are configured as common GUI interactive systems. ACI-i is a shared resource where users are placed on an interactive node with other users. ACI-i is accessable via our web-based Open OnDemand portal.
+**ACI-i** provides a set of interactive cores that are configured as common GUI 
+interactive systems. ACI-i is a shared resource where users are placed on an 
+interactive node with other users. ACI-i is accessable via our web-based Open 
+OnDemand portal.
 
 Often ACI-i is used to develop and test small scale test cases due to the ability to use a graphical user interface. Once the model has been developed, it can be submitted as a job to ACI-b to take advantage of the greater computational resources available on ACI-b.  
 
