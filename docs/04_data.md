@@ -24,13 +24,9 @@ resources](#transfer).
 
 |Storage|Quota|Backup Policy|
 |--- |--- |--- |
-|Home|16 GB  
-500,000 files|Daily snapshot|
-|Work|128 GB  
-1 million files|Daily snapshot|
-|Scratch|No space quota  
-1 million files|No backup  
-Files purged after 30 days|
+|Home|16 GB / 500,000 files|Daily snapshot|
+|Work|128 GB / 1 million files|Daily snapshot|
+|Scratch|No space quota / 1 million files|No backup - Files purged after 30 days|
 |Group|Allocation dependent|No backup|
 |Nearline|Allocation dependent|No backup|
 
