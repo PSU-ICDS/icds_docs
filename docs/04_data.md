@@ -65,32 +65,24 @@ Nearline storage is only accessable from the Roar Data Management nodes.
 
 ## WIP: Data Management Nodes
 
-To transfer data, please utilize the Data Management nodes as they have been 
-optimized for effiecent data transfer.
+To transfer data both within Roar and between Roar and other systems, please 
+utilize the Data Management nodes as they have been optimized for effiecent data 
+transfer.
 
-To access the Data Management nodes:
-
-
-# Old Content
-----
-#### 3.6 Data Manager
-
-The data manager nodes are dedicated to file transfers, both within Roar and between Roar and other systems. For active storage, it can be used with command line file-transfer tools, such as `rsync`, `sftp` or `scp`, as well as with Globus, WinSCP, or FileZilla.  
-
-The data manager hostname is
+The Data Management nodes can be accessed by connecting to host:
 
 `datamgr.aci.ics.psu.edu`
 
-For example, to connect to data manager, you can use the command
+For robust and secure data transfers, we recommend using [Globus](#globus).
 
-`ssh datamgr.aci.ics.psu.edu`
-
-to log in. After logging in, you can perform your file transfer.
-
-**Important:** Do not use tools that attempt to mirror or replicate directory and file trees (such as rsync) into archive storage. Using such tools with archive storage can result in system degradations that negatively impact all users of our shared system.
-
+However, for **active storage**, [command line file-transfer tools](#cli-transfer), 
+such as `rsync`, `sftp` or `scp`, and [graphical tools](gui-transfer) such WinSCP, 
+or FileZilla can also be used.
   
-----
+**Important:** Do not use tools that attempt to mirror or replicate directory and 
+file trees (such as rsync) **into archive storage**. Using such tools with archive 
+storage can result in system degradations that negatively impact all users of our 
+shared system.
 
 
 <a name="transfer"></a>
@@ -171,52 +163,19 @@ from a remote host to local storage:
 `$ rsync <user id>@<host>:/path/to/source/file /path/to/target/file`
 
 And to transfer files from local storage to a remote host:
-
+`$ rsync /path/to/source/file <user id>@<host>:/path/to/target/file`
 
 To transfer a local directory to Roar, the command would look like:
 `$ rsync ./directory user_id@submit.hpc.psu.edu:/storage/work/user_id`
 
 Helpful flags or options for `rsync` include:
  - `-a` : archive - allows synchronization of a complete directory
-
-Once you have SSH access 
-between two machines, you can synchronize dir1 folder ( home directory in this 
-example) from local to a remote computer by using syntax:
-
-`rsync -a ~/dir1 username@remote_host:destination_directory`
-
-where remote host is the Roar host name as in scp command. If dir1 were on the remote system instead of the local system, the syntax would be:
-
-`rsync -a username@remote_host:/home/username/dir1 place_on_local_machine`
-
-If you are transferring files that have not been compressed yet, like text files, you can reduce the network transfer by adding compression with the `-z` option:
-
-`rsync -az source_dir username@remote_host:target_dir`
-
-The -P flag is very helpful. It combines the flags -progress and -partial. The former gives you a progress bar for the transfers and the latter allows you to resume interrupted transfers:
-
-`rsync -azP source_dir username@remote_host:target_dir`
-
-In order to keep two directories synchronized it is necessary to delete files from the destination directory if they are removed from the source. rsync does not delete anything from the destination directory by default. To change this behavior use the `-delete` option:
-
-`rsync -a --delete source_dir username@remote_host:taget_dir`
-
-If you wish to exclude certain files or directories located inside a directory you are syncing, you can do so by specifying them in a comma-separated list following `-exclude=` option:
-
-`rsync -a --exclude=pattern_to_exclude source_dir username@remote_host:target_dir`
-
-One common pitfall that can affect users transferring files between systems with 
-different usernames and groups can be the permissions assigned to the files being 
-`rsync`-ed. The `--chmod` option can be used both to set the permissions for the 
-user, group and other independently, as well as to set any directory permissions 
-for inheritance of files created within the directory after the transfer is 
-complete.  Multiple commands can be strung together using commas. For example, 
-the following will provide full permissions for the user, read and execute 
-permissions for others in the group and will cause all of the future files 
-created within any directories being transferred to inherit the group that the 
-directory has.
-
-`rsync -a--chmod u=rwx,g=rx,Dg+s source_dir username@remote_host:target_dir`
+ - `-z` : compress - compresses the file(s) before transfer
+ - `-P` : progress and partial - provides a progress bar and resumes any 
+ previously interrupted transfers instead of deleting the partial file and restarting
+ - `--delete` : remove any destination files that have been removed from the source
+ - `--exclude` : excludes any files or directories specified in a comma-separated list
+ - `--chmod` : changes file permissions on destination files once transfer is complete
 
 
 <a name="gui-transfer"></a>
