@@ -1,6 +1,21 @@
 ---
-title: Policies
+title: Overview
 ---
+
+ - About ICDS
+ - About Roar
+ - About Roar Collab
+ - System Specifications
+ - Best Practices/ Good Citizenship
+ - Policies
+
+----
+
+# Old Content Below
+
+#### 5.1 System Usage
+
+The Roar system uses the Red Hat 7.9 Linux operating system with the module system set up for software. All users will have to use the terminal to access programs, including Open OnDemand users of ACI-i.
 
 By requesting a Roar user account, users acknowledge that they have read and understood all Roar and applicable Pennsylvania State University policies and agree to abide by said policies. All policies can be found at our [policies page](https://www.icds.psu.edu/computing-services/icds-aci-policies/).  
 
@@ -22,9 +37,6 @@ This policy explains how software is introduced, installed, and maintained on th
 This terms and conditions document outlines the basic provisions that guide the working relationships between researchers and Roar.
 
 
----
-title: System Access
----
 
 The Roar systems are available for all users with Penn State access. Non-Penn State members who are collaborating with Penn State researchers are able to get a Penn State SLIM access account and then sign up for a Roar account.
 

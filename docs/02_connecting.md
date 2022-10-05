@@ -2,6 +2,22 @@
 title: Connecting to ICDS Compute Resources
 ---
 
+ - Getting An account
+	- PSU Affiliates
+	- Non-PSU Affiliates
+- Connecting
+	- Using the Portal
+	- Login Nodes
+	- Duo
+	- Terminal
+	- Intro to LInux / Quick reference
+
+
+
+
+
+# Old Content Below
+
 The Roar systems are available for all users with Penn State access. Non-Penn 
 State members who are collaborating with Penn State researchers are able to get 
 a Penn State SLIM access account and then sign up for a Roar account.
