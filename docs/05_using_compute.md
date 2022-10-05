@@ -1,130 +1,51 @@
-#### 5.1 System Usage
+---
+title: Using Compute Resources
+---
 
-The Roar system uses the Red Hat 7.9 Linux operating system with the module system set up for software. All users will have to use the terminal to access programs, including Open OnDemand users of ACI-i.
+- Submitting on Roar
+	- Interactive Jobs
+	- Batch Jobs
+		- PBS Submit Files
+	- Using dedicated partitions
+	- Using GPUs
+	- Job Management and Monitoring
+- Submitting on Roar Collab
+	- Interactive Jobs
+	- Batch Jobs
+		- SLURM Directives
+	- Using dedicated partitions
+	- Using GPUs
+	- Job Management and Monitoring
+- Converting from PBS to SLURM
 
-##### <span class="titlemark">5.1.1</span> Shells
+# Submitting on Roar
 
-Unix/Linux shells are command line interpreters that allow for a user to interact with their operating system through utility commands and programs. The Default Unix/Linux shell is BASH (the Bourne-Again SHell) which has extensive online documentation, and common or necessary commands are shown in the table below.
+## Interactive Jobs
 
-|Command|Description (For full documentation, use the command 'man command' to bring up the manual or find online documentation)|
-|--- |--- |
-|ls|The 'list' (ls) command is used to display all the files in your current directory. Using the '-a' flag will also show any hidden files (typically files beginning with a '.' like .bashrc)|
-|cd|This is the 'change directory' command. Use this to traverse directories (like 'cd work'). To move back a directory level, use 'cd..'.|
-|mv|The 'move' command takes two arguments, the first being the file to move and the second being the directory said file should be moved to ('mv file.txt /work/newdirectory/'). Note: 'mv' can also be used to rename a file if the second argument is simply a new file name instead of a directory.|
-|mkdir|This command is used to make directories.|
-|rmdir|This command is used to delete directories ('rm -rf directory' would also work).|
-|touch|This command is used to create files in a similar way to mkdir. ('touch test.txt' will create an empty text file named test).|
-|rm|This is the 'remove' command. As mentioned above, it can be used recursively to delete entire directory trees, or it can be used with no flags and a file as the argument to delete a single file.|
-|locate|This command is used to locate files on a system. The flag '-i' will make the query case-  
-insensitive, and asterisks ('*') will indicate wildcard characters.|
-|clear|Clears the terminal of all previous outputs leaving you with a clean prompt.|
-|history|Shows the previous commands entered.|
-|find|Used for finding files, typically with the -name flag and the name of the file.|
-|grep|Used for searching within files.|
-|awk|A programming language typically used for data extraction.|
-|id|Show all of the groups a user is in.|
-|du|Show the disk usage. Typically used with -h (for human readable) and -max-depth=1 to limit to only the directories in that level rather than all files.|
-|env|Print out all of the current environment variables.|
-|less|View a file.|
-|cp|Copy a file. Note the -r (recursive) flag can be used to copy directories.|
-|alias|Create an alias (something short) that is interpreted as something else (a complicated command).|
-|pwd|Print the current working directory.|
-|chmod|Change file permissions.|
-|chgrp|Change group for a file or directory.|
-|ldd|Show the shared libraries required for an executable or library.|
-|top|See the node usage. Often used with command U .|
-|/usr/bin/time|Show time and memory statistics for a command being run. Often used with the -v (verbose) flag.|
-|bg|Continue running a paused task in the background|
-|fg|Bring a background task into the foreground|
-|Ctrl + c|Kill a process.|
-|Ctrl + z|Suspend a process|
-|Ctrl + r|Search through your history for a command that includes the text typed next.|
-|* * *|* * *|
+Interactive jobs may be submitted to ACI-b using the -I (for interactive) flag. Interactive jobs require resource requests and an allocation. An interactive job can be submitted using a command similar to:
 
+`qsub -A open -l walltime=1:00:00 -l nodes=1:ppn=2 -I`
 
+The job will be given a job ID and your session will wait until this job has the resources to start. You will then be placed on the compute node and given a usable terminal session within your current session. For example a user submitting an interactive job may see
 
-There are also some special characters to be aware of that will be helpful.
+```
+[abc123@aci-lgn-001 ~]$ qsub I l nodes=1:ppn=1 l walltime=4:00:00 -A open
 
-*   `~` is your home directory
-*   `.` means here
-*   `..` means up one directory
-*   `*` is the wildcard: `*` for all files or `*.png` for all png files
-*   `|`is pipe (send the output to another command)
-*   `>` means write command output to a file (Example: `ls > log.ls`)
+qsub: waiting for job <span style="word-wrap: break-word;">2449840.torque01.util.production.int.aci.ics.psu.edu</span> u to start
 
-Most commands have a manual that show all of the different ways the command can be used. For example,
+qsub: job <span style="word-wrap: break-word;">2449840.torque01.util.production.int.aci.ics.psu.edu</span> ready
 
-`man ls`
+[abc123@comp-bc-0267 ~]$
 
-shows all of the info for the `ls` command. You can use the arrows to scroll through the manual and the letter `q` for quit. Some commands will also provide a shortened version of the manual showing the available flags if an incorrect flag is used. For example,
+```
 
-`mam-list-funds -banana`
+Note that the node the user is on changes from log-in node (aci-lgn-001) to a basic core compute node (comp-bc-0267) when the job starts. You can ask for x-windows to be displayed using the `-X` flag with the `qsub` command, as long as you have logged into ACI-b using the `-Y` flag with `ssh`. Note that some users experiencing difficulty with interactive x-windows on ACI-b jobs will often use an Open OnDemand interactive session to connect to ACI-i, and then `ssh` with the `-Y` flag to ACI-b from ACI-i.  
 
-brings up a list of all of the flags available for `mam-list-funds`. Any non-working flag will allow for this. Note that this doesn’t give information about what the flags do, just what the flags are. This may be enough to remind you of something you had done previously.  
+It is recommended that you compile your code using an interactive job on the nodes that your job will run.  
 
-All shells utilize configuration files. For BASH, this is split between 2 files: `~/.bash_profile` and `~/.bashrc`.  
-(NOTE: `~/` in Linux is a way to specify your own home directory!). The `.bash_profile` file is always parsed when a terminal is open, including with an SSH session. To connect the two in such a way that `.bashrc` will always be sourced for a session, make sure this code is included in your `~/.bash_profile`:
-
-`if [ -f ~/.bashrc ]; then . ~/.bashrc fi`
-
-##### <span class="titlemark">5.1.2</span> Alternative Shells
-
-BASH is only the default shell, and it doesn’t come with quite a few features that many Linux power-users would like to have on the command-line. Other common shells include KSH (KornSHell), ZSH (Z SHell), and FISH (Friendly-Interface SHell). These shells all have documentation available online regarding their installation and customization.  
-
-##### <span class="titlemark">5.1.3</span> Environmental Variables
-
-Environment variables are values that pertain to certain aspects of an operating system’s configurations. These variables are typically used by utilities and programs for things like finding out where the user’s home directory is (`$HOME`) or where to look for executable files (`$PATH`). The prompt for BASH is held as the variable `PS1`.  
-
-You can print the environment variable to the screen using the `echo` command:
-
-`echo $HOME`
-
-A good way to view environment variables that are set is by using the `env` command
-
-`env`
-
-which outputs all of the variables currently in use.  
-
-To change the value of an existing variable or to create and set a new variable, we use `export`. For example, to set a variable called `workDir` to a directory called here within your home directory, the command would be:
-
-`export workDir=$HOME/here`
-
-Once this environment variable is set, you are able to use this. For example, to change to this directory, the command would be:
-
-`cd $workDir`
-
-For something like PATH where you really do not want to overwrite what values are already stored, you can append values with
-
-`export PATH=$PATH:/new/dir/path/`
-
-In lists of values, the colon (`:`) is used as the delimiter. The dollar sign (`$`) is used to reference variables, so that export command essentially appends the new directory to the list of existing directories searched for executables. It is possible to prepend as well, which may come in handy if you compile a different version of an existing command.  
-
-For more general reading on environment variables in Linux, see these pages on [variables](http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_03_02.html) and [environmental variables](https://en.wikipedia.org/wiki/Environment_variable).  
-
-The environment variables allow for script portability between different systems. By referencing variables like the home directory ($HOME) you can generalize a script’s functionality to work across systems and accounts.
-
-|Variable Name|Description|
-|--- |--- |
-|USER|Your user ID|
-|HOSTNAME|The name of the server that the script is being run on|
-|HOME|Your home directory|
-|WORK|Your work directory|
-|SCRATCH|Your scratch directory|
-|TMPDIR|The directory in which a job's temporary files are placed (created and deleted automatically)|
-
-
-##### <span class="titlemark">5.1.4</span> References
-
-The Linux terminal and submitting jobs are not unique to Roar. You can find many different training resources online for these. The Linux foundation offers [free training](https://training.linuxfoundation.org/free-linux-training). Lots of great information and tutorials for everyone from beginner Linux user to advanced users can be found [here](https://www.linux.org/pages/download/). Linux has been around for a long time. Therefore, any problem you might be having, someone has probably already had. It is always worthwhile to look around [stack exchange](https://unix.stackexchange.com/) to see if your question has already been answered.
-
-
-### Running Jobs on ACI-b
+## Batch Jobs
 
 Jobs are submitted from the head nodes of ACI-b and will run when dedicated resources are available on the compute nodes. Roar uses Moab and Torque for the scheduler and resource manager. Jobs can be either run in batch or interactive modes. Both are submitted using the qsub command.  
-
-  
-
-#### 7.1 Requesting Resources
 
 Both batch and interactive jobs are required to provide a list of requested resources to the scheduler in order to be placed on a compute node with the correct resources available. These are given either in the submission script or on the command line. If these are given in a submission script, they must come before any non-PBS command.  
 
@@ -149,8 +70,7 @@ scivybridge|Intel Xeon E5-2680v2 2.8GHz|256 GB Total|
 |himem|Intel Xeon E7-4830v2 2.2GHz|1024 GB Total|
 
 
-
-##### <span class="titlemark">7.1.1</span> Sample Batch Submission Script
+### PBS Submit Files
 
 The following is a submission script for a Matlab job that will run for 5 minutes on one processor using the open queue.
 
@@ -195,86 +115,8 @@ from the directory containing the submission and matlab scripts.
 
   
 
-#### 7.2 Interactive Compute Sessions on ACI-b
 
-Interactive jobs may be submitted to ACI-b using the -I (for interactive) flag. Interactive jobs require resource requests and an allocation. An interactive job can be submitted using a command similar to:
-
-`qsub -A open -l walltime=1:00:00 -l nodes=1:ppn=2 -I`
-
-The job will be given a job ID and your session will wait until this job has the resources to start. You will then be placed on the compute node and given a usable terminal session within your current session. For example a user submitting an interactive job may see
-
-```
-[abc123@aci-lgn-001 ~]$ qsub I l nodes=1:ppn=1 l walltime=4:00:00 -A open
-
-qsub: waiting for job <span style="word-wrap: break-word;">2449840.torque01.util.production.int.aci.ics.psu.edu</span> u to start
-
-qsub: job <span style="word-wrap: break-word;">2449840.torque01.util.production.int.aci.ics.psu.edu</span> ready
-
-[abc123@comp-bc-0267 ~]$
-
-```
-
-Note that the node the user is on changes from log-in node (aci-lgn-001) to a basic core compute node (comp-bc-0267) when the job starts. You can ask for x-windows to be displayed using the `-X` flag with the `qsub` command, as long as you have logged into ACI-b using the `-Y` flag with `ssh`. Note that some users experiencing difficulty with interactive x-windows on ACI-b jobs will often use an Open OnDemand interactive session to connect to ACI-i, and then `ssh` with the `-Y` flag to ACI-b from ACI-i.  
-
-It is recommended that you compile your code using an interactive job on the nodes that your job will run.  
-
-  
-
-#### 7.3 PBS Environmental Variables
-
-Jobs submitted will automatically have several PBS environment variables created that can be used within the job submission script and scripts within the job. A full list of PBS environment variables can be used by viewing the output of
-
-`env | grep PBS > log.pbsEnvVars`
-
-run within a submitted job.
-
-|Variable Name|Description|
-|--- |--- |
-|PBS_O_WORKDIR|The directory in which the qsub command was issued.|
-|PBS_JOBID|The job's id.|
-|PBS_JOBNAME|The job's name.|
-|PBS_NODEFILE|A file in which all relevant node hostnames are stored for a job.|
-
-
-##### <span class="titlemark">7.3.1</span> Viewing and Deleting Jobs
-
-There are several ways to view existing jobs. The `qstat` command can give some basic information about your own queued and running jobs.
-
-`qstat`
-
-Some helpful flags are `-u` (user), `-s` (status), `-n` (to show the nodes running jobs are placed on) and -f to show more information for a specified job. For example, to view more information about job 536, you can use the command
-
-`qstat -f 536`
-
-Common status for jobs are Q for queued, R for running, E for ending, H for being held and C for complete.  
-
-You can also view all of the jobs running, waiting and being held using the showq command:
-
-`showq`
-
-It may be helpful for you to view all of the jobs running on an allocation. For example, if you are a member of the abc123_a_g_sc_default allocation, you can view the running and queued jobs using the command:
-
-`showq -w acct=abc123_a_g_sc_default`
-
-You may delete your jobs using the qdel command. For example, the job 546 may be deleted using the command:
-
-`qdel 546`
-
-Jobs that are not responding may require being purged from the nodes. You can do this with the `-p` flag:
-
-`qdel -p 546`
-
-Note that you are only able to delete your own jobs, not other users.  
-
-##### <span class="titlemark">7.3.2</span> Additional Job Information
-
-You can use the checkjob command to view some additional information about queued and running jobs. For example, to give very verbose information about job 548, you can use the command:
-
-`checkjob 548 -v -v`
-
-  
-
-#### 7.4 GReaT Allocations
+## Using dedicated partitions
 
 All jobs submitted to an allocation that have available resources are guaranteed to start within 1 hour. Note that the resources include both available hours as well as the requested resources. For example, a group that has a 40 core allocations on two standard memory nodes is limited to the RAM and CPUs on both nodes. Single processor jobs that request most of the memory on the nodes may block other jobs from running, even if CPUs are idle.  
 
@@ -361,160 +203,322 @@ Users interested in their own usage may want to investigate several of the other
 mam-list-transactions
 `
 
+## WIP: Using GPUs
+
+Isolate the Roar specific details here and place general in an an external document such as [Using GPUs](99_using_gpus.md)
+
+## Job Management and Monitoring
+
+There are several ways to view existing jobs. The `qstat` command can give some basic information about your own queued and running jobs.
+
+`qstat`
+
+Some helpful flags are `-u` (user), `-s` (status), `-n` (to show the nodes running jobs are placed on) and -f to show more information for a specified job. For example, to view more information about job 536, you can use the command
+
+`qstat -f 536`
+
+Common status for jobs are Q for queued, R for running, E for ending, H for being held and C for complete.  
+
+You can also view all of the jobs running, waiting and being held using the showq command:
+
+`showq`
+
+It may be helpful for you to view all of the jobs running on an allocation. For example, if you are a member of the abc123_a_g_sc_default allocation, you can view the running and queued jobs using the command:
+
+`showq -w acct=abc123_a_g_sc_default`
+
+You may delete your jobs using the qdel command. For example, the job 546 may be deleted using the command:
+
+`qdel 546`
+
+Jobs that are not responding may require being purged from the nodes. You can do this with the `-p` flag:
+
+`qdel -p 546`
+
+Note that you are only able to delete your own jobs, not other users.  
+
+You can use the checkjob command to view some additional information about queued and running jobs. For example, to give very verbose information about job 548, you can use the command:
+
+`checkjob 548 -v -v`
+
+# Submitting on Roar Collab
+
+Roar Collab is the newest high performance research computing cluster managed by ICDS. Designed with collaboration in mind, the Roar Collab environment will allow for more frequent software updates and hardware upgrades to keep pace with researchers’ changing needs.
+
+Still in its early stages, Roar Collab is currently only available “by invitation” so that we may ensure its limited resources not oversubscribed. As new resources are added, Roar Collab will become available to more users. [Learn more about our plans for expanding this resource here.](https://www.icds.psu.edu/computing-services/roar-collab/)
+
+Roar Collab uses the [Slurm workload manager](https://slurm.schedmd.com/documentation.html) to manage job submission. Once a job is submitted, Slurm will match the job to available resources.
+
+There are two primary methods of running jobs with Slurm – [interactively](https://www.icds.psu.edu/running-interactive-jobs-on-roar-collab/) or via [batch scheduling](https://www.icds.psu.edu/running-batch-jobs-on-roar-collab/). Both methods use [Slurm directives](https://www.icds.psu.edu/converting-moab-roar-submission-scripts-to-slurm-roar-collab/) to define required resources.
+
+## Interactive Jobs
+
+Interactive jobs allow a user to use compute resources while running commands and viewing output in real-time.
+
+**Note:** To prevent performance issues for all users, intensive tasks such as code compilation and workflow troubleshooting should be done within interactive jobs.
+
+To start an interactive job, use the “salloc” command. Using Slurm directives, job resource requirements can be customized. For example, to start a job over 4 cores and lasting 3 hours enter:
+
+$ salloc -N 1 -n 4 --mem-per-cpu=1024 -t 3:00:00
+
+## Batch Jobs
+
+To submit batch jobs, use the `sbatch` command to submit a job submit script to the scheduler. To highlight how this works, let’s use this basic script (called python.sh) as an example:
+
+#!/bin/bash 
+module load python/3.6 
+python hello_world.py 
+
+To submit this script as a batch job using the default parameters, the command would be:
+
+$ sbatch python.sh 
+
+### SLURM Directives
+
+Job submit scripts are batch scripts with added #SBATCH directives to outline the resources desired by the scheduler. These directives can be placed at the top of the submit script, as shown below:
+
+	#!/bin/bash 
+	#SBATCH --nodes=1 
+	#SBATCH --ntasks=1 
+	#SBATCH --mem=1GB 
+	#SBATCH --time=1:00:00 
+	#SBATCH --partition=open 
+
+	module load python/3.6 
+	python hello_world.py 
+
+
+
+Alternatively, directives can be specified inline when you submit using `sbatch`
+
+Here is an example of inline directives requesting a single core on a single node with 1 GB of RAM for 1 hour on the Open queue:
+
+	$ sbatch -N 1 -n 1 --mem=1GB -t 1:00:00 -p open python.sh 
+
+Here are some common directives used:
+
+|Command|Description|
+|--- |--- |
+|--nodes (-N)|Number of nodes requested|
+|--time (-t)|Maximum wall time for the job – in DD-HHH:MM:SS format|
+|--mem|Real memory (RAM) required per node - can use KB, MB, and GB units – default is MB  
+
+Request less memory than total available on the node - The maximum available on a 512 GB RAM node is 500, for 256 GB RAM node is 250|
+|--ntasks (-n)|The number of tasks total – used to request a specific number of cores|
+|--ntasks-per-node|Number of tasks per node – used to request a specific number of cores  
+This value multiplied by the number of nodes requested will equal total allocated cores|
+|--mem|Minimum of memory allocated to entire job|
+|--mem-per-cpu|Minimum of memory required per allocated CPU|
+|--output|Filename where all STDOUT will be directed – default is Slurm-.out|
+|--error|Filename where all STDERR will be directed – default is Slurm-.out|
+|--job-name|How the job will show up in the queue|
+
+
+More directives can be found in [the Slurm documentation](https://slurm.schedmd.com/sbatch.html).
+
+## Using dedicated partitions
+
+
+To run jobs on dedicated allocations on Slurm, first specify the allocation, and then specify whether to run the job in “sla-prio” or “burst” partition.
+
+The sla-prio (or “service level agreement priority”) partition gives your job priority status according to your SLA or paid allocation.
+
+The “burst” partition allows your job to utilize up to 4 times the resources allocated in your SLA.
+
+For example, to run on a dedicated allocation in the sla-prio partition, include the following directives in the submit script:
+
+	#SBATCH --account=<sla_id> 
+	#SBATCH --partition=sla-prio 
+
+**Note:** Resource requests must fit the allocation specifications, or the job will not start.
+
+To utilize burst, change partition to “burst” and include the “qos” directive to specify how much to burst. You may specify “burst2x,” “burst3x,” or “burst4x” to use 2, 3, or 4 times the resources, respectively. For example, to burst to 4 times the allocated resources use the following:
+
+	#SBATCH --account=<sla_id> 
+	#SBATCH --partition=burst 
+	#SBATCH --qos=burst4x 
+
+# Managing Your Paid Allocation on Roar Collab
+
+
+
+If you have a paid allocation on Roar Collab, these procedures can help you monitor your account balance and adjust access and admin privileges.
+
+### Check your compute balance
+
+Use the “mybalance” command. For example:
+
+$ mybalance
+
+Project                     Limit         Used      Balance  Resource Limits
+
+--------------------  -----------    ---------     --------  ---------------
+
+dml129-engagement          67200.0      11530.7      55669.3  cpu=40,gres/gpu=0,mem=320G
+
+dml129-engagement_gpu      80640.0          0.0      80640.0  cpu=48,gres/gpu=2,mem=384G
+
+gctest                                     81.3               cpu=48,gres/gpu=2,mem=384G
+
+open                                   387156.4               
+
+sctest                                      9.2               cpu=24,mem=192G
+
+### Check your storage balance
+
+Use “check_storage_quotas.”
+
+### Check the accounts associated with a user
+
+Use the “sacctmgr” command. For example:
+
+-s show account format=Account%20,grptres%30,GrpCPUMins,qos%30 where account=<account name> where user=''
+
+…generates:
+
+       Account                        GrpTRES  GrpCPUMins                            QOS                Descr 
+
+-------------------- ------------------------------ ----------- ------------------------------ -------------------- 
+
+   dml129-engagement     cpu=40,gres/gpu=0,mem=320G     4032000 burst2x,burst3x,burst4x,normal           [ntype=sc]
+
+
+### Add or remove coordinators
+
+Coordinators are users with administrative abilities over user access. The coordinator can add or remove users from a paid allocation.
+
+By default, the coordinator of an allocation is the faculty sponsor. Existing coordinators can add or remove other coordinators. 
+
+**IMPORTANT:** Because coordinators can manage both user and coordinator access to the allocation, please exercise restraint when granting coordinator permissions. 
+
+To add a user as a coordinator, use the command `sacctmgr`:
+
+$ sacctmgr add coordinator account=<sla_id> name=<user_id> 
+
+To remove an existing coordinator:
+
+$ sacctmgr remove coordinator account=<sla_id> name=<user_id> 
+
+### Add or remove users to an allocation
+
+Active coordinators can add and remove user access to paid allocations using the sacctmgr command as well. To add a user to an SLA, the command would be:
+
+	$ sacctmgr add user account=<sla_id> name=<user_id> 
+
+To remove a user’s access to an allocation, the coordinator would use the command:
+
+	$ sacctmgr remove user account=<sla_id> name=<user_id> 
+
+## Using GPUs
+
+
+GPUs can be requested with the “- -gpu” directive. For example, to submit a job to run on a GPU enabled node, add the following line to the submit script:
+
+#SBATCH --gpus=<n> 
+
+Or specify the directive inline when using  “sbatch”:
+
+$ sbatch --gpu=2 <submit_script> 
+
+## Job Management and Monitoring
+
+To check the status of submitted jobs, use the “squeue” command. Using `squeue` without any options lists all pending and running jobs on the cluster. To see only the jobs submitted by a particular user id, add the following:
+
+$ squeue -u <user_id> 
+
+
+
+To cancel jobs, use `scancel`. To cancel a single job, specify the job id:
+
+$ scancel <job_id> 
+
+
+
+To cancel all jobs by a specific user, specify a user id:
+
+$ scancel -u <user_id> 
+
+# How to Transition from Roar to Roar Collab
+
+
+Most users of Roar will find the switch to the Roar Collab environment quite simple, but following these steps can help to ensure a smooth transition.
+
+**1\. Activate your Roar Collab account**
+
+Need help? Contact us at [icds@psu.edu](mailto:icds@psu.edu).
+
+**2\. Set up your Roar Collab compute and storage allocations**
+
+If your work will require the resources of a paid allocation, contact us at [icds@psu.edu](mailto:icds@psu.edu)to discuss your options.
+
+**3\. Change coordinators or users of your allocation**
+
+If you have a paid allocation, [you can manage who may submit jobs against your account and more.](https://www.icds.psu.edu/managing-your-paid-allocation-on-roar-collab/)
+
+**4\. Transfer your data into Roar Collab.**
+
+Roar and Roar Collab have independent file systems, so you’ll need to transfer personal data from work and home. Users with paid allocations will also need to transfer active storage from group. [Learn how to transfer files here.](https://www.icds.psu.edu/transferring-data-to-and-from-roar-collab/)
+
+**5\. Check for available software**
+
+Check the Central Software Stack and RISE Software Stack. If you can’t find what you need, you can install software locally or [request that ICDS install software on Roar Collab](https://www.icds.psu.edu/roar-collab-software-request-form/).
+
+**6\. Modify your submission scripts**
+
+Roar Collab uses the Slurm job scheduler. [If you have submission scripts written for Roar (which utilizes the MOAB/Torque scheduler) you’ll need to convert these scripts.](https://www.icds.psu.edu/converting-moab-roar-submission-scripts-to-slurm-roar-collab/) Additionally, be sure to change any file paths to match Roar Collab directory structure.
+
+**7\. Run a test job**
+
+Once you have everything set up, it’s a good idea to run a simple test job. For guidance, see [Submitting Jobs on Roar Collab](https://www.icds.psu.edu/submitting-jobs-on-roar-collab/).
+
+**8\. Cancel Roar compute and storage allocations to avoid duplicate billing**
+
+If you have time remaining on an existing Roar allocation that you no longer need, <span class="TextRun SCXW171339399 BCX0" xml:lang="EN-US" data-contrast="auto" lang="EN-US"><span class="NormalTextRun SCXW171339399 BCX0">contact us at [icds@psu.edu ](mailto:icds@psu.edu) to cancel.
+
+# Converting MOAB (Roar) Submission Scripts to Slurm (Roar Collab)
+
+
+
+The scheduler on Roar Collab, Slurm, uses submit files and commands that are structured similarly to those used by MOAB/Torque, the scheduler on the Roar cluster.
+
+|To...|MOAB/Torque Command|Slurm Equivalent|
+|--- |--- |--- |
+|Submit a job|qsub|sbatch|
+|Cancel a job|qdel|scancel|
+|Check the status of a job|qstat|squeue|
+|Check the status of all jobs by user|qstat –u|squeue –u|
+|Hold a job|qhold|scontrol hold|
+|Release a job|qrls|scontrol release|
+
+
+|Resource request|MOAB/Torque Directive|Slurm Equivalent|
+|--- |--- |--- |
+|Script directive designator|#PBS|#SBATCH|
+|Node Count|-l nodes=|-N or --nodes=|
+|CPU count|-l ppn=|-n or --ntasks=|
+|Wall time|-l walltime=|-t or --time=|
+|Memory size|-l mem=|--mem= or --mem-per-cpu=|
+
+
+For a more complete list of command and option comparisons, please see the [Slurm Rosetta Stone](https://slurm.schedmd.com/rosetta.pdf)
+
+
+------
+# Old Content below
   
 
-#### 7.5 ACI-b GPU nodes
+#### 7.3 PBS Environmental Variables
 
-The ACI-b GPU nodes are comprised of dual NVIDIA Tesla K80 GPU cards. Each card contains two GPUs that are individually schedulable. These nodes contain dual E5-2680 processors (24 total cores), and 256GB of RAM. For more information on this hardware, refer to [NVIDIA’s K80 specification document](https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/Tesla-K80-BoardSpec-07317-001-v05.pdf).
+Jobs submitted will automatically have several PBS environment variables created that can be used within the job submission script and scripts within the job. A full list of PBS environment variables can be used by viewing the output of
 
-##### <span class="titlemark">7.5.1</span> Accessing GPU Resources
+`env | grep PBS > log.pbsEnvVars`
 
-To access a GPU on ACI-b, you must be a member of a GReAT GPU allocation. To request a node with a GPU, add _"gpus=N"_ to your resource list in either your job script or a submission argument. For example, `#PBS -l nodes=1:ppn=1:gpus=1` or `qsub -l nodes=1:ppn=1:gpus=1 ...`  
-The requested GPU is placed in exclusive process mode by default. This means that only a single process can access the GPU, but it can spawn multiple different threads. To allow multiple processes on a single GPU, the "shared" feature can be appended to the resource list. A general GPU request then takes the form of:  
-`#PBS -l nodes=NN:ppn=NC:gpus=NG:feature`  
-or  
-`qsub -l nodes=NN:ppn=NC:gpus=NG:feature`  
-Where:
+run within a submitted job.
 
-*   NN = the number of nodes
-*   NC = the number of cores per node
-*   NG = the number of GPUS per node
-*   feature = shared or is not included
-
-**GPU job script example**  
-Here is an example GPU job script that requests a single GPU and simply calls nvidia-smi:
-
-```
-#!/bin/bash
-#PBS -l nodes=1:ppn=1:gpus=1
-#PBS -l walltime=2:00
-#PBS -l pmem=1gb
-#PBS -A gpu_allocation_name
-
-# Get started
-echo " "
-echo "Job started on `hostname` at `date`"
-echo " "
-
-# Go to the submission directory
-cd $PBS_O_WORKDIR
-
-# Run the main job commands
-nvidia-smi
-
-# Finish up
-echo " "
-echo "Job Ended at `date`"
-```
-
-##### <span class="titlemark">7.5.2</span> GPU Monitoring
-
-You may want to monitor the status of a node’s GPU. The nvidia-smi command provides basic monitoring capabilities and will provide information such as GPU and memory utilization, power consumption, running processes, etc. Example output for this command:
-
-```
-$ nvidia-smi
-Mon Oct  8 15:03:53 2018
-+-----------------------------------------------------------------------------+
-| NVIDIA-SMI 390.30                 Driver Version: 390.30                    |
-|-------------------------------+----------------------+----------------------+
-| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
-| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
-|===============================+======================+======================|
-|   0  Tesla K80           Off  | 00000000:05:00.0 Off |                    0 |
-| N/A   41C    P0    63W / 149W |      0MiB / 11441MiB |      0%   E. Process |
-+-------------------------------+----------------------+----------------------+
-|   1  Tesla K80           Off  | 00000000:06:00.0 Off |                    0 |
-| N/A   36C    P0    71W / 149W |      0MiB / 11441MiB |      0%   E. Process |
-+-------------------------------+----------------------+----------------------+
-|   2  Tesla K80           Off  | 00000000:84:00.0 Off |                    0 |
-| N/A   40C    P0    59W / 149W |      0MiB / 11441MiB |      0%   E. Process |
-+-------------------------------+----------------------+----------------------+
-|   3  Tesla K80           Off  | 00000000:85:00.0 Off |                    0 |
-| N/A   32C    P0    75W / 149W |      0MiB / 11441MiB |     81%   E. Process |
-+-------------------------------+----------------------+----------------------+
-
-+-----------------------------------------------------------------------------+
-| Processes:                                                       GPU Memory |
-|  GPU       PID   Type   Process name                             Usage      |
-|=============================================================================|
-|  No running processes found                                                 |
-+-----------------------------------------------------------------------------+
-```
-
-##### <span class="titlemark">7.5.3</span> CUDA
-
-NVIDIA has developed a parallel computing platform and programming model to facilitate the use of GPUs in general computing. This comes in the form of both GPU-accelerated libraries as well as programming extensions for C, C++, and Fortran (PGI compilers). CUDA 8.0, 9.0, and 9.1 are installed on the gpu nodes at /usr/local. To set up your shell environment, the CUDA bin and lib64 directories need to be added to PATH and LD_LIBRARY_PATH.  
-`$ export PATH=/usr/local/cuda-9.1/bin:$PATH  
-$ export LD_LIBRARY_PATH=/usr/local/cuda-9.1/lib64:$LD_LIBRARY_PATH  
-`  
-**CUDA example**  
-The CUDA Toolkit includes many CUDA code examples that can help get you started with writing your own CUDA-enabled software. These examples can be found at /usr/local/cuda/samples/ for the latest available version of CUDA. You may also find [additional CUDA code samples](https://developer.nvidia.com/cuda-code-samples "CUDA code samples") on the NVIDIA website.  
-Here, we will compare the performance of the CPU and GPU for the "nbody" example.
-
-1.  Start an interactive session on a GPU node  
-    `$ qsub -I -A gpu_allocation_name -l nodes=1:ppn=1:gpus=1 -l pmem=10gb -l walltime=1:00:00`
-2.  Set up the environment  
-    `$ export PATH=/usr/local/cuda-9.1/bin:$PATH  
-    $ export LD_LIBRARY_PATH=/usr/local/cuda-9.1/lib64:$LD_LIBRARY_PATH  
-    $ export CPATH=/usr/local/cuda-9.1/samples/common/inc:$CPATH`
-3.  Copy the nbody source code to your ACI work directory  
-    `$ mkdir ~/work/cuda_example && cd ~/work/cuda_example  
-    $ cp /usr/local/cuda-9.1/samples/5_Simulations/nbody/ .`
-4.  Compile the nbody example  
-    `$ cd nbody  
-    $ make`
-5.  Compare GPU vs CPU timing  
-    ``CPU:  
-    $ ./nbody -benchmark -numbodies=1024 -cpu``GPU:  
-    $ ./nbody -benchmark -numbodies=1024 -numdevices=1
-
-**CUDA resources**
-
-*   XSEDE course: [slides](https://drive.google.com/file/d/12TwgVcVqoW8T9eyz7RuYQ9yw_si8kbA4/view "XSEDE course presentation") and [video](https://www.youtube.com/watch?v=2R5R0nXm3xc&feature=youtu.be "XSEDE course video")
-*   [NVIDIA Education & Training](https://developer.nvidia.com/cuda-education-training "NVIDIA Education & Training")
-*   [Virtual Workshop](https://cvw.cac.cornell.edu/GPU/default "Cornell University Virtual Workshop")
-
-##### <span class="titlemark">7.5.4</span> OpenACC
-
-OpenACC is an API comprised of compiler directives (similar to OpenMP) that enable programmers to specify portions of code (C, C++, and Fortran) to be executed on a GPU (or other accelerators). OpenACC compiler support will be available on the Roar systems with the release v18.5 of the PGI compilers. This section will be expanded once the PGI compilers are released.
-
-##### <span class="titlemark">7.5.5</span> GPU Enabled Applications
-
-Some software packages available on the Roar software stack have native GPU support, as indicated in the table below. For a full description of available functionality, please consult each package’s software documentation.
-
-|Software|Information|
+|Variable Name|Description|
 |--- |--- |
-|Matlab|[MathWorks: Getting started with GPUs](https://mathworks.com/discovery/matlab-gpu.html)|
-|Mathematica|[Wolfram: GPU computing](https://reference.wolfram.com/language/guide/GPUComputing.html)|
-|Ansys: APDL|ansys192 -acc nvidia -na N ...|
-|Ansys: Fluent|fluent -gpgpu=N ...|
-|Ansys: polyflow|polyflow -acc nvidia -na N ...|
-|Ansys: other|The -batchoptions command flag can be used to enable GPU support. See the software specific manual available through the GUI for the options available for each Ansys product.  
+|PBS_O_WORKDIR|The directory in which the qsub command was issued.|
+|PBS_JOBID|The job's id.|
+|PBS_JOBNAME|The job's name.|
+|PBS_NODEFILE|A file in which all relevant node hostnames are stored for a job.|
 
-ex. ansysedt -batchoptions "HFSS/EnableGPU=1" ...|
-|Abaqus|abaqus gpus=N ... OR abaqus -gpus N ...|
-
-
-where N = the number of GPU devices
-
-**Python TensorFlow example**  
-TensorFlow is a popular open-source machine learning and deep learning library originally developed by Google. The API is typically used with Python, for which there is GPU support. The following example will walk through the local installation and testing of the GPU-enabled version of TensorFlow.
-
-1.  Start an interactive session on a GPU node  
-    `$ qsub -I -A gpu_allocation_name -l nodes=1:ppn=1:gpus=1 -l pmem=10gb -l walltime=1:00:00`
-2.  Create a conda environment for tensorflow-gpu  
-    `$ cd ~/work  
-    $ mkdir conda_gpu_tensorflow && cd conda_gpu_tensorflow  
-    $ mkdir $PWD/conda_pkgs  
-    $ export CONDA_PKGS_DIRS=$PWD/conda_pkgs  
-    $ module load python/3.6.3-anaconda3  
-    $ conda create -y --prefix $PWD  
-    $ source activate $PWD`  
-    (Use `source deactivate` to exit the conda environment.)
-3.  Install the cudatoolkit for python. The version of cudatoolkit must be compatible with the GPU driver version. The current driver (390.30) supports up to CUDA 9.1.  
-    `$ conda install -y cudatoolkit=9.0`
-4.  Install tensorflow-gpu. Note that the packaged binaries were not compiled with optimized instruction sets such as AVX, AVX2, etc. To compile your own version of tensorflow from source, see the official [TensorFlow documentation](https://www.tensorflow.org/install/source "TensorFlow documentation").  
-    `$ conda install --no-update-dependencies -y tensorflow-gpu`
-5.  Run the GPU test model. The average performance should be ~5,300 examples/sec for a single GPU.  
-    `$ git clone https://github.com/tensorflow/models.git`  
-    `$ python models/tutorials/image/cifar10/cifar10_train.py`
