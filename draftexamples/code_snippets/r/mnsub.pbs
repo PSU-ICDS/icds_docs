@@ -1,0 +1,16 @@
+#!/bin/bash
+#PBS -l nodes=1:ppn=20
+#PBS -l walltime=48:00:00
+#PBS -A open
+#PBS -l mem=20g
+
+module load gcc/7.3.1 r
+
+cd $PBS_O_WORKDIR
+
+# 2 tiers
+#Rscript simulations.R -n 30 -c 19 
+
+# 3 tiers
+Rscript helloworld.R -n 30 -c 19 -l 3
+

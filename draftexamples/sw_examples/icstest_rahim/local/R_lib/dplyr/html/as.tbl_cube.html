@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Coerce an existing data structure into a 'tbl_cube'</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for as.tbl_cube {dplyr}"><tr><td>as.tbl_cube {dplyr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Coerce an existing data structure into a <code>tbl_cube</code></h2>
+
+<h3>Description</h3>
+
+<p>Coerce an existing data structure into a <code>tbl_cube</code>
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+as.tbl_cube(x, ...)
+
+## S3 method for class 'array'
+as.tbl_cube(x, dim_names = names(dimnames(x)),
+  met_name = deparse(substitute(x)), ...)
+
+## S3 method for class 'table'
+as.tbl_cube(x, dim_names = names(dimnames(x)),
+  met_name = "Freq", ...)
+
+## S3 method for class 'matrix'
+as.tbl_cube(x, dim_names = names(dimnames(x)),
+  met_name = deparse(substitute(x)), ...)
+
+## S3 method for class 'data.frame'
+as.tbl_cube(x, dim_names = NULL,
+  met_name = guess_met(x), ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p>an object to convert. Built in methods will convert arrays,
+tables and data frames.</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>Passed on to individual methods; otherwise ignored.</p>
+</td></tr>
+<tr valign="top"><td><code>dim_names</code></td>
+<td>
+<p>names of the dimensions. Defaults to the names of</p>
+</td></tr>
+<tr valign="top"><td><code>met_name</code></td>
+<td>
+<p>a string to use as the name for the measure
+the <code><a href="../../base/html/dimnames.html">dimnames()</a></code>.</p>
+</td></tr>
+</table>
+
+<hr /><div style="text-align: center;">[Package <em>dplyr</em> version 0.7.4 <a href="00Index.html">Index</a>]</div>
+</body></html>

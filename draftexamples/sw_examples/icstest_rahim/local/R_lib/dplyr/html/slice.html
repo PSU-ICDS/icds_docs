@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Select rows by position</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for slice {dplyr}"><tr><td>slice {dplyr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Select rows by position</h2>
+
+<h3>Description</h3>
+
+<p>Slice does not work with relational databases because they have no
+intrinsic notion of row order. If you want to perform the equivalent
+operation, use <code><a href="filter.html">filter()</a></code> and <code><a href="ranking.html">row_number()</a></code>.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+slice(.data, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>.data</code></td>
+<td>
+<p>A tbl.</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>Integer row values.
+</p>
+<p>These arguments are automatically <a href="../../rlang/html/quo.html">quoted</a> and
+<a href="../../rlang/html/eval_tidy.html">evaluated</a> in the context of the data
+frame. They support <a href="../../rlang/html/quasiquotation.html">unquoting</a> and
+splicing. See <code>vignette("programming")</code> for an introduction to
+these concepts.</p>
+</td></tr>
+</table>
+
+
+<h3>Tidy data</h3>
+
+<p>When applied to a data frame, row names are silently dropped. To preserve,
+convert to an explicit variable with <code><a href="../../tibble/html/rownames_to_column.html">tibble::rownames_to_column()</a></code>.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>Other single table verbs: <code><a href="arrange.html">arrange</a></code>,
+<code><a href="filter.html">filter</a></code>, <code><a href="mutate.html">mutate</a></code>,
+<code><a href="select.html">select</a></code>, <code><a href="summarise.html">summarise</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+slice(mtcars, 1L)
+slice(mtcars, n())
+slice(mtcars, 5:n())
+
+by_cyl &lt;- group_by(mtcars, cyl)
+slice(by_cyl, 1:2)
+
+# Equivalent code using filter that will also work with databases,
+# but won't be as fast for in-memory data. For many databases, you'll
+# need to supply an explicit variable to use to compute the row number.
+filter(mtcars, row_number() == 1L)
+filter(mtcars, row_number() == n())
+filter(mtcars, between(row_number(), 5, n()))
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>dplyr</em> version 0.7.4 <a href="00Index.html">Index</a>]</div>
+</body></html>

@@ -1,0 +1,28 @@
+#!/bin/bash
+#PBS -l nodes=1:ppn=1
+#PBS -l walltime=24:00:00
+#PBS -l pmem=1gb
+#PBS -q hprc
+#PBS -A ics-hprc
+
+# Get started
+echo " "
+echo "Job started on `hostname` at `date`"
+echo " "
+
+# Load in matlab 
+module purge
+module load matlab
+
+# Go to the correct place
+cd $PBS_O_WORKDIR
+
+# Run the job itself
+#matlab-bin -nodisplay -nosplash  -singleCompThread  < runThis.m > log.matlabRun
+matlab -nodisplay -nosplash < functest.m > log.funcRun
+
+# Finish up
+echo " "
+echo "Job Ended at `date`"
+echo " "
+

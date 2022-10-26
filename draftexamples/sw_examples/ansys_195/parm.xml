@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--  ************************************************************ -->
+<!--  ************************************************************ -->
+<!--  File Name: parm.xml -->
+<!--  ************************************************************ -->
+<!--  ************************************************************ -->
+<ANSYSDOC xmlns="http://www.ansys.com/caedoc_ns">
+<HEADER>
+   <NAME>ANSYS</NAME>
+   <VERSION>19.5</VERSION>
+   <OS>LINUX x64</OS>
+   <DESCRIPTION>Monopole_Test--Harmonic Acoustics (A5)</DESCRIPTION>
+</HEADER>
+<PARM ID="ANSINTER_">0</PARM>
+<PARM ID="_ASMDIAG">.008798001847</PARM>
+<PARM ID="_MAXELEMNUM">2066</PARM>
+<PARM ID="_MAXELEMTYPE">1</PARM>
+<PARM ID="_MAXNODENUM">3643</PARM>
+<PARM ID="_MAXREALCONST">1</PARM>
+<PARM ID="_NUMELEM">2066</PARM>
+<PARM ID="_NUMNODE">3643</PARM>
+<PARM ID="_RETURN">0</PARM>
+<PARM ID="_STATUS">0</PARM>
+<PARM ID="_WALLASOL">13.393333333</PARM>
+<PARM ID="_WALLBSOL">13.393055556</PARM>
+<PARM ID="_WALLSTRT">13.393055556</PARM>
+<PARM ID="_WB_PROJECTSCRATCH_DIR" STRING="248 1 1">
+ /gpfs/scratch/jmp579/ansys_test/Monopole_Test_files/dp0/SYS/MECH/                                                                                                                                                                                       
+</PARM>
+<PARM ID="_WB_SOLVERFILES_DIR" STRING="248 1 1">
+ /gpfs/scratch/jmp579/ansys_test/Monopole_Test_files/dp0/SYS/MECH/                                                                                                                                                                                       
+</PARM>
+<PARM ID="_WB_USERFILES_DIR" STRING="248 1 1">
+ /gpfs/scratch/jmp579/ansys_test/Monopole_Test_files/user_files/                                                                                                                                                                                         
+</PARM>
+<PARM ID="_XMAX">.00254</PARM>
+<PARM ID="_XMIN">-.00254</PARM>
+<PARM ID="_YMAX">.00254</PARM>
+<PARM ID="_YMIN">-.00254</PARM>
+<FEAMODEL>
+<TABLES>
+</TABLES>
+<LOADCASE ID="1">
+   <LOADSTEP  STEP="1" SUB="3" TIME="155">
+      <BOUNDARY_CONDITIONS>
+      </BOUNDARY_CONDITIONS>
+   </LOADSTEP>
+</LOADCASE>
+</FEAMODEL>
+</ANSYSDOC>

@@ -1,0 +1,104 @@
+.\" Manpage for getusersjobids
+.\" Please open an issue on GitHub or fork and push changes to the
+.\" repository to correct errors or typos.
+
+.TH getusersjobids 1 "14 April 2021" "2.2" "getusersjobids man page"
+.SH NAME
+getusersjobids \- retrieve a user\'s jod ids for processing and analyzation.
+
+.SH SYNOPSIS
+getusersjobids [-h] [-u USER] [-d DAYS] [--xml] [--json] [--yaml] [--csv] [--table] [-V] [--license]
+
+.SH DESCRIPTION
+getusersjobids is an advanced, high\-level tool for collecting a user\'s jobs over the past couple of days. getusersjobids also has the ability to print out the job ids in various data formats as requested by the user invoking the command. Lastly, getusersjobids is used to conveniently parse the XML data returned by the torque job scheduler.
+
+.SH OPTIONS
+.IP "\fB-u|--user\fP <USER>"
+User to query on torque and return previous job ids. Example: jcn23.
+
+.IP "\fB-d|--days\fP <DAYS>"
+The number of days to check in the torque job logs. The default is 5 days.
+
+.IP "\fB--xml\fP"
+Print job ids in XML format.
+
+.IP "\fB--json\fP"
+Print job ids in JSON format.
+
+.IP "\fB--yaml\fP"
+Print job ids in YAML format.
+
+.IP "\fB--csv\fP"
+Print job ids in CSV format.
+
+.IP "\fB--table\fP"
+Print job ids in tabular format. Tabular format is the default output method.
+
+.IP "\fB-V|--version\fP"
+Print getusersjobids version info.
+
+.IP "\fB--license\fP"
+Print getusersjobids licensing info.
+
+.IP "\fB-h|--help\fP"
+Print help info.
+
+.SH FILES
+.TP
+.I
+/storage/work/dml129/getusersjobids
+
+.TP
+.I
+/storage/work/dml129/sw7/torqueutils/getusersjobids.py
+
+.TP
+.I
+/storage/work/dml129/sw7/torqueutils/utils/print_license.py
+
+.TP
+.I
+/storage/work/dml129/sw7/torqueutils/utils/verifylocale.py
+
+.SH EXAMPLES
+.TP
+.BI "getusersjobids -u jcn23"
+.TP
+.PP
+Query torque passing jcn23 as the user to retrieve jcn23\'s job ids for the past 5 days and print out in tabular format.
+
+.TP
+.BI "getusersjobids -u jcn23 -d 10"
+.TP
+.PP
+Query torque passing jcn23 as the user to retrieve jcn23\'s job ids for the past 10 days and print out in tabular format.
+
+.TP
+.BI "getusersjobids -u jcn23 --xml"
+.TP
+.PP
+Print out user jcn23\'s job ids for the past 5 days in XML format.
+
+.TP
+.BI "getusersjobids -u jcn23 --xml > jcn23_job_ids.xml"
+.TP
+.PP
+Save jcn23\'s job ids to a file in XML format.
+
+.TP
+.BI "getusersjobids -u jcn23 --xml >> jcn23_job_ids.xml"
+.TP
+.PP
+Append jcn23\'s job ids to a file in XML format.
+
+.SH SEE ALSO
+getjobinfo(1)
+
+.SH BUGS
+No known bugs. If you encounter a bug using this script, please open an issue at https://github.com/ICDS-Roar/torqueutils.
+
+.SH AUTHOR
+Jason C. Nucciarone (jcn23@psu.edu, jason.nucciarone@gmail.com)
+
+.SH COPYRIGHT
+Copyright 2021 The Pennsylvania State University Institute for Computational and Data Sciences. All rights reserved at https://mit-license.org/.

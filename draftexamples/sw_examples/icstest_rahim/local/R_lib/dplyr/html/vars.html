@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Select variables</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for vars {dplyr}"><tr><td>vars {dplyr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Select variables</h2>
+
+<h3>Description</h3>
+
+<p>This helper is intended to provide equivalent semantics to
+<code><a href="select.html">select()</a></code>. It is used for instance in scoped summarising and
+mutating verbs (<code><a href="summarise_all.html">mutate_at()</a></code> and <code><a href="summarise_all.html">summarise_at()</a></code>).
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+vars(...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>Variables to include/exclude in mutate/summarise. You
+can use same specifications as in <code><a href="select.html">select()</a></code>. If missing,
+defaults to all non-grouping variables.
+</p>
+<p>These arguments are automatically <a href="../../rlang/html/quo.html">quoted</a> and later
+<a href="../../rlang/html/eval_tidy.html">evaluated</a> in the context of the data
+frame. They support <a href="../../rlang/html/quasiquotation.html">unquoting</a>. See
+<code>vignette("programming")</code> for an introduction to these concepts.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>Note that verbs accepting a <code>vars()</code> specification also accept an
+<a href="../../rlang/html/is_integerish.html">integerish</a> vector of positions or a
+character vector of column names.
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="funs.html">funs()</a></code>, <code><a href="all_vars.html">all_vars()</a></code> and <code><a href="all_vars.html">any_vars()</a></code> for other quoting
+functions that you can use with scoped verbs.
+</p>
+
+<hr /><div style="text-align: center;">[Package <em>dplyr</em> version 0.7.4 <a href="00Index.html">Index</a>]</div>
+</body></html>

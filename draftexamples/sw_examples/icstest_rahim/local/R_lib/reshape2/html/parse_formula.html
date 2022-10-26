@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Parse casting formulae.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for parse_formula {reshape2}"><tr><td>parse_formula {reshape2}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Parse casting formulae.</h2>
+
+<h3>Description</h3>
+
+<p>There are a two ways to specify a casting formula: either as a string, or
+a list of quoted variables. This function converts the former to the
+latter.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+parse_formula(formula = "...  ~ variable", varnames, value.var = "value")
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>formula</code></td>
+<td>
+<p>formula to parse</p>
+</td></tr>
+<tr valign="top"><td><code>varnames</code></td>
+<td>
+<p>names of all variables in data</p>
+</td></tr>
+<tr valign="top"><td><code>value.var</code></td>
+<td>
+<p>name of variable containing values</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>Casting formulas separate dimensions with <code>~</code> and variables within
+a dimension with <code>+</code> or <code>*</code>. <code>.</code> can be used as a
+placeholder, and <code>...</code> represents all other variables not otherwise
+used.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+reshape2:::parse_formula("a + ...", letters[1:6])
+reshape2:::parse_formula("a ~ b + d")
+reshape2:::parse_formula("a + b ~ c ~ .")
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>reshape2</em> version 1.4.3 <a href="00Index.html">Index</a>]</div>
+</body></html>

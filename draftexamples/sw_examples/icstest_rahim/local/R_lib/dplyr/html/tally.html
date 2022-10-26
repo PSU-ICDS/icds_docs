@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Count/tally observations by group</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for tally {dplyr}"><tr><td>tally {dplyr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Count/tally observations by group</h2>
+
+<h3>Description</h3>
+
+<p><code>tally()</code> is a convenient wrapper for summarise that will either call
+<code><a href="n.html">n()</a></code> or <code><a href="../../base/html/sum.html">sum</a>(n)</code> depending on whether you're tallying
+for the first time, or re-tallying. <code>count()</code> is similar but calls
+<code><a href="group_by.html">group_by()</a></code> before and <code><a href="group_by.html">ungroup()</a></code> after.
+</p>
+<p><code>add_tally()</code> adds a column &quot;n&quot; to a table based on the number
+of items within each existing group, while <code>add_count()</code> is a shortcut that
+does the grouping as well. These functions are to <code><a href="tally.html">tally()</a></code>
+and <code><a href="tally.html">count()</a></code> as <code><a href="mutate.html">mutate()</a></code> is to <code><a href="summarise.html">summarise()</a></code>:
+they add an additional column rather than collapsing each group.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+tally(x, wt, sort = FALSE)
+
+count(x, ..., wt = NULL, sort = FALSE)
+
+add_tally(x, wt, sort = FALSE)
+
+add_count(x, ..., wt = NULL, sort = FALSE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p>a <code><a href="tbl.html">tbl()</a></code> to tally/count.</p>
+</td></tr>
+<tr valign="top"><td><code>wt</code></td>
+<td>
+<p>(Optional) If omitted, will count the number of rows. If
+specified, will perform a &quot;weighted&quot; tally by summing the
+(non-missing) values of variable <code>wt</code>. This argument is
+automatically <a href="../../rlang/html/quo.html">quoted</a> and later
+<a href="../../rlang/html/eval_tidy.html">evaluated</a> in the context of the data
+frame. It supports <a href="../../rlang/html/quasiquotation.html">unquoting</a>. See
+<code>vignette("programming")</code> for an introduction to these concepts.</p>
+</td></tr>
+<tr valign="top"><td><code>sort</code></td>
+<td>
+<p>if <code>TRUE</code> will sort output in descending order of <code>n</code></p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>Variables to group by.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>A tbl, grouped the same way as <code>x</code>.
+</p>
+
+
+<h3>Note</h3>
+
+<p>The column name in the returned data is usually <code>n</code>, even if you
+have supplied a weight.
+</p>
+<p>If the data already already has a column named <code>n</code>, the output column
+will be called <code>nn</code>. If the table already has columns called <code>n</code> and <code>nn</code>
+then the column returned will be <code>nnn</code>, and so on.
+</p>
+<p>There is currently no way to control the output variable name - if you
+need to change the default, you'll have to write the <code><a href="summarise.html">summarise()</a></code>
+yourself.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+# tally() is short-hand for summarise()
+mtcars %&gt;% tally()
+# count() is a short-hand for group_by() + tally()
+mtcars %&gt;% count(cyl)
+
+# add_tally() is short-hand for mutate()
+mtcars %&gt;% add_tally()
+# add_count() is a short-hand for group_by() + add_tally()
+mtcars %&gt;% add_count(cyl)
+
+# count and tally are designed so that you can call
+# them repeatedly, each time rolling up a level of detail
+species &lt;- starwars %&gt;% count(species, homeworld, sort = TRUE)
+species
+species %&gt;% count(species, sort = TRUE)
+
+# add_count() is useful for groupwise filtering
+# e.g.: show only species that have a single member
+starwars %&gt;%
+  add_count(species) %&gt;%
+  filter(n == 1)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>dplyr</em> version 0.7.4 <a href="00Index.html">Index</a>]</div>
+</body></html>

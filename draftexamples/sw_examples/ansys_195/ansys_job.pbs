@@ -1,0 +1,32 @@
+#!/bin/bash
+#PBS -l nodes=1:ppn=4
+#PBS -l walltime=5:00
+#PBS -l pmem=4gb
+#PBS -A open
+
+# Get started
+echo " "
+echo "Job started on $(hostname) at $(date)"
+echo " "
+
+# Load in ansys
+module purge
+module load ansys/2019R3
+
+# Go to the correct place
+cd $PBS_O_WORKDIR
+
+#Set jobinput file name
+JOBINPUT=apdl_jobinput_harmonic_acoustics.dat
+JOBNAME=jobname
+JOBOUTPUT=joboutput
+
+#Run ansys
+machinelist=$(cat $PBS_NODEFILE | sort | uniq -c | awk '{print $2":"$1}' | tr '\n' : | sed 's/.$//')
+ansys195 -dis -mpi ibmmpi -b -machines ${machinelist} -i ${JOBINPUT} -j ${JOBNAME} -o ${JOBOUTPUT}
+
+# Finish up
+echo " "
+echo "Job Ended at $(date)"
+echo " "
+

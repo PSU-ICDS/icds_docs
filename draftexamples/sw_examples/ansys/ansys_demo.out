@@ -1,0 +1,422 @@
+
+ ANSYS Academic Teaching Advanced                  
+
+
+ *------------------------------------------------------------------*
+ |                                                                  |
+ |   W E L C O M E   T O   T H E   A N S Y S (R)  P R O G R A M     |
+ |                                                                  |
+ *------------------------------------------------------------------*
+
+
+
+
+ ***************************************************************
+ *            ANSYS Release 18.1     LEGAL NOTICES             *
+ ***************************************************************
+ *                                                             *
+ * Copyright 2017 SAS IP, Inc.  All rights reserved.           *
+ * Unauthorized use, distribution or duplication is            *
+ * prohibited.                                                 *
+ *                                                             *
+ * Ansys is a registered trademark of ANSYS, Inc. or its       *
+ * subsidiaries in the United States or other countries.       *
+ * See the ANSYS, Inc. online documentation or the ANSYS, Inc. *
+ * documentation CD or online help for the complete Legal      *
+ * Notice.                                                     *
+ *                                                             *
+ ***************************************************************
+ *                                                             *
+ * THIS ANSYS SOFTWARE PRODUCT AND PROGRAM DOCUMENTATION       *
+ * INCLUDE TRADE SECRETS AND CONFIDENTIAL AND PROPRIETARY      *
+ * PRODUCTS OF ANSYS, INC., ITS SUBSIDIARIES, OR LICENSORS.    *
+ * The software products and documentation are furnished by    *
+ * ANSYS, Inc. or its subsidiaries under a software license    *
+ * agreement that contains provisions concerning               *
+ * non-disclosure, copying, length and nature of use,          *
+ * compliance with exporting laws, warranties, disclaimers,    *
+ * limitations of liability, and remedies, and other           *
+ * provisions.  The software products and documentation may be *
+ * used, disclosed, transferred, or copied only in accordance  *
+ * with the terms and conditions of that software license      *
+ * agreement.                                                  *
+ *                                                             *
+ * ANSYS, Inc. is a UL registered                              *
+ * ISO 9001:2008 company.                                      *
+ *                                                             *
+ ***************************************************************
+ *                                                             *
+ * This product is subject to U.S. laws governing export and   *
+ * re-export.                                                  *
+ *                                                             *
+ * For U.S. Government users, except as specifically granted   *
+ * by the ANSYS, Inc. software license agreement, the use,     *
+ * duplication, or disclosure by the United States Government  *
+ * is subject to restrictions stated in the ANSYS, Inc.        *
+ * software license agreement and FAR 12.212 (for non-DOD      *
+ * licenses).                                                  *
+ *                                                             *
+ ***************************************************************
+
+
+ AFTER YOU HAVE READ, UNDERSTOOD, AND AGREED TO THE PREVIOUS NOTICES,
+ PRESS <CR> OR <ENTER> TO CONTINUE
+ Release 18.1
+     
+ Point Releases and Patches installed:   
+     
+ ANSYS, Inc. Products Release 18.1   
+ ANSYS Mechanical Products Release 18.1  
+ ANSYS Customization Files for User Programmable Features Release 18.1   
+ ANSYS Autodyn Release 18.1  
+ ANSYS LS-DYNA Release 18.1  
+ ANSYS Remote Solve Manager Standalone Services Release 18.1 
+ ACIS Release 18.1   
+ Catia, Version 5 Release 18.1   
+ NX Release 18.1 
+ Parasolid Release 18.1  
+ ANSYS, Inc. License Manager Release 18.1
+ ANSYS CFX (includes ANSYS CFD-Post) Release 18.1
+ ANSYS Fluent (includes ANSYS CFD-Post) Release 18.1 
+ ANSYS TurboGrid Release 18.1
+ ANSYS FENSAP-ICE Release 18.1   
+ ANSYS Polyflow (includes ANSYS CFD-Post) Release 18.1   
+ ANSYS CFD-Post only Release 18.1
+ ANSYS Forte Release 18.1
+ ANSYS Chemkin Release 18.1  
+ ANSYS Icepak (includes ANSYS CFD-Post) Release 18.1 
+ ANSYS ICEM CFD Release 18.1 
+
+
+          *****  ANSYS COMMAND LINE ARGUMENTS  *****
+  INITIAL JOBNAME              = ansys_demo                                                                                                                                                                                                                                              
+  BATCH MODE REQUESTED (-b)    = NOLIST
+  INPUT FILE COPY MODE (-c)    = COPY
+  SHARED MEMORY PARALLEL REQUESTED
+    SINGLE PROCESS WITH   2 THREADS REQUESTED
+    TOTAL OF     2 CORES REQUESTED
+  DESIGNXPLORER REQUESTED
+  INPUT FILE NAME              = /storage/work/jpj5196/sw_test/ansys/ansys_demo.inp
+  OUTPUT FILE NAME             = /storage/work/jpj5196/sw_test/ansys/ansys_demo.out
+
+ RELEASE= Release 18.1         BUILD= 18.1      UP20170403   VERSION=LINUX x64   
+ CURRENT JOBNAME=ansys_demo  18:28:27  JUN 21, 2018 CP=      0.472
+
+
+ RUN SETUP PROCEDURE FROM FILE= /opt/aci/sw/ansys/18.1/v181/ansys/apdl/start.ans
+
+ /INPUT FILE= /opt/aci/sw/ansys/18.1/v181/ansys/apdl/start.ans  LINE=       0
+ ANSYS MEDIA REL. 8.0 (9-17-2003) REF. VERIF. MANUAL: REL. 8.0
+
+ *** VERIFICATION RUN - CASE VM1                              ***  OPTION=  4
+   *****ANSYS VERIFICATION RUN ONLY*****
+     DO NOT USE RESULTS FOR PRODUCTION
+
+          ***** ANSYS ANALYSIS DEFINITION (PREP7) *****
+
+ TITLE= 
+  VM1, STATICALLY INDETERMINATE REACTION FORCE ANALYSIS                        
+
+
+ C***      STR. OF MATL., TIMOSHENKO, PART 1, 3RD ED., PAGE 26, PROB.10
+
+
+
+ PERFORM A STATIC ANALYSIS
+  THIS WILL BE A NEW ANALYSIS
+
+ ELEMENT TYPE       1 IS LINK1        2-D SPAR  ( OR TRUSS )      
+  KEYOPT( 1- 6)=        0      0      0        0      0      0
+  KEYOPT( 7-12)=        0      0      0        0      0      0
+  KEYOPT(13-18)=        0      0      0        0      0      0
+
+ CURRENT NODAL DOF SET IS  UX    UY  
+  TWO-DIMENSIONAL MODEL
+
+ REAL CONSTANT SET       1  ITEMS   1 TO   6
+    1.0000       0.0000       0.0000       0.0000       0.0000       0.0000    
+
+ MATERIAL         1     EX   =  0.3000000E+08  
+
+ NODE         1  KCS=      0  X,Y,Z=  0.0000       0.0000       0.0000     
+
+ NODE         2  KCS=      0  X,Y,Z=  0.0000       4.0000       0.0000     
+
+ NODE         3  KCS=      0  X,Y,Z=  0.0000       7.0000       0.0000     
+
+ NODE         4  KCS=      0  X,Y,Z=  0.0000       10.000       0.0000     
+
+ ELEMENT      1       1      2
+
+ GENERATE       3 TOTAL SETS OF ELEMENTS WITH NODE INCREMENT OF         1
+   SET IS SELECTED ELEMENTS IN RANGE         1 TO         1 IN STEPS OF       1
+
+ MAXIMUM ELEMENT NUMBER=         3
+
+ SPECIFIED CONSTRAINT UX   FOR SELECTED NODES            1 TO           4 BY           3
+ REAL=  0.00000000       IMAG=  0.00000000    
+ ADDITIONAL DOFS=  UY  
+
+ SPECIFIED NODAL LOAD FY   FOR SELECTED NODES         2 TO        2 BY        1
+  REAL= -500.000000       IMAG=  0.00000000    
+
+ SPECIFIED NODAL LOAD FY   FOR SELECTED NODES         3 TO        3 BY        1
+  REAL= -1000.00000       IMAG=  0.00000000    
+
+
+ ***** ROUTINE COMPLETED *****  CP =         0.000
+
+
+
+ *****  ANSYS SOLUTION ROUTINE  *****
+
+ PRINT BASI ITEMS WITH A FREQUENCY OF      1
+   FOR ALL APPLICABLE ENTITIES
+
+ PRINT NLOA ITEMS WITH A FREQUENCY OF      1
+   FOR ALL APPLICABLE ENTITIES
+
+ *****  ANSYS SOLVE    COMMAND  *****
+   *****ANSYS VERIFICATION RUN ONLY*****
+     DO NOT USE RESULTS FOR PRODUCTION
+
+                       S O L U T I O N   O P T I O N S
+
+   PROBLEM DIMENSIONALITY. . . . . . . . . . . . .2-D                  
+   DEGREES OF FREEDOM. . . . . . UX   UY  
+   ANALYSIS TYPE . . . . . . . . . . . . . . . . .STATIC (STEADY-STATE)
+   GLOBALLY ASSEMBLED MATRIX . . . . . . . . . . .SYMMETRIC  
+
+ *** NOTE ***                            CP =       0.000   TIME= 00:00:00
+ Present time 0 is less than or equal to the previous time.  Time will   
+ default to 1.                                                           
+
+                      L O A D   S T E P   O P T I O N S
+
+   LOAD STEP NUMBER. . . . . . . . . . . . . . . .     1
+   TIME AT END OF THE LOAD STEP. . . . . . . . . .  1.0000    
+   NUMBER OF SUBSTEPS. . . . . . . . . . . . . . .     1
+   STEP CHANGE BOUNDARY CONDITIONS . . . . . . . .    NO
+   PRINT OUTPUT CONTROLS
+      ITEM     FREQUENCY   COMPONENT
+      BASI        ALL               
+      NLOA        ALL               
+   DATABASE OUTPUT CONTROLS. . . . . . . . . . . .ALL DATA WRITTEN
+                                                  FOR THE LAST SUBSTEP
+
+
+
+ Range of element maximum matrix coefficients in global coordinates
+ Maximum = 10000000 at element 0.                                        
+ Minimum = 7500000 at element 0.                                         
+
+   *** ELEMENT MATRIX FORMULATION TIMES
+     TYPE    NUMBER   ENAME      TOTAL CP  AVE CP
+
+        1         3  LINK1         0.000   0.000000
+ Time at end of element matrix formulation CP = 0.                       
+
+ SPARSE MATRIX DIRECT SOLVER.
+  Number of equations =           2,    Maximum wavefront =      0
+  Memory available (MB) =    0.0    ,  Memory required (MB) =    0.0    
+
+ Sparse solver maximum pivot= 0 at node 0 .                              
+ Sparse solver minimum pivot= 0 at node 0 .                              
+ Sparse solver minimum pivot in absolute value= 0 at node 0 .            
+   *****ANSYS VERIFICATION RUN ONLY*****
+     DO NOT USE RESULTS FOR PRODUCTION
+
+
+  ***** DEGREE OF FREEDOM SOLUTION *****    TIME =   1.0000    
+  LOAD STEP=     1  SUBSTEP =     1  CUM. ITER.=     1
+
+  NOTE - ALL VECTOR DOFS ARE IN NODAL COORDINATE SYSTEMS.
+
+      NODE      UX              UY  
+        1     0.00000         0.00000    
+        2                   -0.800000E-04
+        3                   -0.900000E-04
+        4     0.00000         0.00000    
+
+ MAXIMUMS
+ NODE          0               0
+ VALUE      0.00000       -0.900000E-04
+   *****ANSYS VERIFICATION RUN ONLY*****
+     DO NOT USE RESULTS FOR PRODUCTION
+
+
+  ***** ELEMENT SOLUTION *****          TIME =   1.0000    
+  LOAD STEP=     1  SUBSTEP =     1  CUM. ITER.=     1
+
+ EL=       1 NODES=       1       2 MAT=     1                                                                               LINK1 
+ MFORX= -600.00    
+ SAXL= -600.00     EPELAXL=-0.000020 EPTHAXL= 0.000000 EPSWAXL= 0.000000 EPINAXL= 0.000000
+  STATIC LOAD ON NODE        1   0.00000      -600.000    
+  STATIC LOAD ON NODE        2   0.00000       600.000    
+
+ EL=       2 NODES=       2       3 MAT=     1                                                                               LINK1 
+ MFORX= -100.00    
+ SAXL= -100.00     EPELAXL=-0.000003 EPTHAXL= 0.000000 EPSWAXL= 0.000000 EPINAXL= 0.000000
+  STATIC LOAD ON NODE        2   0.00000      -100.000    
+  STATIC LOAD ON NODE        3   0.00000       100.000    
+
+ EL=       3 NODES=       3       4 MAT=     1                                                                               LINK1 
+ MFORX=  900.00    
+ SAXL=  900.00     EPELAXL= 0.000030 EPTHAXL= 0.000000 EPSWAXL= 0.000000 EPINAXL= 0.000000
+  STATIC LOAD ON NODE        3   0.00000       900.000    
+  STATIC LOAD ON NODE        4   0.00000      -900.000    
+
+   *** ELEMENT RESULT CALCULATION TIMES
+     TYPE    NUMBER   ENAME      TOTAL CP  AVE CP
+
+        1         3  LINK1         0.000   0.000000
+
+   *** NODAL LOAD CALCULATION TIMES
+     TYPE    NUMBER   ENAME      TOTAL CP  AVE CP
+
+        1         3  LINK1         0.000   0.000000
+   *****ANSYS VERIFICATION RUN ONLY*****
+     DO NOT USE RESULTS FOR PRODUCTION
+
+
+  ***** REACTION SOLUTION *****          TIME =   1.0000    
+  LOAD STEP=     1  SUBSTEP =     1  CUM. ITER.=     1
+
+  NOTE - ALL VECTOR DOFS ARE IN NODAL COORDINATE SYSTEMS.
+
+    NODE      FX              FY  
+       1     0.00000         600.000    
+       4     0.00000         900.000    
+
+ TOTAL      0.00000         1500.00    
+
+ *** NOTE ***                            CP =       0.000   TIME= 00:00:00
+ Totals may not be correct if any reaction nodes are in a rotated nodal  
+ coordinate system.                                                      
+ *** LOAD STEP     1   SUBSTEP     1  COMPLETED.    CUM ITER =      1
+ *** TIME =   1.00000         TIME INC =   1.00000      NEW TRIANG MATRIX
+
+ FINISH SOLUTION PROCESSING
+
+
+ ***** ROUTINE COMPLETED *****  CP =         0.000
+
+
+   *****ANSYS VERIFICATION RUN ONLY*****
+     DO NOT USE RESULTS FOR PRODUCTION
+
+          ***** ANSYS RESULTS INTERPRETATION (POST1) *****
+
+ *** NOTE ***                            CP =       0.000   TIME= 00:00:00
+ Reading results into the database (SET command) will update the current 
+ displacement and force boundary conditions in the database with the     
+ values from the results file for that load set.  Note that any          
+ subsequent solutions will use these values unless action is taken to    
+ either SAVE the current values or not overwrite them (/EXIT,NOSAVE).    
+
+ SELECT       FOR ITEM=LOC  COMPONENT=Y     BETWEEN  10.000     AND   10.000    
+   KABS=  0.  TOLERANCE= 0.500000E-01
+
+          1  NODES (OF          4  DEFINED) SELECTED BY  NSEL  COMMAND.
+
+ ***** SUMMATION OF TOTAL    FORCES AND MOMENTS IN THE GLOBAL COORDINATE SYSTEM *****
+  FX  =   0.000000    
+  FY  =  -900.0000    
+  FZ  =   0.000000    
+  MX  =   0.000000    
+  MY  =   0.000000    
+  MZ  =   0.000000    
+
+ SUMMATION POINT=  0.0000      0.0000      0.0000    
+
+ *GET  REAC_1    FROM  FSUM  ITEM=ITEM FY    VALUE= -900.000000    
+
+ SELECT       FOR ITEM=LOC  COMPONENT=Y     BETWEEN  0.0000     AND   0.0000    
+   KABS=  0.  TOLERANCE= 0.100000E-05
+
+          1  NODES (OF          4  DEFINED) SELECTED BY  NSEL  COMMAND.
+
+ ***** SUMMATION OF TOTAL    FORCES AND MOMENTS IN THE GLOBAL COORDINATE SYSTEM *****
+  FX  =   0.000000    
+  FY  =  -600.0000    
+  FZ  =   0.000000    
+  MX  =   0.000000    
+  MY  =   0.000000    
+  MZ  =   0.000000    
+
+ SUMMATION POINT=  0.0000      0.0000      0.0000    
+
+ *GET  REAC_2    FROM  FSUM  ITEM=ITEM FY    VALUE= -600.000000    
+
+ SET PARAMETER DIMENSIONS ON  LABEL TYPE=CHAR  DIMENSIONS=     2     1     1
+
+ SET PARAMETER DIMENSIONS ON  VALUE TYPE=ARRA  DIMENSIONS=     2     3     1
+
+ PARAMETER LABEL(1) = R1, lb    R2, lb  
+
+ VECTOR FILL OPERATION  *VFILL  
+  VALUE(1,1)       = DATA
+ VECTOR LENGTH=       2
+ VALUES=  900.00      600.00    
+
+ VECTOR FILL OPERATION  *VFILL  
+  VALUE(1,2)       = DATA
+ VECTOR LENGTH=       2
+ VALUES=  900.00      600.00    
+
+ VECTOR FILL OPERATION  *VFILL  
+  VALUE(1,3)       = DATA
+ VECTOR LENGTH=       2
+ VALUES=  1.0000      1.0000    
+
+ /OUTPUT FILE=         
+
+ EXIT THE ANSYS POST1 DATABASE PROCESSOR
+
+
+ ***** ROUTINE COMPLETED *****  CP =         0.000
+
+
+
+  LISTING OF THE DATA ON FILE        
+  
+  ------------------- VM1 RESULTS COMPARISON ---------------------
+  
+           |   TARGET   |   ANSYS   |   RATIO
+  
+  R1, lb          900.0       900.0   1.000
+  R2, lb          600.0       600.0   1.000
+  ----------------------------------------------------------------
+
+ ***** END OF INPUT ENCOUNTERED *****
+
+ PURGE ALL SOLUTION AND POST DATA
+ SAVE ALL MODEL DATA
+
+ ALL CURRENT ANSYS DATA WRITTEN TO FILE NAME= 
+  FOR POSSIBLE RESUME FROM THIS POINT
+
+
+ NUMBER OF WARNING MESSAGES ENCOUNTERED=          0
+ NUMBER OF ERROR   MESSAGES ENCOUNTERED=          0
+
+
+ *---------------------------------------------------------------------------*
+ |                                                                           |
+ |                            ANSYS RUN COMPLETED                            |
+ |                                                                           |
+ |---------------------------------------------------------------------------|
+ |                                                                           |
+ | Ansys Release 18.1          Build 18.1         UP20170403     LINUX x64   |
+ |                                                                           |
+ |---------------------------------------------------------------------------|
+ |                                                                           |
+ | Database Requested(-db)  1024 MB    Scratch Memory Requested      1024 MB |
+ | Maximum Database Used       1 MB    Maximum Scratch Memory Used      9 MB |
+ |                                                                           |
+ |---------------------------------------------------------------------------|
+ |                                                                           |
+ |        CP Time      (sec) =          1.485       Time  =  18:28:28        |
+ |        Elapsed Time (sec) =          5.000       Date  =  06/21/2018      |
+ |                                                                           |
+ *---------------------------------------------------------------------------*

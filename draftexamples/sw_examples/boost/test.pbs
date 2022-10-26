@@ -1,0 +1,14 @@
+#PBS -A open
+#PBS -l nodes=1:ppn=1
+#PBS -l pmem=1gb
+#PBS -l walltime=5:00
+
+cd $PBS_O_WORKDIR
+
+module load gcc
+#module load boost/1.61.0
+module load boost
+
+make
+
+./library-boost.out

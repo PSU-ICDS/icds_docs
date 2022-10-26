@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: The number of observations in the current group.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for n {dplyr}"><tr><td>n {dplyr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>The number of observations in the current group.</h2>
+
+<h3>Description</h3>
+
+<p>This function is implemented specifically for each data source and can only
+be used from within <code><a href="summarise.html">summarise()</a></code>, <code><a href="mutate.html">mutate()</a></code> and
+<code><a href="filter.html">filter()</a></code>.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+n()
+</pre>
+
+
+<h3>Examples</h3>
+
+<pre>
+if (require("nycflights13")) {
+carriers &lt;- group_by(flights, carrier)
+summarise(carriers, n())
+mutate(carriers, n = n())
+filter(carriers, n() &lt; 100)
+}
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>dplyr</em> version 0.7.4 <a href="00Index.html">Index</a>]</div>
+</body></html>

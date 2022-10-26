@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Pull out a single variable</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for pull {dplyr}"><tr><td>pull {dplyr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Pull out a single variable</h2>
+
+<h3>Description</h3>
+
+<p>This works like <code>[[</code> for local data frames, and automatically collects
+before indexing for remote data tables.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+pull(.data, var = -1)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>.data</code></td>
+<td>
+<p>A table of data</p>
+</td></tr>
+<tr valign="top"><td><code>var</code></td>
+<td>
+<p>A variable specified as:
+</p>
+
+<ul>
+<li><p> a literal variable name
+</p>
+</li>
+<li><p> a positive integer, giving the position counting from the left
+</p>
+</li>
+<li><p> a negative integer, giving the position counting from the right.
+</p>
+</li></ul>
+
+<p>The default returns the last column (on the assumption that's the
+column you've created most recently).
+</p>
+<p>This argument is taken by expression and supports
+<a href="../../rlang/html/quasiquotation.html">quasiquotation</a> (you can unquote column
+names and column positions).</p>
+</td></tr>
+</table>
+
+
+<h3>Examples</h3>
+
+<pre>
+mtcars %&gt;% pull(-1)
+mtcars %&gt;% pull(1)
+mtcars %&gt;% pull(cyl)
+
+# Also works for remote sources
+if (requireNamespace("dbplyr", quietly = TRUE)) {
+df &lt;- dbplyr::memdb_frame(x = 1:10, y = 10:1, .name = "pull-ex")
+df %&gt;%
+  mutate(z = x * y) %&gt;%
+  pull()
+}
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>dplyr</em> version 0.7.4 <a href="00Index.html">Index</a>]</div>
+</body></html>

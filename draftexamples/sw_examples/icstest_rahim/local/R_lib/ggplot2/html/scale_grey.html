@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Sequential grey colour scales</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for scale_colour_grey {ggplot2}"><tr><td>scale_colour_grey {ggplot2}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Sequential grey colour scales</h2>
+
+<h3>Description</h3>
+
+<p>Based on <code><a href="../../grDevices/html/gray.colors.html">gray.colors</a></code>. This is black and white equivalent
+of <code><a href="scale_gradient.html">scale_colour_gradient</a></code>.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+scale_colour_grey(..., start = 0.2, end = 0.8, na.value = "red")
+
+scale_fill_grey(..., start = 0.2, end = 0.8, na.value = "red")
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>Other arguments passed on to <code><a href="discrete_scale.html">discrete_scale</a></code>
+to control name, limits, breaks, labels and so forth.</p>
+</td></tr>
+<tr valign="top"><td><code>start</code></td>
+<td>
+<p>gray value at low end of palette</p>
+</td></tr>
+<tr valign="top"><td><code>end</code></td>
+<td>
+<p>gray value at high end of palette</p>
+</td></tr>
+<tr valign="top"><td><code>na.value</code></td>
+<td>
+<p>Colour to use for missing values</p>
+</td></tr>
+</table>
+
+
+<h3>See Also</h3>
+
+<p>Other colour scales: <code><a href="scale_alpha.html">scale_alpha</a></code>,
+<code><a href="scale_brewer.html">scale_colour_brewer</a></code>,
+<code><a href="scale_gradient.html">scale_colour_gradient</a></code>,
+<code><a href="scale_hue.html">scale_colour_hue</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+p &lt;- ggplot(mtcars, aes(mpg, wt)) + geom_point(aes(colour = factor(cyl)))
+p + scale_colour_grey()
+p + scale_colour_grey(end = 0)
+
+# You may want to turn off the pale grey background with this scale
+p + scale_colour_grey() + theme_bw()
+
+# Colour of missing values is controlled with na.value:
+miss &lt;- factor(sample(c(NA, 1:5), nrow(mtcars), replace = TRUE))
+ggplot(mtcars, aes(mpg, wt)) +
+  geom_point(aes(colour = miss)) +
+  scale_colour_grey()
+ggplot(mtcars, aes(mpg, wt)) +
+  geom_point(aes(colour = miss)) +
+  scale_colour_grey(na.value = "green")
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>ggplot2</em> version 2.2.1 <a href="00Index.html">Index</a>]</div>
+</body></html>

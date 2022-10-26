@@ -1,0 +1,2 @@
+#!/bin/bash
+find /cgroup/cpuset/torque/[0-9]* -type f | grep cpuset.cpus  | xargs cat | perl -ne 'BEGIN{$TOT=0};print $_;$_ =~ s/\-/../g; @a = eval($_); $TOT+= scalar @a; END{print "TOT-$TOT\n"};'

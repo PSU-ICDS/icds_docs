@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Calculates confidence intervals of the weights</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for confidence.interval {neuralnet}"><tr><td>confidence.interval {neuralnet}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2> Calculates confidence intervals of the weights </h2>
+
+<h3>Description</h3>
+
+<p><code>confidence.interval</code>, a method for objects of class <code>nn</code>, typically produced by <code>neuralnet</code>.  Calculates confidence intervals of the weights (White, 1989)
+and the network information criteria NIC (Murata et al. 1994). All confidence intervals are calculated under the assumption of  a local identification of the given neural network.
+If this assumption is violated, the results will not be reasonable. Please make also sure that the chosen error function equals the negative log-likelihood function,
+otherwise the results are not meaningfull, too.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+confidence.interval(x, alpha = 0.05)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p> neural network </p>
+</td></tr>
+<tr valign="top"><td><code>alpha</code></td>
+<td>
+<p> numerical. Sets the confidence level to (1-alpha). </p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p><code>confidence.interval</code> returns a list containing the following components:
+</p>
+<table summary="R valueblock">
+<tr valign="top"><td><code> lower.ci </code></td>
+<td>
+<p>a list containing the lower confidence bounds of all weights of the neural network differentiated by the repetitions.</p>
+</td></tr>
+<tr valign="top"><td><code> upper.ci </code></td>
+<td>
+<p>a list containing the upper confidence bounds of all weights of the neural network differentiated by the repetitions.</p>
+</td></tr>
+<tr valign="top"><td><code> nic </code></td>
+<td>
+<p>a vector containg the information criteria NIC for every repetition.</p>
+</td></tr>
+</table>
+
+
+<h3>Author(s)</h3>
+
+<p> Stefan Fritsch, Frauke Guenther <a href="mailto:guenther@leibniz-bips.de">guenther@leibniz-bips.de</a> </p>
+
+
+<h3>References</h3>
+
+ 
+<p>White (1989)
+<em>Learning in artificial neural networks. A statistical perspective.</em>  
+Neural Computation (1), pages 425-464
+</p>
+<p>Murata et al. (1994)
+<em>Network information criterion - determining
+the number of hidden units for an artificial neural network model.</em>  
+IEEE Transactions on Neural Networks 5 (6), pages 865-871
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="neuralnet.html">neuralnet</a></code></p>
+
+
+<h3>Examples</h3>
+
+<pre>
+    data(infert, package="datasets")
+    print(net.infert &lt;- neuralnet(case~parity+induced+spontaneous,  
+                        infert, err.fct="ce", linear.output=FALSE))
+    confidence.interval(net.infert)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>neuralnet</em> version 1.33 <a href="00Index.html">Index</a>]</div>
+</body></html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Coerce a 'tbl_cube' to other data structures</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for as.table.tbl_cube {dplyr}"><tr><td>as.table.tbl_cube {dplyr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Coerce a <code>tbl_cube</code> to other data structures</h2>
+
+<h3>Description</h3>
+
+<p>Supports conversion to tables, data frames, tibbles.
+</p>
+<p>For a cube, the data frame returned by
+<code><a href="../../tibble/html/as_data_frame.html">tibble::as_data_frame()</a></code> resulting data frame contains the
+dimensions as character values (and not as factors).
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+## S3 method for class 'tbl_cube'
+as.table(x, ..., measure = 1L)
+
+## S3 method for class 'tbl_cube'
+as.data.frame(x, ...)
+
+## S3 method for class 'tbl_cube'
+as_data_frame(x, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p>a <code>tbl_cube</code></p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>Passed on to individual methods; otherwise ignored.</p>
+</td></tr>
+<tr valign="top"><td><code>measure</code></td>
+<td>
+<p>A measure name or index, default: the first measure</p>
+</td></tr>
+</table>
+
+<hr /><div style="text-align: center;">[Package <em>dplyr</em> version 0.7.4 <a href="00Index.html">Index</a>]</div>
+</body></html>

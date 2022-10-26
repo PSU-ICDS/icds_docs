@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Split a vector into multiple columns</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for colsplit {reshape2}"><tr><td>colsplit {reshape2}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Split a vector into multiple columns</h2>
+
+<h3>Description</h3>
+
+<p>Useful for splitting variable names that a combination of multiple
+variables. Uses <code><a href="../../utils/html/type.convert.html">type.convert</a></code> to convert each column to
+correct type, but will not convert character to factor.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+colsplit(string, pattern, names)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>string</code></td>
+<td>
+<p>character vector or factor to split up</p>
+</td></tr>
+<tr valign="top"><td><code>pattern</code></td>
+<td>
+<p>regular expression to split on</p>
+</td></tr>
+<tr valign="top"><td><code>names</code></td>
+<td>
+<p>names for output columns</p>
+</td></tr>
+</table>
+
+
+<h3>Examples</h3>
+
+<pre>
+x &lt;- c("a_1", "a_2", "b_2", "c_3")
+vars &lt;- colsplit(x, "_", c("trt", "time"))
+vars
+str(vars)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>reshape2</em> version 1.4.3 <a href="00Index.html">Index</a>]</div>
+</body></html>

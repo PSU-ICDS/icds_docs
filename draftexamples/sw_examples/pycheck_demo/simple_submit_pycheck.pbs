@@ -1,0 +1,43 @@
+#!/bin/bash
+
+#### Scheduler Directives ####
+
+#PBS -A open
+####PBS -A wff3_g_g_lc_icds-training
+
+#PBS -l nodes=1:ppn=1
+#PBS -l walltime=00:01:00
+#PBS -l pmem=1gb
+
+
+#### Job is launched when placed on compute nodes ####
+echo " "
+echo "Job started at `date` on `hostname`"
+echo " "
+
+
+#### Initialize Software Environment and Parameters ####
+
+# Reset software environment and load necessary software
+module purge
+module load python/3.6.8
+
+# Verify python version
+pyver=$( python --version )
+
+# Use original submission directory as the working directory
+cd $PBS_O_WORKDIR
+
+
+#### Execute your job ####
+
+python pycheck.py
+
+
+#### Job Output ####
+
+echo " "
+echo "Python verion:   $pyver"
+echo "Job ended at `date`"
+echo " "
+

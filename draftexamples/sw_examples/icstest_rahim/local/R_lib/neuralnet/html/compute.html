@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Computation of a given neural network for given covariate...</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for compute {neuralnet}"><tr><td>compute {neuralnet}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2> Computation of a given neural network for given covariate vectors</h2>
+
+<h3>Description</h3>
+
+<p><code>compute</code>, a method for objects of class <code>nn</code>, typically
+produced by <code>neuralnet</code>. 
+Computes the outputs of all neurons for specific arbitrary covariate vectors given a trained neural network. Please make sure that the order of the covariates is the same in the new matrix or dataframe as in the original neural network.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+compute(x, covariate, rep = 1)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p> an object of class <code>nn</code>. </p>
+</td></tr>
+<tr valign="top"><td><code>covariate</code></td>
+<td>
+<p> a dataframe or matrix containing the variables that had been used to train the neural network. </p>
+</td></tr>
+<tr valign="top"><td><code>rep</code></td>
+<td>
+<p> an integer indicating the neural network's repetition which should be used. </p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p><code>compute</code> returns a list containing the following components:
+</p>
+<table summary="R valueblock">
+<tr valign="top"><td><code>neurons</code></td>
+<td>
+<p>a list of the neurons' output for each layer of the neural network.</p>
+</td></tr>
+<tr valign="top"><td><code>net.result</code></td>
+<td>
+<p>a matrix containing the overall result of the neural network.</p>
+</td></tr>
+</table>
+
+
+<h3>Author(s)</h3>
+
+<p> Stefan Fritsch, Frauke Guenther <a href="mailto:guenther@leibniz-bips.de">guenther@leibniz-bips.de</a> </p>
+
+
+<h3>Examples</h3>
+
+<pre>
+Var1 &lt;- runif(50, 0, 100) 
+sqrt.data &lt;- data.frame(Var1, Sqrt=sqrt(Var1))
+print(net.sqrt &lt;- neuralnet(Sqrt~Var1,  sqrt.data, hidden=10, 
+                  threshold=0.01))
+compute(net.sqrt, (1:10)^2)$net.result
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>neuralnet</em> version 1.33 <a href="00Index.html">Index</a>]</div>
+</body></html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Check that input variables to melt are appropriate.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for melt_check {reshape2}"><tr><td>melt_check {reshape2}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Check that input variables to melt are appropriate.</h2>
+
+<h3>Description</h3>
+
+<p>If id.vars or measure.vars are missing, <code>melt_check</code> will do its
+best to impute them. If you only supply one of id.vars and measure.vars,
+melt will assume the remainder of the variables in the data set belong to
+the other. If you supply neither, melt will assume discrete variables are
+id variables and all other are measured.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+melt_check(data, id.vars, measure.vars, variable.name, value.name)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>data</code></td>
+<td>
+<p>data frame</p>
+</td></tr>
+<tr valign="top"><td><code>id.vars</code></td>
+<td>
+<p>vector of identifying variable names or indexes</p>
+</td></tr>
+<tr valign="top"><td><code>measure.vars</code></td>
+<td>
+<p>vector of Measured variable names or indexes</p>
+</td></tr>
+<tr valign="top"><td><code>variable.name</code></td>
+<td>
+<p>name of variable used to store measured variable names</p>
+</td></tr>
+<tr valign="top"><td><code>value.name</code></td>
+<td>
+<p>name of variable used to store values</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>a list giving id and measure variables names.
+</p>
+
+<hr /><div style="text-align: center;">[Package <em>reshape2</em> version 1.4.3 <a href="00Index.html">Index</a>]</div>
+</body></html>

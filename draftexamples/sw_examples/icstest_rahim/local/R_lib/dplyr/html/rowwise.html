@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Group input by rows</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for rowwise {dplyr}"><tr><td>rowwise {dplyr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Group input by rows</h2>
+
+<h3>Description</h3>
+
+<p><code>rowwise()</code> is used for the results of <code><a href="do.html">do()</a></code> when you
+create list-variables. It is also useful to support arbitrary
+complex operations that need to be applied to each row.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+rowwise(data)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>data</code></td>
+<td>
+<p>Input data frame.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>Currently, rowwise grouping only works with data frames. Its
+main impact is to allow you to work with list-variables in
+<code><a href="summarise.html">summarise()</a></code> and <code><a href="mutate.html">mutate()</a></code> without having to
+use <code>[[1]]</code>. This makes <code>summarise()</code> on a rowwise tbl
+effectively equivalent to <code><a href="../../plyr/html/ldply.html">plyr::ldply()</a></code>.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+df &lt;- expand.grid(x = 1:3, y = 3:1)
+df %&gt;% rowwise() %&gt;% do(i = seq(.$x, .$y))
+.Last.value %&gt;% summarise(n = length(i))
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>dplyr</em> version 0.7.4 <a href="00Index.html">Index</a>]</div>
+</body></html>

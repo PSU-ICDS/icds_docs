@@ -1,0 +1,1 @@
+/var/spool/torque/mom_priv/jobs/16127540.torque01.util.production.int.aci.ics.psu.edu.SC: line 21: 21151 Killed                  matlab -nodisplay -nosplash -singleCompThread < mem_usage.m > log.funcRun

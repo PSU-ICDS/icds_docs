@@ -1,0 +1,33 @@
+Instruction updated 2/25/2019 by Will Paik (gip5038@psu.edu)
+
+Need to create a cluster profile through matlab GUI
+(This can be done on aci-i)
+
+Creating Torque profile from "Manage Cluster Profiles"
+1) Press Add ("+" mark) -> Custom -> Torque
+2) Press "Edit" button on the right bottom of the window
+3) Go to the bottom of the activated window
+4) Type ssh on the second from the bottom box
+   (Remote shell command to call on UNIX when running communicating jobs)
+5) Type scp on the last box
+   (Remote copy command for non-shared file systems)
+
+(Name of the profile can be changed from the Cluster Profile box on the left)
+
+Once done, launch matlab on text mode and run matlab program (without .m):
+$ module load matlab
+$ matlab -nodisplay -nosplash -r <Script Name>
+
+Screen/tmux session may be used to submit job and kept Matlab stay alive.(Optional)
+Regarding screen/tmux session, please ssh to same node: $ ssh PSUID@ 146.186.1.23
+
+Requested resource can be easily changed but last number on the following line
+must be smaller than total number of processors:
+
+jj = batch(Cluster, 'testpar','pool',19);
+
+(i.e. 19 if 20 processors are requested, or total # proc - 1)
+
+########## Sample submission command ##########
+$ module load matlab
+$ matlab -nodisplay -nosplash -r cluster_test

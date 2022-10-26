@@ -1,0 +1,14 @@
+#!/bin/bash
+
+#PBS -A open
+#PBS -l walltime=10:00
+#PBS -l nodes=1:ppn=1:basic
+
+echo "Job started on `hostname` at `date`"
+
+cd $PBS_O_WORKDIR
+
+module load mathematica
+MathKernel -script myscript.m
+
+echo "Job Ended at `date`"

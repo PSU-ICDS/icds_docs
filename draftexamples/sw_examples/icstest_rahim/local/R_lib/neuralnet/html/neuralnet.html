@@ -1,0 +1,240 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Training of neural networks</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for neuralnet {neuralnet}"><tr><td>neuralnet {neuralnet}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Training of neural networks</h2>
+
+<h3>Description</h3>
+
+<p><code>neuralnet</code> is used to train neural networks using backpropagation, resilient backpropagation (RPROP) with (Riedmiller, 1994) or without 
+weight backtracking (Riedmiller and Braun, 1993) or the modified
+globally convergent version (GRPROP) by Anastasiadis et al. (2005). The
+function allows flexible settings through custom-choice of error
+and activation function. Furthermore the calculation of 
+generalized weights (Intrator O. and Intrator N., 1993) is
+implemented.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+neuralnet(formula, data, hidden = 1, threshold = 0.01,        
+          stepmax = 1e+05, rep = 1, startweights = NULL, 
+          learningrate.limit = NULL, 
+          learningrate.factor = list(minus = 0.5, plus = 1.2), 
+          learningrate=NULL, lifesign = "none", 
+          lifesign.step = 1000, algorithm = "rprop+", 
+          err.fct = "sse", act.fct = "logistic", 
+          linear.output = TRUE, exclude = NULL, 
+          constant.weights = NULL, likelihood = FALSE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>formula</code></td>
+<td>
+<p> a symbolic description of the model to be fitted. </p>
+</td></tr>
+<tr valign="top"><td><code>data</code></td>
+<td>
+<p> a data frame containing the variables specified in <code>formula</code>.  </p>
+</td></tr>
+<tr valign="top"><td><code>hidden</code></td>
+<td>
+<p> a vector of integers specifying the number of hidden neurons (vertices) in each layer. </p>
+</td></tr>
+<tr valign="top"><td><code>threshold</code></td>
+<td>
+<p> a numeric value specifying the threshold for the partial derivatives of the error function as stopping criteria.  </p>
+</td></tr>
+<tr valign="top"><td><code>stepmax</code></td>
+<td>
+<p> the maximum steps for the training of the neural network. Reaching this maximum leads to a stop of the neural network's training process. </p>
+</td></tr>
+<tr valign="top"><td><code>rep</code></td>
+<td>
+<p> the number of repetitions for the neural network's training. </p>
+</td></tr>
+<tr valign="top"><td><code>startweights</code></td>
+<td>
+<p> a vector containing starting values for the weights. The weights will not be randomly initialized.</p>
+</td></tr>
+<tr valign="top"><td><code>learningrate.limit</code></td>
+<td>
+<p> a vector or a list containing the lowest and highest limit for the learning rate. Used only for RPROP and GRPROP. </p>
+</td></tr>
+<tr valign="top"><td><code>learningrate.factor</code></td>
+<td>
+<p> a vector or a list containing the multiplication factors for the upper and lower learning rate. Used only for RPROP and GRPROP. </p>
+</td></tr>
+<tr valign="top"><td><code>learningrate</code></td>
+<td>
+<p> a numeric value specifying the learning rate used by traditional backpropagation. Used only for traditional backpropagation. </p>
+</td></tr>
+<tr valign="top"><td><code>lifesign</code></td>
+<td>
+<p> a string specifying how much the function will print during the calculation of the neural network. 'none', 'minimal' or 'full'. </p>
+</td></tr>
+<tr valign="top"><td><code>lifesign.step</code></td>
+<td>
+<p> an integer specifying the stepsize to print the minimal threshold in full lifesign mode.  </p>
+</td></tr>
+<tr valign="top"><td><code>algorithm</code></td>
+<td>
+<p> a string containing the algorithm type to calculate the neural network. The  following types are possible: 'backprop', 'rprop+', 'rprop-', 'sag', or 'slr'. 'backprop' refers to backpropagation, 'rprop+' and 'rprop-' refer to  the resilient backpropagation with and without weight backtracking,
+while 'sag' and 'slr' induce the usage of the modified globally convergent algorithm (grprop). See Details for more information.</p>
+</td></tr>
+<tr valign="top"><td><code>err.fct</code></td>
+<td>
+<p> a differentiable function that is used for the calculation of the error. Alternatively, the strings 'sse' and 'ce' which stand for the sum of squared errors and the cross-entropy can be used.</p>
+</td></tr>
+<tr valign="top"><td><code>act.fct</code></td>
+<td>
+<p> a differentiable function that is used for smoothing the result of the cross product of the covariate or neurons and the weights. Additionally the strings, 'logistic' and 'tanh' are possible for the logistic function and tangent hyperbolicus. </p>
+</td></tr>
+<tr valign="top"><td><code>linear.output</code></td>
+<td>
+<p> logical. If act.fct should not be applied to the output neurons set linear output to TRUE, otherwise to FALSE. </p>
+</td></tr>
+<tr valign="top"><td><code>exclude</code></td>
+<td>
+<p> a vector or a matrix specifying the weights, that are excluded from the calculation. If given as a vector, the exact positions of the weights must be known. A matrix with n-rows and 3 columns will exclude n weights, where the first column stands for the layer, the second column for the input neuron and the third column for the output neuron of the weight.  </p>
+</td></tr>
+<tr valign="top"><td><code>constant.weights</code></td>
+<td>
+<p> a vector specifying the values of the weights that are excluded from the training process and treated as fix. </p>
+</td></tr>
+<tr valign="top"><td><code>likelihood</code></td>
+<td>
+<p> logical. If the error function is equal to the negative log-likelihood function, the information criteria AIC and BIC will be calculated. Furthermore the usage of confidence.interval is meaningfull. </p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>The globally convergent algorithm is based on the resilient backpropagation without weight backtracking and additionally modifies one learning rate, either the learningrate associated with the smallest absolute gradient (sag) or the smallest learningrate (slr) itself. The learning rates in the grprop algorithm are limited to the boundaries defined in learningrate.limit. 
+</p>
+
+
+<h3>Value</h3>
+
+<p><code>neuralnet</code> returns an object of class <code>nn</code>.
+An object of class <code>nn</code> is a list containing at most the following components:
+</p>
+<table summary="R valueblock">
+<tr valign="top"><td><code> call </code></td>
+<td>
+<p> the matched call. </p>
+</td></tr>
+<tr valign="top"><td><code> response </code></td>
+<td>
+<p> extracted from the <code>data argument</code>.  </p>
+</td></tr>
+<tr valign="top"><td><code> covariate </code></td>
+<td>
+<p> the variables extracted from the <code>data argument</code>. </p>
+</td></tr>
+<tr valign="top"><td><code> model.list </code></td>
+<td>
+<p> a list containing the covariates and the response variables extracted from the <code>formula argument</code>. </p>
+</td></tr>
+<tr valign="top"><td><code> err.fct </code></td>
+<td>
+<p> the error function. </p>
+</td></tr>
+<tr valign="top"><td><code> act.fct </code></td>
+<td>
+<p> the activation function. </p>
+</td></tr>
+<tr valign="top"><td><code> data </code></td>
+<td>
+<p> the <code>data argument</code>.</p>
+</td></tr>
+<tr valign="top"><td><code> net.result </code></td>
+<td>
+<p> a list containing the overall result of the neural network for every repetition.</p>
+</td></tr>
+<tr valign="top"><td><code> weights </code></td>
+<td>
+<p> a list containing the fitted weights of the neural network for every repetition. </p>
+</td></tr>
+<tr valign="top"><td><code> generalized.weights </code></td>
+<td>
+<p> a list containing the generalized weights of the neural network for every repetition. </p>
+</td></tr>
+<tr valign="top"><td><code> result.matrix </code></td>
+<td>
+<p> a matrix containing the reached threshold, needed steps, error, AIC and BIC (if computed) and weights for every repetition. Each column represents one repetition. </p>
+</td></tr>
+<tr valign="top"><td><code> startweights </code></td>
+<td>
+<p> a list containing the startweights of the neural network for every repetition. </p>
+</td></tr>
+</table>
+
+
+<h3>Author(s)</h3>
+
+<p> Stefan Fritsch, Frauke Guenther <a href="mailto:guenther@leibniz-bips.de">guenther@leibniz-bips.de</a> </p>
+
+
+<h3>References</h3>
+
+ 
+<p>Riedmiller M. (1994) 
+<em>Rprop - Description and Implementation Details.</em>
+Technical Report. University of Karlsruhe.
+</p>
+<p>Riedmiller M. and Braun H. (1993) 
+<em>A direct adaptive method for faster backpropagation learning: The RPROP algorithm.</em>
+Proceedings of the IEEE International Conference on Neural Networks (ICNN), pages 586-591.
+San Francisco.
+</p>
+<p>Anastasiadis A. et. al. (2005) 
+<em>New globally convergent training scheme based on the resilient propagation algorithm.</em> 
+Neurocomputing 64, pages 253-270. 
+</p>
+<p>Intrator O. and Intrator N. (1993)
+<em>Using Neural Nets for Interpretation of Nonlinear Models.</em>  
+Proceedings of the Statistical Computing Section, 244-249 
+San Francisco: American Statistical Society (eds). 
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="plot.nn.html">plot.nn</a></code> for plotting the neural network.
+</p>
+<p><code><a href="gwplot.html">gwplot</a></code> for plotting the generalized weights.
+</p>
+<p><code><a href="compute.html">compute</a></code> for computation of a given neural network for given covariate vectors.
+</p>
+<p><code><a href="confidence.interval.html">confidence.interval</a></code> for calculation of confidence intervals of the weights.
+</p>
+<p><code><a href="prediction.html">prediction</a></code> for a summary of the output of the neural network.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+AND &lt;- c(rep(0,7),1)
+OR &lt;- c(0,rep(1,7))
+binary.data &lt;- data.frame(expand.grid(c(0,1), c(0,1), c(0,1)), AND, OR)
+print(net &lt;- neuralnet(AND+OR~Var1+Var2+Var3,  binary.data, hidden=0, 
+             rep=10, err.fct="ce", linear.output=FALSE))
+
+data(infert, package="datasets")
+print(net.infert &lt;- neuralnet(case~parity+induced+spontaneous, infert, 
+                    err.fct="ce", linear.output=FALSE, likelihood=TRUE))
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>neuralnet</em> version 1.33 <a href="00Index.html">Index</a>]</div>
+</body></html>

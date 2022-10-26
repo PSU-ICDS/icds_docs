@@ -1,0 +1,163 @@
+LAMMPS (5 Jun 2019)
+  using 1 OpenMP thread(s) per MPI task
+# 2d LJ crack simulation
+
+dimension	2
+boundary	s s p
+
+atom_style	atomic
+neighbor	0.3 bin
+neigh_modify	delay 5
+
+# create geometry
+
+lattice		hex 0.93
+Lattice spacing in x,y,z = 1.11428 1.92998 1.11428
+region		box block 0 100 0 40 -0.25 0.25
+create_box	5 box
+Created orthogonal box = (0 0 -0.278569) to (111.428 77.1994 0.278569)
+  1 by 1 by 1 MPI processor grid
+create_atoms	1 box
+Created 8141 atoms
+  create_atoms CPU = 0.00128412 secs
+
+mass		1 1.0
+mass		2 1.0
+mass		3 1.0
+mass		4 1.0
+mass		5 1.0
+
+# LJ potentials
+
+pair_style	lj/cut 2.5
+pair_coeff	* * 1.0 1.0 2.5
+
+# define groups
+
+region	        1 block INF INF INF 1.25 INF INF
+group		lower region 1
+302 atoms in group lower
+region		2 block INF INF 38.75 INF INF INF
+group		upper region 2
+302 atoms in group upper
+group		boundary union lower upper
+604 atoms in group boundary
+group		mobile subtract all boundary
+7537 atoms in group mobile
+
+region		leftupper block INF 20 20 INF INF INF
+region		leftlower block INF 20 INF 20 INF INF
+group		leftupper region leftupper
+841 atoms in group leftupper
+group		leftlower region leftlower
+841 atoms in group leftlower
+
+set		group leftupper type 2
+  841 settings made for type
+set		group leftlower type 3
+  841 settings made for type
+set		group lower type 4
+  302 settings made for type
+set		group upper type 5
+  302 settings made for type
+
+# initial velocities
+
+compute	  	new mobile temp
+velocity	mobile create 0.01 887723 temp new
+velocity	upper set 0.0 0.3 0.0
+velocity	mobile ramp vy 0.0 0.3 y 1.25 38.75 sum yes
+
+# fixes
+
+fix		1 all nve
+fix		2 boundary setforce NULL 0.0 0.0
+
+# run
+
+timestep	0.003
+thermo		200
+#thermo_modify	temp new
+
+thermo_style custom step cpu tpcpu spcpu cpuremain
+
+
+
+neigh_modify	exclude type 2 3
+
+#dump		1 all atom 500 dump.crack
+
+#dump		2 all image 250 image.*.jpg type type #		zoom 1.6 adiam 1.5
+#dump_modify	2 pad 4
+
+#dump		3 all movie 250 movie.mpg type type #		zoom 1.6 adiam 1.5
+#dump_modify	3 pad 4
+
+run		5000
+Neighbor list info ...
+  update every 1 steps, delay 5 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 2.8
+  ghost atom cutoff = 2.8
+  binsize = 1.4, bins = 80 56 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/2d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.112 | 3.112 | 3.112 Mbytes
+Step CPU T/CPU S/CPU CPULeft 
+       0            0            0            0            0 
+     200    0.1955359    3.0684566    1022.8189    4.6929588 
+     400   0.39294291    3.0394205    1013.1402    4.5188791 
+     600   0.59009504     3.043324    1014.4413    4.3273846 
+     800   0.78745198    3.0401769    1013.3923    4.1341392 
+    1000   0.98506093    3.0363144    1012.0987    3.9402561 
+    1200    1.1822219    3.0431951    1014.3996    3.7437125 
+    1400    1.3841009     2.972077      990.697    3.5591222 
+    1600     1.581198    3.0441891    1014.7248    3.3600523 
+    1800    1.7799449    3.0189111    1006.3085    3.1643503 
+    2000     1.978224    3.0260405    1008.6802    2.9673389 
+    2200    2.1767471    3.0223192    1007.4397    2.7704078 
+    2400     2.375963     3.011808    1003.9312    2.5739632 
+    2600    2.5762551    2.9956247    998.54158    2.3780843 
+    2800     2.774853    3.0211799    1007.0648    2.1802431 
+    3000    2.9754751    2.9907119    996.89924    1.9836513 
+    3200     3.176975    2.9776684    992.55613    1.7870495 
+    3400     3.378926    2.9710033    990.33911    1.5900837 
+    3600     3.580374    2.9784367    992.81222    1.3923684 
+    3800    3.7824349    2.9694012    989.80041    1.1944538 
+    4000    3.9846539    2.9670801     989.0267   0.99616426 
+    4200     4.186965    2.9657304    988.57214   0.79751773 
+    4400    4.3882091    2.9814536    993.81788   0.59839254 
+    4600    4.5898831    2.9750987    991.70424   0.39912043 
+    4800     4.792043    2.9679479    989.31597   0.19966854 
+    5000    4.9959109    2.9430786    981.02162            0 
+Loop time of 4.99592 on 1 procs for 5000 steps with 8141 atoms
+
+Performance: 259411.522 tau/day, 1000.816 timesteps/s
+100.1% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 4.2613     | 4.2613     | 4.2613     |   0.0 | 85.30
+Neigh   | 0.18312    | 0.18312    | 0.18312    |   0.0 |  3.67
+Comm    | 0.0043015  | 0.0043015  | 0.0043015  |   0.0 |  0.09
+Output  | 0.0001955  | 0.0001955  | 0.0001955  |   0.0 |  0.00
+Modify  | 0.3655     | 0.3655     | 0.3655     |   0.0 |  7.32
+Other   |            | 0.1815     |            |       |  3.63
+
+Nlocal:    8141 ave 8141 max 8141 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    0 ave 0 max 0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    71389 ave 71389 max 71389 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 71389
+Ave neighs/atom = 8.76907
+Neighbor list builds = 100
+Dangerous builds = 0
+Total wall time: 0:00:05

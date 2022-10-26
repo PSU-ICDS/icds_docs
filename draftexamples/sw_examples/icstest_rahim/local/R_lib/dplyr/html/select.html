@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Select/rename variables by name</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for select {dplyr}"><tr><td>select {dplyr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Select/rename variables by name</h2>
+
+<h3>Description</h3>
+
+<p><code>select()</code> keeps only the variables you mention; <code>rename()</code>
+keeps all variables.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+select(.data, ...)
+
+rename(.data, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>.data</code></td>
+<td>
+<p>A tbl. All main verbs are S3 generics and provide methods
+for <code><a href="tbl_df.html">tbl_df()</a></code>, <code><a href="../../dtplyr/html/tbl_dt.html">dtplyr::tbl_dt()</a></code> and <code><a href="../../dbplyr/html/tbl_dbi.html">dbplyr::tbl_dbi()</a></code>.</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>One or more unquoted expressions separated by commas.
+You can treat variable names like they are positions.
+</p>
+<p>Positive values select variables; negative values to drop variables.
+If the first expression is negative, <code>select()</code> will automatically
+start with all variables.
+</p>
+<p>Use named arguments to rename selected variables.
+</p>
+<p>These arguments are automatically <a href="../../rlang/html/quo.html">quoted</a> and
+<a href="../../rlang/html/eval_tidy.html">evaluated</a> in a context where column names
+represent column positions. They support
+<a href="../../rlang/html/quasiquotation.html">unquoting</a> and splicing. See
+<code>vignette("programming")</code> for an introduction to these concepts.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>An object of the same class as <code>.data</code>.
+</p>
+
+
+<h3>Useful functions</h3>
+
+<p>As well as using existing functions like <code>:</code> and <code>c()</code>, there are
+a number of special functions that only work inside <code>select</code>
+</p>
+
+<ul>
+<li> <p><code><a href="select_helpers.html">starts_with()</a></code>, <code><a href="select_helpers.html">ends_with()</a></code>, <code><a href="select_helpers.html">contains()</a></code>
+</p>
+</li>
+<li> <p><code><a href="select_helpers.html">matches()</a></code>
+</p>
+</li>
+<li> <p><code><a href="select_helpers.html">num_range()</a></code>
+</p>
+</li></ul>
+
+<p>To drop variables, use <code>-</code>.
+</p>
+<p>Note that except for <code>:</code>, <code>-</code> and <code>c()</code>, all complex expressions
+are evaluated outside the data frame context. This is to prevent
+accidental matching of data frame variables when you refer to
+variables from the calling context.
+</p>
+
+
+<h3>Scoped selection and renaming</h3>
+
+<p>The three <a href="scoped.html">scoped</a> variants of <code>select()</code> (<code><a href="select_all.html">select_all()</a></code>,
+<code><a href="select_all.html">select_if()</a></code> and <code><a href="select_all.html">select_at()</a></code>) and the three variants of
+<code>rename()</code> (<code><a href="select_all.html">rename_all()</a></code>, <code><a href="select_all.html">rename_if()</a></code>, <code><a href="select_all.html">rename_at()</a></code>) make it
+easy to apply a renaming function to a selection of variables.
+</p>
+
+
+<h3>Tidy data</h3>
+
+<p>When applied to a data frame, row names are silently dropped. To preserve,
+convert to an explicit variable with <code><a href="../../tibble/html/rownames_to_column.html">tibble::rownames_to_column()</a></code>.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>Other single table verbs: <code><a href="arrange.html">arrange</a></code>,
+<code><a href="filter.html">filter</a></code>, <code><a href="mutate.html">mutate</a></code>,
+<code><a href="slice.html">slice</a></code>, <code><a href="summarise.html">summarise</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+iris &lt;- as_tibble(iris) # so it prints a little nicer
+select(iris, starts_with("Petal"))
+select(iris, ends_with("Width"))
+
+# Move Species variable to the front
+select(iris, Species, everything())
+
+df &lt;- as.data.frame(matrix(runif(100), nrow = 10))
+df &lt;- tbl_df(df[c(3, 4, 7, 1, 9, 8, 5, 2, 6, 10)])
+select(df, V4:V6)
+select(df, num_range("V", 4:6))
+
+# Drop variables with -
+select(iris, -starts_with("Petal"))
+
+
+# The .data pronoun is available:
+select(mtcars, .data$cyl)
+select(mtcars, .data$mpg : .data$disp)
+
+# However it isn't available within calls since those are evaluated
+# outside of the data context. This would fail if run:
+# select(mtcars, identical(.data$cyl))
+
+
+# Renaming -----------------------------------------
+# * select() keeps only the variables you specify
+select(iris, petal_length = Petal.Length)
+
+# * rename() keeps all variables
+rename(iris, petal_length = Petal.Length)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>dplyr</em> version 0.7.4 <a href="00Index.html">Index</a>]</div>
+</body></html>

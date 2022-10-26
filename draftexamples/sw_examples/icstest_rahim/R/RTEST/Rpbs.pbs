@@ -1,0 +1,16 @@
+#!/bin/bash -l
+#PBS -N scriptdl
+#PBS -l walltime=1:00:00
+#PBS -l nodes=5:ppn=20
+#PBS -W x='FLAGS:ADVRES:lctesting.2544737' 
+#PBS -A open
+#PBS -j oe
+
+
+cd $PBS_O_WORKDIR
+
+module load gcc
+module load openmpi
+
+
+Rscript nn.R

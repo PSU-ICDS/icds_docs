@@ -1,0 +1,1 @@
+ -e MPI_WORKDIR="/gpfs/scratch/jmp579/ansys_test/batch_job" -h comp-bc-0367 -np 4 /opt/aci/sw/ansys/2019R3/v195/ansys/bin/ansysdis195 -dis -mpi ibmmpi -b -i "apdl_jobinput_harmonic_acoustics.dat" -j "jobname" -o "joboutput"

@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Scales for shapes, aka glyphs</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for scale_shape {ggplot2}"><tr><td>scale_shape {ggplot2}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Scales for shapes, aka glyphs</h2>
+
+<h3>Description</h3>
+
+<p><code>scale_shape</code> maps discrete variables to six easily discernible shapes.
+If you have more than six levels, you will get a warning message, and the
+seventh and subsequence levels will not appear on the plot. Use
+<code><a href="scale_manual.html">scale_shape_manual</a></code> to supply your own values. You can not map
+a continuous variable to shape.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+scale_shape(..., solid = TRUE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>common discrete scale parameters: <code>name</code>, <code>breaks</code>,
+<code>labels</code>, <code>na.value</code>, <code>limits</code> and <code>guide</code>.  See
+<code><a href="discrete_scale.html">discrete_scale</a></code> for more details</p>
+</td></tr>
+<tr valign="top"><td><code>solid</code></td>
+<td>
+<p>Should the shapes be solid, <code>TRUE</code>, or hollow,
+<code>FALSE</code>?</p>
+</td></tr>
+</table>
+
+
+<h3>Examples</h3>
+
+<pre>
+dsmall &lt;- diamonds[sample(nrow(diamonds), 100), ]
+
+(d &lt;- ggplot(dsmall, aes(carat, price)) + geom_point(aes(shape = cut)))
+d + scale_shape(solid = TRUE) # the default
+d + scale_shape(solid = FALSE)
+d + scale_shape(name = "Cut of diamond")
+
+# To change order of levels, change order of
+# underlying factor
+levels(dsmall$cut) &lt;- c("Fair", "Good", "Very Good", "Premium", "Ideal")
+
+# Need to recreate plot to pick up new data
+ggplot(dsmall, aes(price, carat)) + geom_point(aes(shape = cut))
+
+# Show a list of available shapes
+df_shapes &lt;- data.frame(shape = 0:24)
+ggplot(df_shapes, aes(0, 0, shape = shape)) +
+  geom_point(aes(shape = shape), size = 5, fill = 'red') +
+  scale_shape_identity() +
+  facet_wrap(~shape) +
+  theme_void()
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>ggplot2</em> version 2.2.1 <a href="00Index.html">Index</a>]</div>
+</body></html>

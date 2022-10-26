@@ -1,0 +1,29 @@
+#PBS -l nodes=1:ppn=2
+#PBS -l walltime=1:00:00
+#PBS -l pmem=1gb
+#PBS -A open
+#PBS -j oe
+# Get started
+echo " "
+echo "Job started on `hostname` at `date`"
+echo " "
+
+# Load in module 
+module purge
+module load ansys
+echo "ansys is loaded"
+# Go to the correct place
+cd $PBS_O_WORKDIR
+echo "loaded to the pwd"
+# Run the job
+# For single-CPU jobs, uncomment the first command below, and comment
+# # the second one. For multi-CPU jobs, comment the first command below,
+# # and uncomment the second one.
+# ansys181 -b nolist -p AA_T_A -j ansys_demo \
+#         -i ansys_demo.inp -o ansys_demo.out
+ansys212 -b nolist -p AA_T_A -j ansys_demo -np 2 -i ansys_demo.inp -o ansys_demo.out
+
+# Finish up
+echo " "
+echo "Job Ended at `date`"
+echo " "

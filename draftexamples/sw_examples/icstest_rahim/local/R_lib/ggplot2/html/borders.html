@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Create a layer of map borders</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for borders {ggplot2}"><tr><td>borders {ggplot2}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Create a layer of map borders</h2>
+
+<h3>Description</h3>
+
+<p>This is a quick and dirty way to get map data (from the maps package)
+on to your plot. This is a good place to start if you need some crude
+reference lines, but you'll typically want something more sophisticated
+for communication graphics.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+borders(database = "world", regions = ".", fill = NA, colour = "grey50",
+  xlim = NULL, ylim = NULL, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>database</code></td>
+<td>
+<p>map data, see <code><a href="../../maps/html/map.html">map</a></code> for details</p>
+</td></tr>
+<tr valign="top"><td><code>regions</code></td>
+<td>
+<p>map region</p>
+</td></tr>
+<tr valign="top"><td><code>fill</code></td>
+<td>
+<p>fill colour</p>
+</td></tr>
+<tr valign="top"><td><code>colour</code></td>
+<td>
+<p>border colour</p>
+</td></tr>
+<tr valign="top"><td><code>xlim, ylim</code></td>
+<td>
+<p>latitudinal and logitudinal range for extracting map
+polygons, see <code><a href="../../maps/html/map.html">map</a></code> for details.</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>other arguments passed onto <code><a href="geom_polygon.html">geom_polygon</a></code></p>
+</td></tr>
+</table>
+
+
+<h3>Examples</h3>
+
+<pre>
+if (require("maps")) {
+
+ia &lt;- map_data("county", "iowa")
+mid_range &lt;- function(x) mean(range(x))
+seats &lt;- plyr::ddply(ia, "subregion", plyr::colwise(mid_range, c("lat", "long")))
+ggplot(ia, aes(long, lat)) +
+  geom_polygon(aes(group = group), fill = NA, colour = "grey60") +
+  geom_text(aes(label = subregion), data = seats, size = 2, angle = 45)
+
+data(us.cities)
+capitals &lt;- subset(us.cities, capital == 2)
+ggplot(capitals, aes(long, lat)) +
+  borders("state") +
+  geom_point(aes(size = pop)) +
+  scale_size_area() +
+  coord_quickmap()
+
+# Same map, with some world context
+ggplot(capitals, aes(long, lat)) +
+  borders("world", xlim = c(-130, -60), ylim = c(20, 50)) +
+  geom_point(aes(size = pop)) +
+  scale_size_area() +
+  coord_quickmap()
+}
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>ggplot2</em> version 2.2.1 <a href="00Index.html">Index</a>]</div>
+</body></html>

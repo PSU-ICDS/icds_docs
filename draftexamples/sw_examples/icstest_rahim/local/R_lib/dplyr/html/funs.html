@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Create a list of functions calls.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for funs {dplyr}"><tr><td>funs {dplyr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Create a list of functions calls.</h2>
+
+<h3>Description</h3>
+
+<p><code>funs()</code> provides a flexible way to generate a named list of
+functions for input to other functions like <code><a href="summarise_all.html">summarise_at()</a></code>.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+funs(..., .args = list())
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>A list of functions specified by:
+</p>
+
+<ul>
+<li><p> Their name, <code>"mean"</code>
+</p>
+</li>
+<li><p> The function itself, <code>mean</code>
+</p>
+</li>
+<li><p> A call to the function with <code>.</code> as a dummy argument,
+<code>mean(., na.rm = TRUE)</code>
+</p>
+</li></ul>
+
+<p>These arguments are automatically <a href="../../rlang/html/quo.html">quoted</a>. They
+support <a href="../../rlang/html/quasiquotation.html">unquoting</a> and splicing. See
+<code>vignette("programming")</code> for an introduction to these concepts.</p>
+</td></tr>
+<tr valign="top"><td><code>.args, args</code></td>
+<td>
+<p>A named list of additional arguments to be added
+to all function calls.</p>
+</td></tr>
+</table>
+
+
+<h3>Examples</h3>
+
+<pre>
+funs(mean, "mean", mean(., na.rm = TRUE))
+
+# Override default names
+funs(m1 = mean, m2 = "mean", m3 = mean(., na.rm = TRUE))
+
+# If you have function names in a vector, use funs_
+fs &lt;- c("min", "max")
+funs_(fs)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>dplyr</em> version 0.7.4 <a href="00Index.html">Index</a>]</div>
+</body></html>

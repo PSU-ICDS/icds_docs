@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Cast functions Cast a molten data frame into an array or data...</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for cast {reshape2}"><tr><td>cast {reshape2}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Cast functions
+Cast a molten data frame into an array or data frame.</h2>
+
+<h3>Description</h3>
+
+<p>Use <code>acast</code> or <code>dcast</code> depending on whether you want
+vector/matrix/array output or data frame output.  Data frames can have at
+most two dimensions.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+dcast(data, formula, fun.aggregate = NULL, ..., margins = NULL,
+  subset = NULL, fill = NULL, drop = TRUE,
+  value.var = guess_value(data))
+
+acast(data, formula, fun.aggregate = NULL, ..., margins = NULL,
+  subset = NULL, fill = NULL, drop = TRUE,
+  value.var = guess_value(data))
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>data</code></td>
+<td>
+<p>molten data frame, see <code><a href="melt.html">melt</a></code>.</p>
+</td></tr>
+<tr valign="top"><td><code>formula</code></td>
+<td>
+<p>casting formula, see details for specifics.</p>
+</td></tr>
+<tr valign="top"><td><code>fun.aggregate</code></td>
+<td>
+<p>aggregation function needed if variables do not
+identify a single observation for each output cell.  Defaults to length
+(with a message) if needed but not specified.</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>further arguments are passed to aggregating function</p>
+</td></tr>
+<tr valign="top"><td><code>margins</code></td>
+<td>
+<p>vector of variable names (can include &quot;grand\_col&quot; and
+&quot;grand\_row&quot;) to compute margins for, or TRUE to compute all margins .
+Any variables that can not be margined over will be silently dropped.</p>
+</td></tr>
+<tr valign="top"><td><code>subset</code></td>
+<td>
+<p>quoted expression used to subset data prior to reshaping,
+e.g. <code>subset = .(variable=="length")</code>.</p>
+</td></tr>
+<tr valign="top"><td><code>fill</code></td>
+<td>
+<p>value with which to fill in structural missings, defaults to
+value from applying <code>fun.aggregate</code> to 0 length vector</p>
+</td></tr>
+<tr valign="top"><td><code>drop</code></td>
+<td>
+<p>should missing combinations dropped or kept?</p>
+</td></tr>
+<tr valign="top"><td><code>value.var</code></td>
+<td>
+<p>name of column which stores values, see
+<code><a href="guess_value.html">guess_value</a></code> for default strategies to figure this out.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>The cast formula has the following format:
+<code>x_variable + x_2 ~ y_variable + y_2 ~ z_variable ~  ... </code>
+The order of the variables makes a difference.  The first varies slowest,
+and the last fastest.  There are a couple of special variables: &quot;...&quot;
+represents all other variables not used in the formula and &quot;.&quot; represents
+no variable, so you can do <code>formula = var1 ~ .</code>.
+</p>
+<p>Alternatively, you can supply a list of quoted expressions, in the form
+<code>list(.(x_variable, x_2), .(y_variable, y_2), .(z))</code>.  The advantage
+of this form is that you can cast based on transformations of the
+variables: <code>list(.(a + b), (c = round(c)))</code>.  See the documentation
+for <code><a href="../../plyr/html/..html">.</a></code> for more details and alternative formats.
+</p>
+<p>If the combination of variables you supply does not uniquely identify one
+row in the original data set, you will need to supply an aggregating
+function, <code>fun.aggregate</code>. This function should take a vector of
+numbers and return a single summary statistic.
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="melt.html">melt</a></code>,  <a href="http://had.co.nz/reshape/">http://had.co.nz/reshape/</a>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+#Air quality example
+names(airquality) &lt;- tolower(names(airquality))
+aqm &lt;- melt(airquality, id=c("month", "day"), na.rm=TRUE)
+
+acast(aqm, day ~ month ~ variable)
+acast(aqm, month ~ variable, mean)
+acast(aqm, month ~ variable, mean, margins = TRUE)
+dcast(aqm, month ~ variable, mean, margins = c("month", "variable"))
+
+library(plyr) # needed to access . function
+acast(aqm, variable ~ month, mean, subset = .(variable == "ozone"))
+acast(aqm, variable ~ month, mean, subset = .(month == 5))
+
+#Chick weight example
+names(ChickWeight) &lt;- tolower(names(ChickWeight))
+chick_m &lt;- melt(ChickWeight, id=2:4, na.rm=TRUE)
+
+dcast(chick_m, time ~ variable, mean) # average effect of time
+dcast(chick_m, diet ~ variable, mean) # average effect of diet
+acast(chick_m, diet ~ time, mean) # average effect of diet &amp; time
+
+# How many chicks at each time? - checking for balance
+acast(chick_m, time ~ diet, length)
+acast(chick_m, chick ~ time, mean)
+acast(chick_m, chick ~ time, mean, subset = .(time &lt; 10 &amp; chick &lt; 20))
+
+acast(chick_m, time ~ diet, length)
+
+dcast(chick_m, diet + chick ~ time)
+acast(chick_m, diet + chick ~ time)
+acast(chick_m, chick ~ time ~ diet)
+acast(chick_m, diet + chick ~ time, length, margins="diet")
+acast(chick_m, diet + chick ~ time, length, drop = FALSE)
+
+#Tips example
+dcast(melt(tips), sex ~ smoker, mean, subset = .(variable == "total_bill"))
+
+ff_d &lt;- melt(french_fries, id=1:4, na.rm=TRUE)
+acast(ff_d, subject ~ time, length)
+acast(ff_d, subject ~ time, length, fill=0)
+dcast(ff_d, treatment ~ variable, mean, margins = TRUE)
+dcast(ff_d, treatment + subject ~ variable, mean, margins="treatment")
+if (require("lattice")) {
+ lattice::xyplot(`1` ~ `2` | variable, dcast(ff_d, ... ~ rep), aspect="iso")
+}
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>reshape2</em> version 1.4.3 <a href="00Index.html">Index</a>]</div>
+</body></html>

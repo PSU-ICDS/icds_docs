@@ -1,0 +1,617 @@
+1
+
+   Abaqus 3DEXPERIENCE R2017x                                  Date 26-Oct-2018   Time 13:19:50
+   For use by PENNSYLVANIA STATE UNIVERSITY under license from Dassault Systemes or its subsidiary.
+
+
+
+                         The Abaqus Software is a product of:
+
+                           Dassault Systemes SIMULIA Corp.
+                           1301 Atwood Avenue, Suite 101W
+                              Johnston, RI 02919, USA
+ 
+
+
+                   The Abaqus Software is available only under license
+                   from Dassault Systemes or its subsidiary and may be
+                   used or reproduced only in accordance with the terms
+                   of such license.
+ 
+                          On machine comp-ic-0014.aci.ics.psu.edu 
+                          you are authorized to run
+                          Abaqus/Foundation until 28-Feb-2019
+
+                          Your site id is: SIT00008280 
+
+
+ 
+                    For assistance or any other information you may
+                    obtain contact information for your local office
+                    from the world wide web at:
+
+                      http://www.3ds.com/products/simulia/locations/
+
+ 
+                * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+                *                                                         * 
+                *                   *****************                     * 
+                *                   *  N O T I C E  *                     * 
+                *                   *****************                     * 
+                *                                                         * 
+                *                                                         * 
+                *               Abaqus 3DEXPERIENCE R2017x                * 
+                *                                                         * 
+                *          BUILD ID: 2016_09_27-17.54.59 126836           * 
+                *                                                         * 
+                *                                                         * 
+                *  Please make sure you are using                         * 
+                *  release 3DEXPERIENCE R2017x manuals                    * 
+                *  plus the notes accompanying this release.              * 
+                *                                                         * 
+                *                                                         * 
+                *                                                         * 
+                *                                                         * 
+                *                                                         * 
+                *   This program may not be used for commercial purposes  * 
+                *           without payment of a commercial fee.          * 
+                *                                                         * 
+                * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+
+
+ 
+
+
+
+     PROCESSING PART, INSTANCE, AND ASSEMBLY INFORMATION
+   *******************************************************
+
+
+     END PROCESSING PART, INSTANCE, AND ASSEMBLY INFORMATION
+   ***********************************************************
+
+1
+
+   Abaqus 3DEXPERIENCE R2017x                                  Date 26-Oct-2018   Time 13:19:50
+   For use by PENNSYLVANIA STATE UNIVERSITY under license from Dassault Systemes or its subsidiary.
+
+                                                                                     
+
+                                             A B A Q U S   I N P U T   E C H O
+
+
+                    *HEADING
+                    Two-dimensional overhead hoist frame    
+                    SI Units
+                    1-axis horizontal, 2-axis vertical      
+     LINE     5     *PREPRINT, ECHO=YES, MODEL=YES, HISTORY=YES     
+                    **      
+                    ** Model definition     
+                    **      
+                    *NODE   
+     LINE    10     101, 0., 0., 0. 
+                    102, 1., 0., 0. 
+                    103, 2., 0., 0. 
+                    104, 0.5, 0.866, 0.     
+                    105, 1.5, 0.866, 0.     
+     LINE    15     *ELEMENT, TYPE=T2D2, ELSET=FRAME
+                    11, 101,102     
+                    12, 102,103     
+                    13, 101,104     
+                    14, 102,104     
+     LINE    20     15, 102,105     
+                    16, 103,105     
+                    17, 104,105     
+                    *SOLID SECTION, ELSET=FRAME, MATERIAL=STEEL     
+                    1.963E-5,       
+     LINE    25     *MATERIAL, NAME=STEEL   
+                    *ELASTIC
+                    200.E9, 0.3     
+                    **      
+                    ** History data 
+     LINE    30     **      
+                    *STEP, PERTURBATION     
+                    10kN central load       
+                    *STATIC 
+                    *BOUNDARY       
+     LINE    35     101, ENCASTRE   
+                    103, 2  
+                    *CLOAD  
+                    102, 2, -10.E3  
+                    *NODE PRINT     
+     LINE    40     U,      
+                    RF,     
+                    *EL PRINT       
+                    S,      
+                    **********************************      
+     LINE    45     ** OUTPUT FOR ABAQUS QA PURPOSES
+                    **********************************      
+                    *EL FILE
+                    S,      
+                    *NODE FILE      
+     LINE    50     U, RF   
+                    *END STEP       
+                    --------------------------------------------------------------------------------
+                        5   10   15   20   25   30   35   40   45   50   55   60   65   70   75   80
+                    --------------------------------------------------------------------------------
+
+
+
+     OPTIONS BEING PROCESSED
+   ***************************
+
+
+  *HEADING
+          Two-dimensional overhead hoist frame                                                                                                                                                                                                                            
+  *NODE
+  *ELEMENT, TYPE=T2D2, ELSET=FRAME
+  *MATERIAL, NAME=STEEL
+  *ELASTIC
+  *SOLID SECTION, ELSET=FRAME, MATERIAL=STEEL
+  *SOLID SECTION, ELSET=FRAME, MATERIAL=STEEL
+
+ ***WARNING: FOR TWO-DIMENSIONAL MODELS, IF A NON-UNITY THICKNESS IS SPECIFIED 
+             FOR TWO-DIMENSIONAL SOLID ELEMENTS AND THESE ELEMENTS ARE INVOLVED 
+             IN AN INTERACTION SUCH AS CONTACT, THE SAME THICKNESS SHOULD BE 
+             SPECIFIED FOR THE OUT-OF-PLANE THICKNESS OF THE CORRESPONDING 
+             SURFACE UNDER *SURFACE INTERACTION.
+  *BOUNDARY
+  *BOUNDARY
+  *STEP, PERTURBATION
+  *STEP, PERTURBATION
+  *STEP, PERTURBATION
+  10kN central load                                                               
+  *STATIC
+  *BOUNDARY
+  *NODE PRINT
+  *EL PRINT
+  *EL FILE
+  *NODE FILE
+  *END STEP
+  *STEP, PERTURBATION
+  *STATIC
+  *BOUNDARY
+  *CLOAD
+  *END STEP
+1
+
+   Abaqus 3DEXPERIENCE R2017x                                  Date 26-Oct-2018   Time 13:19:50
+   For use by PENNSYLVANIA STATE UNIVERSITY under license from Dassault Systemes or its subsidiary.
+
+     Two-dimensional overhead hoist frame                                            
+
+
+                              E L E M E N T   D E F I N I T I O N S
+
+       NUMBER   TYPE    PROPERTY    NODES FORMING ELEMENT
+                        REFERENCE
+
+         11   T2D2          1        101       102
+         12   T2D2          1        102       103
+         13   T2D2          1        101       104
+         14   T2D2          1        102       104
+         15   T2D2          1        102       105
+         16   T2D2          1        103       105
+         17   T2D2          1        104       105
+
+
+
+
+
+                                S O L I D   S E C T I O N (S)
+
+
+
+
+  PROPERTY NUMBER         1
+
+     MATERIAL NAME                     STEEL                                                                           
+     ATTRIBUTES                         1.96300E-05   0.0000       0.0000    
+
+     HOURGLASS CONTROL STIFFNESS    3.84615E+08
+
+     (USED WITH LOWER ORDER REDUCED INTEGRATED SOLID ELEMENTS LIKE CPS4R,CPE4RH,C3D8R)
+
+
+
+
+
+                         P H Y S I C A L   C O N S T A N T S
+
+
+
+
+
+
+                         M A T E R I A L   D E S C R I P T I O N
+
+
+
+
+  MATERIAL NAME: STEEL                                                                           
+
+
+     ELASTIC         YOUNG'S    POISSON'S
+                     MODULUS      RATIO
+
+                    2.00000E+11 0.30000    
+
+
+
+
+
+                                 E L E M E N T   S E T S
+
+
+  SET    FRAME                                                                           
+  MEMBERS                   11        12        13        14        15        16        17
+
+
+
+
+
+                                 N O D E   D E F I N I T I O N S
+
+       NODE           COORDINATES                       SINGLE POINT CONSTRAINTS 
+      NUMBER                                              TYPE    PLUS    DOF
+
+        101     0.0000       0.0000       0.0000       ENCASTRE                                                        
+        102     1.0000       0.0000       0.0000                                                                       
+        103     2.0000       0.0000       0.0000                    2                                                  
+        104    0.50000      0.86600       0.0000                                                                       
+        105     1.5000      0.86600       0.0000                                                                       
+1
+
+   Abaqus 3DEXPERIENCE R2017x                                  Date 26-Oct-2018   Time 13:19:50
+   For use by PENNSYLVANIA STATE UNIVERSITY under license from Dassault Systemes or its subsidiary.
+
+     Two-dimensional overhead hoist frame                                            
+
+
+                        S T E P       1     S T A T I C   A N A L Y S I S
+
+
+          10kN central load                                                               
+
+          FIXED TIME INCREMENTS
+          TIME INCREMENT IS                                    2.220E-16
+          TIME PERIOD IS                                       2.220E-16
+     GLOBAL STABILIZATION CONTROL IS NOT USED
+
+     THIS IS A LINEAR PERTURBATION STEP.
+     ALL LOADS ARE DEFINED AS CHANGE IN LOAD TO THE REFERENCE STATE
+
+     EXTRAPOLATION WILL NOT BE USED
+
+     CHARACTERISTIC ELEMENT LENGTH      1.00    
+
+     DETAILS REGARDING ACTUAL SOLUTION WAVEFRONT REQUESTED
+
+     DETAILED OUTPUT OF DIAGNOSTICS TO DATABASE REQUESTED
+
+     PRINT OF INCREMENT NUMBER, TIME, ETC., TO THE MESSAGE FILE EVERY     1  INCREMENTS
+
+
+
+                              D A T A B A S E   O U T P U T   G R O U P       1
+
+
+  THE FOLLOWING  FIELD   OUTPUT WILL BE WRITTEN EVERY        1 INCREMENT(S)
+
+
+
+   THE FOLLOWING OUTPUT WILL BE WRITTEN FOR ALL ELEMENTS OF TYPE T2D2.  OUTPUT IS AT THE 
+   INTEGRATION POINTS.
+
+          S           E           
+
+
+
+   THE FOLLOWING OUTPUT WILL BE WRITTEN FOR ALL NODES
+
+
+            U         RF        CF      
+
+
+
+  END OF DATABASE OUTPUT GROUP    1
+
+
+
+
+                              D A T A B A S E   O U T P U T   G R O U P       2
+
+
+  THE FOLLOWING HISTORY  OUTPUT WILL BE WRITTEN EVERY        1 INCREMENT(S)
+
+
+
+   THE FOLLOWING ENERGY OUTPUT QUANTITIES WILL BE WRITTEN FOR THE WHOLE MODEL
+
+          ALLKE       ALLSE       ALLWK       ALLPD       ALLCD       ALLVD       ALLKL       ALLAE       ALLQB       
+
+          ALLEE       ALLIE       ETOTAL      ALLFD       ALLJD       ALLSD       ALLDMD      
+
+          ALLCCDW     ALLCCE      ALLCCEN     ALLCCET     ALLCCSD     ALLCCSDN    ALLCCSDT    ALLDTI      
+
+  END OF DATABASE OUTPUT GROUP    2
+
+
+
+
+
+                                    E L E M E N T   P R I N T
+
+
+
+
+   THE FOLLOWING TABLE IS PRINTED AT EVERY 1 INCREMENT FOR ALL ELEMENTS OF TYPE T2D2.  OUTPUT IS AT 
+   THE INTEGRATION POINTS.
+
+     SUMMARIES WILL BE PRINTED WHERE APPLICABLE
+
+          TABLE     1S11         
+
+
+
+
+                                 E L E M E N T   F I L E   O U T P U T
+
+
+
+
+   THE FOLLOWING TABLE IS OUTPUT AT EVERY 1 INCREMENT FOR ALL ELEMENTS OF TYPE T2D2.  OUTPUT IS AT 
+   THE INTEGRATION POINTS.
+
+          S           
+
+
+
+
+                                       N O D E   P R I N T
+
+
+
+
+   THE FOLLOWING TABLE IS PRINTED FOR ALL NODES AT EVERY 1 INCREMENT
+
+     SUMMARIES WILL BE PRINTED
+
+          TABLE  1  U1        U2      
+
+
+
+   THE FOLLOWING TABLE IS PRINTED FOR ALL NODES AT EVERY 1 INCREMENT
+
+     SUMMARIES WILL BE PRINTED
+
+          TABLE  2  RF1       RF2     
+
+
+
+
+                                 N O D E   F I L E   O U T P U T
+
+
+
+
+   THE FOLLOWING TABLE IS OUTPUT FOR ALL NODES AT EVERY 1 INCREMENT
+
+                    U         RF      
+
+
+
+
+                              B O U N D A R Y   C O N D I T I O N S
+
+
+      NODE      DOF     AMP.    MAGNITUDE                 NODE      DOF     AMP.    MAGNITUDE
+                        REF.                                                REF.
+
+         103    2     (RAMP)     0.0000               
+
+     - (RAMP) OR (STEP) - INDICATE USE OF DEFAULT AMPLITUDES ASSOCIATED WITH THE STEP
+
+
+
+
+                              B O U N D A R Y   C O N D I T I O N S
+
+
+         NODE     TYPE             NODE     TYPE             NODE     TYPE             NODE     TYPE             NODE     TYPE  
+
+           101   ENCASTRE   
+
+
+
+
+                               C O N C E N T R A T E D   L O A D S
+
+            NODE   DOF     AMP.    AMPLITUDE            NODE   DOF     AMP.    AMPLITUDE            NODE   DOF     AMP.    AMPLITUDE
+                           REF.                                        REF.                                        REF.
+
+             102     2             -10000.      
+
+
+
+
+                      C O N S T R A I N T    C H E C K S
+
+            PERFORM CONSTRAINT CHECKS:                        YES
+            AUTOMATIC MODEL CHANGES:                          YES
+            CONSTRAINT CHECKS FREQUENCY:                             1
+            TERMINATE ANALYSIS IF OVERCONSTRAINTS ARE FOUND:  NO             
+
+
+
+                            P R O B L E M   S I Z E
+
+
+          NUMBER OF ELEMENTS IS                                     7
+          NUMBER OF NODES IS                                        5
+          NUMBER OF NODES DEFINED BY THE USER                       5
+          TOTAL NUMBER OF VARIABLES IN THE MODEL                   10
+          (DEGREES OF FREEDOM PLUS MAX NO. OF ANY LAGRANGE MULTIPLIER
+           VARIABLES. INCLUDE *PRINT,SOLVE=YES TO GET THE ACTUAL NUMBER.)
+
+
+
+                              END OF USER INPUT PROCESSING
+
+
+
+     JOB TIME SUMMARY
+       USER TIME (SEC)      =  0.11000    
+       SYSTEM TIME (SEC)    =  5.00000E-02
+       TOTAL CPU TIME (SEC) =  0.16000    
+       WALLCLOCK TIME (SEC) =          0
+1
+
+   Abaqus 3DEXPERIENCE R2017x                                  Date 26-Oct-2018   Time 13:19:51
+   For use by PENNSYLVANIA STATE UNIVERSITY under license from Dassault Systemes or its subsidiary.
+
+     Two-dimensional overhead hoist frame                                                      STEP    1  INCREMENT    1
+     10kN central load                                                                    TIME COMPLETED IN THIS STEP   0.00    
+
+
+                        S T E P       1     S T A T I C   A N A L Y S I S
+
+
+          10kN central load                                                               
+
+          FIXED TIME INCREMENTS
+          TIME INCREMENT IS                                    2.220E-16
+          TIME PERIOD IS                                       2.220E-16
+
+     LINEAR EQUATION SOLVER TYPE         DIRECT SPARSE
+
+     THIS IS A LINEAR PERTURBATION STEP.
+     ALL LOADS ARE DEFINED AS CHANGE IN LOAD TO THE REFERENCE STATE
+  
+                   M E M O R Y   E S T I M A T E
+  
+ PROCESS      FLOATING PT       MINIMUM MEMORY        MEMORY TO
+              OPERATIONS           REQUIRED          MINIMIZE I/O
+             PER ITERATION           (MB)               (MB)
+  
+     1          2.65E+02               13                 20
+  
+ NOTE:
+      (1) SINCE ABAQUS DOES NOT PRE-ALLOCATE MEMORY AND ONLY ALLOCATES MEMORY AS NEEDED DURING THE ANALYSIS,
+          THE MEMORY REQUIREMENT PRINTED HERE CAN ONLY BE VIEWED AS A GENERAL GUIDELINE BASED ON THE BEST
+          KNOWLEDGE AVAILABLE AT THE BEGINNING OF A STEP BEFORE THE SOLUTION PROCESS HAS BEGUN.
+      (2) THE ESTIMATE IS NORMALLY UPDATED AT THE BEGINNING OF EVERY STEP. IT IS THE MAXIMUM VALUE OF THE
+          ESTIMATE FROM THE CURRENT STEP TO THE LAST STEP OF THE ANALYSIS, WITH UNSYMMETRIC SOLUTION TAKEN
+          INTO ACCOUNT IF APPLICABLE. 
+      (3) SINCE THE ESTIMATE IS BASED ON THE ACTIVE DEGREES OF FREEDOM IN THE FIRST ITERATION OF THE 
+          CURRENT STEP, THE MEMORY ESTIMATE MIGHT BE SIGNIFICANTLY DIFFERENT THAN ACTUAL USAGE FOR 
+          PROBLEMS WITH SUBSTANTIAL CHANGES IN ACTIVE DEGREES OF FREEDOM BETWEEN STEPS (OR EVEN WITHIN
+          THE SAME STEP). EXAMPLES ARE: PROBLEMS WITH SIGNIFICANT CONTACT CHANGES, PROBLEMS WITH MODEL
+          CHANGE, PROBLEMS WITH BOTH STATIC STEP AND STEADY STATE DYNAMIC PROCEDURES WHERE ACOUSTIC 
+          ELEMENTS WILL ONLY BE ACTIVATED IN THE STEADY STATE DYNAMIC STEPS.
+      (4) FOR MULTI-PROCESS EXECUTION, THE ESTIMATED VALUE OF FLOATING POINT OPERATIONS FOR EACH PROCESS
+          IS BASED ON AN INITIAL SCHEDULING OF OPERATIONS AND MIGHT NOT REFLECT THE ACTUAL FLOATING 
+          POINT OPERATIONS COMPLETED ON EACH PROCESS. OPERATIONS ARE DYNAMICALLY BALANCED DURING EXECUTION, 
+          SO THE ACTUAL BALANCE OF OPERATIONS BETWEEN PROCESSES IS EXPECTED TO BE BETTER THAN THE ESTIMATE
+          PRINTED HERE.
+      (5) THE UPPER LIMIT OF MEMORY THAT CAN BE ALLOCATED BY ABAQUS WILL IN GENERAL DEPEND ON THE VALUE OF
+          THE "MEMORY" PARAMETER AND THE AMOUNT OF PHYSICAL MEMORY AVAILABLE ON THE MACHINE. PLEASE SEE
+          THE "ABAQUS ANALYSIS USER'S MANUAL" FOR MORE DETAILS. THE ACTUAL USAGE OF MEMORY AND OF DISK
+          SPACE FOR SCRATCH DATA WILL DEPEND ON THIS UPPER LIMIT AS WELL AS THE MEMORY REQUIRED TO MINIMIZE
+          I/O. IF THE MEMORY UPPER LIMIT IS GREATER THAN THE MEMORY REQUIRED TO MINIMIZE I/O, THEN THE ACTUAL
+          MEMORY USAGE WILL BE CLOSE TO THE ESTIMATED "MEMORY TO MINIMIZE I/O" VALUE, AND THE SCRATCH DISK
+          USAGE WILL BE CLOSE-TO-ZERO; OTHERWISE, THE ACTUAL MEMORY USED WILL BE CLOSE TO THE PREVIOUSLY
+          MENTIONED MEMORY LIMIT, AND THE SCRATCH DISK USAGE WILL BE ROUGHLY PROPORTIONAL TO THE DIFFERENCE
+          BETWEEN THE ESTIMATED "MEMORY TO MINIMIZE I/O" AND THE MEMORY UPPER LIMIT. HOWEVER ACCURATE
+          ESTIMATE OF THE SCRATCH DISK SPACE IS NOT POSSIBLE.
+      (6) USING "*RESTART, WRITE" CAN GENERATE A LARGE AMOUNT OF DATA WRITTEN IN THE WORK DIRECTORY.
+
+
+                                INCREMENT     1 SUMMARY
+
+
+ TIME INCREMENT COMPLETED  2.220E-16,  FRACTION OF STEP COMPLETED   1.00    
+ STEP TIME COMPLETED       2.220E-16,  TOTAL TIME COMPLETED         0.00    
+
+
+
+                                                  E L E M E N T   O U T P U T
+
+
+
+
+
+   THE FOLLOWING TABLE IS PRINTED FOR ALL ELEMENTS WITH TYPE T2D2 AT THE INTEGRATION POINTS
+
+    ELEMENT  PT FOOT-       S11         
+                NOTE 
+
+          11   1         1.4706E+08
+          12   1         1.4706E+08
+          13   1        -2.9412E+08
+          14   1         2.9412E+08
+          15   1         2.9412E+08
+          16   1        -2.9412E+08
+          17   1        -2.9412E+08
+
+ MAXIMUM                2.9412E+08                                                                                                
+ ELEMENT                    14                                                                                                 
+
+ MINIMUM               -2.9412E+08                                                                                                
+ ELEMENT                    17                                                                                                 
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR ALL NODES
+  
+       NODE FOOT-  U1             U2           
+            NOTE
+  
+       102      7.3531228E-04 -4.6697730E-03 
+       103      1.4706246E-03  0.0000000E+00 
+       104      1.4706246E-03 -2.5471591E-03 
+       105      0.0000000E+00 -2.5471591E-03 
+
+ MAXIMUM         1.4706E-03   0.000    
+ AT NODE               103         101
+
+ MINIMUM          0.000     -4.6698E-03
+ AT NODE               101         102
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR ALL NODES
+  
+       NODE FOOT-  RF1            RF2          
+            NOTE
+  
+       101     -9.0949470E-13  5.0000000E+03 
+       103      0.0000000E+00  5.0000000E+03 
+
+ MAXIMUM          0.000       5000.    
+ AT NODE               102         103
+
+ MINIMUM        -9.0949E-13   0.000    
+ AT NODE               101         102
+
+
+          THE ANALYSIS HAS BEEN COMPLETED
+
+
+
+                              ANALYSIS COMPLETE
+                              WITH      1 WARNING MESSAGES ON THE DAT FILE
+
+
+
+     JOB TIME SUMMARY
+       USER TIME (SEC)      =  0.21000    
+       SYSTEM TIME (SEC)    =  0.22000    
+       TOTAL CPU TIME (SEC) =  0.43000    
+       WALLCLOCK TIME (SEC) =          1

@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Construct aesthetic mappings</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for aes {ggplot2}"><tr><td>aes {ggplot2}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Construct aesthetic mappings</h2>
+
+<h3>Description</h3>
+
+<p>Aesthetic mappings describe how variables in the data are mapped to visual
+properties (aesthetics) of geoms. Aesthetic mappings can be set in
+<code><a href="ggplot2-package.html">ggplot2</a></code> and in individual layers.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+aes(x, y, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x, y, ...</code></td>
+<td>
+<p>List of name value pairs giving aesthetics to map to
+variables. The names for x and y aesthetics are typically omitted because
+they are so common; all other aesthetics must be named.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>This function also standardise aesthetic names by performing partial
+matching, converting color to colour, and translating old style R names to
+ggplot names (eg. pch to shape, cex to size)
+</p>
+
+
+<h3>See Also</h3>
+
+<p>See <code><a href="aes_.html">aes_</a></code> for a version of <code>aes</code> that is
+more suitable for programming with.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+aes(x = mpg, y = wt)
+aes(mpg, wt)
+
+# You can also map aesthetics to functions of variables
+aes(x = mpg ^ 2, y = wt / cyl)
+
+# Aesthetic names are automatically standardised
+aes(col = x)
+aes(fg = x)
+aes(color = x)
+aes(colour = x)
+
+# aes is almost always used with ggplot() or a layer
+ggplot(mpg, aes(displ, hwy)) + geom_point()
+ggplot(mpg) + geom_point(aes(displ, hwy))
+
+# Aesthetics supplied to ggplot() are used as defaults for every layer
+# you can override them, or supply different aesthetics for each layer
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>ggplot2</em> version 2.2.1 <a href="00Index.html">Index</a>]</div>
+</body></html>

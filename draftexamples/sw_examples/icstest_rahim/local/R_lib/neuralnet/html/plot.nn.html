@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Plot method for neural networks</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for plot.nn {neuralnet}"><tr><td>plot.nn {neuralnet}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>  Plot method for neural networks  </h2>
+
+<h3>Description</h3>
+
+<p><code>plot.nn</code>, a method for the <code>plot</code> generic. It is designed
+for an inspection of the weights for objects of class <code>nn</code>, typically produced by <code>neuralnet</code>. 
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+    ## S3 method for class 'nn'
+plot(x, rep = NULL, x.entry = NULL, x.out = NULL,
+        radius = 0.15, arrow.length = 0.2, intercept = TRUE, 
+        intercept.factor = 0.4, information = TRUE,
+        information.pos = 0.1, col.entry.synapse = "black",
+        col.entry = "black", col.hidden = "black",
+        col.hidden.synapse = "black", col.out = "black",
+        col.out.synapse = "black", col.intercept = "blue",
+        fontsize = 12, dimension = 6, show.weights = TRUE,
+        file = NULL, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p> an object of class <code>nn</code> </p>
+</td></tr>
+<tr valign="top"><td><code>rep</code></td>
+<td>
+<p> repetition of the neural network. If rep=&quot;best&quot;, the repetition with the smallest error will be plotted. If not stated all repetitions will be plotted, each in a separate window. </p>
+</td></tr>
+<tr valign="top"><td><code>x.entry</code></td>
+<td>
+<p> x-coordinate of the entry layer. Depends on the arrow.length in default. </p>
+</td></tr>
+<tr valign="top"><td><code>x.out</code></td>
+<td>
+<p> x-coordinate of the output layer. </p>
+</td></tr>
+<tr valign="top"><td><code>radius</code></td>
+<td>
+<p> radius of the neurons. </p>
+</td></tr>
+<tr valign="top"><td><code>arrow.length</code></td>
+<td>
+<p> length of the entry and out arrows. </p>
+</td></tr>
+<tr valign="top"><td><code>intercept</code></td>
+<td>
+<p> a logical value indicating whether to plot the intercept. </p>
+</td></tr>
+<tr valign="top"><td><code>intercept.factor</code></td>
+<td>
+<p> x-position factor of the intercept. The closer the factor is to 0, the closer the intercept is to its left neuron. </p>
+</td></tr>
+<tr valign="top"><td><code>information</code></td>
+<td>
+<p> a logical value indicating whether to add the error and steps to the plot. </p>
+</td></tr>
+<tr valign="top"><td><code>information.pos</code></td>
+<td>
+<p> y-position of the information. </p>
+</td></tr>
+<tr valign="top"><td><code>col.entry.synapse</code></td>
+<td>
+<p> color of the synapses leading to the input neurons. </p>
+</td></tr>
+<tr valign="top"><td><code>col.entry</code></td>
+<td>
+<p>  color of the input neurons. </p>
+</td></tr>
+<tr valign="top"><td><code>col.hidden</code></td>
+<td>
+<p>  color of the neurons in the hidden layer. </p>
+</td></tr>
+<tr valign="top"><td><code>col.hidden.synapse</code></td>
+<td>
+<p> color of the weighted synapses. </p>
+</td></tr>
+<tr valign="top"><td><code>col.out</code></td>
+<td>
+<p> color of the output neurons. </p>
+</td></tr>
+<tr valign="top"><td><code>col.out.synapse</code></td>
+<td>
+<p> color of the synapses leading away from the output neurons. </p>
+</td></tr>
+<tr valign="top"><td><code>col.intercept</code></td>
+<td>
+<p> color of the intercept. </p>
+</td></tr>
+<tr valign="top"><td><code>fontsize</code></td>
+<td>
+<p> fontsize of the text. </p>
+</td></tr>
+<tr valign="top"><td><code>dimension</code></td>
+<td>
+<p> size of the plot in inches. </p>
+</td></tr>
+<tr valign="top"><td><code>show.weights</code></td>
+<td>
+<p> a logical value indicating whether to print the calculated weights above the synapses. </p>
+</td></tr>
+<tr valign="top"><td><code>file</code></td>
+<td>
+<p> a character string naming the plot to write to. If not stated, the plot will not be saved. </p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p> arguments to be passed to methods, such as graphical parameters (see <code><a href="../../graphics/html/par.html">par</a></code>). </p>
+</td></tr>
+</table>
+
+
+<h3>Author(s)</h3>
+
+<p> Stefan Fritsch, Frauke Guenther <a href="mailto:guenther@leibniz-bips.de">guenther@leibniz-bips.de</a> </p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="neuralnet.html">neuralnet</a></code></p>
+
+
+<h3>Examples</h3>
+
+<pre>
+XOR &lt;- c(0,1,1,0)
+xor.data &lt;- data.frame(expand.grid(c(0,1), c(0,1)), XOR)
+print(net.xor &lt;- neuralnet( XOR~Var1+Var2, xor.data, hidden=2, rep=5))
+plot(net.xor, rep="best")
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>neuralnet</em> version 1.33 <a href="00Index.html">Index</a>]</div>
+</body></html>

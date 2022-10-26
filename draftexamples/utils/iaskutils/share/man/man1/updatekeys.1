@@ -1,0 +1,67 @@
+.TH updatekeys 1 "26 April 2021" "2.0" "updatekeys man page"
+.SH NAME
+updatekeys \- create a new ssh-key that will allow you to log onto the compute nodes without entering a password.
+
+.SH SYNOPSIS
+updatekeys [-h] [-y] [-V] [--license]
+
+.SH DESCRIPTION
+updatekeys is a high\-level script that creates a new ssh\-key in your ~/.ssh directory on Linux that does not require the use of a password. This script is commonly used to address issues that researchers have when trying to parallelize their jobs on HPC clusters (ssh issues are commonly generated in Mathematica, Matlab, and COMSOL when trying to run simulations across multiple nodes). After executing this script, you will be able to access any node on the Roar cluster without requiring the use of a password when you are logged into the system.
+
+.SH OPTIONS
+.IP "\fB-y|--yes\fP"
+Say yes to all interactive prompts.
+
+.IP "\fB-V|--version\fP"
+Print updatekeys version info.
+
+.IP "\fB--license\fP"
+Print updatekeys licensing info.
+
+.IP "\fB-h|--help\fP"
+Print help info.
+
+.SH FILES
+.TP
+.I
+/gpfs/group/dml129/default/sw7/iaskutils/bin/updatekeys
+
+.TP
+.I
+/gpfs/group/dml129/default/sw7/iaskutils/updatekeys.py
+
+.TP
+.I
+/gpfs/group/dml129/default/sw7/iaskutils/utils/print_license.py
+
+.TP
+.I
+/gpfs/group/dml129/default/sw7/iaskutils/utils/special_print.py
+
+.TP
+.I
+/gpfs/group/dml129/default/sw7/iaskutils/utils/verifylocale.py
+
+.SH EXAMPLES
+.TP
+.BI "updatekeys"
+.TP
+.PP
+Create a new ssh-key that will enable you to log onto compute nodes without needing to enter a password. Command also saves a snapshot of your current ssh configuration before creating a new ssh-key. You will be prompted to confirm the action before updatekeys continues.
+
+.TP
+.BI "updatekeys -y"
+.TP
+.PP
+Does the same thing as the first command, but updatekeys will not ask you to confirm your action before creating the new ssh-key and creating a snapshot of your old keys.
+
+.SH BUGS
+No known bugs. If you encounter a bug using this script, please open an issue at https://github.com/ICDS-Roar/iaskutils.
+
+.SH AUTHORS
+Jason C. Nucciarone (jcn23@psu.edu, jason.nucciarone@gmail.com)
+
+Adam Lavely \- author of old updateKeys.sh script that was used to create this script.
+
+.SH COPYRIGHT
+Copyright 2021 The Pennsylvania State University Institute for Computational and Data Sciences. All rights reserved at https://mit-license.org/.

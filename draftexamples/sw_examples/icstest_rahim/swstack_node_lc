@@ -1,0 +1,19 @@
+--------------------------------------- /opt/aci/modulefiles/Core ---------------------------------------
+   abaqus/2017             gaussian/g09d01    (D)    pointwise/17.3R5
+   afni/17.0.02            gcc/5.3.1                 python/2.7
+   ansys/18.1              git/1.9.4                 python/2.7.8
+   avizo/9.4.0             idl/8.5                   python/2.7.14-anaconda
+   boost/1.41.0            intel/16.0.3              python/3.3             (D)
+   clang/3.9.1             knitro/10.2.1             python/3.3.2
+   cmake/3.9.1             lsdyna/R9.0.1             r/3.4
+   comsol/5.2a             lsprepost/4.3             sas/9.4
+   comsol/5.3       (D)    mathematica/11.0.1        schrodinger/2016.4
+   cplex/12.8.0            matlab/R2016a             spm/8
+   ddt/7.1                 matlab/R2017b      (D)    starccm/12.04.010
+   fastqc/0.11.2           mkl/11.3.3                stata/14.2
+   freesurfer/5.3.0        openjdk/1.8.0             tbb/4.4.4
+   freesurfer/6.0.0 (D)    oraclejdk/1.8.0           tecplot/2017r1
+   fsl/5.0.10              paraview/5.4.0            totalview/2017.1.21
+   gams/24.8.5             pgi/16.4                  vtune-amplifier/16.4
+   gaussian/g03e1          picard/2.5.0              vtune-amplifier/2018.1 (D)
+

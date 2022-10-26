@@ -1,0 +1,50 @@
+#!/bin/bash
+
+# check if supplied appropriate arguments
+if [ $# -eq 0 ]
+  then
+    echo "usage: get_users_jobids --days=num_days_to_check"
+    echo ""
+    echo "example:"
+    echo "get_users_jobids awt5304 --days=5"
+    echo ""
+    echo "days is optional argument: it specifies the number of days to check in the logs (/var/spool/torque/job_logs)" 
+    echo "days defaults to 5" 
+    echo ""
+    exit
+fi
+
+days=5
+user=$1
+
+# check if supplied --days argument
+if [ $# -eq 2 ]
+then
+	# check argument is correct
+	if [  "${2:0:7}" != "--days=" ] 
+	then
+		echo invalid argument: $2
+		exit
+	fi
+
+	days="${2#"--days="}"
+fi
+
+
+echo checking $user jobs for the past $days days 
+
+JOBLOGS_DIR=/var/spool/torque/job_logs
+logs=`ls $JOBLOGS_DIR -t | head -n $days`
+
+for log in $logs
+do
+
+	echo checking ${JOBLOGS_DIR}/$log
+	line_numbers=`cat ${JOBLOGS_DIR}/$log | grep -n "<Job_Owner>${user}" | cut -d: -f1`
+
+    for line_number in $line_numbers
+    do 
+        line_number=`expr $line_number - 2`
+        head -n $line_number ${JOBLOGS_DIR}/$log | tail -n 1
+    done
+done

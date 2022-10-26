@@ -1,0 +1,30 @@
+#PBS -l nodes=1:ppn=2
+#PBS -l walltime=1:00:00
+#PBS -l pmem=2gb
+#PBS -A open
+#PBS -j oe
+# Get started
+echo " "
+echo "Job started on `hostname` at `date`"
+echo " "
+
+# Load in module 
+module load clustalw2/2.1
+echo "clustalw2 is loaded"
+# Go to the correct place
+cd $PBS_O_WORKDIR
+echo "loaded to the pwd"
+
+# Run the job
+#clustalw2 -align -type=dna -infile=drosoph.nt > out.algn
+clustalw2 -align -type=dna -infile=sample.fa > alignment.log
+echo "generated alignment file"
+clustalw2 -tree -infile=sample.aln > tree.log
+echo "generated tree file"
+
+
+
+# Finish up
+echo " "
+echo "Job Ended at `date`"
+echo " "

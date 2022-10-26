@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: A local source.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for src_local {dplyr}"><tr><td>src_local {dplyr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>A local source.</h2>
+
+<h3>Description</h3>
+
+<p>This is mainly useful for testing, since makes it possible to refer to
+local and remote tables using exactly the same syntax.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+src_local(tbl, pkg = NULL, env = NULL)
+
+src_df(pkg = NULL, env = NULL)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>tbl</code></td>
+<td>
+<p>name of the function used to generate <code>tbl</code> objects</p>
+</td></tr>
+<tr valign="top"><td><code>pkg, env</code></td>
+<td>
+<p>Either the name of a package or an environment object in
+which to look for objects.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>Generally, <code>src_local()</code> should not be called directly, but instead
+one of the constructors should be used.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+if (require("Lahman")) {
+batting_df &lt;- tbl(src_df("Lahman"), "Batting")
+}
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>dplyr</em> version 0.7.4 <a href="00Index.html">Index</a>]</div>
+</body></html>

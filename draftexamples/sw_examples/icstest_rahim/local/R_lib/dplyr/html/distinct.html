@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Select distinct/unique rows</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for distinct {dplyr}"><tr><td>distinct {dplyr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Select distinct/unique rows</h2>
+
+<h3>Description</h3>
+
+<p>Retain only unique/distinct rows from an input tbl. This is similar
+to <code><a href="../../base/html/unique.html">unique.data.frame()</a></code>, but considerably faster.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+distinct(.data, ..., .keep_all = FALSE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>.data</code></td>
+<td>
+<p>a tbl</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>Optional variables to use when determining uniqueness. If there
+are multiple rows for a given combination of inputs, only the first
+row will be preserved. If omitted, will use all variables.</p>
+</td></tr>
+<tr valign="top"><td><code>.keep_all</code></td>
+<td>
+<p>If <code>TRUE</code>, keep all variables in <code>.data</code>.
+If a combination of <code>...</code> is not distinct, this keeps the
+first row of values.</p>
+</td></tr>
+</table>
+
+
+<h3>Examples</h3>
+
+<pre>
+df &lt;- tibble(
+  x = sample(10, 100, rep = TRUE),
+  y = sample(10, 100, rep = TRUE)
+)
+nrow(df)
+nrow(distinct(df))
+nrow(distinct(df, x, y))
+
+distinct(df, x)
+distinct(df, y)
+
+# Can choose to keep all other variables as well
+distinct(df, x, .keep_all = TRUE)
+distinct(df, y, .keep_all = TRUE)
+
+# You can also use distinct on computed variables
+distinct(df, diff = abs(x - y))
+
+# The same behaviour applies for grouped data frames
+# except that the grouping variables are always included
+df &lt;- tibble(
+  g = c(1, 1, 2, 2),
+  x = c(1, 1, 2, 1)
+) %&gt;% group_by(g)
+df %&gt;% distinct()
+df %&gt;% distinct(x)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>dplyr</em> version 0.7.4 <a href="00Index.html">Index</a>]</div>
+</body></html>

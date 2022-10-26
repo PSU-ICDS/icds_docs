@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Select top (or bottom) n rows (by value)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for top_n {dplyr}"><tr><td>top_n {dplyr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Select top (or bottom) n rows (by value)</h2>
+
+<h3>Description</h3>
+
+<p>This is a convenient wrapper that uses <code><a href="filter.html">filter()</a></code> and
+<code><a href="ranking.html">min_rank()</a></code> to select the top or bottom entries in each group,
+ordered by <code>wt</code>.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+top_n(x, n, wt)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p>a <code><a href="tbl.html">tbl()</a></code> to filter</p>
+</td></tr>
+<tr valign="top"><td><code>n</code></td>
+<td>
+<p>number of rows to return. If <code>x</code> is grouped, this is the
+number of rows per group. Will include more than <code>n</code> rows if
+there are ties.
+</p>
+<p>If <code>n</code> is positive, selects the top <code>n</code> rows. If negative,
+selects the bottom <code>n</code> rows.</p>
+</td></tr>
+<tr valign="top"><td><code>wt</code></td>
+<td>
+<p>(Optional). The variable to use for ordering. If not
+specified, defaults to the last variable in the tbl.
+</p>
+<p>This argument is automatically <a href="../../rlang/html/quo.html">quoted</a> and later
+<a href="../../rlang/html/eval_tidy.html">evaluated</a> in the context of the data
+frame. It supports <a href="../../rlang/html/quasiquotation.html">unquoting</a>. See
+<code>vignette("programming")</code> for an introduction to these concepts.</p>
+</td></tr>
+</table>
+
+
+<h3>Examples</h3>
+
+<pre>
+df &lt;- data.frame(x = c(10, 4, 1, 6, 3, 1, 1))
+df %&gt;% top_n(2)
+
+# Negative values select bottom from group. Note that we get more
+# than 2 values here because there's a tie: top_n() either takes
+# all rows with a value, or none.
+df %&gt;% top_n(-2)
+
+if (require("Lahman")) {
+# Find 10 players with most games
+# A little nicer with %&gt;%
+tbl_df(Batting) %&gt;%
+  group_by(playerID) %&gt;%
+  tally(G) %&gt;%
+  top_n(10)
+
+# Find year with most games for each player
+tbl_df(Batting) %&gt;% group_by(playerID) %&gt;% top_n(1, G)
+}
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>dplyr</em> version 0.7.4 <a href="00Index.html">Index</a>]</div>
+</body></html>

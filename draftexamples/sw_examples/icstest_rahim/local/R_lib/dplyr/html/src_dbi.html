@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Source for database backends</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for src_dbi {dplyr}"><tr><td>src_dbi {dplyr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Source for database backends</h2>
+
+<h3>Description</h3>
+
+<p>For backward compatibility dplyr provides three srcs for popular
+open source databases:
+</p>
+
+<ul>
+<li> <p><code>src_mysql()</code> connects to a MySQL or MariaDB database using <code><a href="../../RMySQL/html/MySQL.html">RMySQL::MySQL()</a></code>.
+</p>
+</li>
+<li> <p><code>src_postgres()</code> connects to PostgreSQL using <code><a href="../../RPostgreSQL/html/PostgreSQL.html">RPostgreSQL::PostgreSQL()</a></code>
+</p>
+</li>
+<li> <p><code>src_sqlite()</code> to connect to a SQLite database using <code><a href="../../RSQLite/html/SQLite.html">RSQLite::SQLite()</a></code>.
+</p>
+</li></ul>
+
+<p>However, modern best practice is to use <code><a href="tbl.html">tbl()</a></code> directly on an <code>DBIConnection</code>.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+src_mysql(dbname, host = NULL, port = 0L, username = "root",
+  password = "", ...)
+
+src_postgres(dbname = NULL, host = NULL, port = NULL, user = NULL,
+  password = NULL, ...)
+
+src_sqlite(path, create = FALSE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>dbname</code></td>
+<td>
+<p>Database name</p>
+</td></tr>
+<tr valign="top"><td><code>host, port</code></td>
+<td>
+<p>Host name and port number of database</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>for the src, other arguments passed on to the underlying
+database connector, <code><a href="../../DBI/html/dbConnect.html">DBI::dbConnect()</a></code>. For the tbl, included for
+compatibility with the generic, but otherwise ignored.</p>
+</td></tr>
+<tr valign="top"><td><code>user, username, password</code></td>
+<td>
+<p>User name and password.
+</p>
+<p>Generally, you should avoid saving username and password in your
+scripts as it is easy to accidentally expose valuable credentials.
+Instead, retrieve them from environment variables, or use database
+specific credential scores. For example, with MySQL you can set up <code>my.cnf</code>
+as described in <code><a href="../../RMySQL/html/MySQL.html">RMySQL::MySQL()</a></code>.</p>
+</td></tr>
+<tr valign="top"><td><code>path</code></td>
+<td>
+<p>Path to SQLite database. You can use the special path
+&quot;:memory:&quot; to create a temporary in memory database.</p>
+</td></tr>
+<tr valign="top"><td><code>create</code></td>
+<td>
+<p>if <code>FALSE</code>, <code>path</code> must already exist. If
+<code>TRUE</code>, will create a new SQLite3 database at <code>path</code> if
+<code>path</code> does not exist and connect to the existing database if
+<code>path</code> does exist.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>All data manipulation on SQL tbls are lazy: they will not actually
+run the query or retrieve the data unless you ask for it: they all return
+a new <code>tbl_dbi</code> object. Use <code><a href="compute.html">compute()</a></code> to run the query and save the
+results in a temporary in the database, or use <code><a href="compute.html">collect()</a></code> to retrieve the
+results to R. You can see the query with <code><a href="explain.html">show_query()</a></code>.
+</p>
+<p>For best performance, the database should have an index on the variables
+that you are grouping by. Use <code><a href="explain.html">explain()</a></code> to check that the database is using
+the indexes that you expect.
+</p>
+<p>There is one exception: <code><a href="do.html">do()</a></code> is not lazy since it must pull the data
+into R.
+</p>
+
+
+<h3>Value</h3>
+
+<p>An S3 object with class <code>src_dbi</code>, <code>src_sql</code>, <code>src</code>.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+# Basic connection using DBI -------------------------------------------
+if (require(dbplyr, quietly = TRUE)) {
+
+con &lt;- DBI::dbConnect(RSQLite::SQLite(), ":memory:")
+copy_to(con, mtcars)
+
+DBI::dbListTables(con)
+
+# To retrieve a single table from a source, use `tbl()`
+con %&gt;% tbl("mtcars")
+
+# You can also use pass raw SQL if you want a more sophisticated query
+con %&gt;% tbl(sql("SELECT * FROM mtcars WHERE cyl == 8"))
+
+# To show off the full features of dplyr's database integration,
+# we'll use the Lahman database. lahman_sqlite() takes care of
+# creating the database.
+lahman_p &lt;- lahman_sqlite()
+batting &lt;- lahman_p %&gt;% tbl("Batting")
+batting
+
+# Basic data manipulation verbs work in the same way as with a tibble
+batting %&gt;% filter(yearID &gt; 2005, G &gt; 130)
+batting %&gt;% select(playerID:lgID)
+batting %&gt;% arrange(playerID, desc(yearID))
+batting %&gt;% summarise(G = mean(G), n = n())
+
+# There are a few exceptions. For example, databases give integer results
+# when dividing one integer by another. Multiply by 1 to fix the problem
+batting %&gt;%
+  select(playerID:lgID, AB, R, G) %&gt;%
+  mutate(
+   R_per_game1 = R / G,
+   R_per_game2 = R * 1.0 / G
+ )
+
+# All operations are lazy: they don't do anything until you request the
+# data, either by `print()`ing it (which shows the first ten rows),
+# or by `collect()`ing the results locally.
+system.time(recent &lt;- filter(batting, yearID &gt; 2010))
+system.time(collect(recent))
+
+# You can see the query that dplyr creates with show_query()
+batting %&gt;%
+  filter(G &gt; 0) %&gt;%
+  group_by(playerID) %&gt;%
+  summarise(n = n()) %&gt;%
+  show_query()
+}
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>dplyr</em> version 0.7.4 <a href="00Index.html">Index</a>]</div>
+</body></html>

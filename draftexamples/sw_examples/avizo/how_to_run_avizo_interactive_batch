@@ -1,0 +1,5 @@
+ssh -Y PSUID@aci-b.aci.ics.psu.edu
+qsub -I -A allocationname -l nodes=1:ppn=8 -l pmem=1g -l walltime=3:00:00 -X
+cd work/avizo_task/
+module load avizo
+Avizo -no_gui test_nogui_1.hx 

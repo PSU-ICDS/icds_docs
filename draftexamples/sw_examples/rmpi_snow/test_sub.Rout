@@ -1,0 +1,93 @@
+'verbose' and 'quietly' are both true; being verbose then ..
+now dyn.load("/usr/lib64/R/library/methods/libs/methods.so") ...
+
+R version 3.5.2 (2018-12-20) -- "Eggshell Igloo"
+Copyright (C) 2018 The R Foundation for Statistical Computing
+Platform: x86_64-redhat-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+'verbose' and 'quietly' are both true; being verbose then ..
+'verbose' and 'quietly' are both true; being verbose then ..
+now dyn.load("/usr/lib64/R/library/utils/libs/utils.so") ...
+Garbage collection 1 = 0+0+1 (level 2) ... 
+11.9 Mbytes of cons cells used (35%)
+3.1 Mbytes of vectors used (5%)
+'verbose' and 'quietly' are both true; being verbose then ..
+now dyn.load("/usr/lib64/R/library/grDevices/libs/grDevices.so") ...
+'verbose' and 'quietly' are both true; being verbose then ..
+now dyn.load("/usr/lib64/R/library/graphics/libs/graphics.so") ...
+'verbose' and 'quietly' are both true; being verbose then ..
+now dyn.load("/usr/lib64/R/library/stats/libs/stats.so") ...
+ ending setup_Rmainloop(): R_Interactive = 0 {main.c}
+ >R_ReplConsole(): before "for(;;)" {main.c}
+> 
+> #### Mac/Linux ONLY ####
+> library(Rmpi)
+now dyn.load("/usr/lib64/R/library/parallel/libs/parallel.so") ...
+now dyn.load("/storage/home/j/jmp579/R/x86_64-redhat-linux-gnu-library/3.5/Rmpi/libs/Rmpi.so") ...
+[1613596930.647406] [aci-lgn-005:8057 :0]      ib_dev.c:695  MXM  ERROR There are no Mellanox cards detected.
+[1613596930.649166] [aci-lgn-005:8057 :0]      ib_dev.c:695  MXM  ERROR There are no Mellanox cards detected.
+> 
+> library(doParallel)
+Loading required package: foreach
+Loading required package: iterators
+Loading required package: parallel
+> library(snow)
+
+Attaching package: ‘snow’
+
+The following objects are masked from ‘package:parallel’:
+
+    clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
+    clusterExport, clusterMap, clusterSplit, makeCluster, parApply,
+    parCapply, parLapply, parRapply, parSapply, splitIndices,
+    stopCluster
+
+> #library(foreach)
+> #makeCluster(mpi.universe.size(),type="mpi")
+> detectCores()
+[1] 8
+> #mpi.universe.size()
+> m = mpi.universe.size()
+> 
+> #workers=makeCluster(mpi.universe.size(),type="MPI")
+> workers=makeCluster(m,type="MPI")
+	1 slaves are spawned successfully. 0 failed.
+> registerDoParallel(workers)
+> 
+> myfun<-function(ib){
++ write(paste(ib,Sys.time()),"ib_log_file.txt",append=TRUE)
++ Sys.sleep(10)
++ }
+> 
+> write(paste('number of cores:',m),"ib_log_file.txt",append=FALSE)
+> Out<-foreach(ib = 1:m,.combine="rbind",.errorhandling='stop') %dopar% myfun(ib)
+Garbage collection 2 = 1+0+1 (level 0) ... 
+15.7 Mbytes of cons cells used (47%)
+4.0 Mbytes of vectors used (6%)
+Garbage collection 3 = 1+0+2 (level 2) ... 
+18.9 Mbytes of cons cells used (56%)
+5.0 Mbytes of vectors used (8%)
+Garbage collection 4 = 1+0+3 (level 2) ... 
+19.0 Mbytes of cons cells used (56%)
+5.0 Mbytes of vectors used (8%)
+> stopCluster(workers)
+Garbage collection 5 = 1+0+4 (level 2) ... 
+19.2 Mbytes of cons cells used (57%)
+5.0 Mbytes of vectors used (8%)
+[1] 1
+> mpi.quit()
+now dyn.load("/usr/lib64/R/library/tools/libs/tools.so") ...

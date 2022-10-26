@@ -1,0 +1,17 @@
+#!/bin/bash
+
+#PBS -A open
+#PBS -l nodes=1:ppn=10
+#PBS -l walltime=10:00
+
+cd $PBS_O_WORKDIR
+
+## LOAD JULIA HERE ##
+mymodule
+module load julia
+
+NP=$(wc -l $PBS_NODEFILE | awk '{print $1}')
+
+echo PBS: node file is $PBS_NODEFILE
+julia -p $NP ex_parallel.jl
+echo finished

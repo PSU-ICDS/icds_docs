@@ -1,0 +1,17 @@
+3 784 400 10 0
+
+
+
+
+// Description of above data:
+// row 1:
+//    numLayers neuronsInLayer1   neuronsInLayer2   ... neuronsInLayerN   numRowsData
+// Rows 2 thru M:
+//    inputNeuron1 inputNeuron2 ... inputNeuronLast    outputNeuronData
+
+
+
+
+
+
+
