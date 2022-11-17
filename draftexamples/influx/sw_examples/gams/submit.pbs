@@ -1,0 +1,9 @@
+#PBS -l nodes=1:ppn=1
+#PBS -l walltime=24:00:00
+#PBS -l pmem=16gb
+#PBS -j oe
+#PBS -A open
+#
+cd $PBS_O_WORKDIR
+module load gams
+gams FirstLinearExample.gms

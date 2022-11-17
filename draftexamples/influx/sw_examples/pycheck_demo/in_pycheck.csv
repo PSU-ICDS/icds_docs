@@ -1,0 +1,12 @@
+Letter Data for Random Words
+word,num_letter,num_vowel,num_consonate,cv_binary
+equipment,9,4,5,vcvvccvcc
+town,4,1,3,cvcv
+atmosphere,10,4,6,vccvcccvcv
+device,6,3,3,cvcvcv
+construction,12,4,8,cvccccvccvvc
+math,4,1,3,cvcc
+nation,6,3,3,cvcvvc
+initiative,10,6,4,vcvcvvcvcv
+height,6,2,4,cvvccc
+coffee,6,3,3,cvccvv

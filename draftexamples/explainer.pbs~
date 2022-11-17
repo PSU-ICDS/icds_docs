@@ -1,0 +1,43 @@
+#!/bin/bash
+
+#PBS -A open
+#PBS -N fmriprep_job
+#PBS -l nodes=1:ppn=8:stmem
+#PBS -l pmem=8gb
+#PBS -l walltime=12:00:00
+#PBS -j oe
+
+start=`date +%s`
+echo "Job started at `date` on `hostname`"
+cd $PBS_O_WORKDIR
+
+# Configure job
+fmriprep_base="/gpfs/group/cfg2/default/sw/demopipeline/images/fmriprep"
+fmriprep_version="latest"
+freesurfer_lic="/gpfs/group/cfg2/default/sw/freesurfer/license.txt"
+
+# available participants:  801,814,815,821,822,823,825,829,831,833,834,837,845,848,849,855,857,858,859,860,867,868,878,879,882,883,884,890,893
+#    entry must be space-delimited
+participant_list='825 884 890 893' 
+
+# Check for container with specified fmriprep version
+if [ ! -f "${fmriprep_base}/fmriprep-${fmriprep_version}.simg" ] ; then
+    echo " ERROR:  Container fmriprep-${fmriprep_version}.simg not found!"
+    echo "         Please change the version or build fmriprep-${fmriprep_version}.simg, then try again."
+fi
+
+
+# Run fmriprep
+singularity exec ${fmriprep_base}/fmriprep-${fmriprep_version}.simg \
+    fmriprep BIDS data participant -w work \
+    --nprocs $PBS_NUM_PPN \
+    --participant-label ${participant_list} \
+    --fs-license-file ${freesurfer_lic} \
+    --fmap-no-demean --force-syn --fs-no-reconall
+
+
+echo "Job ended at `date`"
+end=`date +%s`
+runtime=$((end-start))
+echo "Job runtime =  ${runtime}  seconds"
+

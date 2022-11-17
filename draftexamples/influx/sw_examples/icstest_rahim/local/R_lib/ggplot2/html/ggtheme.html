@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Complete themes</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for ggtheme {ggplot2}"><tr><td>ggtheme {ggplot2}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Complete themes</h2>
+
+<h3>Description</h3>
+
+<p>These are complete themes which control all non-data display. Use
+<code><a href="theme.html">theme</a></code> if you just need to tweak the display of an existing
+theme.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+theme_grey(base_size = 11, base_family = "")
+
+theme_gray(base_size = 11, base_family = "")
+
+theme_bw(base_size = 11, base_family = "")
+
+theme_linedraw(base_size = 11, base_family = "")
+
+theme_light(base_size = 11, base_family = "")
+
+theme_dark(base_size = 11, base_family = "")
+
+theme_minimal(base_size = 11, base_family = "")
+
+theme_classic(base_size = 11, base_family = "")
+
+theme_void(base_size = 11, base_family = "")
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>base_size</code></td>
+<td>
+<p>base font size</p>
+</td></tr>
+<tr valign="top"><td><code>base_family</code></td>
+<td>
+<p>base font family</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+
+<dl>
+<dt><code>theme_gray</code></dt><dd>
+<p>The signature ggplot2 theme with a grey background and white gridlines,
+designed to put the data forward yet make comparisons easy.</p>
+</dd>
+<dt><code>theme_bw</code></dt><dd>
+<p>The classic dark-on-light ggplot2 theme. May work better for presentations
+displayed with a projector.</p>
+</dd>
+<dt><code>theme_linedraw</code></dt><dd>
+<p>A theme with only black lines of various widths on white backgrounds,
+reminiscent of a line drawings. Serves a purpose similar to <code>theme_bw</code>.
+Note that this theme has some very thin lines (&lt;&lt; 1 pt) which some journals
+may refuse.</p>
+</dd>
+<dt><code>theme_light</code></dt><dd>
+<p>A theme similar to <code>theme_linedraw</code> but with light grey lines and axes,
+to direct more attention towards the data.</p>
+</dd>
+<dt><code>theme_dark</code></dt><dd>
+<p>The dark cousin of <code>theme_light</code>, with similar line sizes but a dark background. Useful to make thin coloured lines pop out.</p>
+</dd>
+<dt><code>theme_minimal</code></dt><dd>
+<p>A minimalistic theme with no background annotations.</p>
+</dd>
+<dt><code>theme_classic</code></dt><dd>
+<p>A classic-looking theme, with x and y axis lines and no gridlines.</p>
+</dd>
+<dt><code>theme_void</code></dt><dd>
+<p>A completely empty theme.</p>
+</dd>
+</dl>
+
+
+
+<h3>Examples</h3>
+
+<pre>
+p &lt;- ggplot(mtcars) + geom_point(aes(x = wt, y = mpg,
+     colour = factor(gear))) + facet_wrap(~am)
+p + theme_gray() # the default
+p + theme_bw()
+p + theme_linedraw()
+p + theme_light()
+p + theme_dark()
+p + theme_minimal()
+p + theme_classic()
+p + theme_void()
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>ggplot2</em> version 2.2.1 <a href="00Index.html">Index</a>]</div>
+</body></html>

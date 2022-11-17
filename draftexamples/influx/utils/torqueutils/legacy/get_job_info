@@ -1,0 +1,73 @@
+#!/bin/bash
+
+# check if supplied appropriate arguments
+if [ $# -eq 0 ]
+  then
+    echo ""
+    echo "Usage: "
+    echo ""
+    echo "get_job_info job_id --days=num_days_to_check"
+    echo ""
+    echo "example:"
+    echo "get_job_info 15381545 --days=5"
+    echo ""
+    echo "days is optional argument: it specifies the number of days to check in the logs (/var/spool/torque/job_logs)" 
+    echo "days defaults to 5" 
+    echo ""
+    exit
+fi
+
+days=5
+jobid=$1
+
+# check if supplied --days argument
+if [ $# -eq 2 ]
+then
+	# check argument is correct
+	if [  "${2:0:7}" != "--days=" ] 
+	then
+		echo invalid argument: $2
+		exit
+	fi
+
+	days="${2#"--days="}"
+fi
+
+
+# 
+JOBLOGS_DIR=/var/spool/torque/job_logs
+
+
+echo checking job id $jobid for the past $days days 
+logs=`ls $JOBLOGS_DIR -t | head -n $days`
+
+found=false
+for log in $logs
+do
+	if [ "`cat ${JOBLOGS_DIR}/$log | grep $jobid`" != "" ]
+	    then
+	    	echo found in ${JOBLOGS_DIR}/$log
+	    	line1=`cat ${JOBLOGS_DIR}/$log | grep -n $jobid | head -n 1 | cut -d: -f1`
+	    	line0=`head -n $line1  ${JOBLOGS_DIR}/$log |  grep -n "<Jobinfo>" | tail -n1 | cut -d: -f1`
+	
+	    	line3=`tail -n +${line0}  ${JOBLOGS_DIR}/$log |  grep -n "</Jobinfo>" | head -n 1 | cut -d: -f1`
+	    	line3=`expr $line3 + $line0`
+	    	sed -n ${line0},${line3}p ${JOBLOGS_DIR}/$log
+	
+	    	found=true
+	    	break
+	fi
+done
+
+if [ $found == false ]
+then 
+	echo ""
+	echo $jobid not found
+	echo ""
+	echo searched these files:
+	echo $logs | tr ' ' '\n' | while read log
+	do
+	         echo ${JOBLOGS_DIR}/$log
+
+	done
+fi

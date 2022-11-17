@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Do anything</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for do {dplyr}"><tr><td>do {dplyr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Do anything</h2>
+
+<h3>Description</h3>
+
+<p>This is a general purpose complement to the specialised manipulation
+functions <code><a href="filter.html">filter()</a></code>, <code><a href="select.html">select()</a></code>, <code><a href="mutate.html">mutate()</a></code>,
+<code><a href="summarise.html">summarise()</a></code> and <code><a href="arrange.html">arrange()</a></code>. You can use <code>do()</code>
+to perform arbitrary computation, returning either a data frame or
+arbitrary objects which will be stored in a list. This is particularly
+useful when working with models: you can fit models per group with
+<code>do()</code> and then flexibly extract components with either another
+<code>do()</code> or <code>summarise()</code>.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+do(.data, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>.data</code></td>
+<td>
+<p>a tbl</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>Expressions to apply to each group. If named, results will be
+stored in a new column. If unnamed, should return a data frame. You can
+use <code>.</code> to refer to the current group. You can not mix named and
+unnamed arguments.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>For an empty data frame, the expressions will be evaluated once, even in the
+presence of a grouping.  This makes sure that the format of the resulting
+data frame is the same for both empty and non-empty input.
+</p>
+
+
+<h3>Value</h3>
+
+<p><code>do()</code> always returns a data frame. The first columns in the data frame
+will be the labels, the others will be computed from <code>...</code>. Named
+arguments become list-columns, with one element for each group; unnamed
+elements must be data frames and labels will be duplicated accordingly.
+</p>
+<p>Groups are preserved for a single unnamed input. This is different to
+<code><a href="summarise.html">summarise()</a></code> because <code>do()</code> generally does not reduce the
+complexity of the data, it just expresses it in a special way. For
+multiple named inputs, the output is grouped by row with
+<code><a href="rowwise.html">rowwise()</a></code>. This allows other verbs to work in an intuitive
+way.
+</p>
+
+
+<h3>Connection to plyr</h3>
+
+<p>If you're familiar with plyr, <code>do()</code> with named arguments is basically
+equivalent to <code><a href="../../plyr/html/dlply.html">plyr::dlply()</a></code>, and <code>do()</code> with a single unnamed argument
+is basically equivalent to <code><a href="../../plyr/html/ldply.html">plyr::ldply()</a></code>. However, instead of storing
+labels in a separate attribute, the result is always a data frame. This
+means that <code>summarise()</code> applied to the result of <code>do()</code> can
+act like <code>ldply()</code>.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+by_cyl &lt;- group_by(mtcars, cyl)
+do(by_cyl, head(., 2))
+
+models &lt;- by_cyl %&gt;% do(mod = lm(mpg ~ disp, data = .))
+models
+
+summarise(models, rsq = summary(mod)$r.squared)
+models %&gt;% do(data.frame(coef = coef(.$mod)))
+models %&gt;% do(data.frame(
+  var = names(coef(.$mod)),
+  coef(summary(.$mod)))
+)
+
+models &lt;- by_cyl %&gt;% do(
+  mod_linear = lm(mpg ~ disp, data = .),
+  mod_quad = lm(mpg ~ poly(disp, 2), data = .)
+)
+models
+compare &lt;- models %&gt;% do(aov = anova(.$mod_linear, .$mod_quad))
+# compare %&gt;% summarise(p.value = aov$`Pr(&gt;F)`)
+
+if (require("nycflights13")) {
+# You can use it to do any arbitrary computation, like fitting a linear
+# model. Let's explore how carrier departure delays vary over the time
+carriers &lt;- group_by(flights, carrier)
+group_size(carriers)
+
+mods &lt;- do(carriers, mod = lm(arr_delay ~ dep_time, data = .))
+mods %&gt;% do(as.data.frame(coef(.$mod)))
+mods %&gt;% summarise(rsq = summary(mod)$r.squared)
+
+## Not run: 
+# This longer example shows the progress bar in action
+by_dest &lt;- flights %&gt;% group_by(dest) %&gt;% filter(n() &gt; 100)
+library(mgcv)
+by_dest %&gt;% do(smooth = gam(arr_delay ~ s(dep_time) + month, data = .))
+
+## End(Not run)
+}
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>dplyr</em> version 0.7.4 <a href="00Index.html">Index</a>]</div>
+</body></html>

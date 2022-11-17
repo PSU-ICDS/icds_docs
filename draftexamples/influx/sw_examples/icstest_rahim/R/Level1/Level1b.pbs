@@ -1,0 +1,12 @@
+#!/bin/bash -l
+#PBS -N Level1
+#PBS -l walltime=1:00
+#PBS -l nodes=1:ppn=1
+#PBS -l pmem=1gb
+#PBS -j oe
+
+module load r/3.4
+
+cd $PBS_O_WORKDIR
+
+Rscript /gpfs/group/wff3/default/software_examples/R/Level1.R

@@ -1,0 +1,81 @@
+#!/bin/bash
+
+###==== PBS RESOURCES ====###
+
+### Set to run on CyberLAMP
+#PBS -A wff3_e_g_k80_default
+
+### Define the special resource queue within CyberLAMP
+### for accessing the debug queue: qos=cl_debug (should start quickly but low limits are set on number of jobs and walltime)
+### for accessing single-GPU nodes: qos=cl_gpu
+### for accessing high-GPU nodes: qos=cl_higpu (up to 4 GPUs per node)
+### for accessing high-memory-node: qos=cl_himem (no GPU, but up to 1 TB memory per node)
+### for accessing open queue: qos=cl_open (low-priority, preemptible jobs; can schedule more jobs but each with reduced time limit)
+### for accessing Intel Phi processors: qos=cl_phi
+###PBS -l qos=cl_gpu
+
+### Join stdout and stderr into a single logfile
+#PBS -j oe
+#PBS -N log.shell
+#PBS -m abe
+#PBS -M jbs6371@psu.edu
+
+### Set maximum walltime   
+#PBS -l walltime=1:00:00
+
+### Set number of nodes and cores per node; reserve GPU(s) and set compute mode
+### shared:  allows multiple processes (and multiple threads within each process) to access the same GPU
+### exclusive_thread:   allows only a single thread in a single process to access the GPU
+### exclusive_process:  allows only a single process to access the GPU, but multiple threads within that process can access the GPU
+#PBS -l nodes=4:ppn=1:gpus=1
+
+### Allocate memory for per node
+#PBS -l pmem=130gb
+
+
+###==== SCRIPT BODY ====###
+### Get started
+echo " "
+echo "Job started on `hostname` at `date`"
+echo " "
+
+### Unload any modules that get loaded by default to start with clean environment
+module purge
+
+### Load necessary modules, e.g.
+module use /gpfs/group/dml129/default/sw/modules
+module load openmpi/2.1.6
+
+### Change to the working directory where your code is located
+### cd <path_to_code>
+
+### ... or change to the directory from which qsub was called
+cd $PBS_O_WORKDIR
+
+echo ------------------------------------------------------
+echo -n 'Job is running on node: '; cat $PBS_NODEFILE
+echo ------------------------------------------------------
+echo PBS: number of nodes is $PBS_NUM_NODES
+echo PBS: current node num is $PBS_NODENUM
+echo PBS: qsub is running on $PBS_O_HOST
+echo PBS: originating queue is $PBS_O_QUEUE
+echo PBS: executing queue is $PBS_QUEUE
+echo PBS: working directory is $PBS_O_WORKDIR
+echo PBS: execution mode is $PBS_ENVIRONMENT
+echo PBS: job identifier is $PBS_JOBID
+echo PBS: job name is $PBS_JOBNAME
+echo PBS: node file is $PBS_NODEFILE
+echo PBS: current home directory is $PBS_O_HOME
+echo PBS: PATH = $PBS_O_PATH
+
+
+### Call your executable (###--hostfile $PBS_NODEFILE)
+mpirun -np 4 -H $(printf '%s\n' `cat $PBS_NODEFILE` | paste -sd ',') \
+-bind-to none -map-by slot -mca pml ob1 -mca btl ^openib \
+singularity exec --nv /gpfs/group/dml129/default/sw/singularity/horovod/horovod.simg \
+python3 multiGPUtest.py > log.multiGPUtest
+
+### Finish up
+echo " "
+echo "Job Ended at `date`"
+echo " "

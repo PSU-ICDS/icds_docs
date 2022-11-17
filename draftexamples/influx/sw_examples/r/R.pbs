@@ -1,0 +1,26 @@
+#!/bin/bash -l
+#PBS -N JOBNAME
+#PBS -l walltime=48:00:00
+#PBS -l nodes=1:ppn=10
+#PBS -l pmem=20gb
+#PBS -j oe
+#PBS -A open
+
+#Get Started
+echo " "
+echo "job started on 'hostname' at 'date'"
+echo " "
+
+module load r/3.4
+
+# Go to the submission directory
+cd $PBS_O_WORKDIR
+
+# Run the job itself
+#R --file= /storage/home/...
+Rscript file.R > output.log
+
+# Finish up
+echo " "
+echo "job ended at  'date'"
+echo " "

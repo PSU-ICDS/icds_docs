@@ -1,0 +1,59 @@
+#!/bin/bash
+
+#### Scheduler Directives ####
+
+#PBS -A open
+####PBS -A wff3_g_g_lc_icds-training
+
+#PBS -l nodes=1:ppn=4
+#PBS -l walltime=00:01:00
+#PBS -l pmem=1gb
+#PBS -N pycheck_n1_p4
+
+
+#### Job is launched when placed on compute nodes ####
+echo " "
+echo "Job started at `date` on `hostname`"
+echo " "
+start=`date +%N`
+totalcores=$(( $PBS_NUM_NODES * $PBS_NUM_PPN ))
+
+
+#### Initialize Software Environment and Parameters ####
+
+# Reset software environment and load necessary software
+module purge
+module load python/3.6.8
+
+# Verify python version
+pyver=$( python --version )
+
+# Use original submission directory as the working directory
+cd $PBS_O_WORKDIR
+
+# Set input/output, if necessary
+pyinput='in_pycheck.csv'
+pyoutput='out_pycheck.txt'
+
+
+#### Execute your job ####
+
+python pycheck.py > $pyoutput
+
+end=`date +%N`
+runtime_ns=$(( end - start ))
+runtime_ms=$(( $runtime_ns / 1000000 ))
+echo "Job ended at $(date)"
+
+
+#### Job Output ####
+
+echo " "
+echo "Cores per node:  $PBS_NUM_PPN"
+echo "Total cores:     $totalcores"
+echo "Runtime [ms]:    $runtime_ms"
+echo "Input file:      $pyinput"
+echo "Output file:     $pyoutput"
+echo "Python verion:   $pyver"
+echo " "
+

@@ -1,0 +1,7 @@
+(*This example mathematica script generates a random table*)
+(*and outputs it in csv format*)
+
+table=Table[{RandomReal[],RandomReal[]},{i,1,10},{j,1,10}]
+Export["table.csv",table]
+Exit[]
+

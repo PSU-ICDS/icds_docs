@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Figure out margining variables.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for margins {reshape2}"><tr><td>margins {reshape2}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Figure out margining variables.</h2>
+
+<h3>Description</h3>
+
+<p>Given the variables that form the rows and columns, and a set of desired
+margins, works out which ones are possible. Variables that can't be
+margined over are dropped silently.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+margins(vars, margins = NULL)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>vars</code></td>
+<td>
+<p>a list of character vectors giving the variables in each
+dimension</p>
+</td></tr>
+<tr valign="top"><td><code>margins</code></td>
+<td>
+<p>a character vector of variable names to compute margins for.
+<code>TRUE</code> will compute all possible margins.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>list of margining combinations, or <code>NULL</code> if none. These are
+the combinations of variables that should have their values set to
+<code>(all)</code>
+</p>
+
+<hr /><div style="text-align: center;">[Package <em>reshape2</em> version 1.4.3 <a href="00Index.html">Index</a>]</div>
+</body></html>

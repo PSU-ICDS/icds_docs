@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Plot method for generalized weights</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for gwplot {neuralnet}"><tr><td>gwplot {neuralnet}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2> Plot method for generalized weights </h2>
+
+<h3>Description</h3>
+
+<p><code>gwplot</code>, a method for objects of class <code>nn</code>, typically
+produced by <code>neuralnet</code>. 
+Plots the generalized weights (Intrator and Intrator, 1993) for one specific covariate and one response variable.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+gwplot(x, rep = NULL, max = NULL, min = NULL, file = NULL, 
+       selected.covariate = 1, selected.response = 1, 
+       highlight = FALSE, type="p", col = "black", ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p> an object of class <code>nn</code> </p>
+</td></tr>
+<tr valign="top"><td><code>rep</code></td>
+<td>
+<p> an integer indicating the repetition to plot. If rep=&quot;best&quot;, the repetition with the smallest error will be plotted. If not stated all repetitions will be plotted. </p>
+</td></tr>
+<tr valign="top"><td><code>max</code></td>
+<td>
+<p> maximum of the y axis. In default, max is set to the highest y-value. </p>
+</td></tr>
+<tr valign="top"><td><code>min</code></td>
+<td>
+<p> minimum of the y axis. In default, min is set to the smallest y-value. </p>
+</td></tr>
+<tr valign="top"><td><code>file</code></td>
+<td>
+<p> a character string naming the plot to write to. If not stated, the plot will not be saved. </p>
+</td></tr>
+<tr valign="top"><td><code>selected.covariate</code></td>
+<td>
+<p> either a string of the covariate's name or an integer of the ordered covariates, indicating the reference covariate in the generalized weights plot. Defaulting to the first covariate. </p>
+</td></tr>
+<tr valign="top"><td><code>selected.response</code></td>
+<td>
+<p> either a string of the response variable's name or an integer of the ordered response variables, indicating the reference response in the generalized weights plot. Defaulting to the first response variable. </p>
+</td></tr>
+<tr valign="top"><td><code>highlight</code></td>
+<td>
+<p> a logical value, indicating whether to highlight (red color) the best repetition (smallest error). Only reasonable if rep=NULL. Default is FALSE</p>
+</td></tr>
+<tr valign="top"><td><code>type</code></td>
+<td>
+<p>a character indicating the type of plotting; actually any of the types as in <code><a href="../../graphics/html/plot.default.html">plot.default</a></code>.</p>
+</td></tr>
+<tr valign="top"><td><code>col</code></td>
+<td>
+<p> a color of the generalized weights.  </p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p> Arguments to be passed to methods, such as graphical parameters (see <code><a href="../../graphics/html/par.html">par</a></code>). </p>
+</td></tr>
+</table>
+
+
+<h3>Author(s)</h3>
+
+<p> Stefan Fritsch, Frauke Guenther <a href="mailto:guenther@leibniz-bips.de">guenther@leibniz-bips.de</a> </p>
+
+
+<h3>References</h3>
+
+ 
+<p>Intrator O. and Intrator N. (1993)
+<em>Using Neural Nets for Interpretation of Nonlinear Models.</em>  
+Proceedings of the Statistical Computing Section, 244-249 
+San Francisco: American Statistical Society (eds.) </p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="neuralnet.html">neuralnet</a></code></p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(infert, package="datasets")
+print(net.infert &lt;- neuralnet(case~parity+induced+spontaneous, infert, 
+		                err.fct="ce", linear.output=FALSE, likelihood=TRUE))
+gwplot(net.infert, selected.covariate="parity")
+gwplot(net.infert, selected.covariate="induced")
+gwplot(net.infert, selected.covariate="spontaneous")
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>neuralnet</em> version 1.33 <a href="00Index.html">Index</a>]</div>
+</body></html>

@@ -1,0 +1,254 @@
+GAMS 24.8.5  r61358 Released May 10, 2017 LEX-LEG x86 64bit/Linux                                                                                                                                                                      12/14/18 15:18:11 Page 1
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+   1  * Source of code "http://www.gams.com/docs/example.htm"
+   2  * Reference: Dantzig G. B., Linear Programming and Extensions, Princeton University Press, Princeton, New Jersey, 1963, Chapter 3-3.
+   3   
+   4  Sets
+   5         i   canning plants   / seattle, san-diego /
+   6         j   markets          / new-york, chicago, topeka / ;
+   7   
+   8  Parameters
+   9   
+  10         a(i)  capacity of plant i in cases
+  11           /    seattle     350
+  12                san-diego   600  /
+  13   
+  14         b(j)  demand at market j in cases
+  15           /    new-york    325
+  16                chicago     300
+  17                topeka      275  / ;
+  18   
+  19  Table d(i,j)  distance in thousands of miles
+  20                      new-york       chicago      topeka
+  21        seattle          2.5           1.7          1.8
+  22        san-diego        2.5           1.8          1.4  ;
+  23   
+  24  Scalar f  freight in dollars per case per thousand miles  /90/ ;
+  25   
+  26  Parameter c(i,j)  transport cost in thousands of dollars per case ;
+  27   
+  28              c(i,j) = f * d(i,j) / 1000 ;
+  29   
+  30  Variables
+  31         x(i,j)  shipment quantities in cases
+  32         z       total transportation costs in thousands of dollars ;
+  33   
+  34  Positive Variable x ;
+  35   
+  36  Equations
+  37         cost        define objective function
+  38         supply(i)   observe supply limit at plant i
+  39         demand(j)   satisfy demand at market j ;
+  40   
+  41  cost ..        z  =e=  sum((i,j), c(i,j)*x(i,j)) ;
+  42   
+  43  supply(i) ..   sum(j, x(i,j))  =l=  a(i) ;
+  44   
+  45  demand(j) ..   sum(i, x(i,j))  =g=  b(j) ;
+  46   
+  47  Model transport /all/ ;
+  48   
+  49  option LP = cplex;
+  50   
+  51  Solve transport using lp minimizing z ;
+  52   
+  53  Display x.l, x.m ;
+GAMS 24.8.5  r61358 Released May 10, 2017 LEX-LEG x86 64bit/Linux                                                                                                                                                                      12/14/18 15:18:11 Page 2
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+
+
+COMPILATION TIME     =        0.000 SECONDS      3 MB  24.8.5 r61358 LEX-LEG
+GAMS 24.8.5  r61358 Released May 10, 2017 LEX-LEG x86 64bit/Linux                                                                                                                                                                      12/14/18 15:18:11 Page 3
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Equation Listing    SOLVE transport Using LP From line 51
+
+
+---- cost  =E=  define objective function
+
+cost..  - 0.225*x(seattle,new-york) - 0.153*x(seattle,chicago) - 0.162*x(seattle,topeka) - 0.225*x(san-diego,new-york) - 0.162*x(san-diego,chicago) - 0.126*x(san-diego,topeka) + z =E= 0 ; (LHS = 0)
+     
+
+---- supply  =L=  observe supply limit at plant i
+
+supply(seattle)..  x(seattle,new-york) + x(seattle,chicago) + x(seattle,topeka) =L= 350 ; (LHS = 0)
+     
+supply(san-diego)..  x(san-diego,new-york) + x(san-diego,chicago) + x(san-diego,topeka) =L= 600 ; (LHS = 0)
+     
+
+---- demand  =G=  satisfy demand at market j
+
+demand(new-york)..  x(seattle,new-york) + x(san-diego,new-york) =G= 325 ; (LHS = 0, INFES = 325 ****)
+     
+demand(chicago)..  x(seattle,chicago) + x(san-diego,chicago) =G= 300 ; (LHS = 0, INFES = 300 ****)
+     
+demand(topeka)..  x(seattle,topeka) + x(san-diego,topeka) =G= 275 ; (LHS = 0, INFES = 275 ****)
+     
+GAMS 24.8.5  r61358 Released May 10, 2017 LEX-LEG x86 64bit/Linux                                                                                                                                                                      12/14/18 15:18:11 Page 4
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Column Listing      SOLVE transport Using LP From line 51
+
+
+---- x  shipment quantities in cases
+
+x(seattle,new-york)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+       -0.225   cost
+        1       supply(seattle)
+        1       demand(new-york)
+
+x(seattle,chicago)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+       -0.153   cost
+        1       supply(seattle)
+        1       demand(chicago)
+
+x(seattle,topeka)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+       -0.162   cost
+        1       supply(seattle)
+        1       demand(topeka)
+
+REMAINING 3 ENTRIES SKIPPED
+
+---- z  total transportation costs in thousands of dollars
+
+z
+                (.LO, .L, .UP, .M = -INF, 0, +INF, 0)
+        1       cost
+
+GAMS 24.8.5  r61358 Released May 10, 2017 LEX-LEG x86 64bit/Linux                                                                                                                                                                      12/14/18 15:18:11 Page 5
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Model Statistics    SOLVE transport Using LP From line 51
+
+
+MODEL STATISTICS
+
+BLOCKS OF EQUATIONS           3     SINGLE EQUATIONS            6
+BLOCKS OF VARIABLES           2     SINGLE VARIABLES            7
+NON ZERO ELEMENTS            19
+
+
+GENERATION TIME      =        0.005 SECONDS      4 MB  24.8.5 r61358 LEX-LEG
+
+
+EXECUTION TIME       =        0.007 SECONDS      4 MB  24.8.5 r61358 LEX-LEG
+GAMS 24.8.5  r61358 Released May 10, 2017 LEX-LEG x86 64bit/Linux                                                                                                                                                                      12/14/18 15:18:11 Page 6
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Solution Report     SOLVE transport Using LP From line 51
+
+
+               S O L V E      S U M M A R Y
+
+     MODEL   transport           OBJECTIVE  z
+     TYPE    LP                  DIRECTION  MINIMIZE
+     SOLVER  CPLEX               FROM LINE  51
+
+**** SOLVER STATUS     1 Normal Completion         
+**** MODEL STATUS      1 Optimal                   
+**** OBJECTIVE VALUE              153.6750
+
+ RESOURCE USAGE, LIMIT          0.004      1000.000
+ ITERATION COUNT, LIMIT         4    2000000000
+
+IBM ILOG CPLEX   24.8.5 r61358 Released May 10, 2017 LEG x86 64bit/Linux      
+Cplex 12.7.1.0
+
+Space for names approximately 0.00 Mb
+Use option 'names no' to turn use of names off
+LP status(1): optimal
+Cplex Time: 0.00sec (det. 0.01 ticks)
+Optimal solution found.
+Objective :         153.675000
+
+
+                           LOWER          LEVEL          UPPER         MARGINAL
+
+---- EQU cost                .              .              .             1.0000      
+
+  cost  define objective function
+
+---- EQU supply  observe supply limit at plant i
+
+                 LOWER          LEVEL          UPPER         MARGINAL
+
+seattle          -INF          350.0000       350.0000         EPS         
+san-diego        -INF          550.0000       600.0000          .          
+
+---- EQU demand  satisfy demand at market j
+
+                LOWER          LEVEL          UPPER         MARGINAL
+
+new-york       325.0000       325.0000        +INF            0.2250      
+chicago        300.0000       300.0000        +INF            0.1530      
+topeka         275.0000       275.0000        +INF            0.1260      
+
+---- VAR x  shipment quantities in cases
+
+                          LOWER          LEVEL          UPPER         MARGINAL
+
+seattle  .new-york          .            50.0000        +INF             .          
+seattle  .chicago           .           300.0000        +INF             .          
+seattle  .topeka            .              .            +INF            0.0360      
+san-diego.new-york          .           275.0000        +INF             .          
+GAMS 24.8.5  r61358 Released May 10, 2017 LEX-LEG x86 64bit/Linux                                                                                                                                                                      12/14/18 15:18:11 Page 7
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Solution Report     SOLVE transport Using LP From line 51
+
+
+     VAR x  shipment quantities in cases
+
+                          LOWER          LEVEL          UPPER         MARGINAL
+
+san-diego.chicago           .              .            +INF            0.0090      
+san-diego.topeka            .           275.0000        +INF             .          
+
+                           LOWER          LEVEL          UPPER         MARGINAL
+
+---- VAR z                 -INF          153.6750        +INF             .          
+
+  z  total transportation costs in thousands of dollars
+
+
+**** REPORT SUMMARY :        0     NONOPT
+                             0 INFEASIBLE
+                             0  UNBOUNDED
+GAMS 24.8.5  r61358 Released May 10, 2017 LEX-LEG x86 64bit/Linux                                                                                                                                                                      12/14/18 15:18:11 Page 8
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+E x e c u t i o n
+
+
+----     53 VARIABLE x.L  shipment quantities in cases
+
+             new-york     chicago      topeka
+
+seattle        50.000     300.000
+san-diego     275.000                 275.000
+
+
+----     53 VARIABLE x.M  shipment quantities in cases
+
+              chicago      topeka
+
+seattle                     0.036
+san-diego       0.009
+
+
+
+EXECUTION TIME       =        0.001 SECONDS      3 MB  24.8.5 r61358 LEX-LEG
+
+
+USER: Anand Kumar Singh, Single User License         G161129:1223AO-LNX
+      The Pennsylvania State University, Research Computing and CDC5702
+      License for teaching and research at degree granting institutions
+
+
+**** FILE SUMMARY
+
+Input      /gpfs/group/wff3/default/software_examples/gams/FirstLinearExample.gms
+Output     /gpfs/group/wff3/default/software_examples/gams/FirstLinearExample.lst

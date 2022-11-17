@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Return rows with matching conditions</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for filter {dplyr}"><tr><td>filter {dplyr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Return rows with matching conditions</h2>
+
+<h3>Description</h3>
+
+<p>Use <code>filter()</code> find rows/cases where conditions are true. Unlike
+base subsetting, rows where the condition evaluates to <code>NA</code> are dropped.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+filter(.data, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>.data</code></td>
+<td>
+<p>A tbl. All main verbs are S3 generics and provide methods
+for <code><a href="tbl_df.html">tbl_df()</a></code>, <code><a href="../../dtplyr/html/tbl_dt.html">dtplyr::tbl_dt()</a></code> and <code><a href="../../dbplyr/html/tbl_dbi.html">dbplyr::tbl_dbi()</a></code>.</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>Logical predicates defined in terms of the variables in <code>.data</code>.
+Multiple conditions are combined with <code>&amp;</code>. Only rows where the
+condition evaluates to <code>TRUE</code> are kept.
+</p>
+<p>These arguments are automatically <a href="../../rlang/html/quo.html">quoted</a> and
+<a href="../../rlang/html/eval_tidy.html">evaluated</a> in the context of the data
+frame. They support <a href="../../rlang/html/quasiquotation.html">unquoting</a> and
+splicing. See <code>vignette("programming")</code> for an introduction to
+these concepts.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>Note that dplyr is not yet smart enough to optimise filtering optimisation
+on grouped datasets that don't need grouped calculations. For this reason,
+filtering is often considerably faster on <code><a href="group_by.html">ungroup()</a></code>ed data.
+</p>
+
+
+<h3>Value</h3>
+
+<p>An object of the same class as <code>.data</code>.
+</p>
+
+
+<h3>Useful filter functions</h3>
+
+
+<ul>
+<li> <p><code><a href="../../base/html/Comparison.html">==</a></code>, <code><a href="../../base/html/Comparison.html">&gt;</a></code>, <code><a href="../../base/html/Comparison.html">&gt;=</a></code> etc
+</p>
+</li>
+<li> <p><code><a href="../../base/html/Logic.html">&amp;</a></code>, <code><a href="../../base/html/Logic.html">|</a></code>, <code><a href="../../base/html/Logic.html">!</a></code>, <code><a href="../../base/html/Logic.html">xor()</a></code>
+</p>
+</li>
+<li> <p><code><a href="../../base/html/NA.html">is.na()</a></code>
+</p>
+</li>
+<li> <p><code><a href="between.html">between()</a></code>, <code><a href="near.html">near()</a></code>
+</p>
+</li></ul>
+
+
+
+<h3>Tidy data</h3>
+
+<p>When applied to a data frame, row names are silently dropped. To preserve,
+convert to an explicit variable with <code><a href="../../tibble/html/rownames_to_column.html">tibble::rownames_to_column()</a></code>.
+</p>
+
+
+<h3>Scoped filtering</h3>
+
+<p>The three <a href="scoped.html">scoped</a> variants (<code><a href="filter_all.html">filter_all()</a></code>, <code><a href="filter_all.html">filter_if()</a></code> and
+<code><a href="filter_all.html">filter_at()</a></code>) make it easy to apply a filtering condition to a
+selection of variables.
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="filter_all.html">filter_all()</a></code>, <code><a href="filter_all.html">filter_if()</a></code> and <code><a href="filter_all.html">filter_at()</a></code>.
+</p>
+<p>Other single table verbs: <code><a href="arrange.html">arrange</a></code>,
+<code><a href="mutate.html">mutate</a></code>, <code><a href="select.html">select</a></code>,
+<code><a href="slice.html">slice</a></code>, <code><a href="summarise.html">summarise</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+filter(starwars, species == "Human")
+filter(starwars, mass &gt; 1000)
+
+# Multiple criteria
+filter(starwars, hair_color == "none" &amp; eye_color == "black")
+filter(starwars, hair_color == "none" | eye_color == "black")
+
+# Multiple arguments are equivalent to and
+filter(starwars, hair_color == "none", eye_color == "black")
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>dplyr</em> version 0.7.4 <a href="00Index.html">Index</a>]</div>
+</body></html>

@@ -1,0 +1,14 @@
+#!/bin/bash
+#PBS -j oe
+#PBS -l walltime=1:00:00
+#PBS -l mem=1gb
+#PBS -l nodes=2:ppn=5
+
+cd ~/scratch/.test_case
+module purge
+module load r
+module load gcc/5.3.1 openmpi
+export R_LIBS=/storage/home/mlr36/work/r_packages
+
+mpirun --oversubscribe -np 1 R CMD BATCH --no-save --no-restore --verbose test_sub.R > logs/out.Rout 2> logs/errorFile.Rout
+

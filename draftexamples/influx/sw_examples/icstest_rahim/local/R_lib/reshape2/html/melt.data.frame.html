@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Melt a data frame into form suitable for easy casting.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for melt.data.frame {reshape2}"><tr><td>melt.data.frame {reshape2}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Melt a data frame into form suitable for easy casting.</h2>
+
+<h3>Description</h3>
+
+<p>You need to tell melt which of your variables are id variables, and which
+are measured variables. If you only supply one of <code>id.vars</code> and
+<code>measure.vars</code>, melt will assume the remainder of the variables in the
+data set belong to the other. If you supply neither, melt will assume
+factor and character variables are id variables, and all others are
+measured.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+## S3 method for class 'data.frame'
+melt(data, id.vars, measure.vars,
+  variable.name = "variable", ..., na.rm = FALSE, value.name = "value",
+  factorsAsStrings = TRUE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>data</code></td>
+<td>
+<p>data frame to melt</p>
+</td></tr>
+<tr valign="top"><td><code>id.vars</code></td>
+<td>
+<p>vector of id variables. Can be integer (variable position)
+or string (variable name). If blank, will use all non-measured variables.</p>
+</td></tr>
+<tr valign="top"><td><code>measure.vars</code></td>
+<td>
+<p>vector of measured variables. Can be integer (variable
+position) or string (variable name)If blank, will use all non id.vars</p>
+</td></tr>
+<tr valign="top"><td><code>variable.name</code></td>
+<td>
+<p>name of variable used to store measured variable names</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>further arguments passed to or from other methods.</p>
+</td></tr>
+<tr valign="top"><td><code>na.rm</code></td>
+<td>
+<p>Should NA values be removed from the data set? This will
+convert explicit missings to implicit missings.</p>
+</td></tr>
+<tr valign="top"><td><code>value.name</code></td>
+<td>
+<p>name of variable used to store values</p>
+</td></tr>
+<tr valign="top"><td><code>factorsAsStrings</code></td>
+<td>
+<p>Control whether factors are converted to character
+when melted as measure variables. When <code>FALSE</code>, coercion is forced if
+levels are not identical across the <code>measure.vars</code>.</p>
+</td></tr>
+</table>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="cast.html">cast</a></code>
+</p>
+<p>Other melt methods: <code><a href="melt.array.html">melt.array</a></code>,
+<code><a href="melt.default.html">melt.default</a></code>, <code><a href="melt.list.html">melt.list</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+names(airquality) &lt;- tolower(names(airquality))
+melt(airquality, id=c("month", "day"))
+names(ChickWeight) &lt;- tolower(names(ChickWeight))
+melt(ChickWeight, id=2:4)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>reshape2</em> version 1.4.3 <a href="00Index.html">Index</a>]</div>
+</body></html>

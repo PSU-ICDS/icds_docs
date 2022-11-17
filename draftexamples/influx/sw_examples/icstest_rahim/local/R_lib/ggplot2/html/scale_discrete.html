@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Position scales for discrete data</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for scale_x_discrete {ggplot2}"><tr><td>scale_x_discrete {ggplot2}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Position scales for discrete data</h2>
+
+<h3>Description</h3>
+
+<p>You can use continuous positions even with a discrete position scale -
+this allows you (e.g.) to place labels between bars in a bar chart.
+Continuous positions are numeric values starting at one for the first
+level, and increasing by one for each level (i.e. the labels are placed
+at integer positions).  This is what allows jittering to work.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+scale_x_discrete(..., expand = waiver(), position = "bottom")
+
+scale_y_discrete(..., expand = waiver(), position = "left")
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>common discrete scale parameters: <code>name</code>, <code>breaks</code>,
+<code>labels</code>, <code>na.value</code>, <code>limits</code> and <code>guide</code>.  See
+<code><a href="discrete_scale.html">discrete_scale</a></code> for more details</p>
+</td></tr>
+<tr valign="top"><td><code>expand</code></td>
+<td>
+<p>a numeric vector of length two giving multiplicative and
+additive expansion constants. These constants ensure that the data is
+placed some distance away from the axes.</p>
+</td></tr>
+<tr valign="top"><td><code>position</code></td>
+<td>
+<p>The position of the axis. <code>left</code> or <code>right</code> for y
+axes, <code>top</code> or <code>bottom</code> for x axes</p>
+</td></tr>
+</table>
+
+
+<h3>See Also</h3>
+
+<p>Other position scales: <code><a href="scale_continuous.html">scale_x_continuous</a></code>,
+<code><a href="scale_date.html">scale_x_date</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+ggplot(diamonds, aes(cut)) + geom_bar()
+
+
+# The discrete position scale is added automatically whenever you
+# have a discrete position.
+
+(d &lt;- ggplot(subset(diamonds, carat &gt; 1), aes(cut, clarity)) +
+      geom_jitter())
+
+d + scale_x_discrete("Cut")
+d + scale_x_discrete("Cut", labels = c("Fair" = "F","Good" = "G",
+  "Very Good" = "VG","Perfect" = "P","Ideal" = "I"))
+
+# Use limits to adjust the which levels (and in what order)
+# are displayed
+d + scale_x_discrete(limits = c("Fair","Ideal"))
+
+# you can also use the short hand functions xlim and ylim
+d + xlim("Fair","Ideal", "Good")
+d + ylim("I1", "IF")
+
+# See ?reorder to reorder based on the values of another variable
+ggplot(mpg, aes(manufacturer, cty)) + geom_point()
+ggplot(mpg, aes(reorder(manufacturer, cty), cty)) + geom_point()
+ggplot(mpg, aes(reorder(manufacturer, displ), cty)) + geom_point()
+
+# Use abbreviate as a formatter to reduce long names
+ggplot(mpg, aes(reorder(manufacturer, displ), cty)) +
+  geom_point() +
+  scale_x_discrete(labels = abbreviate)
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>ggplot2</em> version 2.2.1 <a href="00Index.html">Index</a>]</div>
+</body></html>

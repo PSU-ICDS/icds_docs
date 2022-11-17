@@ -1,0 +1,293 @@
+
+ ANSYS Academic Teaching Advanced                  
+
+
+ *------------------------------------------------------------------*
+ |                                                                  |
+ |   W E L C O M E   T O   T H E   A N S Y S (R)  P R O G R A M     |
+ |                                                                  |
+ *------------------------------------------------------------------*
+
+
+
+
+ ***************************************************************
+ *            ANSYS 2019 R3          LEGAL NOTICES             *
+ ***************************************************************
+ *                                                             *
+ * Copyright 1971-2019 ANSYS, Inc.  All rights reserved.       *
+ * Unauthorized use, distribution or duplication is            *
+ * prohibited.                                                 *
+ *                                                             *
+ * Ansys is a registered trademark of ANSYS, Inc. or its       *
+ * subsidiaries in the United States or other countries.       *
+ * See the ANSYS, Inc. online documentation or the ANSYS, Inc. *
+ * documentation CD or online help for the complete Legal      *
+ * Notice.                                                     *
+ *                                                             *
+ ***************************************************************
+ *                                                             *
+ * THIS ANSYS SOFTWARE PRODUCT AND PROGRAM DOCUMENTATION       *
+ * INCLUDE TRADE SECRETS AND CONFIDENTIAL AND PROPRIETARY      *
+ * PRODUCTS OF ANSYS, INC., ITS SUBSIDIARIES, OR LICENSORS.    *
+ * The software products and documentation are furnished by    *
+ * ANSYS, Inc. or its subsidiaries under a software license    *
+ * agreement that contains provisions concerning               *
+ * non-disclosure, copying, length and nature of use,          *
+ * compliance with exporting laws, warranties, disclaimers,    *
+ * limitations of liability, and remedies, and other           *
+ * provisions.  The software products and documentation may be *
+ * used, disclosed, transferred, or copied only in accordance  *
+ * with the terms and conditions of that software license      *
+ * agreement.                                                  *
+ *                                                             *
+ * ANSYS, Inc. is a UL registered                              *
+ * ISO 9001:2015 company.                                      *
+ *                                                             *
+ ***************************************************************
+ *                                                             *
+ * This product is subject to U.S. laws governing export and   *
+ * re-export.                                                  *
+ *                                                             *
+ * For U.S. Government users, except as specifically granted   *
+ * by the ANSYS, Inc. software license agreement, the use,     *
+ * duplication, or disclosure by the United States Government  *
+ * is subject to restrictions stated in the ANSYS, Inc.        *
+ * software license agreement and FAR 12.212 (for non-DOD      *
+ * licenses).                                                  *
+ *                                                             *
+ ***************************************************************
+
+ 2019 R3 
+     
+ Point Releases and Patches installed:   
+     
+ ANSYS, Inc. Products 2019 R3
+ Autodyn 2019 R3 
+ LS-DYNA 2019 R3 
+ Customization Files for User Programmable Features 2019 R3  
+ Mechanical Products 2019 R3 
+ Remote Solve Manager Standalone Services 2019 R3
+ ACIS Geometry Interface 2019 R3 
+ Catia, Version 5 Geometry Interface 2019 R3 
+ NX Geometry Interface 2019 R3   
+ Parasolid Geometry Interface 2019 R3
+ ANSYS, Inc. License Manager 2019 R3 
+ CFD-Post only 2019 R3   
+ CFX (includes CFD-Post) 2019 R3 
+ Chemkin 2019 R3 
+ EnSight 2019 R3 
+ FENSAP-ICE 2019 R3  
+ Fluent (includes CFD-Post) 2019 R3  
+ Forte 2019 R3   
+ Polyflow (includes CFD-Post) 2019 R3
+ TurboGrid 2019 R3   
+ Icepak (includes CFD-Post) 2019 R3  
+ ICEM CFD 2019 R3
+
+
+          *****  ANSYS COMMAND LINE ARGUMENTS  *****
+  INITIAL JOBNAME              = jobname                                                                                                                                                                                                                                                 
+  BATCH MODE REQUESTED (-b)    = LIST
+  INPUT FILE COPY MODE (-c)    = COPY
+  DISTRIBUTED MEMORY PARALLEL REQUESTED
+       4 PARALLEL PROCESSES REQUESTED WITH SINGLE THREAD PER PROCESS
+    TOTAL OF     4 CORES REQUESTED
+  MPI OPTION                   = IBMMPI  
+  INPUT FILE NAME              = /proc/1757/fd/0
+  OUTPUT FILE NAME             = /gpfs/scratch/jmp579/ansys_test/batch_job/jobname2.out
+
+ RELEASE= 2019 R3              BUILD= 19.5      UP20190805   VERSION=LINUX x64   
+ CURRENT JOBNAME=jobname2  13:23:35  AUG 19, 2020 CP=      0.275
+
+
+ *****  ANSYS SOLUTION ROUTINE  *****
+
+ PRINTOUT RESUMED BY /GOP
+
+
+
+   D I S T R I B U T E D   D O M A I N   D E C O M P O S E R
+
+ ...Number of frequency solutions:  3
+ ...Decompose to 2 frequency domains (with 2 processes per domain)
+
+
+ *** WARNING ***                         CP =       0.451   TIME= 13:23:35
+ Element shape checking is currently inactive.  Issue SHPP,ON or         
+ SHPP,WARN to reactivate, if desired.                                    
+
+ *** NOTE ***                            CP =       0.471   TIME= 13:23:35
+ The model data was checked and warning messages were found.             
+  Please review output or errors file (                                  
+ /gpfs/scratch/jmp579/ansys_test/batch_job/jobname2.err ) for these      
+ warning messages.                                                       
+
+ *** ANSYS - ENGINEERING ANALYSIS SYSTEM  RELEASE 2019 R3          19.5     ***
+ DISTRIBUTED ANSYS Academic Teaching Advanced                  
+
+ 00000000  VERSION=LINUX x64     13:23:35  AUG 19, 2020 CP=      0.471
+
+ Monopole_Test--Harmonic Acoustics (A5)                                        
+
+
+
+                       S O L U T I O N   O P T I O N S
+
+   PROBLEM DIMENSIONALITY. . . . . . . . . . . . .3-D                  
+   DEGREES OF FREEDOM. . . . . . PRES
+   ANALYSIS TYPE . . . . . . . . . . . . . . . . .HARMONIC             
+      SOLUTION METHOD. . . . . . . . . . . . . . .AUTO                 
+   OFFSET TEMPERATURE FROM ABSOLUTE ZERO . . . . .  273.15    
+   THERMAL EXPANSION . . . . . . . . . . . . . . .OFF
+   COMPLEX DISPLACEMENT PRINT OPTION . . . . . . .REAL AND IMAGINARY       
+   GLOBALLY ASSEMBLED MATRIX . . . . . . . . . . .SYMMETRIC  
+
+ *** WARNING ***                         CP =       0.473   TIME= 13:23:35
+ No constraints have been defined using the D command.                   
+
+ *** NOTE ***                            CP =       0.478   TIME= 13:23:35
+ The step data was checked and warning messages were found.              
+  Please review output or errors file (                                  
+ /gpfs/scratch/jmp579/ansys_test/batch_job/jobname2.err ) for these      
+ warning messages.                                                       
+
+ *** NOTE ***                            CP =       0.478   TIME= 13:23:35
+ The Solution Control Option is only valid for single field structural,  
+ single field thermal, single field diffusion, coupled                   
+ thermal-diffusion analyses and coupled-field analyses with structural   
+ degrees of freedom.  The SOLCONTROL,ON command (if present) has been    
+ de-activated.                                                           
+
+  
+  
+     D I S T R I B U T E D   D O M A I N   D E C O M P O S E R
+  
+  ...Number of elements: 2066
+  ...Number of nodes:    3643
+  ...Decompose to 2 CPU domains for each harmonic frequency solution
+  ...Element load balance ratio =     1.000
+
+
+                      L O A D   S T E P   O P T I O N S
+
+   LOAD STEP NUMBER. . . . . . . . . . . . . . . .     1
+   FREQUENCY RANGE . . . . . . . . . . . . . . . .  150.00     TO   155.00    
+   NUMBER OF SUBSTEPS. . . . . . . . . . . . . . .     3
+   STEP CHANGE BOUNDARY CONDITIONS . . . . . . . .   YES
+   PRINT OUTPUT CONTROLS . . . . . . . . . . . . .NO PRINTOUT
+   DATABASE OUTPUT CONTROLS
+      ITEM     FREQUENCY   COMPONENT
+       ALL       NONE               
+      NSOL        ALL               
+      EANG        ALL               
+      ETMP        ALL               
+      VENG        ALL               
+      MISC        ALL       _ELMISC 
+
+   AUTO SELECTION OF VT FOR FREQUENCY SWEEP. . . . NO
+
+
+
+            **** CENTER OF MASS, MASS, AND MASS MOMENTS OF INERTIA ****
+
+  CALCULATIONS ASSUME ELEMENT MASS AT ELEMENT CENTROID
+
+  TOTAL MASS =  0.84002E-07
+
+                           MOM. OF INERTIA         MOM. OF INERTIA
+  CENTER OF MASS            ABOUT ORIGIN        ABOUT CENTER OF MASS
+
+  XC = -0.84617E-07      IXX =   0.2141E-12      IXX =   0.2141E-12
+  YC =  0.50924E-08      IYY =   0.2140E-12      IYY =   0.2140E-12
+  ZC = -0.49495E-08      IZZ =   0.2140E-12      IZZ =   0.2140E-12
+                         IXY =  -0.6536E-16      IXY =  -0.6536E-16
+                         IYZ =   0.2560E-17      IYZ =   0.2560E-17
+                         IZX =  -0.2995E-17      IZX =  -0.2995E-17
+
+
+  *** MASS SUMMARY BY ELEMENT TYPE ***
+
+  TYPE      MASS
+     1  0.840020E-07
+
+ Range of element maximum matrix coefficients in global coordinates
+ Maximum = 1.984413394E-03 at element 2065.                              
+ Minimum = 1.128439871E-04 at element 2053.                              
+
+   *** ELEMENT MATRIX FORMULATION TIMES
+     TYPE    NUMBER   ENAME      TOTAL CP  AVE CP
+
+        1      2066  FLUID221      0.173   0.000084
+ Time at end of element matrix formulation CP = 0.858868957.             
+
+ DISTRIBUTED SPARSE MATRIX DIRECT SOLVER.
+  Number of equations =        3643,    Maximum wavefront =     82
+
+  Local memory allocated for solver              =      7.307 MB
+  Local memory required for in-core solution     =      6.423 MB
+  Local memory required for out-of-core solution =      2.995 MB
+
+  Total memory allocated for solver              =     14.328 MB
+  Total memory required for in-core solution     =     12.584 MB
+  Total memory required for out-of-core solution =      5.834 MB
+
+ *** NOTE ***                            CP =       0.901   TIME= 13:23:35
+ The Distributed Sparse Matrix Solver is currently running in the        
+ in-core memory mode.  This memory mode uses the most amount of memory   
+ in order to avoid using the hard drive as much as possible, which most  
+ often results in the fastest solution time.  This mode is recommended   
+ if enough physical memory is present to accommodate all of the solver   
+ data.                                                                   
+ Distributed sparse solver maximum pivot= 3.073187635E-03 at node 2865   
+ PRES.                                                                   
+ Distributed sparse solver minimum pivot= 2.211621742E-04 at node 488    
+ PRES.                                                                   
+ Distributed sparse solver minimum pivot in absolute value=              
+ 2.211621742E-04 at node 488 PRES.                                       
+
+
+ *** ANSYS BINARY FILE STATISTICS
+  BUFFER SIZE USED= 16384
+        1.688 MB WRITTEN ON ELEMENT MATRIX FILE: jobname2.emat
+        0.625 MB WRITTEN ON ELEMENT SAVED DATA FILE: jobname2.esav
+        0.812 MB WRITTEN ON ASSEMBLED MATRIX FILE: jobname2.full
+        1.000 MB WRITTEN ON RESULTS FILE: jobname2.rst
+
+ FINISH SOLUTION PROCESSING
+
+
+ ***** ROUTINE COMPLETED *****  CP =         1.200
+
+
+
+ PRINTOUT RESUMED BY /GOP
+
+ PRINTOUT RESUMED BY /GOP
+
+ ***** END OF INPUT ENCOUNTERED *****
+
+
+ NUMBER OF WARNING MESSAGES ENCOUNTERED=          2
+ NUMBER OF ERROR   MESSAGES ENCOUNTERED=          0
+
+
+ *---------------------------------------------------------------------------*
+ |                                                                           |
+ |                       DISTRIBUTED ANSYS RUN COMPLETED                     |
+ |                                                                           |
+ |---------------------------------------------------------------------------|
+ |                                                                           |
+ | Ansys 2019 R3               Build 19.5         UP20190805     LINUX x64   |
+ |                                                                           |
+ |---------------------------------------------------------------------------|
+ |                                                                           |
+ | Database Requested(-db)     1 MB    Scratch Memory Requested      1024 MB |
+ | Maximum Database Used       3 MB    Maximum Scratch Memory Used     49 MB |
+ |                                                                           |
+ |---------------------------------------------------------------------------|
+ |                                                                           |
+ |        CP Time      (sec) =          1.861       Time  =  13:23:36        |
+ |        Elapsed Time (sec) =          3.000       Date  =  08/19/2020      |
+ |                                                                           |
+ *---------------------------------------------------------------------------*

@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Select variables.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for select_vars {dplyr}"><tr><td>select_vars {dplyr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Select variables.</h2>
+
+<h3>Description</h3>
+
+<p>These functions power <code><a href="select.html">select()</a></code> and <code><a href="select.html">rename()</a></code>.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+select_vars(vars, ..., include = character(), exclude = character())
+
+rename_vars(vars, ..., strict = TRUE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>vars</code></td>
+<td>
+<p>A character vector of existing column names.</p>
+</td></tr>
+<tr valign="top"><td><code>..., args</code></td>
+<td>
+<p>Expressions to compute
+</p>
+<p>These arguments are automatically <a href="../../rlang/html/quo.html">quoted</a> and
+<a href="../../rlang/html/eval_tidy.html">evaluated</a> in a context where elements of
+<code>vars</code> are objects representing their positions within
+<code>vars</code>. They support <a href="../../rlang/html/quasiquotation.html">unquoting</a> and
+splicing. See <code>vignette("programming")</code> for an introduction to
+these concepts.
+</p>
+<p>Note that except for <code>:</code>, <code>-</code> and <code>c()</code>, all complex expressions
+are evaluated outside that context. This is to prevent accidental
+matching to <code>vars</code> elements when you refer to variables from the
+calling context.</p>
+</td></tr>
+<tr valign="top"><td><code>include, exclude</code></td>
+<td>
+<p>Character vector of column names to always
+include/exclude.</p>
+</td></tr>
+<tr valign="top"><td><code>strict</code></td>
+<td>
+<p>If <code>TRUE</code>, will throw an error if you attempt to rename a
+variable that doesn't exist.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>For historic reasons, the <code>vars</code> and <code>include</code> arguments are not
+prefixed with <code>.</code>. This means that any argument starting with <code>v</code>
+might partial-match on <code>vars</code> if it is not explicitly named. Also
+<code>...</code> cannot accept arguments named <code>exclude</code> or <code>include</code>. You can
+enquose and splice the dots to work around these limitations (see
+examples).
+</p>
+
+
+<h3>Value</h3>
+
+<p>A named character vector. Values are existing column names,
+names are new names.
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="select_var.html">select_var()</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+# Keep variables
+select_vars(names(iris), everything())
+select_vars(names(iris), starts_with("Petal"))
+select_vars(names(iris), ends_with("Width"))
+select_vars(names(iris), contains("etal"))
+select_vars(names(iris), matches(".t."))
+select_vars(names(iris), Petal.Length, Petal.Width)
+select_vars(names(iris), one_of("Petal.Length", "Petal.Width"))
+
+df &lt;- as.data.frame(matrix(runif(100), nrow = 10))
+df &lt;- df[c(3, 4, 7, 1, 9, 8, 5, 2, 6, 10)]
+select_vars(names(df), num_range("V", 4:6))
+
+# Drop variables
+select_vars(names(iris), -starts_with("Petal"))
+select_vars(names(iris), -ends_with("Width"))
+select_vars(names(iris), -contains("etal"))
+select_vars(names(iris), -matches(".t."))
+select_vars(names(iris), -Petal.Length, -Petal.Width)
+
+# Rename variables
+select_vars(names(iris), petal_length = Petal.Length)
+select_vars(names(iris), petal = starts_with("Petal"))
+
+# Rename variables preserving all existing
+rename_vars(names(iris), petal_length = Petal.Length)
+
+# You can unquote names or formulas (or lists of)
+select_vars(names(iris), !!! list(quo(Petal.Length)))
+select_vars(names(iris), !! quote(Petal.Length))
+
+# The .data pronoun is available:
+select_vars(names(mtcars), .data$cyl)
+select_vars(names(mtcars), .data$mpg : .data$disp)
+
+# However it isn't available within calls since those are evaluated
+# outside of the data context. This would fail if run:
+# select_vars(names(mtcars), identical(.data$cyl))
+
+
+# If you're writing a wrapper around select_vars(), pass the dots
+# via splicing to avoid matching dotted arguments to select_vars()
+# named arguments (`vars`, `include` and `exclude`):
+wrapper &lt;- function(...) {
+  select_vars(names(mtcars), !!! quos(...))
+}
+
+# This won't partial-match on `vars`:
+wrapper(var = cyl)
+
+# This won't match on `include`:
+wrapper(include = cyl)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>dplyr</em> version 0.7.4 <a href="00Index.html">Index</a>]</div>
+</body></html>

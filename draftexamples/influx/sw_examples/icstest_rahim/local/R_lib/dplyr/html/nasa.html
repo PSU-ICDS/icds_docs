@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: NASA spatio-temporal data</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for nasa {dplyr}"><tr><td>nasa {dplyr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>NASA spatio-temporal data</h2>
+
+<h3>Description</h3>
+
+<p>This data comes from the ASA 2007 data expo,
+<a href="http://stat-computing.org/dataexpo/2006/">http://stat-computing.org/dataexpo/2006/</a>. The data are geographic and
+atmospheric measures on a very coarse 24 by 24 grid covering Central
+America. The variables are: temperature (surface and air), ozone,
+air pressure, and cloud cover (low, mid, and high). All variables are
+monthly averages, with observations for Jan 1995 to Dec 2000. These data
+were obtained from the NASA Langley Research Center Atmospheric Sciences
+Data Center (with permission; see important copyright terms below).
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+nasa
+</pre>
+
+
+<h3>Format</h3>
+
+<p>A <a href="tbl_cube.html">tbl_cube</a> with 41,472 observations.</p>
+
+
+<h3>Dimensions</h3>
+
+
+<ul>
+<li> <p><code>lat</code>, <code>long</code>: latitude and longitude
+</p>
+</li>
+<li> <p><code>year</code>, <code>month</code>: month and year
+</p>
+</li></ul>
+
+
+
+<h3>Measures</h3>
+
+
+<ul>
+<li> <p><code>cloudlow</code>, <code>cloudmed</code>, <code>cloudhigh</code>: cloud cover
+at three heights
+</p>
+</li>
+<li> <p><code>ozone</code>
+</p>
+</li>
+<li> <p><code>surftemp</code> and <code>temperature</code>
+</p>
+</li>
+<li> <p><code>pressure</code>
+</p>
+</li></ul>
+
+
+
+<h3>Examples</h3>
+
+<pre>
+nasa
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>dplyr</em> version 0.7.4 <a href="00Index.html">Index</a>]</div>
+</body></html>

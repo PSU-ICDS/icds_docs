@@ -1,0 +1,24 @@
+#!/bin/bash
+#PBS -l nodes=1:ppn=1
+#PBS -l walltime=00:15:00
+#PBS -A open
+
+# Get started
+echo " "
+echo "Job started on ‘hostname‘ at ‘date‘"
+echo " "
+
+# Load in Stata
+module purge
+module load stata
+
+# Go to the correct place
+cd $PBS_O_WORKDIR
+
+# Run the job itself
+stata -b do myjob.do
+
+# Finish up
+echo " "
+echo "Job Ended at ‘date‘"
+echo " "

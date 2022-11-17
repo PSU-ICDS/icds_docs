@@ -1,0 +1,8 @@
+/COM,ANSYS RELEASE Release 19.1      BUILD 19.1      UP20180418       10:28:14
+
+ *** ERROR ***                           CP =       0.288   TIME= 10:28:16
+ An unexpected error ( Floating Point Exception ) has occurred...  ANSYS 
+ internal data has been corrupted.  ANSYS is unable to recover and will  
+ terminate.  Previously saved files are unaffected.  Please send the     
+ data leading to this operation to your technical support provider, as   
+ this will allow ANSYS, Inc to improve the program.                      

@@ -1,0 +1,56 @@
+.TH relinkworkscratch 1 "12 April 2021" "1.2.1" "relinkworkscratch man page"
+.SH NAME
+relinkworkscratch \- a simple script to reestablish the work and scratch directory symlinks in a user's home directory.
+
+.SH SYNOPSIS
+relinkworkscratch [-h] [-V] [--license]
+
+.SH DESCRIPTION
+relinkworkscratch is a simple but powerful tool for relinking the work and scratch directory. Users sometimes accidentally delete the symlink to their work and scratch directories, and they do not know how to fix it. Therefore, relinkworkscratch provides a high\-level abstraction for relinking the directories. All the user has to do is run a single command.
+
+.SH OPTIONS
+.IP "\fB-V|--version\fP"
+Print relinkworkscratch version info.
+
+.IP "\fB--license\fP"
+Print relinkworkscratch licensing info.
+
+.IP "\fB-h|--help\fP"
+Print help info.
+
+.SH FILES
+.TP
+.I
+/gpfs/group/dml129/default/sw7/iaskutils/bin/relinkworkscratch
+
+.TP
+.I
+/gpfs/group/dml129/default/sw7/iaskutils/relinkworkscratch.py
+
+.TP
+.I
+/gpfs/group/dml129/default/sw7/iaskutils/utils/print_license.py
+
+.TP
+.I
+/gpfs/group/dml129/default/sw7/iaskutils/utils/special_print.py
+
+.TP
+.I
+/gpfs/group/dml129/default/sw7/iaskutils/utils/verifylocale.py
+
+.SH EXAMPLES
+.TP
+.BI "relinkworkscratch"
+.TP
+.PP
+Relink your work and scratch directories in your home directory on Roar.
+
+.SH BUGS
+No known bugs. If you encounter a bug using this script, please open an issue at https://github.com/ICDS-Roar/iaskutils.
+
+.SH AUTHOR
+Jason C. Nucciarone (jcn23@psu.edu, jason.nucciarone@gmail.com)
+
+.SH COPYRIGHT
+Copyright 2021 The Pennsylvania State University Institute for Computational and Data Sciences. All rights reserved at https://mit-license.org/.

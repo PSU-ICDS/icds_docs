@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Join two tbls together</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for join {dplyr}"><tr><td>join {dplyr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Join two tbls together</h2>
+
+<h3>Description</h3>
+
+<p>These are generic functions that dispatch to individual tbl methods - see the
+method documentation for details of individual data sources. <code>x</code> and
+<code>y</code> should usually be from the same data source, but if <code>copy</code> is
+<code>TRUE</code>, <code>y</code> will automatically be copied to the same source as <code>x</code>.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+inner_join(x, y, by = NULL, copy = FALSE, suffix = c(".x", ".y"), ...)
+
+left_join(x, y, by = NULL, copy = FALSE, suffix = c(".x", ".y"), ...)
+
+right_join(x, y, by = NULL, copy = FALSE, suffix = c(".x", ".y"), ...)
+
+full_join(x, y, by = NULL, copy = FALSE, suffix = c(".x", ".y"), ...)
+
+semi_join(x, y, by = NULL, copy = FALSE, ...)
+
+anti_join(x, y, by = NULL, copy = FALSE, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x, y</code></td>
+<td>
+<p>tbls to join</p>
+</td></tr>
+<tr valign="top"><td><code>by</code></td>
+<td>
+<p>a character vector of variables to join by.  If <code>NULL</code>, the
+default, <code>*_join()</code> will do a natural join, using all variables with
+common names across the two tables. A message lists the variables so
+that you can check they're right (to suppress the message, simply
+explicitly list the variables that you want to join).
+</p>
+<p>To join by different variables on x and y use a named vector.
+For example, <code>by = c("a" = "b")</code> will match <code>x.a</code> to
+<code>y.b</code>.</p>
+</td></tr>
+<tr valign="top"><td><code>copy</code></td>
+<td>
+<p>If <code>x</code> and <code>y</code> are not from the same data source,
+and <code>copy</code> is <code>TRUE</code>, then <code>y</code> will be copied into the
+same src as <code>x</code>.  This allows you to join tables across srcs, but
+it is a potentially expensive operation so you must opt into it.</p>
+</td></tr>
+<tr valign="top"><td><code>suffix</code></td>
+<td>
+<p>If there are non-joined duplicate variables in <code>x</code> and
+<code>y</code>, these suffixes will be added to the output to disambiguate them.
+Should be a character vector of length 2.</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>other parameters passed onto methods</p>
+</td></tr>
+</table>
+
+
+<h3>Join types</h3>
+
+<p>Currently dplyr supports four join types:
+</p>
+
+<dl>
+<dt><code>inner_join()</code></dt><dd><p>return all rows from <code>x</code> where there are matching
+values in <code>y</code>, and all columns from <code>x</code> and <code>y</code>. If there are multiple matches
+between <code>x</code> and <code>y</code>, all combination of the matches are returned.</p>
+</dd>
+<dt><code>left_join()</code></dt><dd><p>return all rows from <code>x</code>, and all columns from <code>x</code>
+and <code>y</code>. Rows in <code>x</code> with no match in <code>y</code> will have <code>NA</code> values in the new
+columns. If there are multiple matches between <code>x</code> and <code>y</code>, all combinations
+of the matches are returned.</p>
+</dd>
+<dt><code>right_join()</code></dt><dd><p>return all rows from <code>y</code>, and all columns from <code>x</code>
+and y. Rows in <code>y</code> with no match in <code>x</code> will have <code>NA</code> values in the new
+columns. If there are multiple matches between <code>x</code> and <code>y</code>, all combinations
+of the matches are returned.</p>
+</dd>
+<dt><code>semi_join()</code></dt><dd><p>return all rows from <code>x</code> where there are matching
+values in <code>y</code>, keeping just columns from <code>x</code>.
+</p>
+<p>A semi join differs from an inner join because an inner join will return
+one row of <code>x</code> for each matching row  of <code>y</code>, where a semi
+join will never duplicate rows of <code>x</code>.</p>
+</dd>
+<dt><code>anti_join()</code></dt><dd><p>return all rows from <code>x</code> where there are not
+matching values in <code>y</code>, keeping just columns from <code>x</code>.</p>
+</dd>
+<dt><code>full_join()</code></dt><dd><p>return all rows and all columns from both <code>x</code> and <code>y</code>.
+Where there are not matching values, returns <code>NA</code> for the one missing.</p>
+</dd>
+</dl>
+
+
+
+<h3>Grouping</h3>
+
+<p>Groups are ignored for the purpose of joining, but the result preserves
+the grouping of <code>x</code>.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+# "Mutating" joins add variables to the LHS
+band_members %&gt;% inner_join(band_instruments)
+band_members %&gt;% left_join(band_instruments)
+band_members %&gt;% right_join(band_instruments)
+band_members %&gt;% full_join(band_instruments)
+
+# "Filtering" joins keep cases from the LHS
+band_members %&gt;% semi_join(band_instruments)
+band_members %&gt;% anti_join(band_instruments)
+
+# To suppress the message, supply by
+band_members %&gt;% inner_join(band_instruments, by = "name")
+# This is good practice in production code
+
+# Use a named `by` if the join variables have different names
+band_members %&gt;% full_join(band_instruments2, by = c("name" = "artist"))
+# Note that only the key from the LHS is kept
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>dplyr</em> version 0.7.4 <a href="00Index.html">Index</a>]</div>
+</body></html>

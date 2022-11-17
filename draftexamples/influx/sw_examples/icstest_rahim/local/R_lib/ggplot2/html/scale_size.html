@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Scales for area or radius</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for scale_size {ggplot2}"><tr><td>scale_size {ggplot2}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Scales for area or radius</h2>
+
+<h3>Description</h3>
+
+<p><code>scale_size</code> scales area, <code>scale_radius</code> scales radius. The size
+aesthetic is most commonly used for points and text, and humans perceive
+the area of points (not their radius), so this provides for optimal
+perception. <code>scale_size_area</code> ensures that a value of 0 is mapped
+to a size of 0.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+scale_radius(name = waiver(), breaks = waiver(), labels = waiver(),
+  limits = NULL, range = c(1, 6), trans = "identity", guide = "legend")
+
+scale_size(name = waiver(), breaks = waiver(), labels = waiver(),
+  limits = NULL, range = c(1, 6), trans = "identity", guide = "legend")
+
+scale_size_area(..., max_size = 6)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>name</code></td>
+<td>
+<p>The name of the scale. Used as axis or legend title. If
+<code>NULL</code>, the default, the name of the scale is taken from the first
+mapping used for that aesthetic.</p>
+</td></tr>
+<tr valign="top"><td><code>breaks</code></td>
+<td>
+<p>One of: </p>
+
+<ul>
+<li> <p><code>NULL</code> for no breaks
+</p>
+</li>
+<li> <p><code>waiver()</code> for the default breaks computed by the
+transformation object
+</p>
+</li>
+<li><p> A numeric vector of positions
+</p>
+</li>
+<li><p> A function that takes the limits as input and returns breaks
+as output
+</p>
+</li></ul>
+</td></tr>
+<tr valign="top"><td><code>labels</code></td>
+<td>
+<p>One of: </p>
+
+<ul>
+<li> <p><code>NULL</code> for no labels
+</p>
+</li>
+<li> <p><code>waiver()</code> for the default labels computed by the
+transformation object
+</p>
+</li>
+<li><p> A character vector giving labels (must be same length as <code>breaks</code>)
+</p>
+</li>
+<li><p> A function that takes the breaks as input and returns labels
+as output
+</p>
+</li></ul>
+</td></tr>
+<tr valign="top"><td><code>limits</code></td>
+<td>
+<p>A numeric vector of length two providing limits of the scale.
+Use <code>NA</code> to refer to the existing minimum or maximum.</p>
+</td></tr>
+<tr valign="top"><td><code>range</code></td>
+<td>
+<p>a numeric vector of length 2 that specifies the minimum and
+maximum size of the plotting symbol after transformation.</p>
+</td></tr>
+<tr valign="top"><td><code>trans</code></td>
+<td>
+<p>Either the name of a transformation object, or the
+object itself. Built-in transformations include &quot;asn&quot;, &quot;atanh&quot;,
+&quot;boxcox&quot;, &quot;exp&quot;, &quot;identity&quot;, &quot;log&quot;, &quot;log10&quot;, &quot;log1p&quot;, &quot;log2&quot;,
+&quot;logit&quot;, &quot;probability&quot;, &quot;probit&quot;, &quot;reciprocal&quot;, &quot;reverse&quot; and &quot;sqrt&quot;.
+</p>
+<p>A transformation object bundles together a transform, it's inverse,
+and methods for generating breaks and labels. Transformation objects
+are defined in the scales package, and are called <code>name_trans</code>, e.g.
+<code><a href="../../scales/html/boxcox_trans.html">boxcox_trans</a></code>. You can create your own
+transformation with <code><a href="../../scales/html/trans_new.html">trans_new</a></code>.</p>
+</td></tr>
+<tr valign="top"><td><code>guide</code></td>
+<td>
+<p>Name of guide object, or object itself.</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>Other arguments passed on to <code><a href="continuous_scale.html">continuous_scale</a></code>
+to control name, limits, breaks, labels and so forth.</p>
+</td></tr>
+<tr valign="top"><td><code>max_size</code></td>
+<td>
+<p>Size of largest points.</p>
+</td></tr>
+</table>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="scale_size.html">scale_size_area</a></code> if you want 0 values to be mapped
+to points with size 0.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+p &lt;- ggplot(mpg, aes(displ, hwy, size = hwy)) +
+   geom_point()
+p
+p + scale_size("Highway mpg")
+p + scale_size(range = c(0, 10))
+
+# If you want zero value to have zero size, use scale_size_area:
+p + scale_size_area()
+
+# This is most useful when size is a count
+ggplot(mpg, aes(class, cyl)) +
+  geom_count() +
+  scale_size_area()
+
+# If you want to map size to radius (usually bad idea), use scale_radius
+p + scale_radius()
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>ggplot2</em> version 2.2.1 <a href="00Index.html">Index</a>]</div>
+</body></html>

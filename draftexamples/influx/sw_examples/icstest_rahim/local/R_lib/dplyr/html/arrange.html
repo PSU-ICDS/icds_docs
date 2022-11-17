@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Arrange rows by variables</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for arrange {dplyr}"><tr><td>arrange {dplyr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Arrange rows by variables</h2>
+
+<h3>Description</h3>
+
+<p>Use <code><a href="desc.html">desc()</a></code> to sort a variable in descending order.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+arrange(.data, ...)
+
+## S3 method for class 'grouped_df'
+arrange(.data, ..., .by_group = FALSE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>.data</code></td>
+<td>
+<p>A tbl. All main verbs are S3 generics and provide methods
+for <code><a href="tbl_df.html">tbl_df()</a></code>, <code><a href="../../dtplyr/html/tbl_dt.html">dtplyr::tbl_dt()</a></code> and <code><a href="../../dbplyr/html/tbl_dbi.html">dbplyr::tbl_dbi()</a></code>.</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>Comma separated list of unquoted variable names. Use
+<code><a href="desc.html">desc()</a></code> to sort a variable in descending order.</p>
+</td></tr>
+<tr valign="top"><td><code>.by_group</code></td>
+<td>
+<p>If <code>TRUE</code>, will sort first by grouping variable. Applies to
+grouped data frames only.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>An object of the same class as <code>.data</code>.
+</p>
+
+
+<h3>Locales</h3>
+
+<p>The sort order for character vectors will depend on the collating sequence
+of the locale in use: see <code><a href="../../base/html/locales.html">locales()</a></code>.
+</p>
+
+
+<h3>Tidy data</h3>
+
+<p>When applied to a data frame, row names are silently dropped. To preserve,
+convert to an explicit variable with <code><a href="../../tibble/html/rownames_to_column.html">tibble::rownames_to_column()</a></code>.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>Other single table verbs: <code><a href="filter.html">filter</a></code>,
+<code><a href="mutate.html">mutate</a></code>, <code><a href="select.html">select</a></code>,
+<code><a href="slice.html">slice</a></code>, <code><a href="summarise.html">summarise</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+arrange(mtcars, cyl, disp)
+arrange(mtcars, desc(disp))
+
+# grouped arrange ignores groups
+by_cyl &lt;- mtcars %&gt;% group_by(cyl)
+by_cyl %&gt;% arrange(desc(wt))
+# Unless you specifically ask:
+by_cyl %&gt;% arrange(desc(wt), .by_group = TRUE)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>dplyr</em> version 0.7.4 <a href="00Index.html">Index</a>]</div>
+</body></html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Join data frame tbls</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for join.tbl_df {dplyr}"><tr><td>join.tbl_df {dplyr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Join data frame tbls</h2>
+
+<h3>Description</h3>
+
+<p>See <a href="join.html">join</a> for a description of the general purpose of the
+functions.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+## S3 method for class 'tbl_df'
+inner_join(x, y, by = NULL, copy = FALSE,
+  suffix = c(".x", ".y"), ...,
+  na_matches = pkgconfig::get_config("dplyr::na_matches"))
+
+## S3 method for class 'tbl_df'
+left_join(x, y, by = NULL, copy = FALSE, suffix = c(".x",
+  ".y"), ..., na_matches = pkgconfig::get_config("dplyr::na_matches"))
+
+## S3 method for class 'tbl_df'
+right_join(x, y, by = NULL, copy = FALSE,
+  suffix = c(".x", ".y"), ...,
+  na_matches = pkgconfig::get_config("dplyr::na_matches"))
+
+## S3 method for class 'tbl_df'
+full_join(x, y, by = NULL, copy = FALSE, suffix = c(".x",
+  ".y"), ..., na_matches = pkgconfig::get_config("dplyr::na_matches"))
+
+## S3 method for class 'tbl_df'
+semi_join(x, y, by = NULL, copy = FALSE, ...,
+  na_matches = pkgconfig::get_config("dplyr::na_matches"))
+
+## S3 method for class 'tbl_df'
+anti_join(x, y, by = NULL, copy = FALSE, ...,
+  na_matches = pkgconfig::get_config("dplyr::na_matches"))
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p>tbls to join</p>
+</td></tr>
+<tr valign="top"><td><code>y</code></td>
+<td>
+<p>tbls to join</p>
+</td></tr>
+<tr valign="top"><td><code>by</code></td>
+<td>
+<p>a character vector of variables to join by.  If <code>NULL</code>, the
+default, <code>*_join()</code> will do a natural join, using all variables with
+common names across the two tables. A message lists the variables so
+that you can check they're right (to suppress the message, simply
+explicitly list the variables that you want to join).
+</p>
+<p>To join by different variables on x and y use a named vector.
+For example, <code>by = c("a" = "b")</code> will match <code>x.a</code> to
+<code>y.b</code>.</p>
+</td></tr>
+<tr valign="top"><td><code>copy</code></td>
+<td>
+<p>If <code>x</code> and <code>y</code> are not from the same data source,
+and <code>copy</code> is <code>TRUE</code>, then <code>y</code> will be copied into the
+same src as <code>x</code>.  This allows you to join tables across srcs, but
+it is a potentially expensive operation so you must opt into it.</p>
+</td></tr>
+<tr valign="top"><td><code>suffix</code></td>
+<td>
+<p>If there are non-joined duplicate variables in <code>x</code> and
+<code>y</code>, these suffixes will be added to the output to disambiguate them.
+Should be a character vector of length 2.</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>included for compatibility with the generic; otherwise ignored.</p>
+</td></tr>
+<tr valign="top"><td><code>na_matches</code></td>
+<td>
+<p>Use <code>"never"</code> to always treat two <code>NA</code> or <code>NaN</code> values as
+different, like joins for database sources, similarly to
+<code>merge(incomparables = FALSE)</code>.
+The default,<code>"na"</code>, always treats two <code>NA</code> or <code>NaN</code> values as equal, like <code><a href="../../base/html/merge.html">merge()</a></code>.
+Users and package authors can change the default behavior by calling
+<code>pkgconfig::set_config("dplyr::na_matches" = "never")</code>.</p>
+</td></tr>
+</table>
+
+
+<h3>Examples</h3>
+
+<pre>
+if (require("Lahman")) {
+batting_df &lt;- tbl_df(Batting)
+person_df &lt;- tbl_df(Master)
+
+uperson_df &lt;- tbl_df(Master[!duplicated(Master$playerID), ])
+
+# Inner join: match batting and person data
+inner_join(batting_df, person_df)
+inner_join(batting_df, uperson_df)
+
+# Left join: match, but preserve batting data
+left_join(batting_df, uperson_df)
+
+# Anti join: find batters without person data
+anti_join(batting_df, person_df)
+# or people who didn't bat
+anti_join(person_df, batting_df)
+}
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>dplyr</em> version 0.7.4 <a href="00Index.html">Index</a>]</div>
+</body></html>

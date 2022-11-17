@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Reduces multiple values down to a single value</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for summarise {dplyr}"><tr><td>summarise {dplyr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Reduces multiple values down to a single value</h2>
+
+<h3>Description</h3>
+
+<p><code>summarise()</code> is typically used on grouped data created by <code><a href="group_by.html">group_by()</a></code>.
+The output will have one row for each group.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+summarise(.data, ...)
+
+summarize(.data, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>.data</code></td>
+<td>
+<p>A tbl. All main verbs are S3 generics and provide methods
+for <code><a href="tbl_df.html">tbl_df()</a></code>, <code><a href="../../dtplyr/html/tbl_dt.html">dtplyr::tbl_dt()</a></code> and <code><a href="../../dbplyr/html/tbl_dbi.html">dbplyr::tbl_dbi()</a></code>.</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>Name-value pairs of summary functions. The name will be the
+name of the variable in the result. The value should be an expression
+that returns a single value like <code>min(x)</code>, <code>n()</code>, or <code>sum(is.na(y))</code>.
+</p>
+<p>These arguments are automatically <a href="../../rlang/html/quo.html">quoted</a> and
+<a href="../../rlang/html/eval_tidy.html">evaluated</a> in the context of the data
+frame. They support <a href="../../rlang/html/quasiquotation.html">unquoting</a> and
+splicing. See <code>vignette("programming")</code> for an introduction to
+these concepts.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>An object of the same class as <code>.data</code>. One grouping level will
+be dropped.
+</p>
+
+
+<h3>Useful functions</h3>
+
+
+<ul>
+<li><p> Center: <code><a href="../../base/html/mean.html">mean()</a></code>, <code><a href="../../stats/html/median.html">median()</a></code>
+</p>
+</li>
+<li><p> Spread: <code><a href="../../stats/html/sd.html">sd()</a></code>, <code><a href="../../stats/html/IQR.html">IQR()</a></code>, <code><a href="../../stats/html/mad.html">mad()</a></code>
+</p>
+</li>
+<li><p> Range: <code><a href="../../base/html/Extremes.html">min()</a></code>, <code><a href="../../base/html/Extremes.html">max()</a></code>, <code><a href="../../stats/html/quantile.html">quantile()</a></code>
+</p>
+</li>
+<li><p> Position: <code><a href="nth.html">first()</a></code>, <code><a href="nth.html">last()</a></code>, <code><a href="nth.html">nth()</a></code>,
+</p>
+</li>
+<li><p> Count: <code><a href="n.html">n()</a></code>, <code><a href="n_distinct.html">n_distinct()</a></code>
+</p>
+</li>
+<li><p> Logical: <code><a href="../../base/html/any.html">any()</a></code>, <code><a href="../../base/html/all.html">all()</a></code>
+</p>
+</li></ul>
+
+
+
+<h3>Backend variations</h3>
+
+<p>Data frames are the only backend that supports creating a variable and
+using it in the same summary. See examples for more details.
+</p>
+
+
+<h3>Tidy data</h3>
+
+<p>When applied to a data frame, row names are silently dropped. To preserve,
+convert to an explicit variable with <code><a href="../../tibble/html/rownames_to_column.html">tibble::rownames_to_column()</a></code>.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>Other single table verbs: <code><a href="arrange.html">arrange</a></code>,
+<code><a href="filter.html">filter</a></code>, <code><a href="mutate.html">mutate</a></code>,
+<code><a href="select.html">select</a></code>, <code><a href="slice.html">slice</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+# A summary applied to ungrouped tbl returns a single row
+mtcars %&gt;%
+  summarise(mean = mean(disp), n = n())
+
+# Usually, you'll want to group first
+mtcars %&gt;%
+  group_by(cyl) %&gt;%
+  summarise(mean = mean(disp), n = n())
+
+# Each summary call removes one grouping level (since that group
+# is now just a single row)
+mtcars %&gt;%
+  group_by(cyl, vs) %&gt;%
+  summarise(cyl_n = n()) %&gt;%
+  group_vars()
+
+# Note that with data frames, newly created summaries immediately
+# overwrite existing variables
+mtcars %&gt;%
+  group_by(cyl) %&gt;%
+  summarise(disp = mean(disp), sd = sd(disp))
+
+
+# summarise() supports quasiquotation. You can unquote raw
+# expressions or quosures:
+var &lt;- quo(mean(cyl))
+summarise(mtcars, !! var)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>dplyr</em> version 0.7.4 <a href="00Index.html">Index</a>]</div>
+</body></html>

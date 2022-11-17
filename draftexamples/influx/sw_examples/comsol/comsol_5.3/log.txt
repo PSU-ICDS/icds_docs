@@ -1,0 +1,63 @@
+*******************************************
+***COMSOL 5.3.0.316 progress output file***
+*******************************************
+Fri Nov 08 08:32:05 EST 2019
+COMSOL 5.3 (Build: 316) starting in batch mode
+Opening file: /gpfs/group/wff3/default/software_examples/comsol/comsol_5.3/cylinder_flow5.3.mph
+Open time: 7 s.
+Running: Study 1
+<---- Compile Equations: Time Dependent in Study 1/Solution 1 (sol1) -----------
+Started at 8-Nov-2019 08:32:12.
+Geometry shape order: Linear
+Running in distributed mode using 3 nodes.
+Running on  Intel(R) Xeon(R) CPU E5-2650 v4 at 2.20 GHz.
+Using 10 cores on 2 sockets.
+Available memory: 128.95 GB.
+           Current Progress:   2 % - Compiling equations
+Memory: 723/723 4254/4254
+Node 1:
+Running in distributed mode using 3 nodes.
+Running on  Intel(R) Xeon(R) CPU E5-2650 v4 at 2.20 GHz.
+Using 10 cores on 2 sockets.
+Available memory: 128.95 GB.
+Node 2:
+Running in distributed mode using 3 nodes.
+Running on  Intel(R) Xeon(R) CPU E5-2650 v4 at 2.20 GHz.
+Using 10 cores on 2 sockets.
+Available memory: 128.95 GB.
+Time: 2 s.
+Physical memory: 739 MB
+Virtual memory: 4258 MB
+Ended at 8-Nov-2019 08:32:14.
+----- Compile Equations: Time Dependent in Study 1/Solution 1 (sol1) ---------->
+           Current Progress:   2 % - Dependent Variables 1
+Memory: 750/750 4269/4269
+<---- Time-Dependent Solver 1 in Study 1/Solution 1 (sol1) ---------------------
+Started at 8-Nov-2019 08:32:15.
+Time-dependent solver (BDF)
+           Current Progress:   4 % - Time-Dependent Solver 1
+Memory: 764/764 4347/4347
+Number of degrees of freedom solved for: 44823 (plus 1 internal DOFs).
+           Current Progress:   4 % - Assembling matrices
+Memory: 775/775 4366/4366
+Nonsymmetric matrix found.
+Scales for dependent variables:
+Pressure (comp1.p): 0.94
+Velocity field (comp1.u): 1
+Step        Time    Stepsize      Res  Jac  Sol Order Tfail NLfail   LinErr   LinRes
+           Current Progress:   4 % - Matrix factorization
+Memory: 784/784 4378/4378
+           Current Progress:   4 % - Constraint handling
+Memory: 861/861 4501/4501
+           Current Progress:   4 % - Matrix factorization
+Memory: 838/861 4456/4501
+   0           0           - out    2    3    2                  0        0        0
+           Current Progress:   4 % - Assembling matrices
+Memory: 868/868 4505/4505
+           Current Progress:   4 % - Matrix factorization
+Memory: 839/868 4456/4505
+   1       0.007       0.007        3    4    3     1     0      0        0        0
+           Current Progress:   4 % - Assembling matrices
+Memory: 872/872 4507/4507
+           Current Progress:   4 % - Matrix factorization
+Memory: 839/872 4456/4507

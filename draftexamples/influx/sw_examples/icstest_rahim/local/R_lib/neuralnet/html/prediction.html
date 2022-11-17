@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Summarizes the output of the neural network, the data and the...</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for prediction {neuralnet}"><tr><td>prediction {neuralnet}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2> Summarizes the output of the neural network, the data and the fitted values of glm objects (if available) </h2>
+
+<h3>Description</h3>
+
+<p><code>prediction</code>, a method for objects of class <code>nn</code>, typically produced by <code>neuralnet</code>. 
+In a first step, the dataframe will be amended by a mean response, the mean of all responses corresponding to the same covariate-vector. 
+The calculated data.error is the error function between the original response and the new mean response.
+In a second step, all duplicate rows will be erased to get a quick overview of the data. 
+To obtain an overview of the results of the neural network and the glm objects, the covariate matrix will be bound to the output of the neural network and the fitted values of the glm object(if available) and will be reduced by all duplicate rows.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+prediction(x, list.glm = NULL)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p> neural network </p>
+</td></tr>
+<tr valign="top"><td><code>list.glm</code></td>
+<td>
+<p> an optional list of glm objects </p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>a list of the summaries of the repetitions of the neural networks, the data and the glm objects (if available).
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p> Stefan Fritsch, Frauke Guenther <a href="mailto:guenther@leibniz-bips.de">guenther@leibniz-bips.de</a> </p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="neuralnet.html">neuralnet</a></code></p>
+
+
+<h3>Examples</h3>
+
+<pre>
+Var1 &lt;- rpois(100,0.5)
+Var2 &lt;- rbinom(100,2,0.6)
+Var3 &lt;- rbinom(100,1,0.5)
+SUM &lt;- as.integer(abs(Var1+Var2+Var3+(rnorm(100))))
+sum.data &lt;- data.frame(Var1+Var2+Var3, SUM)
+print(net.sum &lt;- neuralnet( SUM~Var1+Var2+Var3,  sum.data, hidden=1, 
+                 act.fct="tanh"))
+main &lt;- glm(SUM~Var1+Var2+Var3, sum.data, family=poisson())
+full &lt;- glm(SUM~Var1*Var2*Var3, sum.data, family=poisson())
+prediction(net.sum, list.glm=list(main=main, full=full))
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>neuralnet</em> version 1.33 <a href="00Index.html">Index</a>]</div>
+</body></html>

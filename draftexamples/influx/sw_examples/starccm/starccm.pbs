@@ -1,0 +1,15 @@
+#PBS -A open
+#PBS -l nodes=1:ppn=20
+#PBS -l pmem=6gb
+#PBS -l walltime=24:00:00
+
+echo "Job started on 'hostname' at 'date'"
+cd $PBS_O_WORKDIR
+
+module purge
+module load starccm
+
+starccm+ -np 20 -machinefile $PBS_NODEFILE -batch AR2_UD_20steps.sim 
+
+echo "Job Ended at 'date'"
+

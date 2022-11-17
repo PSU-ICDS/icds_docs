@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Sample n rows from a table</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for sample {dplyr}"><tr><td>sample {dplyr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Sample n rows from a table</h2>
+
+<h3>Description</h3>
+
+<p>This is a wrapper around <code><a href="../../base/html/sample.html">sample.int()</a></code> to make it easy to
+select random rows from a table. It currently only works for local
+tbls.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+sample_n(tbl, size, replace = FALSE, weight = NULL, .env = NULL)
+
+sample_frac(tbl, size = 1, replace = FALSE, weight = NULL, .env = NULL)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>tbl</code></td>
+<td>
+<p>tbl of data.</p>
+</td></tr>
+<tr valign="top"><td><code>size</code></td>
+<td>
+<p>For <code>sample_n()</code>, the number of rows to select.
+For <code>sample_frac()</code>, the fraction of rows to select.
+If <code>tbl</code> is grouped, <code>size</code> applies to each group.</p>
+</td></tr>
+<tr valign="top"><td><code>replace</code></td>
+<td>
+<p>Sample with or without replacement?</p>
+</td></tr>
+<tr valign="top"><td><code>weight</code></td>
+<td>
+<p>Sampling weights. This must evaluate to a vector of
+non-negative numbers the same length as the input. Weights are
+automatically standardised to sum to 1.
+</p>
+<p>This argument is automatically <a href="../../rlang/html/quo.html">quoted</a> and later
+<a href="../../rlang/html/eval_tidy.html">evaluated</a> in the context of the data
+frame. It supports <a href="../../rlang/html/quasiquotation.html">unquoting</a>. See
+<code>vignette("programming")</code> for an introduction to these concepts.</p>
+</td></tr>
+<tr valign="top"><td><code>.env</code></td>
+<td>
+<p>This variable is deprecated and no longer has any
+effect. To evaluate <code>weight</code> in a particular context, you can
+now unquote a <a href="../../rlang/html/quosure.html">quosure</a>.</p>
+</td></tr>
+</table>
+
+
+<h3>Examples</h3>
+
+<pre>
+by_cyl &lt;- mtcars %&gt;% group_by(cyl)
+
+# Sample fixed number per group
+sample_n(mtcars, 10)
+sample_n(mtcars, 50, replace = TRUE)
+sample_n(mtcars, 10, weight = mpg)
+
+sample_n(by_cyl, 3)
+sample_n(by_cyl, 10, replace = TRUE)
+sample_n(by_cyl, 3, weight = mpg / mean(mpg))
+
+# Sample fixed fraction per group
+# Default is to sample all data = randomly resample rows
+sample_frac(mtcars)
+
+sample_frac(mtcars, 0.1)
+sample_frac(mtcars, 1.5, replace = TRUE)
+sample_frac(mtcars, 0.1, weight = 1 / mpg)
+
+sample_frac(by_cyl, 0.2)
+sample_frac(by_cyl, 1, replace = TRUE)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>dplyr</em> version 0.7.4 <a href="00Index.html">Index</a>]</div>
+</body></html>

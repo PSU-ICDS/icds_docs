@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Select helpers</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for select_helpers {dplyr}"><tr><td>select_helpers {dplyr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Select helpers</h2>
+
+<h3>Description</h3>
+
+<p>These functions allow you to select variables based on their names.
+</p>
+
+<ul>
+<li> <p><code>starts_with()</code>: starts with a prefix
+</p>
+</li>
+<li> <p><code>ends_with()</code>: ends with a prefix
+</p>
+</li>
+<li> <p><code>contains()</code>: contains a literal string
+</p>
+</li>
+<li> <p><code>matches()</code>: matches a regular expression
+</p>
+</li>
+<li> <p><code>num_range()</code>: a numerical range like x01, x02, x03.
+</p>
+</li>
+<li> <p><code>one_of()</code>: variables in character vector.
+</p>
+</li>
+<li> <p><code>everything()</code>: all variables.
+</p>
+</li></ul>
+
+
+
+<h3>Usage</h3>
+
+<pre>
+current_vars()
+
+starts_with(match, ignore.case = TRUE, vars = current_vars())
+
+ends_with(match, ignore.case = TRUE, vars = current_vars())
+
+contains(match, ignore.case = TRUE, vars = current_vars())
+
+matches(match, ignore.case = TRUE, vars = current_vars())
+
+num_range(prefix, range, width = NULL, vars = current_vars())
+
+one_of(..., vars = current_vars())
+
+everything(vars = current_vars())
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>match</code></td>
+<td>
+<p>A string.</p>
+</td></tr>
+<tr valign="top"><td><code>ignore.case</code></td>
+<td>
+<p>If <code>TRUE</code>, the default, ignores case when matching
+names.</p>
+</td></tr>
+<tr valign="top"><td><code>vars</code></td>
+<td>
+<p>A character vector of variable names. When called from inside
+<code><a href="select.html">select()</a></code> these are automatically set to the names of the
+table.</p>
+</td></tr>
+<tr valign="top"><td><code>prefix</code></td>
+<td>
+<p>A prefix that starts the numeric range.</p>
+</td></tr>
+<tr valign="top"><td><code>range</code></td>
+<td>
+<p>A sequence of integers, like <code>1:5</code></p>
+</td></tr>
+<tr valign="top"><td><code>width</code></td>
+<td>
+<p>Optionally, the &quot;width&quot; of the numeric range. For example,
+a range of 2 gives &quot;01&quot;, a range of three &quot;001&quot;, etc.</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>One or more character vectors.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>An integer vector giving the position of the matched variables.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+iris &lt;- tbl_df(iris) # so it prints a little nicer
+select(iris, starts_with("Petal"))
+select(iris, ends_with("Width"))
+select(iris, contains("etal"))
+select(iris, matches(".t."))
+select(iris, Petal.Length, Petal.Width)
+select(iris, everything())
+vars &lt;- c("Petal.Length", "Petal.Width")
+select(iris, one_of(vars))
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>dplyr</em> version 0.7.4 <a href="00Index.html">Index</a>]</div>
+</body></html>

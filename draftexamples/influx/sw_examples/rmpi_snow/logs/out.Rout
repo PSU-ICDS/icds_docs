@@ -1,0 +1,82 @@
+--------------------------------------------------------------------------
+[[64459,1],0]: A high-performance Open MPI point-to-point messaging module
+was unable to find any relevant network interfaces:
+
+Module: OpenFabrics (openib)
+  Host: comp-bc-0375
+
+Another transport will be used instead, although this may result in
+lower performance.
+--------------------------------------------------------------------------
+[1540559010.217011] [comp-bc-0375:62400:0]         shm.c:65   MXM  WARN  Could not open the KNEM device file at /dev/knem : No such file or directory. Won't use knem.
+[1540559010.217166] [comp-bc-0375:62400:0]      ib_dev.c:695  MXM  ERROR There are no Mellanox cards detected.
+[1540559010.217667] [comp-bc-0375:62400:0]         shm.c:65   MXM  WARN  Could not open the KNEM device file at /dev/knem : No such file or directory. Won't use knem.
+[1540559010.217675] [comp-bc-0375:62400:0]      ib_dev.c:695  MXM  ERROR There are no Mellanox cards detected.
+[1540559010.218662] [comp-bc-0375:62399:0]         shm.c:65   MXM  WARN  Could not open the KNEM device file at /dev/knem : No such file or directory. Won't use knem.
+[1540559010.218801] [comp-bc-0375:62399:0]      ib_dev.c:695  MXM  ERROR There are no Mellanox cards detected.
+--------------------------------------------------------------------------
+Open MPI failed to open the /dev/knem device due to a local error.
+Please check with your system administrator to get the problem fixed,
+or set the btl_sm_use_knem MCA parameter to 0 to run without /dev/knem
+support.
+
+  Local host: comp-bc-0375
+  Errno:      2 (No such file or directory)
+--------------------------------------------------------------------------
+[1540559010.219285] [comp-bc-0375:62399:0]         shm.c:65   MXM  WARN  Could not open the KNEM device file at /dev/knem : No such file or directory. Won't use knem.
+[1540559010.219294] [comp-bc-0375:62399:0]      ib_dev.c:695  MXM  ERROR There are no Mellanox cards detected.
+[1540559010.224070] [comp-bc-0375:62397:0]         shm.c:65   MXM  WARN  Could not open the KNEM device file at /dev/knem : No such file or directory. Won't use knem.
+[1540559010.224220] [comp-bc-0375:62397:0]      ib_dev.c:695  MXM  ERROR There are no Mellanox cards detected.
+[1540559010.224708] [comp-bc-0375:62397:0]         shm.c:65   MXM  WARN  Could not open the KNEM device file at /dev/knem : No such file or directory. Won't use knem.
+[1540559010.224717] [comp-bc-0375:62397:0]      ib_dev.c:695  MXM  ERROR There are no Mellanox cards detected.
+--------------------------------------------------------------------------
+WARNING: Open MPI failed to open the /dev/knem device due to a local
+error. Please check with your system administrator to get the problem
+fixed, or set the btl_vader_single_copy_mechanism MCA variable to none
+to silence this warning and run without knem support.
+
+The vader shared memory BTL will fall back on another single-copy
+mechanism if one is available. This may result in lower performance.
+
+  Local host: comp-bc-0375
+  Errno:      2 (No such file or directory)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+WARNING: Linux kernel knem support was requested via the
+btl_vader_single_copy_mechanism MCA parameter, but Knem support was either not
+compiled into this Open MPI installation, or Knem support was unable
+to be activated in this process.
+
+The vader BTL will fall back on another single-copy mechanism if one
+is available. This may result in lower performance.
+
+  Local host: comp-bc-0375
+--------------------------------------------------------------------------
+[1540559010.336160] [comp-bc-0375:62398:0]         shm.c:65   MXM  WARN  Could not open the KNEM device file at /dev/knem : No such file or directory. Won't use knem.
+[1540559010.336316] [comp-bc-0375:62398:0]      ib_dev.c:695  MXM  ERROR There are no Mellanox cards detected.
+[1540559010.336846] [comp-bc-0375:62398:0]         shm.c:65   MXM  WARN  Could not open the KNEM device file at /dev/knem : No such file or directory. Won't use knem.
+[1540559010.336856] [comp-bc-0375:62398:0]      ib_dev.c:695  MXM  ERROR There are no Mellanox cards detected.
+[1540559010.341792] [comp-bc-0375:62401:0]         shm.c:65   MXM  WARN  Could not open the KNEM device file at /dev/knem : No such file or directory. Won't use knem.
+[1540559010.341934] [comp-bc-0375:62401:0]      ib_dev.c:695  MXM  ERROR There are no Mellanox cards detected.
+[1540559010.353163] [comp-bc-0375:62401:0]         shm.c:65   MXM  WARN  Could not open the KNEM device file at /dev/knem : No such file or directory. Won't use knem.
+[1540559010.353175] [comp-bc-0375:62401:0]      ib_dev.c:695  MXM  ERROR There are no Mellanox cards detected.
+[1540559010.439711] [comp-bc-0366:194865:0]         shm.c:65   MXM  WARN  Could not open the KNEM device file at /dev/knem : No such file or directory. Won't use knem.
+[1540559010.439871] [comp-bc-0366:194865:0]      ib_dev.c:695  MXM  ERROR There are no Mellanox cards detected.
+[1540559010.440319] [comp-bc-0366:194867:0]         shm.c:65   MXM  WARN  Could not open the KNEM device file at /dev/knem : No such file or directory. Won't use knem.
+[1540559010.440465] [comp-bc-0366:194867:0]      ib_dev.c:695  MXM  ERROR There are no Mellanox cards detected.
+[1540559010.440966] [comp-bc-0366:194867:0]         shm.c:65   MXM  WARN  Could not open the KNEM device file at /dev/knem : No such file or directory. Won't use knem.
+[1540559010.440974] [comp-bc-0366:194867:0]      ib_dev.c:695  MXM  ERROR There are no Mellanox cards detected.
+[1540559010.440972] [comp-bc-0366:194865:0]         shm.c:65   MXM  WARN  Could not open the KNEM device file at /dev/knem : No such file or directory. Won't use knem.
+[1540559010.440981] [comp-bc-0366:194865:0]      ib_dev.c:695  MXM  ERROR There are no Mellanox cards detected.
+[1540559010.445236] [comp-bc-0366:194868:0]         shm.c:65   MXM  WARN  Could not open the KNEM device file at /dev/knem : No such file or directory. Won't use knem.
+[1540559010.445371] [comp-bc-0366:194868:0]      ib_dev.c:695  MXM  ERROR There are no Mellanox cards detected.
+[1540559010.445849] [comp-bc-0366:194868:0]         shm.c:65   MXM  WARN  Could not open the KNEM device file at /dev/knem : No such file or directory. Won't use knem.
+[1540559010.445857] [comp-bc-0366:194868:0]      ib_dev.c:695  MXM  ERROR There are no Mellanox cards detected.
+[1540559010.453004] [comp-bc-0366:194866:0]         shm.c:65   MXM  WARN  Could not open the KNEM device file at /dev/knem : No such file or directory. Won't use knem.
+[1540559010.453165] [comp-bc-0366:194866:0]      ib_dev.c:695  MXM  ERROR There are no Mellanox cards detected.
+[1540559010.453690] [comp-bc-0366:194866:0]         shm.c:65   MXM  WARN  Could not open the KNEM device file at /dev/knem : No such file or directory. Won't use knem.
+[1540559010.453700] [comp-bc-0366:194866:0]      ib_dev.c:695  MXM  ERROR There are no Mellanox cards detected.
+[1540559010.456655] [comp-bc-0366:194864:0]         shm.c:65   MXM  WARN  Could not open the KNEM device file at /dev/knem : No such file or directory. Won't use knem.
+[1540559010.456844] [comp-bc-0366:194864:0]      ib_dev.c:695  MXM  ERROR There are no Mellanox cards detected.
+[1540559010.457340] [comp-bc-0366:194864:0]         shm.c:65   MXM  WARN  Could not open the KNEM device file at /dev/knem : No such file or directory. Won't use knem.
+[1540559010.457348] [comp-bc-0366:194864:0]      ib_dev.c:695  MXM  ERROR There are no Mellanox cards detected.

@@ -1,0 +1,87 @@
+ In[1]:=
+ In[1]:=
+ In[1]:=
+2 + 2
+
+f[x_] := x^2
+
+Plot[f[x], {x, 0, 1}]
+
+Export["m_plot.pdf", %]
+
+f[3]
+
+1/0
+
+Print["Now a 10 sec. pause"]
+
+Pause[10]
+
+Print["print result: ", f[11]]
+
+Export["m_test.txt", Table[i, {i, 1, 10}]]
+
+Echo[1 + 1, "echo result: "]
+
+D[f[x], x]
+
+100 + 1
+4
+
+m_plot.pdf
+9
+During evaluation of  In[1]:= Power::infy :  Infinite expression <<1>> encountered.
+ComplexInfinity
+During evaluation of  In[1]:= Now a 10 sec. pause
+During evaluation of  In[1]:= print result: 121
+m_test.txt
+echo result:  2
+2
+2 x
+101
+During evaluation of  In[1]:= SetDelayed::write :  Tag <<2>> in <<1>> is Protected.
+$Failed
+
+m_plot.pdf
+9
+During evaluation of  In[1]:= Power::infy :  Infinite expression <<1>> encountered.
+ComplexInfinity
+During evaluation of  In[1]:= Now a 10 sec. pause
+During evaluation of  In[1]:= print result: 121
+m_test.txt
+echo result:  2
+2
+2 x
+101
+4
+m_plot.pdf
+9
+During evaluation of  In[1]:=
+Syntax::sntxf: "" cannot be followed by "x, 0, 1}]".
+During evaluation of  In[1]:=
+Syntax::sntxf: "" cannot be followed by ":= x^2".
+During evaluation of  In[1]:=
+Syntax::sntxf: "" cannot be followed by " In[1]:=".
+During evaluation of  In[1]:= SetDelayed::write :  Tag <<2>> in <<1>> is Protected.
+$Failed
+
+m_plot.pdf
+9
+During evaluation of  In[1]:= Power::infy :  Infinite expression <<1>> encountered.
+ComplexInfinity
+During evaluation of  In[1]:= Now a 10 sec. pause
+During evaluation of  In[1]:= print result: 121
+m_test.txt
+echo result:   2
+2
+2 x
+101
+4
+m_plot.pdf
+9
+During evaluation of  In[1]:=
+Syntax::sntxf: "" cannot be followed by "t[f[x], {x, 0, 1}]".
+During evaluation of  In[1]:=
+Syntax::sntxf: "" cannot be followed by "2".
+During evaluation of  In[1]:=
+Syntax::sntxf: "" cannot be followed by " In[1]:=".

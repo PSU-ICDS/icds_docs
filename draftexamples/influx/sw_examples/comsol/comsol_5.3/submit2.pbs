@@ -1,0 +1,24 @@
+#PBS -l nodes=1:ppn=2
+#PBS -l walltime=1:00:00
+#PBS -l pmem=2gb
+#PBS -A open
+#PBS -j oe
+# Get started
+echo " "
+echo "Job started on `hostname` at `date`"
+echo " "
+
+# Load in module 
+module load comsol/5.3
+echo "comsol is loaded"
+# Go to the correct place
+cd $PBS_O_WORKDIR
+echo "loaded to the pwd"
+# Run the job
+
+cat $PBS_NODEFILE | sort | uniq > pnodes
+comsol batch -nn 2 -np 20 -f ./pnodes -inputfile sample_input.mph -outputfile file.mph -batchlog log.log
+# Finish up
+echo " "
+echo "Job Ended at `date`"
+echo " "

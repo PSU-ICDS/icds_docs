@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Apply predicate to all variables</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for all_vars {dplyr}"><tr><td>all_vars {dplyr}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Apply predicate to all variables</h2>
+
+<h3>Description</h3>
+
+<p>These quoting functions signal to scoped filtering verbs
+(e.g. <code><a href="filter_all.html">filter_if()</a></code> or <code><a href="filter_all.html">filter_all()</a></code>) that a predicate expression
+should be applied to all relevant variables. The <code>all_vars()</code>
+variant takes the intersection of the predicate expressions with
+<code>&amp;</code> while the <code>any_vars()</code> variant takes the union with <code>|</code>.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+all_vars(expr)
+
+any_vars(expr)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>expr</code></td>
+<td>
+<p>A predicate expression. This variable supports
+<a href="../../rlang/html/quasiquotation.html">unquoting</a> and will be evaluated in the
+context of the data frame. It should return a logical vector.
+</p>
+<p>This argument is automatically <a href="../../rlang/html/quo.html">quoted</a> and later
+<a href="../../rlang/html/eval_tidy.html">evaluated</a> in the context of the data
+frame. It supports <a href="../../rlang/html/quasiquotation.html">unquoting</a>. See
+<code>vignette("programming")</code> for an introduction to these concepts.</p>
+</td></tr>
+</table>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="funs.html">funs()</a></code> and <code><a href="vars.html">vars()</a></code> for other quoting functions that you
+can use with scoped verbs.
+</p>
+
+<hr /><div style="text-align: center;">[Package <em>dplyr</em> version 0.7.4 <a href="00Index.html">Index</a>]</div>
+</body></html>
