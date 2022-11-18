@@ -1,35 +1,44 @@
 #!/bin/bash
 
 
-####
-#### SCHEDULER DIRECTIVES 
-####
+##############################
+##############################
+#### SCHEDULER DIRECTIVES ####
+##############################
+##############################
 
 
 #### Give the job a name, but keep it short
 #PBS -N fmriprep_job
 
-#### Select the queue for the job. Usually this will be set to the open account unless submitting to a paid compute allocation. Simply replace "open" with ID of paid allocation.
+#### Select a queue for the job.
+#### The open account is typically used. Otherwise, simply replace "open" with an allocation ID.
 #PBS -A open
 
 #### [ OPTIONAL ] Merge the output and input files
-#PBS -j oe
+#PBj oe
 
-##### Resource Request
+#### Resource Request
 #PBS -l nodes=1:ppn=4:stmem,mem=12gb,walltime=10:00
 
-####  Resource Request Info
+#### Resource Request Info
 ####    
-####    #PBS -l nodes=<nodes>:ppn=<ppn>:<type>,<memory_spec>,<walltime_spec>
+####  #PBS -l nodes=<nodes>:ppn=<ppn>:<type>,<memory_spec>,<walltime_spec>
 ####    
 ####    Set size of resource request:
 ####    
 ####      nodes =  number of computing devices
 ####      ppn   =  processors/cores per node
 ####      
-####        Note: Total Number of Processors Cores  =  nodes * ppn
+####      Note: Total Number of Processors Cores  =  nodes * ppn
 ####    
-####        A node is essentially hardware that is connected together as a congruent computing device. Laptops, desktops, phones, and other computers could be viewed as a computational node. Somewhat "average" laptops nowadays may carry 4 or even 8 processors/cores, but nodes on Roar may have anywhere from 20 to 40 processors/cores depending upon the node type. The many nodes of Roar are connected to allow efficient communication between the nodes, and they are also mounted to the same filesystem. With proper configuration of academic and research software, a congruent computing device emerges out of this powerful connected network, and it is capable of reaching a high level of performance for many classes of computational problems.
+####      A node is essentially hardware that is connected together as a congruent computing        
+####      device. Laptops, desktops, phones, and other computers could be viewed as a computational 
+####      node. Somewhat "average" laptops nowadays may carry 4 or even 8 processors/cores, but     
+####      nodes on Roar may have anywhere from 20 to 40 processors/cores depending upon the node    
+####      type. The Roar consists of many nodes that are connected for efficient communication and  
+####      share the same filesystem. With proper configuration of academic and research software, a 
+####      high-performance computing device emerges out of this powerful connected network.
 ####    
 ####    Request a specific node type:
 ####      
@@ -45,42 +54,84 @@
 ####      mem   = maximum amount of physical memory used by the job
 ####      pmem  = maximum amount of physical memory used by any single process of the job
 ####              
-####        Note: Since pmem identifies the amount of memory per processor,
-####                 Total Amount of Memory Per Node =  ppn * pmem
+####      Note: Since pmem identifies the amount of memory per processor,
+####                 Total Amount of Memory Per Node = ppn * pmem
 ####    
 ####    Set a runtime limit for the job:
 ####    
 ####      walltime  =  maximum allowable time for this job to run in HH:MM:SS format
 ####    
 
-####
 ####    Some Resource Request Guidelines:
 ####    
 ####    If no parallelization whatsoever is used in the job, use a single processor/core.
 ####    
 ####      #PBS -l nodes=1:ppn=1
 ####    
-####    For general purpose computing, use roughly the same computing power as a good laptop might have.
+####    For general purpose computing, use roughly the same resources comparable to a good laptop.
 ####    
 ####      #PBS -l nodes=1:ppn=8
 ####      #PBS -l mem=32gb
 ####    
-####    Utilizing the additional processors given to the job, however, requires that the applications running within the job can take advantage of parallel resources, either inherently or by proper configuration. If the job is not configured to use the additional processors, then unutilized processors will remain idle for the duration of the job.
+####    Utilizing the additional processors given to the job, however, requires that the software   
+####    running within the job can take advantage of parallel resources, either inherently or by    
+####    proper configuration. If the software is not configured to use the additional processors,   
+####    then any unutilized processors will remain idle for the duration of the job.
 ####    
-####    For scaling up to multi-node jobs, the software must be specifically configured in order to utilize and coordinate the multiple nodes. This level of configuration signifcantly boosts the job's scalability. The standard and high memory nodes are connected with infiniband cables and also via ethernet. The basic nodes are only connected via ethernet. Multi-node jobs will typically benefit from specifically running on nodes connected with infiniband.
+####    For scaling up to multi-node jobs, the software must be specifically configured in order to 
+####    utilize and coordinate multiple nodes. This level of configuration signifcantly boosts the  
+####    job's potential for scalability. The standard and high memory nodes are connected with      
+####    infiniband cables and also via ethernet. The basic nodes are only connected via ethernet.   
+####    Multi-node jobs typically benefit from specifically running on infiniband-connected nodes.
+####    
 ####      #PBS -l nodes=3:ppn=4:stmem
 ####    
 ####    For a gpu job, add gpus to the resource request:
+####    
 ####      #PBS -A <paid_gpu_alloc_id>
 ####      #PBS -l nodes=1:ppn=4:gpus=1
 ####    
-####    In general, reduce the overall resource footprint of your job for fast placement. As a rule of thumb, calculate your best possible estimate for the job's memory and time requirements then add a 20% - 50% margin to select the memory and time request. Improve this estimate iteratively on subsequent jobs. The open account has a maximum allowable walltime of 48 hours.
+####    In general, reduce the overall resource footprint of your job for more rapid job placement. 
+####    Calculate the best possible estimate for the job's memory and time requirements then, as a  
+####    rule of thumb, add a 10% - 50% margin to determine values for the memory and time request.  
+####    The additional margin should be on the lower side if there is a high level of confidence in 
+####    the accuracy of the resource estimation, but add a higher margin if the accuracy of the     
+####    resource estimation comes with a lower level of confidence. Iteratively improve the resource
+####    estimates on subsequent jobs. The open account has a maximum allowable walltime of 48 hours,
+####    but paid allocations do not have an explicit walltime limit.
+####    
 
 
+#########################
+#########################
+#### MAIN JOB SCRIPT ####
+#########################
+#########################
 
-####
-#### MAIN JOB SCRIPT
-####
+
+####    
+####    Important job concepts:
+####    
+####      -  
+####      -  
+####      -  
+####      -  
+####    
+####    
+####    
+####    
+####    
+####    
+####    
+####    
+####    
+####    
+####    
+
+
+########################
+#### INITIALIZE JOB ####
+########################
 
 
 # Get the job started and start the clock
@@ -89,34 +140,109 @@ jobid=$(echo $PBS_JOBID | awk -F '.' '{print $1}')
 echo "Job ${jobid} started at `date` on `hostname`"
 
 cd $PBS_O_WORKDIR
-    #  PBS_O_WORKDIR is the absolute path of the current working directory of the qsub command
-    #  The session launches in $HOME by default, so must navigate the session to the original submission directory 
+####
+####    PBS_O_WORKDIR is the absolute path of the current working directory of the qsub command.
+####    The session launches in $HOME by default, but it is typically desirable to navigate the session to the original submission directory.
+####
 
-#### SET UP SOFTWARE ENVIRONMENT
+
+#####################################
+#### SET UP SOFTWARE ENVIRONMENT ####
+#####################################
+
+# Set necessary environment variables
+
+
+# Initialize software configuration
 
 
 # Verify environment and software configuration
-if [ ! -f "${fmriprep_base}/fmriprep-${fmriprep_version}.simg" ] ; then
-    echo " ERROR:  Container fmriprep-${fmriprep_version}.simg not found!"
-    echo "         Please change the version or build fmriprep-${fmriprep_version}.simg, then try again."
-fi
+#if [  ]; then
+#    echo " ERROR:  This job's software environment is not properly configured!"
+#    echo "         Please ..., then try again."
+#fi
 
 
-#### RUN THE JOB
+#########################
+#### PERFORM THE JOB ####
+#########################
+
+
 hostname
 
 
-#### POST-PROCESS
+#########################
+#### POST-PROCESSING ####
+#########################
+
 
 # Collect relevant job info
 
+
+
 # Print out final report
 
+
+
 # Clean up
+
+
+
+# Function to convert total runtime from seconds to HH:MM:SS format
+seconds_to_hms() {
+    (( h=${1}/3600 ))
+    (( m=(${1}%3600)/60 ))
+    (( s=${1}%60 ))
+    printf "%02d:%02d:%02d\n" $h $m $s
+}
 
 # Finalize job
 echo "Job ended at `date`"
 end=`date +%s`
 runtime=$((end-start))
-echo "Job runtime =  ${runtime}  seconds"
+echo "Job runtime =  $( seconds_to_hms $runtime )  seconds"
+
+
+
+
+##################################
+#### END OF SUBMISSION SCRIPT ####
+##################################
+
+
+####################################################################################################
+####################################################################################################
+####                                                                                            ####
+####    For issues or questiions, contact the iAsk Center.                                      ####
+####                                                                                            ####
+####     [  best method  ] Submit a ticket at www.icds.psu.edu/computing-services/support       ####
+####     [ other options ] Send email to icds@psu.edu                                           ####
+####                       Attend virtual office hours (www.icds.psu.edu/news-events/events)    ####
+####                                                                                            ####
+####    Please provide as much information about the issue, such as                             ####
+####                                                                                            ####
+####     -  Description of the issue                                                            ####
+####     -  Details about the login session                                                     ####
+####     -  Minimal, self-contained example that demonstrates the issue                         ####
+####     -  User ID and contact information                                                     ####
+####     -  Any other observations or pertinent information about the issue                     ####
+####                                                                                            ####
+####################################################################################################
+####################################################################################################
+
+
+
+#############################
+#############################
+####                     ####
+####     Provided by     ####
+####  ICDS @ Penn State  ####
+####                     ####
+####     Emery Etter     ####
+####   ece5034@psu.edu   ####
+####                     ####
+#############################
+#############################
+
+
 
