@@ -9,7 +9,7 @@
 
 
 #### Give the job a name, but keep it short
-#PBS -N fmriprep_job
+#PBS -N explainer-job
 
 #### Select a queue for the job.
 #### The open account is typically used. Otherwise, simply replace "open" with an allocation ID.
