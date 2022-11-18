@@ -16,7 +16,7 @@
 #PBS -A open
 
 #### [ OPTIONAL ] Merge the output and input files
-#PBj oe
+#PBS -j oe
 
 #### Resource Request
 #PBS -l nodes=1:ppn=4:stmem,mem=12gb,walltime=10:00
