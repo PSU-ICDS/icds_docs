@@ -1,52 +1,7 @@
 ##### <span class="titlemark">5.1.1</span> Shells
 
-Unix/Linux shells are command line interpreters that allow for a user to interact with their operating system through utility commands and programs. The Default Unix/Linux shell is BASH (the Bourne-Again SHell) which has extensive online documentation, and common or necessary commands are shown in the table below.
+Unix/Linux shells are command line interpreters that allow for a user to interact with their operating system through utility commands and programs. The Default Unix/Linux shell is BASH (the Bourne-Again SHell) which has extensive online documentation, and common or necessary commands are shown in the [Linux Quick Reference](#quick_ref).
 
-|Command|Description (For full documentation, use the command 'man command' to bring up the manual or find online documentation)|
-|--- |--- |
-|ls|The 'list' (ls) command is used to display all the files in your current directory. Using the '-a' flag will also show any hidden files (typically files beginning with a '.' like .bashrc)|
-|cd|This is the 'change directory' command. Use this to traverse directories (like 'cd work'). To move back a directory level, use 'cd..'.|
-|mv|The 'move' command takes two arguments, the first being the file to move and the second being the directory said file should be moved to ('mv file.txt /work/newdirectory/'). Note: 'mv' can also be used to rename a file if the second argument is simply a new file name instead of a directory.|
-|mkdir|This command is used to make directories.|
-|rmdir|This command is used to delete directories ('rm -rf directory' would also work).|
-|touch|This command is used to create files in a similar way to mkdir. ('touch test.txt' will create an empty text file named test).|
-|rm|This is the 'remove' command. As mentioned above, it can be used recursively to delete entire directory trees, or it can be used with no flags and a file as the argument to delete a single file.|
-|locate|This command is used to locate files on a system. The flag '-i' will make the query case-  
-insensitive, and asterisks ('*') will indicate wildcard characters.|
-|clear|Clears the terminal of all previous outputs leaving you with a clean prompt.|
-|history|Shows the previous commands entered.|
-|find|Used for finding files, typically with the -name flag and the name of the file.|
-|grep|Used for searching within files.|
-|awk|A programming language typically used for data extraction.|
-|id|Show all of the groups a user is in.|
-|du|Show the disk usage. Typically used with -h (for human readable) and -max-depth=1 to limit to only the directories in that level rather than all files.|
-|env|Print out all of the current environment variables.|
-|less|View a file.|
-|cp|Copy a file. Note the -r (recursive) flag can be used to copy directories.|
-|alias|Create an alias (something short) that is interpreted as something else (a complicated command).|
-|pwd|Print the current working directory.|
-|chmod|Change file permissions.|
-|chgrp|Change group for a file or directory.|
-|ldd|Show the shared libraries required for an executable or library.|
-|top|See the node usage. Often used with command U .|
-|/usr/bin/time|Show time and memory statistics for a command being run. Often used with the -v (verbose) flag.|
-|bg|Continue running a paused task in the background|
-|fg|Bring a background task into the foreground|
-|Ctrl + c|Kill a process.|
-|Ctrl + z|Suspend a process|
-|Ctrl + r|Search through your history for a command that includes the text typed next.|
-|* * *|* * *|
-
-
-
-There are also some special characters to be aware of that will be helpful.
-
-*   `~` is your home directory
-*   `.` means here
-*   `..` means up one directory
-*   `*` is the wildcard: `*` for all files or `*.png` for all png files
-*   `|`is pipe (send the output to another command)
-*   `>` means write command output to a file (Example: `ls > log.ls`)
 
 Most commands have a manual that show all of the different ways the command can be used. For example,
 
