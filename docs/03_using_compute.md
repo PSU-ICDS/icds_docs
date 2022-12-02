@@ -2,21 +2,6 @@
 title: Using Compute Resources
 ---
 
-- Submitting on Roar
-	- Interactive Jobs
-	- Batch Jobs
-		- PBS Submit Files
-	- Using dedicated partitions
-	- Using GPUs
-	- Job Management and Monitoring
-- Submitting on Roar Collab
-	- Interactive Jobs
-	- Batch Jobs
-		- SLURM Directives
-	- Using dedicated partitions
-	- Using GPUs
-	- Job Management and Monitoring
-- Converting from PBS to SLURM
 
 # Submitting on Roar
 
@@ -337,6 +322,7 @@ To utilize burst, change partition to “burst” and include the “qos” dire
 	#SBATCH --account=<sla_id> 
 	#SBATCH --partition=burst 
 	#SBATCH --qos=burst4x 
+
 
 # Managing Your Paid Allocation on Roar Collab
 
