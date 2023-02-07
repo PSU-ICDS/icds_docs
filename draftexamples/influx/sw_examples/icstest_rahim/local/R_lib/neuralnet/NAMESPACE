@@ -1,6 +1,0 @@
-S3method(plot,nn)
-export(compute)
-export(confidence.interval)
-export(gwplot)
-export(neuralnet)
-export(prediction)
