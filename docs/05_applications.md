@@ -6,6 +6,7 @@ title: Software on Roar
 
 Software modules are an efficient way for ICDS systems personnel to deliver a wide array of software packages to the user community without placing extraneous clutter in the users' environments. Software modules can be loaded to and unloaded from a user's environment in a straightforward and simple manner, whether in an interactive manner or in a batch job. Loading a module makes module-specific, reversible changes to the user's shell environment, which allows modules to be loaded and unloaded at the user's will without creating increasingly complex user environments. These environment changes occur in a dynamically without the need to reload or reset the environment. Learn more about modules on [TACC’s website](https://www.tacc.utexas.edu/research-development/tacc-projects/lmod)
 
+
 All modules, available versions, and defualt versions on the software stack are viewed and loaded with the following commands:
 
 ```
@@ -17,12 +18,14 @@ Some research software has multiple versions available to users. If no version i
 
 ```
 $ module load matlab
+
 $ module load matlab/R2022a
 ```
 
 For more information on available module versions or to check a specific module 
 ```
 $ module spider gcc
+
 ```
 
 Some modules shown may contain submodules that will be shown as available if the parent module is loaded. For example, the default GCC module is gcc/8.3.1 and contains numerous submodules. The submodules are available to be loaded once the parent module is loaded.
@@ -31,6 +34,7 @@ Some modules shown may contain submodules that will be shown as available if the
 $ module load gcc
 $ module avail
 ```
+
 
 To view all modules that are currently loaded in the environment, use the following command:
 ```
@@ -51,10 +55,13 @@ $ module show gcc
 
 ## Central Software Stack
 
+
 Many common research software packages are already installed and available for Roar users. Most of this software is installed on the Roar software stack as software modules which can be loaded and unloaded with relative ease. Be sure to reserve compute nodes and/or processors to run research sofware because running computationally expensive software on submit nodes will drastically reduce computing performance.
 
 
+
 ## RISE Software Stack
+
 
 If a software package or a specific version is not available on the main software stack, it may be available in the RISE software stack which is also accessible to Roar users. After specifying this alternate software location, the modules in the RISE software stack are accessible just like any module on the main software stack.
 
@@ -62,6 +69,7 @@ If a software package or a specific version is not available on the main softwar
 $ module use /gpfs/group/RISE/sw7/modules
 $ module avail
 ```
+
 
 The RISE software stack can then be unloaded with the following command:
 ```
@@ -94,11 +102,13 @@ An [Anaconda cheatsheet](https://docs.conda.io/projects/conda/en/4.6.0/_download
 Apptainer is a *container* system developed for use on high-performance computing clusters. Container computing allows the creation of a virtual-machine-like environment, which gives the user access to different configurations of software for use on clusters.
 
 Using Singularity to install a container on Roar can help users:
+
 *   avoid dependence challenges
 *   perform the same expected behavior on local and remote systems
 *   easily move containers to new locations
 
 This may help if you need to run a container without having sudo access, but keep in mind that the container must integrate seamlessly into the existing destination infrastructure.
+
 
 
 ### Getting Started with Apptainer
@@ -111,14 +121,17 @@ Apptainer supports Docker natively and directly. This means that nearly all Dock
 
 ### Obtaining Pre-Built Images
 
+
 Images built by others users, sometimes the developers of the desired software itself, are among the best choices for a base image and, in many cases, may be all a researcher needs to do to have an image that gives the desired outcome.
 
 We can note the first issue, the non-existent bind paths. For this type of image, add the bind paths by slightly modifying the images. This can be done by writing a simple set of instructions, which are used to create an image. This set of instructions is called a recipe, in Singularity terminology.
 
 
+
 ### Handling the Bind Paths on Roar
 
 In order to handle the bind paths, it is very helpful to start with a recipe to set the data paths, even if the image is mostly a prepared image from another source. Start with a recipe and add the correct binding paths for Roar. The following is a simple example to handle the bind points using the lolcow image:
+
 ```
 <pre class="script">BOOTSTRAP: docker
 FROM: godlovedc/lolcow
@@ -131,7 +144,9 @@ mkdir -p /gpfs/scratch
 mkdir -p /var/spool/torque
 ```
 
+
 The image must be built in an environment that has sudo access, not on Roar:
+
 ```
 <pre class="script">[cjb47@localhost simple_bind]$ sudo singularity build ./lolcow.simg ./lolcow.recipe
 Building into existing container: ./lolcow.simg
@@ -161,6 +176,7 @@ Once a container has been built and is placed on Roar, you can use it in a varie
 
 *   Roar interactive sessions
 *   Roar batch sessions
+
 *   Interactive shells
 *   Executing commands
 *   Running a container
@@ -168,9 +184,11 @@ Once a container has been built and is placed on Roar, you can use it in a varie
 
 
 Working with Files:
+
 As long as there are corresponding binding points, you will be able to reach files on the host from within the container. Since Roar has user storage in non-standard locations (compared to distribution default), you will need to add the appropriate locations to a recipe.
 
 In the following example, we need binding for Roar:
+
 ```
 <pre class="script">%post
 #ACI mappings so you can access your files.
@@ -185,6 +203,7 @@ mkdir -p /var/spool/torque
 
 The official [Apptainer User Guide](https://apptainer.org/docs/user/main/) has additional information and examples related to building and using Singularity containers.
 
+
 Following are several other use cases:
 
 *   Building containers with GUI support
@@ -194,8 +213,8 @@ Following are several other use cases:
 *   Using sandbox and writable images
 
 
-
 ## Compiling
+
 
 
 
