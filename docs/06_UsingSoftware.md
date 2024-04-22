@@ -16,16 +16,16 @@ The central software stack uses [Lmod](https://lmod.readthedocs.io/en/latest/) t
 
 | Command | Description |
 | ---- | ---- |
-| module avail | Lists all modules that are available to be loaded |
-| module show \<module_name> | Shows the contents of a module |
-| module spider \<module_name> | Searches the module space for a match |
-| module load \<module_name> | Loads a module or multiple modules if given a space-delimited list of modules |
-| module load \<module>/\<version> | Loads a module of a specific version |
-| module unload \<module_name> | Unloads a module or multiple modules if given a space-delimited list of modules |
-| module list | Lists all currently loaded modules |
-| module purge | Unloads all currently loaded modules |
-| module use \<path> | Adds an additional path to $MODULEPATH to expand module scope |
-| module unuse \<path> | Removes a path from $MODULEPATH to restrict module scope |
+| `module avail` | List all modules that are available to be loaded |
+| `module show <module_name>` | Show the contents of a module |
+| `module spider <module_name>` | Search the module space for a match |
+| `module load <module_name>` | Load a module or multiple modules if given a space-delimited list of modules |
+| `module load <module>/<version>` | Load a module of a specific version |
+| `module unload <module_name>` | Unload a module or multiple modules if given a space-delimited list of modules |
+| `module list` | List all currently loaded modules |
+| `module purge` | Unload all currently loaded modules |
+| `module use <path>` | Add an additional path to $MODULEPATH to expand module scope |
+| `module unuse <path>` | Remove a path from $MODULEPATH to restrict module scope |
 
 
 The central software stack is available to the user environment by default, so modules can be directly loaded with
