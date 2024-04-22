@@ -1,7 +1,43 @@
 
 # Using Software
 
+The software stack on Roar Collab (RC) provides many software modules to the entire user community. There are two software stacks available on RC.
+
+- System software stack: contains software that is available to all users by default upon logging into the system without a need to load anything.
+- Central software stack: contains software that is available to all users by default, but the software modules must be loaded in order to access them.
+
+
 ## Modules
+
+The central software stack uses [Lmod](https://lmod.readthedocs.io/en/latest/) to package the available software. Lmod is a useful tool for manager user software environments using environment modules that can be dynaically added or removed using module files. Lmod is hierarchical, so sub-modules can be nested under a module that is dependant upon. Lmod alters environment variables, most notably the `$PATH` variable, in order to make certain software packages reachable by the user environment.
+
+
+### Useful Lmod Commands
+
+| Command | Description |
+| ---- | ---- |
+| module avail | Lists all modules that are available to be loaded |
+| module show \<module_name> | Shows the contents of a module |
+| module spider \<module_name> | Searches the module space for a match |
+| module load \<module_name> | Loads a module or multiple modules if given a space-delimited list of modules |
+| module load \<module>/\<version> | Loads a module of a specific version |
+| module unload \<module_name> | Unloads a module or multiple modules if given a space-delimited list of modules |
+| module list | Lists all currently loaded modules |
+| module purge | Unloads all currently loaded modules |
+| module use \<path> | Adds an additional path to $MODULEPATH to expand module scope |
+| module unuse \<path> | Removes a path from $MODULEPATH to restrict module scope |
+
+
+The central software stack is available to the user environment by default, so modules can be directly loaded with
+```
+$ module load <package>
+```
+
+To see the available software modules, use
+```
+$ module avail
+```
+
 
 ## Custom Software
 
@@ -9,7 +45,186 @@
 
 ### Anaconda
 
+[Anaconda](https://docs.anaconda.com/index.html) is a very useful package manager that is available on ICDS systems. Package managers simplify software package installation and manage dependency relationships while increasing both the repeatability and the portability of software. The user environment is modified by the package manager so the shell can access different software packages. Anaconda was originally created for Python, but it can package and distribute software for any language. It is usually very simple to create and manage new environments, install new packages, and import/export environments. Many packages are available for installation through Anaconda, and it enables retaining the environments in a silo to reduce cross-dependencies between different packages that may perturb environments.
+
+Anaconda can be loaded from the software stack on Roar Collab (RC) with the following:
+```
+$ module load anaconda
+```
+
+
+#### Installation Example
+
+After loading the **anaconda** module, environments can be created and packages can be installed within those environments. When using the **anaconda** module for the first time on RC, the `conda init bash` command must be used to initialize anaconda, then a new session must be started for the change to take effect. In the new session, the command prompt will be prepended with `(base)` which denotes that the session is in the base anaconda environment.
+
+To create an environment that contains both numpy and scipy, for example, run the following commands:
+```
+(base) $ conda create -n py_env
+(base) $ conda activate py_env
+(py_env) $ conda install numpy
+(py_env) $ conda install scipy
+```
+
+Note that after the environment is entered, the leading item in the prompt changes to reflect the current environment.
+
+Alternatively, the creation of an environemnt and package installation can be completed with a single line.
+```
+(base) $ conda create -n py_env numpy scipy
+```
+
+For more detailed information on usage, check out the [Anaconda documentation](https://docs.conda.io/projects/conda/en/latest/index.html).
+
+
+#### Submission Script Usage
+
+Slurm does not automatically source the `~/.bashrc` file in your batch job, so anaconda fails to be properly initialized within Slurm job submission scripts. Fortunately, the **anaconda** module intitializes the software so that the `conda` command is automatically available within the Slurm job submission script. If using a different anaconda installation, this issue can be resolved by directly sourcing the `~/.bashrc` file in your job script before running any conda commands:
+```
+source ~/.bashrc
+```
+
+Alternatively, the environment can be activated using `source` instead of `conda`.
+```
+source activate <environment>
+```
+
+Another way to resolve this is to add the following shebang to the top of a slurm job script:
+```
+#!/usr/bin/env bash -l
+```
+
+Yet another option would be to put the following commands before activating the conda environment:
+```
+module load <custom anaconda module>
+CONDAPATH=`which conda`
+eval "$(${CONDAPATH} shell.bash hook)"
+```
+
+To reiterate, the **anaconda** module available on RC is configured such that the `conda` command is automatically available within a Slurm job submission sript. The above options are only necessary for other anaconda installations.
+
+
+#### Using Conda Environments in Interactive Apps
+
+
+##### Jupyter Server
+
+To access a conda environment within a Jupyter Server session, the *ipykernel* package must be installed within the environment. To do so, enter the environment and run the following commands:
+```
+(base) $ conda activate <environment>
+(<environment>) $ conda install -y ipykernel
+(<environment>) $ ipython kernel install --user --name=<environment>
+```
+
+After the *ipykernel* package is successfully installed within this environment, a Jupyter Server session can be launched via the Portal. When submitting the form to launch the session, under the *Conda environment type* field, select the *Use custom text field* option from the dropdown menu. Then enter the following into the *Environment Setup* text field:
+```
+module load anaconda
+```
+
+After launching and entering the session, the environment is displayed in the kernel list.
+
+
+##### RStudio
+
+To launch an RStudio Interactive App session, RStudio must have access to an installation of R. R can either be installed within the conda environment itself, or it can be loaded from the software stack. Typically, R will be installed by default when installing R packages within a conda environment; therefore, it is recommended when using conda environments within RStudio to simply utilize the environment's own R installation. To create an environment containing an R installation, run the following command:
+```
+(base) $ conda create -y -n <environment> r
+```
+Alternatively, R can simply be added to an existing environment by entering that environment and installing using the following command:
+```
+(<environment>) $ conda install r <plus any additional R packages>
+```
+R packages can installed directly via Anaconda within the environment as well. R packages available in Anaconda are usually named `r-<package name>` such as `r-plot3d`, `r-spatial`, or `r-ggplot`.
+
+After R and any necessary R packages are installed within the environment, an RStudio session can be launched via the Portal. When submitting the form to launch the session, under the *Environment type* field, select the *Use custom text field* option from the dropdown menu. Then enter the following into the *Environment Setup* text field:
+```
+module load anaconda
+conda activate <environment>
+export CONDAENVLIB=~/.conda/envs/<environment>/lib
+export LD_LIBRARY_PATH=$CONDAENVLIB:$LD_LIBRARY_PATH
+```
+
+Please note that the default location of conda environments is in `~/.conda/envs`, which is why the `CONDAENVLIB` variable is being set to `~/.conda/envs/<environment>/lib`. If the environment is instead installed a non-default location, then the `CONDAENVLIB` variable should be set accordingly. The two `export` commands in the block above are required because RStudio often has an issue loading some libraries while accessing the conda envrionment's R installation. Explicitly adding the conda environment's *lib* directory to the `LD_LIBRARY_PATH` variable seems to clear this issue up.
+
+
+#### Useful Anaconda Commands
+
+| Command | Description |
+| ---- | ---- |
+| conda create –n \<env_name> | Creates a conda environment by name |
+| conda create –p \<env_path> | Creates a conda environment by location |
+| conda env list | Lists all conda environments |
+| conda env remove –n \<env_name> | Removes a conda environment by name |
+| conda activate \<env_name> | Activates a conda environment by name |
+| conda list | While in an active environment, lists all packages |
+| conda deactivate | Deactivates the active conda environment |
+| conda install \<package> | While in an active environment, installs a package |
+| conda search \<package> | Uses conda to search for a package |
+| conda env export > env_name.yml | Exports active environment to a file |
+| conda env create –f env_name.yml | Loads environment from a file |
+
+
 ### Containers
+
+A container is a standard unit of software with two modes:
+
+1. Idle: When idle, a container is a file that stores everything an application (or collection of applications) requires to run (code, runtime, system tools, system libraries and settings).
+2. Running: When running, a container is a Linux process running on top of the host machine kernel with a user environment defined by the contents of the container file, not by the host OS.
+
+A container is an abstraction at the application layer. Multiple containers can run on the same machine and share the host kernel with other containers, each running as isolated processes.
+
+Apptainer is a secure container platform designed for HPC use cases and is available on Roar Collab (RC). Containers (or images) can either be pulled directly from a container repository or can be built from a definition file. A definition file or recipe file contains everything required to build a container. Building containers requires root privileges, so containers are built on your personal device and can be deployed on RC.
+
+Software is continuously growing in complexity which can make managing the required user environment and wrangling dependent software an intractable problem. Containers address this issue by storing the software and all of its dependencies (including a minimal operating system) in a single image file, eliminating the need to install additional packages or alter the runtime environment. This makes the software both shareable and portable while the output becomes reproducible.
+
+In a Slurm submission script, a container can be called serially using the following run line:
+```
+apptainer run <container> <args>
+```
+
+To use a container in parallel with MPI, the MPI library within the container must be compatible with the MPI implementation on the system, meaning that the MPI version on the system must generally be newer than the MPI version within the container. More details on using MPI with containers can be found on Apptainer's [Apptainer and MPI Applications](https://apptainer.org/docs/user/1.0/mpi.html) page. In a Slurm submission script, a container with MPI can be called using
+```
+srun apptainer exec <container> <command> <args>
+```
+
+
+#### Container Benefits
+
+Containers change the user space into a swappable component.
+- Flexibility: Bring your own environment (BYOE) and bring your own software (BYOS)
+- Reproducibility: Complete control over software versions
+- Portability: Run a container on your laptop or on HPC systems
+- Performance: Similar performance characteristics as native applications
+- Compatibility: Open standard that is supported on all major Linux distributions
+
+
+#### Container Registries
+
+Container images can be made publicly available, and containers for many use cases can be found at the following container registries:
+
+- [Docker Hub](https://hub.docker.com/)
+- [Singularity Hub](https://singularityhub.github.io/singularityhub-docs/)
+- [Singularity Cloud Library](https://cloud.sylabs.io/library)
+- [NVIDIA GPU Cloud](https://ngc.nvidia.com/catalog/containers)
+- [Quay.io](https://quay.io/)
+- [BioContainers](https://biocontainers.pro/)
+
+
+#### Useful Apptainer Commands
+
+| Command | Description |
+| ---- | ---- |
+| apptainer build \<container> \<definition> | Builds a container from a definition file |
+| apptainer shell \<container> | Runs a shell within a container |
+| apptainer exec \<container> \<command> | Runs a command within a container |
+| apptainer run \<container> | Runs a container where a runscript is defined |
+| apptainer pull \<resource>://\<container> | Pulls a container from a container registry |
+| apptainer build --sandbox \<sbox> \<container> | Builds a sandbox from a container |
+| apptainer build \<container> \<sbox> | Builds a container from a sandbox |
+
+
+#### Building Container Images
+
+Containers can be made from scratch using a [definition file](https://apptainer.org/docs/user/latest/definition_files.html#definition-files), or recipe file, which is a text file that specifies the base image, the software to be installed, and other information. The documentation for the [apptainer build](https://apptainer.org/docs/user/main/cli/apptainer_build.html) command shows the full usage for the build command. Container images can also be bootstrapped from other images, found on Docker Hub for instance.
+
 
 ### Compiling
 
