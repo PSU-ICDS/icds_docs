@@ -12,8 +12,8 @@ Roar Collab (RC) offers several file storage options for users, each with their 
 | ---- | ---- | ---- | ---- | ---- |
 | Home | /storage/home | 16 GB | 500,000 files | Daily snapshot |
 | Work | /storage/work | 128 GB | 1 million files | Daily snapshot |
-| Scratch | /scratch (RC) | None | 1 million files | No Backup, Files purged after 30 days |
-| Group | /storage/group (RC) | Allocation-dependent | 1 million files TB allocated | Daily snapshot |
+| Scratch | /scratch | None | 1 million files | No Backup, Files purged after 30 days |
+| Group | /storage/group | Allocation-dependent | 1 million files per TB allocated | Daily snapshot |
 
 Home should primarily be used for configuration files and should not be used as a primary storage location for data. Work should be used as the primary personal data storage location. Scratch should be used for temporary files and for reading and writing large data files.
 
@@ -49,7 +49,7 @@ $ ln -s /storage/work/$(whoami)/.conda ~/.conda
 
 ## File Transfers
 
-The recommended file transfer method for Roar Collab (RC) is [Globus](https://www.globus.org/). The Files tab on the [RC Portal](https://rcportal.hpc.psu.edu/) is also very convenient for transferring files. For small-scale file transfers to/from RC, the submit nodes (hostname **submit.hpc.psu.edu**) can be used. When specifying a file location, it is best to use the full file path.
+The recommended file transfer method for RC is [Globus](https://www.globus.org/). The Files tab on the [RC Portal](https://rcportal.hpc.psu.edu/) is also very convenient for transferring files. For small-scale file transfers to/from RC, the submit nodes (hostname **submit.hpc.psu.edu**) can be used. When specifying a file location, it is best to use the full file path.
 
 
 ### Globus
