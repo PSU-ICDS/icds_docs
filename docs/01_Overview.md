@@ -1,7 +1,7 @@
 
 # Overview
 
-Welcome to the Roar Collab (RC) User Guide!
+
 
 
 ## About ICDS
