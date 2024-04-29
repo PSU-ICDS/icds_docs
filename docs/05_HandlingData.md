@@ -1,15 +1,15 @@
 
-# Handling Data
+---
+title: Handling Data
+---
 
 
-
-
-## Available Filesystems and Quotas
+# Available Filesystems and Quotas
 
 Roar Collab (RC) offers several file storage options for users, each with their own quotas and data retention policies. The multiple options are available for users to optimize their workflows.
 
 
-### Storage Information
+## Storage Information
 
 | Storage | Location | Space Quota | Files Quota | Backup Policy | Use Case |
 | ---- | ---- | ---- | ---- | ---- | ---- |
@@ -23,7 +23,7 @@ Home should primarily be used for configuration files and should not be used as 
 To provide a user with access to a paid group storage allocation, the owner of the storage allocation should submit a request to icds@psu.edu to add the user to their *_collab group.
 
 
-### Check Usage
+## Check Usage
 
 To check storage usage against the storage quotas, run the following command on RC:
 ```
@@ -43,7 +43,7 @@ $ find . -type f | wc -l
 ```
 
 
-### Managing Large Configuration Files
+## Managing Large Configuration Files
 
 Home is the primary location for configuration files, and many software packages will automatically place configuration files in this location. Sometimes, these configuration files can grow in size such that the Home directory approaches its storage quota limit. If this issue occurs, it is simple to move the configuration files from Home to Work and place a link in Home that points to the new location of the configuration files in Work.
 
@@ -54,12 +54,12 @@ $ ln -s /storage/work/$(whoami)/.conda ~/.conda
 ```
 
 
-## File Transfers
+# File Transfers
 
 Globus is a web-based file transfer tool. With Globus, users can easily, reliably, and securely transfer data to and from RC. The recommended file transfer method for RC is [Globus](https://www.globus.org/). The Files tab on the [RC Portal](https://rcportal.hpc.psu.edu/) is also very convenient for transferring files. For small-scale file transfers to/from RC, the submit nodes (hostname **submit.hpc.psu.edu**) can be used. When specifying a file location, it is best to use the full file path.
 
 
-### Globus
+## Globus
 
 It is recommended to use [Globus](https://www.globus.org/) for file transfers, especially for files that are multiple GBs in size or larger. Also, if issues due to an unreliable connection arise, transferring via Globus may be a good option. Globus is a file transfer tool that automates the activity of managing file transfers, such as montitoring performance, retrying failed transfers, recovering from faults automatically whenever possible, and reporting status.
 
@@ -77,12 +77,12 @@ To transfer files with Globus, visit the [Globus website](https://www.globus.org
 Users can also download files from RC to their local device or upload files directly from their local device to RC using simple web interface operations. To download a file, right-click the file and select Download. To upload a file, select Upload from the Pane 1 Menu on the right.
 
 
-### Files Tab on RC Portal
+## Files Tab on RC Portal
 
 The Files tab on the RC Portal offers a very intuitive interface for file management. Files can be moved, edited, uploaded, and downloaded with relative ease using this utility. Users should limit the use of the RC Portal file manager utility to dealing with small files only.
 
 
-### scp
+## scp
 
 Users may use the `scp` command to transfer files to and from RC. It is typically practical to zip files together when transferring many files at once. In a terminal session, the `scp` command can be used to transfer files in the following way:
 ```
@@ -114,7 +114,7 @@ $ scp -r <userid>@submit.hpc.psu.edu:/scratch/<userid> .
 ```
 
 
-### sftp
+## sftp
 
 The `sftp` command can also be used to transfer files and is more useful when transferring multiple smaller files in a piecemeal fashion. This method allows for interactive navigation on the remote connection. From a local device, an `sftp` connection can be made with
 ```
@@ -129,7 +129,7 @@ $ sftp <userid>@submit.hpc.psu.edu
 After the `sftp` connection is made, navigational commands (i.e. `ls`, `cd`, etc) are performed on the remote connection normally, while navigational commands are performed on the local connection by appending the letter **l** (lowercase L) to the commands (i.e. `lls`, `lcd`, etc). Files are transferred from the local device to the remote device using the `put <filename>` command, and files are transferred from the remote device to the local device using the `get <filename>` command. The connection is terminated with the `exit` command.
 
 
-### rsync
+## rsync
 
 Yet another file transfer option is `rsync`. The `rsync` tool is widely used for backups and mirroring and as an improved copy command for everyday use. The `rsync` command takes the form
 ```
