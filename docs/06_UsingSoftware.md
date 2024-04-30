@@ -10,12 +10,12 @@ The software stack on Roar Collab (RC) provides a wide variety of software to th
 - **Central software stack**: contains software that is available to all users by default, but the software modules must be loaded in order to access them.
 
 
-# Modules
+## Modules
 
 The central software stack uses [Lmod](https://lmod.readthedocs.io/en/latest/) to package the available software. Lmod is a useful tool for managing user software environments using environment modules that can be dynamically added or removed using module files. Lmod is hierarchical, so sub-modules can be nested under a module that is dependent upon. Lmod alters environment variables, most notably the `$PATH` variable, in order to make certain software packages reachable by the user environment.
 
 
-## Useful Lmod Commands
+### Useful Lmod Commands
 
 | Command | Description |
 | ---- | ---- |
@@ -42,17 +42,17 @@ $ module avail
 ```
 
 
-# Custom Software
+## Custom Software
 
 Even though a large variety of software packages are available on RC via the system and central software stacks, users may need access to additional software. Users may also wish to have greater control over the software packages that are required for their research workflow.
 
 
-## Custom Modules
+### Custom Modules
 
 Users can install custom software packages and build custom software modules in order to build a custom user- or group-specific software stack. For users and groups with well-defined research workflows, it is recommended to create a custom software stack to keep close control of the software installation versions and configuration. A location should be specified that contains the custom software installations and the module files for the custom software installations should be stored together in a common location. This module location can be added to the `$MODULEPATH` environment variable so users can access the software modules just as they would for the central software stack.
 
 
-## Anaconda
+### Anaconda
 
 [Anaconda](https://docs.anaconda.com/index.html) is a very useful package manager that is available on RC. Package managers simplify software package installation and manage dependency relationships while increasing both the repeatability and the portability of software. The user environment is modified by the package manager so the shell can access different software packages. Anaconda was originally created for Python, but it can package and distribute software for any language. It is usually very simple to create and manage new environments, install new packages, and import/export environments. Many packages are available for installation through Anaconda, and it enables retaining the environments in a silo to reduce cross-dependencies between different packages that may perturb environments.
 
@@ -62,7 +62,7 @@ $ module load anaconda
 ```
 
 
-### Installation Example
+#### Installation Example
 
 After loading the **anaconda** module, environments can be created and packages can be installed within those environments. When using the **anaconda** module for the first time on RC, the `conda init bash` command may be required to initialize anaconda, then a new session must be started for the change to take effect. In the new session, the command prompt will be prepended with `(base)` which denotes that the session is in the base anaconda environment.
 
@@ -84,7 +84,7 @@ Alternatively, the creation of an environment and package installation can be co
 For more detailed information on usage, check out the [Anaconda documentation](https://docs.conda.io/projects/conda/en/latest/index.html).
 
 
-### Useful Anaconda Commands
+#### Useful Anaconda Commands
 
 | Command | Description |
 | ---- | ---- |
@@ -101,7 +101,7 @@ For more detailed information on usage, check out the [Anaconda documentation](h
 | `conda env create –f env_name.yml` | Load environment from a file |
 
 
-### Submission Script Usage
+#### Submission Script Usage
 
 Slurm does not automatically source the `~/.bashrc` file in your batch job, so Anaconda fails to be properly initialized within Slurm job submission scripts. Fortunately, the **anaconda** module intitializes the software so that the `conda` command is automatically available within the Slurm job submission script. If using a different anaconda installation, this issue can be resolved by directly sourcing the `~/.bashrc` file in your job script before running any conda commands:
 ```
@@ -128,12 +128,12 @@ eval "$(${CONDAPATH} shell.bash hook)"
 To reiterate, the **anaconda** module available on RC is configured such that the `conda` command is automatically available within a Slurm job submission sript. The above options are only necessary for other anaconda installations.
 
 
-### Using Conda Environments in Interactive Apps
+#### Using Conda Environments in Interactive Apps
 
 Environments built with Anaconda can be used in Interactive Apps on the RC Portal as well. Typically the environment should be created and configured in an interactive compute session on RC, and then some additional steps are needed to make the environment available from within an Interactive App.
 
 
-#### Jupyter Server
+##### Jupyter Server
 
 To access a conda environment within a Jupyter Server session, the *ipykernel* package must be installed within the environment. To do so, enter the environment and run the following commands:
 ```
@@ -150,7 +150,7 @@ module load anaconda
 After launching and entering the session, the environment is displayed in the kernel list.
 
 
-#### RStudio
+##### RStudio
 
 To launch an RStudio Interactive App session, RStudio must have access to an installation of R. R can either be installed within the conda environment itself, or it can be loaded from the software stack. Typically, R will be installed by default when installing R packages within a conda environment; therefore, it is recommended when using conda environments within RStudio to simply utilize the environment's own R installation. To create an environment containing an R installation, run the following command:
 ```
@@ -175,7 +175,7 @@ export LD_LIBRARY_PATH=$CONDAENVLIB:$LD_LIBRARY_PATH
 Please note that the default location of conda environments is in `~/.conda/envs`, which is why the `CONDAENVLIB` variable is being set to `~/.conda/envs/<environment>/lib`. If the environment is instead installed a non-default location, then the `CONDAENVLIB` variable should be set accordingly. The two `export` commands in the block above are required because RStudio often has an issue loading some libraries while accessing the conda envrionment's R installation. Explicitly adding the conda environment's *lib* directory to the `LD_LIBRARY_PATH` variable seems to clear up this issue.
 
 
-## Containers
+### Containers
 
 A container is a standard unit of software with two modes:
 
@@ -207,7 +207,7 @@ Containers change the user space into a swappable component, and provide the fol
 - Compatibility: Open standard that is supported on all major Linux distributions
 
 
-### Container Registries
+#### Container Registries
 
 Container images can be made publicly available, and containers for many use cases can be found at the following container registries:
 
@@ -219,7 +219,7 @@ Container images can be made publicly available, and containers for many use cas
 - [BioContainers](https://biocontainers.pro/)
 
 
-### Useful Apptainer Commands
+#### Useful Apptainer Commands
 
 | Command | Description |
 | ---- | ---- |
@@ -232,32 +232,32 @@ Container images can be made publicly available, and containers for many use cas
 | `apptainer build <container> <sbox>` | Builds a container from a sandbox |
 
 
-### Building Container Images
+#### Building Container Images
 
 Containers can be made from scratch using a [definition file](https://apptainer.org/docs/user/latest/definition_files.html#definition-files), or recipe file, which is a text file that specifies the base image, the software to be installed, and other information. The documentation for the [`apptainer build`](https://apptainer.org/docs/user/main/cli/apptainer_build.html) command shows the full usage for the build command. Container images can also be bootstrapped from other images, found on Docker Hub for instance.
 
 
-## Compiling From Source
+### Compiling From Source
 
 Compiling software from source is the most involved option for using software on RC, but it gives the user the highest level of control. Research computing software is often developed by academic researchers that do not place a large effort on packaging their software so that it can be easily deployed on other systems. If the developer does not package the software using a package manager, then the only option is to build the software from source. It is best to follow the installation instructions from the developer to successfully install the software from source.
 
 
-# Software-Specific Guides
+## Software-Specific Guides
 
 
 
 
-## Python
+### Python
 
 Python is a high-level, general-purpose programming language.
 
 
-### Python versions on RC
+#### Python versions on RC
 
 Python is available by default to all users on the system software stack, and it is also available on the central software stack. Additionally, users can install their own instances of Python in a variety of ways in either their userspace or in group spaces.
 
 
-### Install Python Packages with `pip`
+#### Install Python Packages with `pip`
 
 Python packages can be installed easily using `pip`. By default, `pip` will attempt to install packages to a system location, but RC is a shared system. Users do not have write access to system locations on shared systems. The packages can instead be installed in *~/.local*, which is a user location, using the following:
 ```
@@ -270,17 +270,17 @@ $ pip install --target=<custom_install_path> <package>
 ```
 
 
-## R
+### R
 
 R is a free software environment for statistical computing and graphics.
 
 
-### R Versions on RC
+#### R Versions on RC
 
 R users should make sure that the version of R remains consistent. RC has several R versions available, and when a package is installed in one version, it is not always accessible when operating in another version. Always check the R version and remain consistent! R modules can be loaded from the central software stack, and R can also be installed by users in a variety of ways within their userspace or group spaces.
 
 
-### Install R Packages
+#### Install R Packages
 
 R manages some dependencies and versions through the CRAN-like repos. R packages can be installed from within the R console with the following command:
 ```
@@ -295,7 +295,7 @@ After installation, packages can then be loaded using the following command in t
 It is recommended to review dependencies of any packages to be installed because additional software may have to be loaded in the environment before launching the R console. For example, some R packages utilize CMake to perform the installation. In that case, the *cmake* module should be loaded before launching the R console session.
 
 
-### R Package Installation Example
+#### R Package Installation Example
 
 To install the ggplot2 R package, first search ggplot2 online to see if there are installation instructions. A quick search shows that ggplot2 is included in the tidyverse package and that the recommended installation instructions are the following:
 ```
