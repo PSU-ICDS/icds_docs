@@ -1,7 +1,8 @@
 
----
-title: Using Software
----
+# Using Software
+
+
+
 
 The software stack on Roar Collab (RC) provides a wide variety of software to the entire user community. There are two software stacks available on RC.
 
