@@ -175,8 +175,8 @@ GPUs are available on RC to users that are added to paid GPU compute accounts. T
 #!/bin/bash
 
 #SBATCH --job-name=apythonjob      # give the job a name
-#SBATCH --account=<gpu_acct>             # specify the account
-#SBATCH --partition=sla-prio           # specify the partition
+#SBATCH --account=<gpu_acct>           # specify the account
+#SBATCH --partition=sla-prio       # specify the partition
 #SBATCH --nodes=1                  # request a node
 #SBATCH --ntasks=1                 # request a task / cpu
 #SBATCH --mem=1G                   # request the memory required per node

@@ -12,7 +12,7 @@ Roar Collab (RC) offers several file storage options for users, each with their 
 ## Storage Information
 
 | Storage | Location | Space Quota | Files Quota | Backup Policy | Use Case |
-| ---- | ---- | ---- | ---- | ---- | ---- |
+| :----: | :----: | :----: | :----: | :----: | :----: |
 | Home | /storage/home | 16 GB | 500,000 files | Daily snapshot | Configuration files |
 | Work | /storage/work | 128 GB | 1 million files | Daily snapshot | Primary user-level storage |
 | Scratch | /scratch | None | 1 million files | No Backup<br>Files purged after 30 days | Temporary, unimportant files |

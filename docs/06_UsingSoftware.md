@@ -244,14 +244,6 @@ Compiling software from source is the most involved option for using software on
 # Software-Specific Guides
 
 
-## Comsol
-
-
-
-
-## Matlab
-
-
 
 
 ## Python
