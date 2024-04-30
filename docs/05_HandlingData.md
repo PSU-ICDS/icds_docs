@@ -14,9 +14,9 @@ Roar Collab (RC) offers several file storage options for users, each with their 
 | Storage | Location | Space Quota | Files Quota | Backup Policy | Use Case |
 | ---- | ---- | ---- | ---- | ---- | ---- |
 | Home | /storage/home | 16 GB | 500,000 files | Daily snapshot | Configuration files |
-| Work | /storage/work | 128 GB | 1 million files | Daily snapshot | Primary user-level data storage |
-| Scratch | /scratch | None | 1 million files | No Backup, Files purged after 30 days | Temporary, unimportant files |
-| Group | /storage/group | Allocation-dependent | 1 million files per TB allocated | Daily snapshot | Primary storage for shared data |
+| Work | /storage/work | 128 GB | 1 million files | Daily snapshot | Primary user-level storage |
+| Scratch | /scratch | None | 1 million files | No Backup<br>Files purged after 30 days | Temporary, unimportant files |
+| Group | /storage/group | Allocation-dependent | 1 million files<br>per TB allocated | Daily snapshot | Primary shared storage |
 
 Home should primarily be used for configuration files and should not be used as a primary storage location for data. Work should be used as the primary personal data storage location. Scratch should be used for temporary files and for reading and writing large data files.
 
@@ -54,6 +54,13 @@ $ ln -s /storage/work/$(whoami)/.conda ~/.conda
 ```
 
 
+# Storage Allocations
+
+A paid storage allocation provides access to a shareable group location for active file storage. Active group storage is included with a paid compute allocation, but additional storage space can be purchased separately as well. Active storage is mounted on all compute resources and enables users to read, write, and modify files stored there. For long-term storage of infrequently-used files that is separate from compute resources, archive storage is available for purchase and is accessible via the [Globus](https://www.globus.org/) interface.
+
+[//]: # (add info on umgs)
+
+
 # File Transfers
 
 Globus is a web-based file transfer tool. With Globus, users can easily, reliably, and securely transfer data to and from RC. The recommended file transfer method for RC is [Globus](https://www.globus.org/). The Files tab on the [RC Portal](https://rcportal.hpc.psu.edu/) is also very convenient for transferring files. For small-scale file transfers to/from RC, the submit nodes (hostname **submit.hpc.psu.edu**) can be used. When specifying a file location, it is best to use the full file path.
@@ -75,6 +82,12 @@ Archive_PennState_ICDS
 To transfer files with Globus, visit the [Globus website](https://www.globus.org/) and log in as a Penn State user with your Penn State access account. Select the File Manager tab on the left side of the Globus web interface and select the source and destination endpoints. The endpoints may require an additional login. The files and locations for the transfer can be selected graphically, and the transfer can be initiated by selecting *Start* above the source endpoint file preview window. The transfer will be handled by Globus, and typically, successful completion of the transfer will generate an email to your Penn State email.
 
 Users can also download files from RC to their local device or upload files directly from their local device to RC using simple web interface operations. To download a file, right-click the file and select Download. To upload a file, select Upload from the Pane 1 Menu on the right.
+
+Globus provides detailed instructions on the following topics:
+ - [Log in and transfer files](https://docs.globus.org/guides/tutorials/manage-files/transfer-files/)
+ - [Install and configure Globus Connect for Linux](https://docs.globus.org/globus-connect-personal/install/linux/)
+ - [Install and configure Globus Connect for MacOSX](https://docs.globus.org/globus-connect-personal/install/mac/)
+ - [Install and configure Globus Connect for Windows](https://docs.globus.org/globus-connect-personal/install/windows/)
 
 
 ## Files Tab on RC Portal
