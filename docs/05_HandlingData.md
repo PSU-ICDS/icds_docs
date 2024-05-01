@@ -24,7 +24,7 @@ Roar Collab (RC) offers several file storage options for users, each with their 
 
 Home should primarily be used for configuration files and should not be used as a primary storage location for data. Work should be used as the primary personal data storage location. Scratch should be used for temporary files and for reading and writing large data files.
 
-To provide a user with access to a paid group storage allocation, the owner of the storage allocation should submit a request to icds@psu.edu to add the user to their *_collab group.
+To provide a user with access to a paid group storage allocation, the owner of the storage allocation should submit a request to **icds@psu.edu** to add the user to their `<owner>_collab` group.
 
 
 ### Check Usage

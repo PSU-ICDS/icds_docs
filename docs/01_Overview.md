@@ -15,7 +15,7 @@ The Institute for Computational and Data Sciences (ICDS) is one of seven interdi
 
 ## Roar Collab System Specs
 
-Roar Collab (RC) is the flagship computing cluster for Penn State researchers. Designed with collaboration in mind, the RC environment allows for more frequent software updates and hardware upgrades to keep pace with researchers’ changing needs. RC utilizes the Red Hat Enterprise Linux (RHEL) 8 operating system to provide users with access to compute resources, file storage, and software. RC is a heterogeneous computing cluster comprised of different types of nodes, each of which can be categorized as a Basic, Standard, High-Memory, GPU, or Interactive node.
+Roar Collab (RC) is the flagship computing cluster for Penn State researchers. Designed with collaboration in mind, the RC environment allows for more frequent software updates and hardware upgrades to keep pace with researchers’ changing needs. RC utilizes the Red Hat Enterprise Linux (RHEL) 8 operating system to provide users with access to compute resources, file storage, and software. RC is a heterogeneous computing cluster comprised of different types of compute nodes, each of which can be categorized as a Submit, Portal, Basic, Standard, High-Memory, GPU, or Interactive node.
 
 Basic nodes (`bc` core-type designation) are connected via Ethernet and are best used for single-node tasks. Basic nodes are configured to offer about 4 GB of memory per core.
 
@@ -46,11 +46,6 @@ sinfo --Format=features:40,nodelist:20,cpus:10,memory:10
 ```
 
 Slurm's [sinfo](https://slurm.schedmd.com/sinfo.html) documentation page provides a detailed description of the function and options of the `sinfo` command.
-
-On a compute node, running the following command displays the processor type:
-```
-cat /sys/devices/cpu/caps/pmu_name
-```
 
 
 ## Best Practices and Good Citizenship

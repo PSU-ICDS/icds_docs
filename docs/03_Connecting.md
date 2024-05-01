@@ -36,6 +36,10 @@ $ ssh <userid>@submit.hpc.psu.edu
 
 A password must be entered and then multi-factor authentication must be completed successfully to complete the login.
 
+.. note::
+    
+    The connection to the system is made with a submit node. Submit nodes are configured primarily to handle incoming user connections and non-intensive computational tasks like editing small files. To perform computational tasks, compute resources must be used. See [Submitting Jobs](04_SubmittingJobs.md) for more details.
+
 
 ### X11 Forwarding
 
