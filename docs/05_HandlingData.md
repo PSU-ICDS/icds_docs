@@ -1,4 +1,8 @@
 
+---
+title: Handling Data
+---
+
 # Handling Data
 
 
@@ -58,7 +62,9 @@ $ ln -s /storage/work/$(whoami)/.conda ~/.conda
 
 A paid storage allocation provides access to a shareable group location for active file storage. Active group storage is included with a paid compute allocation, but additional storage space can be purchased separately as well. Active storage is mounted on all compute resources and enables users to read, write, and modify files stored there. For long-term storage of infrequently-used files that is separate from compute resources, archive storage is available for purchase and is accessible via the [Globus](https://www.globus.org/) interface.
 
-[//]: # (add info on umgs)
+Typically, access to group storage locations can be managed using the `<user>_collab` group where the `<user>` is the user ID of the owner of the group space. For users to be added or removed from `<user>_collab` groups, the owner of that group must submit a request to **icds@psu.edu**.
+
+If the owner of a group space would like more control over the access groups or would like to designate a group coordinator, then it is recommended that the owner [create a User Managed Group (UMG)](https://pennstate.service-now.com/sp?id=kb_article_view&sysparm_article=KB0011865&sys_kb_id=81102ada87cedd10d7bf7485dabb35b0&spa=1). The UMG allows a user to manage the group access list and group roles directly through the User Managed Group functionality through [Penn State Accounts Management](https://accounts.psu.edu/manage). After a UMG is created, the owner should submit a request to **icds@psu.edu** to associate this UMG with the `<owner>_collab` group. Once this association is made, then the group owner has full dynamic control over the access and roles of the `<owner>_collab` group by modifying the UMG membership. After this single request to ICDS, the owner no longer has to submit requests to modify group membership and instead can manage the group directly. Note that any user added as a UMG member that *does not* have an active RC account will not have access to RC or any data on RC until that user has an active RC account.
 
 
 ## File Transfers
@@ -72,10 +78,10 @@ It is recommended to use [Globus](https://www.globus.org/) for file transfers, e
 
 Globus endpoints must be installed on both the source and destination systems. RC has Globus endpoints available.
 ```
-Roar Collab Endpoint:
+RC Endpoint:
 PennState_ICDS_RC
 
-Roar Collab Archive Endpoint:
+RC Archive Endpoint:
 Archive_PennState_ICDS
 ```
 
@@ -90,7 +96,7 @@ Globus provides detailed instructions on the following topics:
  - [Install and configure Globus Connect for Windows](https://docs.globus.org/globus-connect-personal/install/windows/)
 
 
-### Files Tab on RC Portal
+### Files Tab on Roar Collab Portal
 
 The Files tab on the RC Portal offers a very intuitive interface for file management. Files can be moved, edited, uploaded, and downloaded with relative ease using this utility. Users should limit the use of the RC Portal file manager utility to dealing with small files only.
 
@@ -104,25 +110,25 @@ $ scp [options] <source-user-id>@<source-host>[:<file-location>] <destination-us
 
 Some examples will make the usage more clear. The two locations in this example are the directory **/home/abc** on a local laptop device and the user scratch space on RC. If a file named *local.file* in **/home/abc** is to be transferred to a user's scratch space, the user should run the following command from a terminal session on the local laptop:
 ```
-# Transfer to Roar Collab scratch space
+# Transfer to RC scratch space
 $ scp /home/abc/local.file <userid>@submit.hpc.psu.edu:/scratch/<userid>
 ```
 
 Alternatively, if the user navigates to the **/home/abc** location on their local laptop, the command can be slightly simplified to
 ```
-# Transfer to Roar Collab scratch space
+# Transfer to RC scratch space
 $ scp local.file <userid>@submit.hpc.psu.edu:/scratch/<userid>
 ```
 
 If a directory named *datadir* located on the user's RC scratch space is to be transferred to the local laptop's **/home/abc** directory, the user can run the following from a terminal session on the local laptop:
 ```
-# Transfer from Roar Collab scratch space
+# Transfer from RC scratch space
 $ scp -r <userid>@submit.hpc.psu.edu:/scratch/<userid> /home/abc/
 ```
 
 Note that since a directory is being transferred, the `-r` option must be used for the `scp` command so both the directory and its contents are transferred. If the user navigates the terminal to the **/home/abc** directory to conduct the transfer, then the **/home/abc/** in the above commands can be replaced with a single period **.** to denote the *current working directory*.
 ```
-# Transfer from Roar Collab scratch space
+# Transfer from RC scratch space
 $ scp -r <userid>@submit.hpc.psu.edu:/scratch/<userid> .
 ```
 

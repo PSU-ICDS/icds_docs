@@ -1,21 +1,26 @@
 
+---
+title: Connecting
+---
+
 # Connecting
 
 Users can connect to Roar Collab (RC) either through the RC Portal or via an `ssh` connection.
 
 
-## Using the RC Portal
+## Using the Roar Collab Portal
 
 Users can connect to RC through the RC Portal powered by Open OnDemand. Open OnDemand is an NSF-fund, open-source HPC portal that provides users with a simple graphical web interface to HPC resources. Users can submit and monitor jobs, manage files, and run applications using just a web browser. The [RC Portal](https://rcportal.hpc.psu.edu) offers a graphical interface to RC and may be preferable for users that are not comfortable in a command line environment.
 
 The Portal features multiple built-in tools that are both convenient and intuitive to use. The top menu bar on the Portal has the following options:
-- Apps: Lists all available Portal apps
-- Files: Provides a convenient graphical file manager and lists primary accessible file locations
-- Jobs: Lists active jobs and allows use of the Job Composer
-- Clusters: Provides shell access to submit nodes on RC
-- Interactive Apps: Provides access to all the Portal interactive apps and interactive servers
-- User Tools: Provides access to the User Filesystem Quotas display
-- My Interactive Sessions: Lists any active sessions
+
+ - Apps: Lists all available Portal apps
+ - Files: Provides a convenient graphical file manager and lists primary accessible file locations
+ - Jobs: Lists active jobs and allows use of the Job Composer
+ - Clusters: Provides shell access to submit nodes on RC
+ - Interactive Apps: Provides access to all the Portal interactive apps and interactive servers
+ - User Tools: Provides access to the User Filesystem Quotas display
+ - My Interactive Sessions: Lists any active sessions
 
 
 ## Connecting via `ssh`

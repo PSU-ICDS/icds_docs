@@ -1,4 +1,8 @@
 
+---
+title: Submitting Jobs
+---
+
 # Submitting Jobs
 
 
@@ -17,8 +21,9 @@ The Roar Collab (RC) computing cluster is a shared computational resource. To pe
 
 Resource directives are used to request specific compute resources for a compute session.
 
-| Command | Description |
+| Resource Directive | Description |
 | ---- | ---- |
+| `-J` or `--job-name` | Specify a name for the job |
 | `-A` or `--account` | Charge resources used by this job to specified account |
 | `-p` or `--partition` | Request a specific partition for the resource allocation |
 | `-N` or `--nodes` | Request a number of nodes |
@@ -26,10 +31,42 @@ Resource directives are used to request specific compute resources for a compute
 | `--ntasks-per-node` | Request a number of tasks per allocated node |
 | `--mem` | Specify the amount of memory required per node |
 | `--mem-per-cpu` | Specify the amount of memory required per CPU |
-| `-t` or `--time` | Set a limit on the total run time of the job |
-| `-J` or `--job-name` | Specify a name for the job |
+| `-t` or `--time` | Set a limit on the total run time |
+| `-C` or `--constraint` | Specify any required node features |
+| `-e` or `--error` | Instruct Slurm to connect the batch script's standard error to a non-default file |
+| `-o` or `--output` | Instruct Slurm to connect the batch script's standard output to a non-default file |
+| `--requeue` | Specify that the batch job should be eligible for requeuing |
+
+Slurm makes use of environment variables within the scope of a job, and utilizing these variables can be beneficial in many cases.
+
+| Environment Variable | Description |
+| :----: | :----: |
+| `SLURM_JOB_ID` | ID of the job |
+| `SLURM_JOB_NAME` | Name of job |
+| `SLURM_NNODES` | Number of nodes |
+| `SLURM_NODELIST` | List of nodes |
+| `SLURM_NTASKS` | Total number of tasks |
+| `SLURM_NTASKS_PER_NODE` | Number of tasks per node |
+| `SLURM_QUEUE` | Queue (partition) |
+| `SLURM_SUBMIT_DIR` | Directory of job submission |
+
+Both standard output and standard error are directed to the same file by default, and the file name is `slurm-%j.out`, where the `%j` is replaced by the job ID. The output and error filenames are customizable, however, using the table of symbols below.
+
+| Symbol | Description |
+| :----: | :----: |
+| `%j` | Job ID |
+| `%x` | Job name |
+| `%u` | Username |
+| `%N` | Hostname where the job is running |
+| `%A` | Job array's master job allocation number |
+| `%a` | Job array ID (index) number |
 
 Further details on the available resource directives for Slurm are defined by Slurm in the documentation of the [salloc](https://slurm.schedmd.com/salloc.html) and [sbatch](https://slurm.schedmd.com/sbatch.html) commands.
+
+
+### A Note on Requesting Resources
+
+Requesting more resources for a job will increase its time in the queue as it must wait longer for resources to be allocated. Typically, parallelized code will see a reduction in overall runtime as more resources are requested. The total time to solution is ultimately reduced when the job strikes a balance by requesting the minimal amount of resources needed to provide a reasonable speedup. The goal of a resource request is to attain the necessary computational resources to complete a task while minimizing the time to solution. An optimal resource request is the minimal amount of computational resources that allows a computational task to run to successful completion. It's useful to examine the amount of resources that a single laptop computer has, or **1 laptop-worth of resources**, as a reference. A modern above-average laptop, for example, may have an 8-core processor and 32 GB of RAM.  If a computational task can run on a laptop without crashing the device, then there is absolutely no need to submit a resource request larger than this.
 
 
 ### Interactive Jobs
@@ -42,7 +79,7 @@ $ salloc --nodes=1 --ntasks=1 --mem=1G --time=01:00:00
 The above command submits a request to the scheduler to queue an interactive job, and when the scheduler is able to place the request, the prompt will return. The hostname in the prompt will change from the previous submit node name to a compute node. Now on a compute node, intensive computational tasks can be performed interactively. This session will be terminated either when the time limit is reached or when the `exit` command is entered. After the interactive session completes, the session will return to the previous submit node.
 
 
-### Interactive Jobs Through the RC Portal
+### Interactive Jobs Through the Roar Collab Portal
 
 The RC Portal is a simple graphical web interface that provides users with access to RC. Users can submit and monitor jobs, manage files, and run applications using just a web browser. To access the RC Portal, users must log in using valid Penn State access account credentials and must also have an account on RC. [The RC Portal](https://rcportal.hpc.psu.edu) is available at the following webpage: [https://rcportal.hpc.psu.edu](https://rcportal.hpc.psu.edu)
 
@@ -144,7 +181,7 @@ WindowMaxBalance  [core-hours] = # cores * 24 hours/day * 91 days
 ```
 
 
-### RC Account Self-Management
+### Roar Collab Compute Account Self-Management
 
 
 
@@ -169,7 +206,7 @@ $ sacctmgr remove user account=<compute-account> name=<userid>
 
 ## Using GPUs
 
-GPUs are available on RC to users that are added to paid GPU compute accounts. To use GPUs, add a resource directive with the **--gres** option:
+GPUs are available on RC to users that are added to paid GPU compute accounts. To use GPUs, add a resource directive with the **--gpus** option:
 
 ```
 #!/bin/bash
@@ -180,19 +217,44 @@ GPUs are available on RC to users that are added to paid GPU compute accounts. T
 #SBATCH --nodes=1                  # request a node
 #SBATCH --ntasks=1                 # request a task / cpu
 #SBATCH --mem=1G                   # request the memory required per node
-#SBATCH --gres=gpu:1		   # request a gpu
+#SBATCH --gpus=1		   # request a gpu
 #SBATCH --time=00:01:00            # set a limit on the total run time
 
 python pyscript.py
 ```
 
-Only software that has been explicitly written to run on GPUs can take advantage of GPUs. Adding the **--gres** option to a Slurm script for a CPU-only program will not speed up the execution time and will just waste resources and increase the queue time. Furthermore, some codes are only written to use a single GPU, so avoid requesting multiple GPUs unless the program can use them.
+Only software that has been explicitly written to run on GPUs can take advantage of GPUs. Adding the **--gpus** option to a Slurm script for a CPU-only program will not speed up the execution time and will just waste resources and increase the queue time. Furthermore, some codes are only written to use a single GPU, so avoid requesting multiple GPUs unless the program can use them.
 
 
 
 ## Job Management and Monitoring
 
-[//]:# ( add `ssh` to compute node and use `top` and `ps`. `sreport` )
+A user can find the job ID, the assigned node(s), and other useful information using the `squeue` command. Specifically, the following command displays all running and queued jobs for a specific user:
+```
+$ squeue -u <user>
+```
+
+A useful environment variable is the `SQUEUE_FORMAT` variable and can be set, for example, with the following command:
+```
+$ export SQUEUE_FORMAT="%.9i %9P %35j %.8u %.2t %.12M %.12L %.5C %.7m %.4D %R"
+```
+
+Further details on the usage of this variable are available on Slurm's [squeue](https://slurm.schedmd.com/squeue.html) documentation page. Another useful job monitoring command is:
+```
+$ scontrol show job <jobid>
+```
+
+Also, a job can be cancelled with
+```
+$ scancel <jobid>
+```
+
+Valuable information can be obtained by monitoring a job on the compute node(s) as the job runs. Connect to the compute node of a running job with the `ssh` command. Note that a compute node can only be reached if the user has a resource reservation on that specific node. After connecting to the compute node, the `top` and `ps` commands are useful tools.
+```
+$ ssh <comp-node-id>
+$ top -Hu <user>
+$ ps -aux | grep <user>
+```
 
 
 ## Converting from PBS to Slurm

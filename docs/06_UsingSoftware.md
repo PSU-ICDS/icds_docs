@@ -1,4 +1,8 @@
 
+---
+title: Using Software
+---
+
 # Using Software
 
 
@@ -236,10 +240,30 @@ Container images can be made publicly available, and containers for many use cas
 
 Containers can be made from scratch using a [definition file](https://apptainer.org/docs/user/latest/definition_files.html#definition-files), or recipe file, which is a text file that specifies the base image, the software to be installed, and other information. The documentation for the [`apptainer build`](https://apptainer.org/docs/user/main/cli/apptainer_build.html) command shows the full usage for the build command. Container images can also be bootstrapped from other images, found on Docker Hub for instance.
 
+The recommend workflow for building containers is shown below:
+
+![Recommended container workflow.](images/ContainerWorkflow.png)
+
 
 ### Compiling From Source
 
 Compiling software from source is the most involved option for using software on RC, but it gives the user the highest level of control. Research computing software is often developed by academic researchers that do not place a large effort on packaging their software so that it can be easily deployed on other systems. If the developer does not package the software using a package manager, then the only option is to build the software from source. It is best to follow the installation instructions from the developer to successfully install the software from source.
+
+It is recommended to build software on a node with the same processor type that will be used for running the software. On a compute node, running the following command displays the processor type:
+```
+cat /sys/devices/cpu/caps/pmu_name
+```
+
+Software builds are not typically back-compatible and will not run successfully on processors older than the processor used to build. It is recommended to build on haswell (the oldest processor architecture on RC) if you wish to have full compatibility across all RC compute nodes. To optimize for performance, however, build on the same processor on which the software runs.
+
+| Release Date | Processor |
+| :----: | :----: |
+| 2013 | haswell |
+| 2014 | broadwell |
+| 2015 | skylake |
+| 2019 | cascadelake |
+| 2019 | icelake |
+| 2023 | sapphirerapids |
 
 
 ## Software-Specific Guides
@@ -266,8 +290,10 @@ $ pip install --user <package>
 
 Also, packages can be installed to a custom specified location using the `--target` option:
 ```
-$ pip install --target=<custom_install_path> <package>
+$ pip install --target=<install_dir> <package>
 ```
+
+Note that if `pip` is not available, simply try `pip3` (for python3) or `pip2` (for python2) instead.
 
 
 ### R
@@ -287,9 +313,21 @@ R manages some dependencies and versions through the CRAN-like repos. R packages
 > install.packages( <package> )
 ```
 
+Upon running the install command, a warning usually appears stating that the default system install location is not writable, so it asks to install in a personal library instead. After entering "yes" as a response, it may then ask to create a personal library location. Responding "yes" again will proceed with the installation, probably by asking to select a CRAN repository.
+
+The default personal directory described above will install the package in the `~/R/` directory. An install location can instead be supplied to the install command using the `lib` argument:
+```
+install.packages( "<package>", lib="<install_location>" )
+```
+
 After installation, packages can then be loaded using the following command in the R console:
 ```
 > library( <package> )
+```
+
+If the package was installed in a non-standard location, then the package can be loaded from that custom install location using the `lic.loc` argument of the `library()` command:
+```
+library( <package>, lib.loc="<install_location>" )
 ```
 
 It is recommended to review dependencies of any packages to be installed because additional software may have to be loaded in the environment before launching the R console. For example, some R packages utilize CMake to perform the installation. In that case, the *cmake* module should be loaded before launching the R console session.
