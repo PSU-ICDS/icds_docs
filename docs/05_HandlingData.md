@@ -64,7 +64,23 @@ A paid storage allocation provides access to a shareable group location for acti
 
 Typically, access to group storage locations can be managed using the `<user>_collab` group where the `<user>` is the user ID of the owner of the group space. For users to be added or removed from `<user>_collab` groups, the owner of that group must submit a request to **icds@psu.edu**.
 
-If the owner of a group space would like more control over the access groups or would like to designate a group coordinator, then it is recommended that the owner [create a User Managed Group (UMG)](https://pennstate.service-now.com/sp?id=kb_article_view&sysparm_article=KB0011865&sys_kb_id=81102ada87cedd10d7bf7485dabb35b0&spa=1). The UMG allows a user to manage the group access list and group roles directly through the User Managed Group functionality through [Penn State Accounts Management](https://accounts.psu.edu/manage). After a UMG is created, the owner should submit a request to **icds@psu.edu** to associate this UMG with the `<owner>_collab` group. Once this association is made, then the group owner has full dynamic control over the access and roles of the `<owner>_collab` group by modifying the UMG membership. After this single request to ICDS, the owner no longer has to submit requests to modify group membership and instead can manage the group directly. Note that any user added as a UMG member that *does not* have an active RC account will not have access to RC or any data on RC until that user has an active RC account.
+If the owner of a group space would like more control over the access groups or would like to designate a group coordinator, then it is recommended that the owner [create a User Managed Group (UMG)](https://pennstate.service-now.com/sp?id=kb_article_view&sysparm_article=KB0011865&sys_kb_id=81102ada87cedd10d7bf7485dabb35b0&spa=1). The UMG allows a user to manage the group access list and group roles directly through the User Managed Group functionality through [Penn State Accounts Management](https://accounts.psu.edu/manage). Select the following options and adhere to the following recommendations when creating the UMG:
+
+```
+Group Function: Functional
+Campus:         University Park
+Display Name:   icds.rc.<umg_name>
+                e.g. icds.rc.abc1234_collab
+Email:			Not necessary for RC use
+Security:		Sync with Enterprise Active Directory is required
+```
+
+ICDS filters UMGs for display names that begin with `icds.rc.`, so any UMGs created with this prefix will automatically appear within RC. It may take up to 15 minutes for a newly-created UMG to appear on RC. To verify that a UMG is available on RC, run the following command on RC:
+```
+$ getent group icds.rc.<umg_name>
+```
+
+After a UMG is created, the owner can submit a request to **icds@psu.edu** to associate this UMG with the `<owner>_collab` group. Once this association is made, then the group owner has full dynamic control over the access and roles of the `<owner>_collab` group by modifying the UMG membership. After this single request to ICDS, the owner no longer has to submit requests to modify group membership and instead can manage the group directly. Note that any user added as a UMG member that *does not* have an active RC account will not have access to RC or any data on RC until that user has an active RC account.
 
 
 ## File Transfers
