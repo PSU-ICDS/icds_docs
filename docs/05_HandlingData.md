@@ -71,8 +71,8 @@ Group Function: Functional
 Campus:         University Park
 Display Name:   icds.rc.<umg_name>
                 e.g. icds.rc.abc1234_collab
-Email:			Not necessary for RC use
-Security:		Sync with Enterprise Active Directory is required
+Email:          Not necessary for RC use
+Security:       Sync with Enterprise Active Directory is required
 ```
 
 ICDS filters UMGs for display names that begin with `icds.rc.`, so any UMGs created with this prefix will automatically appear within RC. It may take up to 15 minutes for a newly-created UMG to appear on RC. To verify that a UMG is available on RC, run the following command on RC:
