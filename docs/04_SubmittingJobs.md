@@ -40,7 +40,7 @@ Resource directives are used to request specific compute resources for a compute
 Slurm makes use of environment variables within the scope of a job, and utilizing these variables can be beneficial in many cases.
 
 | Environment Variable | Description |
-| :----: | :----: |
+| :----: | ---- |
 | `SLURM_JOB_ID` | ID of the job |
 | `SLURM_JOB_NAME` | Name of job |
 | `SLURM_NNODES` | Number of nodes |
@@ -53,7 +53,7 @@ Slurm makes use of environment variables within the scope of a job, and utilizin
 Both standard output and standard error are directed to the same file by default, and the file name is `slurm-%j.out`, where the `%j` is replaced by the job ID. The output and error filenames are customizable, however, using the table of symbols below.
 
 | Symbol | Description |
-| :----: | :----: |
+| :----: | ---- |
 | `%j` | Job ID |
 | `%x` | Job name |
 | `%u` | Username |
