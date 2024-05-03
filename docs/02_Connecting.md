@@ -11,7 +11,7 @@ All individuals who have an active Penn State access account (PSU ID) can reques
 by submitting an [account request](https://www.icds.psu.edu/computing-services/account-setup). 
 
 
-## Non-PSU Affiliates
+### Non-PSU Affiliates
 
 For any external collaborators, a university faculty member must set up a [sponsored access account]
 (https://security.psu.edu/services/penn-state-accts/sponsored) with the university Accounts Office to 
@@ -24,7 +24,7 @@ an [account request](https://www.icds.psu.edu/computing-services/account-setup) 
 Users can connect to Roar Collab (RC) either through the RC Portal or via an `ssh` connection.
 
 
-## Using the Roar Collab Portal
+### Using the Roar Collab Portal
 
 Users can connect to RC through the RC Portal powered by Open OnDemand. Open OnDemand is an NSF-funded, 
 open-source HPC portal that provides users with a simple graphical web interface to HPC resources. Users 
@@ -43,7 +43,7 @@ The Portal features multiple built-in tools which can be accessed via the top me
  - My Interactive Sessions: Lists any active sessions
 
 
-## Connecting via `ssh`
+### Connecting via `ssh`
 
 Those who prefer to utilize only the command line environment can connect using Secure Shell (SSH). 
 
@@ -64,7 +64,7 @@ A password must be entered and then multi-factor authentication must be complete
 > compute resources must be used. See [Submitting Jobs](03_SubmittingJobs.md) for more details.
 
 
-### X11 Forwarding
+#### X11 Forwarding
 
 
 
