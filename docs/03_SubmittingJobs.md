@@ -39,6 +39,7 @@ Resource directives are used to request specific compute resources for a compute
 | `-e` or `--error` | Instruct Slurm to connect the batch script's standard error to a non-default file |
 | `-o` or `--output` | Instruct Slurm to connect the batch script's standard output to a non-default file |
 | `--requeue` | Specify that the batch job should be eligible for requeuing |
+| `--exclusive` | Require exclusive use of nodes reserved for job |
 
 Slurm makes use of environment variables within the scope of a job, and utilizing these variables can be beneficial in many cases.
 

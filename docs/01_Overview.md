@@ -15,17 +15,15 @@ The Institute for Computational and Data Sciences (ICDS) is one of seven interdi
 
 ## Roar Collab System Specs
 
-Roar Collab (RC) is the flagship computing cluster for Penn State researchers. Designed with collaboration in mind, the RC environment allows for more frequent software updates and hardware upgrades to keep pace with researchers’ changing needs. RC utilizes the Red Hat Enterprise Linux (RHEL) 8 operating system to provide users with access to compute resources, file storage, and software. RC is a heterogeneous computing cluster comprised of different types of compute nodes, each of which can be categorized as a Submit, Portal, Basic, Standard, High-Memory, GPU, or Interactive node.
+Roar Collab (RC) is the flagship computing cluster for Penn State researchers. Designed with collaboration in mind, the RC environment allows for more frequent software updates and hardware upgrades to keep pace with researchers’ changing needs. RC utilizes the Red Hat Enterprise Linux (RHEL) 8 operating system to provide users with access to compute resources, file storage, and software. RC is a heterogeneous computing cluster comprised of different types of compute nodes, each of which can be categorized as a Basic, Standard, High-Memory, GPU, or Interactive node.
 
-Basic nodes (`bc` core-type designation) are connected via Ethernet and are best used for single-node tasks. Basic nodes are configured to offer about 4 GB of memory per core.
-
-Standard nodes (`sc` core-type designation) are connected both via Infiniband and Ethernet. Standard nodes are good for single-node tasks and also multi-node tasks since the Infiniband connections provide higher bandwidth inter-node communication. Standard nodes are configured to offer about 10 GB of memory per core.
-
-High-Memory nodes (`hc` core-type designation) nodes are connected via Ethernet and have more available memory, which makes this node type best for memory-intensive tasks. High-Memory nodes are configured to offer about 25 GB of memory per core.
-
-On the GPU nodes (`gc` core-type designation), GPUs can be accessed either individually or collectively. Both A100 and P100 GPUs are available.
-
-The Interactive nodes (`ic` core-type designation) feature GPUs that are specifically configured for GPU-accelerated graphics. Interactive node types are best for running intensive graphical software that requires GPU-accelerated graphics.
+| Node Type | Designation | Description |
+| ---- | ---- | ---- |
+| Basic | `bc` | Nodes connected via Ethernet and are best used for single-node tasks. Basic nodes are configured to offer about 4 GB of memory per core. |
+| Standard | `sc` | Nodes connected both via Infiniband and Ethernet. Standard nodes are good for single-node tasks and also multi-node tasks since the Infiniband connections provide higher bandwidth inter-node communication. Standard nodes are configured to offer about 10 GB of memory per core. |
+| High-Memory | `hc` | Nodes connected via Ethernet and have more available memory, which makes this node type best for memory-intensive tasks. High-Memory nodes are configured to offer about 25 GB of memory per core. |
+| GPU | `gc` | Nodes with GPUs that can be accessed either individually or collectively. Both A100 and P100 GPUs are available. |
+| Interactive | `ic` | Nodes that feature GPUs that are specifically configured for GPU-accelerated graphics. Interactive node types are best for running intensive graphical software that requires GPU-accelerated graphics. |
 
 
 ## High-Performance Computing Overview
@@ -55,5 +53,5 @@ Slurm's [sinfo](https://slurm.schedmd.com/sinfo.html) documentation page provide
 
 ## Policies
 
-
+The policies regarding the use of RC can be found on the [ICDS Policies](https://www.icds.psu.edu/computing-services/roar-policies/) page.
 
