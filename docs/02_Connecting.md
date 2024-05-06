@@ -1,6 +1,6 @@
 
 ---
-title: Connecting to Roar
+title: Connecting
 ---
 
 # Accounts
