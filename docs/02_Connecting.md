@@ -3,7 +3,9 @@
 title: Connecting
 ---
 
+
 # Accounts
+
 
 ## Activating Your Account
 
