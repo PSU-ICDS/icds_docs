@@ -86,6 +86,7 @@ completed successfully to complete the login.
 ## Linux Commands Quick Reference
 
 | Command | Description |
+| ---- | ---- |
 | ls | Lists the files in the current working directory |
 | cd | Changes the current directory in order to navigate to a new directory |
 | mv | Moves a file or directory to a new location |

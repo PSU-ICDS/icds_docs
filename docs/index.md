@@ -8,6 +8,25 @@ The Roar Collab User Guide introduces users to ICDS, to the Roar Collab
 computing cluster, and provides information on the use of Roar Collab.
 
 
+# Contents
+
+- [Overview](01_Overview.md)
+- [Connecting](02_Connecting.md)
+- [Submitting Jobs](03_SubmittingJobs.md)
+- [Handling Data](04_HandlingData.md)
+- [Using Software](05_UsingSoftware.md)
+
+.. toctree::
+   :maxdepth: 3
+   :numbered:
+   
+   01_Overview
+   02_Connecting
+   03_SubmittingJobs
+   04_HandlingData
+   05_UsingSoftware
+
+
 # Notation
 
 Angle brackets around an `<item>` denote the need to replace the entire 
