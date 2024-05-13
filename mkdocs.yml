@@ -4,7 +4,7 @@ site_url: https://icds-docs.readthedocs.io/en/latest
 theme: 
   name: readthedocs
   highlightjs: false
-#  logo: docs/images/PSU_ICDS_logo_blue.png
+  logo: images/PSU_ICDS_logo_blue.png
 
-#markdown_extensions:
-#  - admonition
+markdown_extensions:
+  - admonition
