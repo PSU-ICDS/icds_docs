@@ -16,16 +16,6 @@ computing cluster, and provides information on the use of Roar Collab.
 - [Handling Data](04_HandlingData.md)
 - [Using Software](05_UsingSoftware.md)
 
-.. toctree::
-   :maxdepth: 3
-   :numbered:
-   
-   01_Overview
-   02_Connecting
-   03_SubmittingJobs
-   04_HandlingData
-   05_UsingSoftware
-
 
 # Notation
 
