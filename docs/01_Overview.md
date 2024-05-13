@@ -74,9 +74,102 @@ Feature GPUs that are specifically configured for GPU-accelerated graphics<br>
 Best for running graphical software that requires GPU-accelerated graphics |
 
 
-[//]:<> (## Roar Collab System Specifications)
 
-[//]:<> (insert automated table that breaks down the nodes and node characteristics)
+
+[//]:<> (## Paid Allocation Specifications)
+[//]:<> (tabular breakdown of nodes for purchase with associated characteristics)
+<!---
+<table>
+    <thead>
+        <tr>
+            <th>Node Type</th>
+            <th>Processor Generation</th>
+            <th>Processor Type</th>
+            <th>Cores</th>
+            <th>Memory</th>
+            <th>Allocation Memory per Core</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan=2>Basic</td>
+            <td>broadwell</td>
+            <td>Intel(R) Xeon(R) CPU E5-2650 v4 @ 2.20GHz</td>
+            <td>24</td>
+            <td>128 GB</td>
+            <td>4 GB</td>
+        </tr>
+        <tr>
+            <td>sapphirerapids</td>
+            <td>Intel(R) Xeon(R) Gold 6430 @ 2.1GHz</td>
+            <td>64</td>
+            <td>256 GB</td>
+            <td>4 GB</td>
+        </tr>
+        <tr>
+            <td rowspan=3>Standard</td>
+            <td>haswell</td>
+            <td>Intel Xeon E5-2680v3 @ 2.5GHz</td>
+            <td>24</td>
+            <td>256 GB</td>
+            <td>10 GB</td>
+        </tr>
+        <tr>
+            <td>cascadelake</td>
+            <td>Intel(R) Xeon(R) Gold 6248R CPU @ 3.00GHz</td>
+            <td>48</td>
+            <td>380 GB</td>
+            <td>10 GB</td>
+        </tr>
+        <tr>
+            <td>icelake</td>
+            <td>Intel(R) Xeon(R) Gold 6342 CPU @ 2.80GHz</td>
+            <td>48</td>
+            <td>512 GB</td>
+            <td>10 GB</td>
+        </tr>
+        <tr>
+            <td rowspan=2>High-Memory</td>
+            <td>broadwell</td>
+            <td>Intel(R) Xeon(R) CPU E7-4830 v4 @ 2.00GHz</td>
+            <td>56</td>
+            <td>1 TB</td>
+            <td>25 GB</td>
+        </tr>
+        <tr>
+            <td>icelake</td>
+            <td>Intel(R) Xeon(R) Gold 6342 CPU @ 2.80GHz</td>
+            <td>48</td>
+            <td>1 TB</td>
+            <td>25 GB</td>
+        </tr>
+        <tr>
+            <td rowspan=3>GPU</td>
+            <td>broadwell</td>
+            <td>CPU info + GPU info</td>
+            <td>24</td>
+            <td>256 GB</td>
+            <td>8 GB</td>
+        </tr>
+        <tr>
+            <td>broadwell</td>
+            <td>CPU info + GPU info</td>
+            <td>28</td>
+            <td>512 GB</td>
+            <td>8 GB</td>
+        </tr>
+        <tr>
+            <td>cascadelake</td>
+            <td>CPU info + GPU info</td>
+            <td>48</td>
+            <td>380 GB</td>
+            <td>8 GB</td>
+        </tr>
+    </tbody>
+</table>
+-->
+
+
 
 
 ## Slurm's `sinfo` Command
