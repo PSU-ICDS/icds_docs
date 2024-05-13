@@ -19,7 +19,7 @@ request access to Roar Collab (RC) by submitting an
 For any external collaborators, a university faculty member must set up a 
 [sponsored access account](https://security.psu.edu/services/penn-state-accts/sponsored) 
 with the university Accounts Office to provide the collaborator with an access 
-account. Once the collaborator access account is active, submit an 
+account. Once the collaborator's access account is active, submit an 
 [account request](https://www.icds.psu.edu/computing-services/account-setup) 
 to RC.
 
@@ -63,12 +63,10 @@ connect using the following command:
 ```
 $ ssh <userid>@submit.hpc.psu.edu
 ```
+
 To connect, an RC account linked to an active Penn State access account user ID 
 and password is required. By default, port 22 is used for secure shell 
-connections.
-
-A password must be entered and then multi-factor authentication must be 
-completed successfully to complete the login.
+connections. A password must be entered and then multi-factor authentication must be completed successfully to complete the login.
 
 .. note::
     The connection to the system is made with a submit node. Submit nodes are  
