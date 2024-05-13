@@ -124,7 +124,7 @@ Special characters are useful in many commands.
 | `.` | Indicates current working directory |
 | `..` | Indicates parent of current working directory |
 | `*` | Wildcard character for any string |
-| `|` | Connects the output of a command to the input of another |
+| `&#124;` | Connects the output of a command to the input of another |
 | `>` | Redirects a command output |
 
 For complete details on any command listed above and more, use `man <command>` 
