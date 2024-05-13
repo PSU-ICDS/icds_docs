@@ -9,7 +9,7 @@
 
 ### Activating Your Account
 
-All individuals who have an active Penn State access account (PSU ID) can 
+All individuals who have an active Penn State access account may 
 request access to Roar Collab (RC) by submitting an 
 [account request](https://www.icds.psu.edu/computing-services/account-setup). 
 
@@ -68,7 +68,7 @@ To connect, an RC account linked to an active Penn State access account user ID
 and password is required. By default, port 22 is used for secure shell 
 connections. A password must be entered and then multi-factor authentication must be completed successfully to complete the login.
 
-.. note::
+!!! note
     The connection to the system is made with a submit node. Submit nodes are  
     configured primarily to handle incoming user connections and non-intensive 
     computational tasks like editing small files. To perform computational 
@@ -85,41 +85,41 @@ connections. A password must be entered and then multi-factor authentication mus
 
 | Command | Description |
 | ---- | ---- |
-| ls | Lists the files in the current working directory |
-| cd | Changes the current directory in order to navigate to a new directory |
-| mv | Moves a file or directory to a new location |
-| mkdir | Makes a directory |
-| rmdir | Removes an empty directory |
-| touch | Creates a file |
-| rm | Removes a file (or a directory using the `-r` option) |
-| locate | Locates a file in a directory |
-| clear | Clears the terminal of all previous outputs |
-| history | Shows the history of previous commands |
-| find | Finds files in a directory |
-| grep | Searches files or outputs |
-| awk | A programming language for pattern scanning and processing |
-| id | Shows the list of groups for a user |
-| du | Shows disk usage |
-| env | Prints the current environment variables |
-| less | Displays a file |
-| cp | Copies a file (or a directory using the `-r` option) |
-| alias | Creates an alias, which is essentially an abbreviated command |
-| pwd | Prints the current working directory |
-| chmod | Changes file permissions |
-| chgrp | Changes group for a file or directory |
-| ldd | Shows the shared libraries required for an executable or library |
-| top | Displays the node usage |
-| /usr/bin/time | Shows time and memory statistics for a command being run |
-| bg | Continues running a paused task in the background |
-| fg | Brings a background task into the foreground |
-| Ctrl + c | Kills a process |
-| Ctrl + z | Suspends a process |
-| Ctrl + r | Searches the command history for a string |
+| `ls` | Lists the files in the current working directory |
+| `cd` | Changes the current directory in order to navigate to a new directory |
+| `mv` | Moves a file or directory to a new location |
+| `mkdir` | Makes a directory |
+| `rmdir` | Removes an empty directory |
+| `touch` | Creates a file |
+| `rm` | Removes a file (or a directory using the `-r` option) |
+| `locate` | Locates a file in a directory |
+| `clear` | Clears the terminal of all previous outputs |
+| `history` | Shows the history of previous commands |
+| `find` | Finds files in a directory |
+| `grep` | Searches files or outputs |
+| `awk` | A programming language for pattern scanning and processing |
+| `id` | Shows the list of groups for a user |
+| `du` | Shows disk usage |
+| `env` | Prints the current environment variables |
+| `less` | Displays a file |
+| `cp` | Copies a file (or a directory using the `-r` option) |
+| `alias` | Creates an alias, which is essentially an abbreviated command |
+| `pwd` | Prints the current working directory |
+| `chmod` | Changes file permissions |
+| `chgrp` | Changes group for a file or directory |
+| `ldd` | Shows the shared libraries required for an executable or library |
+| `top` | Displays the node usage |
+| `/usr/bin/time` | Shows time and memory statistics for a command being run |
+| `bg` | Continues running a paused task in the background |
+| `fg` | Brings a background task into the foreground |
+| `Ctrl + c` | Kills a process |
+| `Ctrl + z` | Suspends a process |
+| `Ctrl + r` | Searches the command history for a string |
 
 Special characters are useful in many commands.
 
-| Special Character | Description |
-| .----. | ---- |
+| Character | Description |
+| :----: | ---- |
 | `~` | Indicates the home directory |
 | `.` | Indicates current working directory |
 | `..` | Indicates parent of current working directory |

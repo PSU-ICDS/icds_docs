@@ -21,7 +21,7 @@ functions are to
  - Provide a framework for starting, executing, and monitoring work on the set of allocated compute resources
  - Arbitrate contention for resources by managing a queue of pending work
 
-.. warning::
+!!! warning
     Do not perform computationally intensive tasks on submit nodes. Submit a 
     resource request via Slurm for computational resources so your 
     computational task can be performed on a compute node.

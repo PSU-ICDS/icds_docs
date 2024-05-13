@@ -51,27 +51,13 @@ software. RC is a heterogeneous computing cluster comprised of different types
 of compute nodes, each of which can be categorized as a Basic, Standard, High-
 Memory, GPU, or Interactive node.
 
-| Node Type | Designation | Description |
-| ---- | ---- | ---- |
-| Basic | `bc` | 
-Connected via Ethernet<br>
-Configured to offer about 4 GB of memory per core<br>
-Best used for single-node tasks |
-| Standard | `sc` | 
-Connected both via Infiniband and Ethernet<br>
-Infiniband connections provide higher bandwidth inter-node communication<br>
-Configured to offer about 10 GB of memory per core<br>
-Good for single-node tasks and also multi-node tasks |
-| High-Memory | `hc` | 
-Connected via Ethernet<br>
-Configured to offer about 25 GB of memory per core<br>
-Best for memory-intensive tasks |
-| GPU | `gc` | 
-Feature GPUs that can be accessed either individually or collectively<br>
-Both A100 and P100 GPUs are available |
-| Interactive | `ic` | 
-Feature GPUs that are specifically configured for GPU-accelerated graphics<br>
-Best for running graphical software that requires GPU-accelerated graphics |
+| Node Type | Designation | Core/Memory<br>Configurations |Description |
+| ---- | :----: | :----: | ---- |
+| Basic | `bc` | 24 cores, 126 GB<br>64 core, 255 GB | Connected via Ethernet<br>Configured to offer about 4 GB of memory per core<br>Best used for single-node tasks |
+| Standard | `sc` | 24 cores, 258 GB<br>48 cores, 380 GB<br>48 cores, 512 GB | Connected both via Infiniband and Ethernet<br>Infiniband connections provide higher bandwidth inter-node communication<br>Configured to offer about 10 GB of memory per core<br>Good for single-node tasks and also multi-node tasks |
+| High-Memory | `hc` | 56 cores, 1 TB | Connected via Ethernet<br>Configured to offer about 25 GB of memory per core<br>Best for memory-intensive tasks |
+| GPU | `gc` | 28 cores, 256 GB<br>28 cores, 512 GB<br>48 cores, 380 GB | Feature GPUs that can be accessed either individually or collectively<br>Both A100 and P100 GPUs are available |
+| Interactive | `ic` | 36 cores, 500 GB | Feature GPUs that are specifically configured for GPU-accelerated graphics<br>Best for running graphical software that requires GPU-accelerated graphics |
 
 
 

@@ -295,7 +295,7 @@ In a Slurm submission script, a container can be called serially using the
 following run line:
 
 ```
-apptainer run <container> <args>
+$ apptainer run <container> <args>
 ```
 
 To use a container in parallel with MPI, the MPI library within the container 
@@ -307,7 +307,7 @@ Apptainer's
 page. In a Slurm submission script, a container with MPI can be called using
 
 ```
-srun apptainer exec <container> <command> <args>
+$ srun apptainer exec <container> <command> <args>
 ```
 
 Containers change the user space into a swappable component, and provide the 
@@ -383,7 +383,7 @@ will be used for running the software. On a compute node, running the following
 command displays the processor type:
 
 ```
-cat /sys/devices/cpu/caps/pmu_name
+$ cat /sys/devices/cpu/caps/pmu_name
 ```
 
 Software builds are not typically back-compatible and will not run successfully 
@@ -392,16 +392,16 @@ build on haswell (the oldest processor architecture on RC) if you wish to have
 full compatibility across all RC compute nodes. To optimize for performance, 
 however, build on the same processor on which the software runs.
 
-<center>
-| Release Date | Processor |
-| :----: | :----: |
-| 2013 | haswell |
-| 2014 | broadwell |
-| 2015 | skylake |
-| 2019 | cascadelake |
-| 2019 | icelake |
-| 2023 | sapphirerapids |
-</center>
+<div align="center">
+    | Release Date | Processor |
+    | :----: | :----: |
+    | 2013 | haswell |
+    | 2014 | broadwell |
+    | 2015 | skylake |
+    | 2019 | cascadelake |
+    | 2019 | icelake |
+    | 2023 | sapphirerapids |
+</div>
 
 
 ## Software-Specific Guides
@@ -480,7 +480,7 @@ The default personal directory described above will install the package in the
 command using the `lib` argument:
 
 ```
-install.packages( "<package>", lib="<install_location>" )
+> install.packages( "<package>", lib="<install_location>" )
 ```
 
 After installation, packages can then be loaded using the following command in 
@@ -495,7 +495,7 @@ be loaded from that custom install location using the `lic.loc` argument of the
 `library()` command:
 
 ```
-library( <package>, lib.loc="<install_location>" )
+> library( <package>, lib.loc="<install_location>" )
 ```
 
 It is recommended to review dependencies of any packages to be installed 
