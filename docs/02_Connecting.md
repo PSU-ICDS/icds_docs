@@ -116,6 +116,17 @@ connections. A password must be entered and then multi-factor authentication mus
 | Ctrl + z | Suspends a process |
 | Ctrl + r | Searches the command history for a string |
 
+Special characters are useful in many commands.
+
+| Special Character | Description |
+| .----. | ---- |
+| `~` | Indicates the home directory |
+| `.` | Indicates current working directory |
+| `..` | Indicates parent of current working directory |
+| `*` | Wildcard character for any string |
+| `|` | Connects the output of a command to the input of another |
+| `>` | Redirects a command output |
+
 For complete details on any command listed above and more, use `man <command>` 
 in a terminal session to display the manual page for the command or search 
 online for more detailed usage of fundamental Linux commands.
