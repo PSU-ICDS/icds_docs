@@ -133,7 +133,7 @@ The RC Portal is a simple graphical web interface that provides users with
 access to RC. Users can submit and monitor jobs, manage files, and run 
 applications using just a web browser. To access the RC Portal, users must log 
 in using valid Penn State access account credentials and must also have an 
-account on RC. [The RC Portal](https://rcportal.hpc.psu.edu) is available at 
+account on RC. The [RC Portal](https://rcportal.hpc.psu.edu) is available at 
 the following webpage: 
 [https://rcportal.hpc.psu.edu](https://rcportal.hpc.psu.edu)
 
@@ -196,7 +196,7 @@ computational resources used by the job. Add about a 20% margin on top of the
 best estimate of the job's resource usage in order to produce a job's resource 
 requests used in the scheduler directives.
 
-If the above sample submission script was saved as **pyjob.slurm**, it would be 
+If the above sample submission script was saved as `pyjob.slurm`, it would be 
 submitted to the Slurm scheduler with the 
 [sbatch](https://slurm.schedmd.com/sbatch.html) command.
 
@@ -233,12 +233,12 @@ command:
 $ sacctmgr show qos open format=name%10,maxtrespu%40
 ```
 
-Jobs on the **open** queue will start and run only when sufficient idle compute 
+Jobs on the `open` queue will start and run only when sufficient idle compute 
 resources are available. For this reason, there is no guarantee on when an 
-**open** queue job will start. All users have equal priority on the **open** 
-queue, but **open** queue jobs have a lower priority than jobs submitted to a 
+`open` queue job will start. All users have equal priority on the `open` 
+queue, but `open` queue jobs have a lower priority than jobs submitted to a 
 paid compute allocation. If compute resources are required for higher priority 
-jobs, then an **open** queue job may be cancelled so that the higher priority 
+jobs, then an `open` queue job may be cancelled so that the higher priority 
 job can be placed. The cancellation of a running job to free resources for a 
 higher priority job is called preemption. By using the `--requeue` option in a 
 submission script, a job will re-enter the job queue automatically in the event 
@@ -248,8 +248,8 @@ computational units so jobs can save state throughout the stages of the
 workflow. Saving state at set checkpoints will allow the computational workflow 
 to return to the latest checkpoint, reducing the amount of required re-
 computation in the case that a job is interrupted for any reason. RC has 
-somewhat low utilization, however, so the vast majority of **open** queue jobs 
-can be submitted and placed in a resonable amount of time. The **open** queue 
+somewhat low utilization, however, so the vast majority of `open` queue jobs 
+can be submitted and placed in a resonable amount of time. The `open` queue 
 is entirely adequate for most individual users and for many use cases.
 
 
@@ -284,7 +284,7 @@ accounts and the associated available burst partitions, use the following
 command:
 
 ```
-$ sacctmgr show User $USER --associations format=account%30,qos%40
+$ sacctmgr show User $(whoami) --associations format=account%30,qos%40
 ```
 
 

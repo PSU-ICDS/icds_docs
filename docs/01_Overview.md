@@ -48,16 +48,16 @@ frequent software updates and hardware upgrades to keep pace with researchers’
 changing needs. RC utilizes the Red Hat Enterprise Linux (RHEL) 8 operating 
 system to provide users with access to compute resources, file storage, and 
 software. RC is a heterogeneous computing cluster comprised of different types 
-of compute nodes, each of which can be categorized as a Basic, Standard, High-
-Memory, GPU, or Interactive node.
+of compute nodes, each of which can be categorized as a Basic, Standard,
+High-Memory, GPU, or Interactive node.
 
-| Node Type | Designation | Core/Memory<br>Configurations |Description |
-| ---- | :----: | :----: | ---- |
-| Basic | `bc` | 24 cores, 126 GB<br>64 core, 255 GB | Connected via Ethernet<br>Configured to offer about 4 GB of memory per core<br>Best used for single-node tasks |
-| Standard | `sc` | 24 cores, 258 GB<br>48 cores, 380 GB<br>48 cores, 512 GB | Connected both via Infiniband and Ethernet<br>Infiniband connections provide higher bandwidth inter-node communication<br>Configured to offer about 10 GB of memory per core<br>Good for single-node tasks and also multi-node tasks |
-| High-Memory | `hc` | 56 cores, 1 TB | Connected via Ethernet<br>Configured to offer about 25 GB of memory per core<br>Best for memory-intensive tasks |
-| GPU | `gc` | 28 cores, 256 GB<br>28 cores, 512 GB<br>48 cores, 380 GB | Feature GPUs that can be accessed either individually or collectively<br>Both A100 and P100 GPUs are available |
-| Interactive | `ic` | 36 cores, 500 GB | Feature GPUs that are specifically configured for GPU-accelerated graphics<br>Best for running graphical software that requires GPU-accelerated graphics |
+| Node Type<br>(Designation) | Core/Memory<br>Configurations |Description |
+| :----: | :----: | ---- |
+| Basic<br>(`bc`) | 24 cores, 126 GB<br>64 cores, 255 GB | Connected via Ethernet<br>Configured to offer about 4 GB of memory per core<br>Best used for single-node tasks |
+| Standard<br>(`sc`) | 24 cores, 258 GB<br>48 cores, 380 GB<br>48 cores, 512 GB | Connected both via Infiniband and Ethernet<br>Infiniband connections provide higher bandwidth inter-node communication<br>Configured to offer about 10 GB of memory per core<br>Good for single-node tasks and also multi-node tasks |
+| High-Memory<br>(`hc`) | 48 cores, 1 TB<br>56 cores, 1 TB | Connected via Ethernet<br>Configured to offer about 25 GB of memory per core<br>Best for memory-intensive tasks |
+| GPU<br>(`gc`) | 28 cores, 256 GB<br>28 cores, 512 GB<br>48 cores, 380 GB | Feature GPUs that can be accessed either individually or collectively<br>Both A100 and P100 GPUs are available |
+| Interactive<br>(`ic`) | 36 cores, 500 GB | Feature GPUs that are specifically configured for GPU-accelerated graphics<br>Best for running graphical software that requires GPU-accelerated graphics |
 
 
 
@@ -162,18 +162,50 @@ Memory, GPU, or Interactive node.
 
 RC is a heterogeneous computing cluster. To see the different node
 configurations on RC, use the following command:
+
 ```
 sinfo --Format=features:40,nodelist:20,cpus:10,memory:10
 ```
 
-Slurm's [sinfo](https://slurm.schedmd.com/sinfo.html) documentation page  
-provides a detailed description of the function and options of the `sinfo` 
-command.
+This `sinfo` command displays not only the core and memory configuration of the 
+nodes, but it also indicates the processor generation associated with each 
+node. Furthermore, while connected to a specific node, the `lscpu` command 
+provides more detailed information on the specific processor type available on 
+the node. For nodes with GPU(s), the `nvidia-smi` command displays more 
+detailed information on the GPU(s) available on that node.
+
+Slurm's [sinfo](https://slurm.schedmd.com/sinfo.html) 
+documentation page provides a detailed description of the function and options 
+of the `sinfo` command.
 
 
 ## Best Practices
 
+Roar Collab is shared by many users, and a user's operating behavior can inadvertantly impact system functionality for other users. All users must follow a set of best practices which entail limiting activities that may impact the system for other users. Exercise good citizenship to ensure that your activity does not adversely impact the system and the RC research community.
 
+
+!!! warning  "Do Not Run Jobs on the Submit Nodes"
+
+    RC has a few login nodes that are shared among all users. Dozens, and sometimes hundreds, of users may be logged on at any one time accessing the file systems. Think of the submit nodes as a prep area, where users may edit and manage files, perform file management, initiate file transfers, submit new jobs, and track existing batch jobs. The submit nodes provide an interface to the system and to the computational resources.
+
+    The compute nodes are where intensive computations may be performed and where research software may be utilized. All batch jobs and executables, as well as development and debugging sessions, must be run on the compute nodes. To access compute nodes on RC, either submit a batch job or request an interactive session. The [Submitting Jobs](03_SubmittingJobs.md) section of the RC User Guide provides further details on requesting computational resources.
+
+    A single user running computationally expensive or disk intensive tasks on a submit node negatively impacts performance for other users. Additionally, since the submit nodes are not configured for intensive computations, the computational performance of such processes is poor. Habitually running jobs on the submit nodes can potentially lead to account suspension.
+
+
+!!! warning  "Do Not Use Scratch as a Primary Storage Location"
+
+    Scratch serves as a temporary repository for compute output and is explicitly designed for short-term usage. Unlike other storage locations, scratch is not backed up. Files are subject to automatic removal if they are not accessed within a timeframe of 30 days. The [Handling Data](04_HandlingData.md) section of the RC User Guide provides further details on storage options.
+
+
+!!! tip  "Make an Effort to Minimize Resource Requests"
+    
+    The amount of time jobs are queued grows as the amount of requested resources increases. To minimize the amount of time a job is queued, minimize the amount of resources requested. It is best to run small test cases to verify that the computational workflow runs successfully before scaling up the process to a large dataset. The [Submitting Jobs](03_SubmittingJobs.md) section of the RC User Guide provides further details on requesting computational resources.
+
+
+!!! tip  "Remain Cognizant of Storage Quotas"
+    
+    All available storage locations on RC have associated quotas. If the usage of a storage location approaches these quotas, software may not functional nominally and produce cryptic error messages. The [Handling Data](04_HandlingData.md) section of the RC User Guide provides further details on checking storage usage relative to the quotas.
 
 
 ## Policies

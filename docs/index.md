@@ -4,8 +4,9 @@ title: Roar Collab User Guide
 
 Welcome to the Roar Collab User Guide! 
 
-The Roar Collab User Guide introduces users to ICDS, to the Roar Collab 
-computing cluster, and provides information on the use of Roar Collab.
+The Roar Collab User Guide introduces users to Institute for Computational and 
+Data Science (ICDS), to the Roar Collab computing cluster, and provides 
+information on the use of Roar Collab.
 
 
 # Contents
@@ -26,6 +27,11 @@ the replacement occurs.
 Square brackets around an `[item]` denote an optional item. If used, the entire 
 `[item]` should be replaced with a string, and the square brackets should no 
 longer be present after the replacement occurs.
+
+When commands are provided, they are typically provided with a leading prompt 
+character. When the `$` prompt character is used, it denotes that the command 
+should be run within the system prompt. When the `>` prompt character is used, it 
+denotes that the command is to be run with the prompt of a software application.
 
 
 # Getting Help

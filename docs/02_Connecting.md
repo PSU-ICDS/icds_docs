@@ -7,7 +7,7 @@
 ## Accounts
 
 
-### Activating Your Account
+### Account Activation
 
 All individuals who have an active Penn State access account may 
 request access to Roar Collab (RC) by submitting an 
@@ -26,8 +26,8 @@ to RC.
 
 ## Connecting to Roar Collab
 
-Users can connect to RC either through the RC Portal or via an `ssh` 
-connection.
+Users can connect to RC either through the [RC Portal](https://rcportal.hpc.psu.edu) ([rcportal.hpc.psu.edu](https://rcportal.hpc.psu.edu)) or via an `ssh` 
+connection to the `submit.hpc.psu.edu` host.
 
 
 ### Using the Roar Collab Portal
@@ -57,8 +57,8 @@ menu bar on the Portal:
 Those who prefer to utilize only the command line environment can connect using 
 Secure Shell (SSH). 
 
-Through the terminal on MacOS or Linux or Command Prompt on Windows, users can 
-connect using the following command:
+Through the terminal on macOS or Linux or the command prompt on Windows, users
+can connect using the following command:
 
 ```
 $ ssh <userid>@submit.hpc.psu.edu
@@ -69,6 +69,7 @@ and password is required. By default, port 22 is used for secure shell
 connections. A password must be entered and then multi-factor authentication must be completed successfully to complete the login.
 
 !!! note
+
     The connection to the system is made with a submit node. Submit nodes are  
     configured primarily to handle incoming user connections and non-intensive 
     computational tasks like editing small files. To perform computational 
@@ -124,7 +125,7 @@ Special characters are useful in many commands.
 | `.` | Indicates current working directory |
 | `..` | Indicates parent of current working directory |
 | `*` | Wildcard character for any string |
-| `&#124;` | Connects the output of a command to the input of another |
+| `\|` | Connects the output of a command to the input of another |
 | `>` | Redirects a command output |
 
 For complete details on any command listed above and more, use `man <command>` 
