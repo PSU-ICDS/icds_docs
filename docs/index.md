@@ -2,14 +2,17 @@
 title: Roar Collab User Guide
 ---
 
+# Roar Collab User Guide
+
 Welcome to the Roar Collab User Guide! 
 
-The Roar Collab User Guide introduces users to Institute for Computational and 
-Data Science (ICDS), to the Roar Collab computing cluster, and provides 
-information on the use of Roar Collab.
+The Roar Collab User Guide introduces users to 
+[Institute for Computational and Data Science (ICDS)](https://icds.psu.edu), to 
+the Roar Collab computing cluster, and provides information on the use of Roar 
+Collab.
 
 
-# Contents
+## Contents
 
 - [Overview](01_Overview.md)
 - [Connecting](02_Connecting.md)
@@ -18,7 +21,7 @@ information on the use of Roar Collab.
 - [Using Software](05_UsingSoftware.md)
 
 
-# Notation
+## Notation
 
 Angle brackets around an `<item>` denote the need to replace the entire 
 `<item>` with the string. The angle brackets should no longer be present after 
@@ -30,11 +33,11 @@ longer be present after the replacement occurs.
 
 When commands are provided, they are typically provided with a leading prompt 
 character. When the `$` prompt character is used, it denotes that the command 
-should be run within the system prompt. When the `>` prompt character is used, it 
-denotes that the command is to be run with the prompt of a software application.
+is to be run within the system prompt. When the `>` prompt character is used, it 
+denotes that the command is to be run within software application's prompt.
 
 
-# Getting Help
+## Getting Help
 
 After reading the Roar Collab User Guide, you may contact the iAsk Center at 
 **icds@psu.edu** for further assistance. Also, monitor the 
