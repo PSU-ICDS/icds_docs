@@ -103,6 +103,9 @@ Typically, access to group storage locations can be managed using the
 group space. For users to be added or removed from `<user>_collab` groups, the 
 owner of that group must submit a request to **icds@psu.edu**.
 
+
+## User-Managed Groups
+
 If the owner of a group space would like more control over the access groups or 
 would like to designate a group coordinator, then it is recommended that the 
 owner 
@@ -282,4 +285,6 @@ for backups and mirroring and as an improved copy command for everyday use. The
 ```
 $ rsync [options] <source-user-id>@<source-host>[:<file-location>] <destination-user-id>@<destination-host>[:<file-location>]
 ```
+
+The `rsync` tool should only be used within an interactive compute session due to its underlying resource requirements.
 

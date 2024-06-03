@@ -29,8 +29,14 @@ functions are to
 
 ### Slurm Resource Directives
 
+A compute session can reached via either a batch job or an 
+interactive job. The following sections provide more details on intiating 
+compute sessions: [Batch Jobs](#Batch-Jobs), 
+[Interactive Jobs](#Interactive-Jobs), and 
+[Interactive Jobs Through the RC Portal](#Interactive-Jobs-Through-the-Roar-Collab-Portal)
+
 Resource directives are used to request specific compute resources for a 
-compute session.
+compute session. 
 
 | Resource Directive | Description |
 | ---- | ---- |
@@ -85,18 +91,25 @@ Slurm in the documentation of the
 
 ### A Note on Requesting Resources
 
-Requesting more resources for a job will increase its time in the queue as it 
-must wait longer for resources to be allocated. Typically, parallelized code 
-will see a reduction in overall runtime as more resources are requested. The 
-total time to solution is ultimately reduced when the job strikes a balance by 
-requesting the minimal amount of resources needed to provide a reasonable 
-speedup. The goal of a resource request is to obtain the necessary 
-computational resources to complete a task while minimizing the time to 
-solution. An optimal resource request is the minimal amount of computational 
-resources that allows a computational task to run to successful completion. 
+The resource directives should be populated with resource requests that are 
+adequate to complete the job but should be minimal enough that the job can be 
+placed somewhat quickly by the scheduler. The total time to completion of a job 
+consists of the amount of time the job is queued plus the amount of time it 
+takes the job to run to completion once placed. The queue time is minimized 
+when the bare minimum amount of resources are requested, and the queue time 
+grows as the amount of requested resources grows. The run time of the job is 
+minimized when all of the computational resources available to the job are 
+efficiently utilized. The total time to completion, therefore, is minimized 
+when the resources requested closely match the amount of computational 
+resources that can be efficiently utilized by the job. During the development 
+of the computational job, it is best to keep track of an estimate of the 
+computational resources used by the job. Add about a 20% margin on top of the 
+best estimate of the job's resource usage in order to produce a job's resource 
+requests used in the scheduler directives.
+
 It's useful to examine the amount of resources that a single laptop computer 
 has, or **1 laptop-worth of resources**, as a reference. A modern above-average 
-laptop, for example, may have an 8-core processor and 32 GB of RAM.  If a 
+laptop, for example, may have an 8-core processor and 32 GB of RAM. If a 
 computational task can run on a laptop without crashing the device, then there 
 is absolutely no need to submit a resource request larger than this.
 
@@ -180,22 +193,6 @@ suffix of K, M, G, or T, respectively. If no suffix is used, the default is MB.
 Lastly, the work to be done is specified, which is the execution of a Python 
 script in this case.
 
-The resource directives should be populated with resource requests that are 
-adequate to complete the job but should be minimal enough that the job can be 
-placed somewhat quickly by the scheduler. The total time to completion of a job 
-consists of the amount of time the job is queued plus the amount of time it 
-takes the job to run to completion once placed. The queue time is minimized 
-when the bare minimum amount of resources are requested, and the queue time 
-grows as the amount of requested resources grows. The run time of the job is 
-minimized when all of the computational resources available to the job are 
-efficiently utilized. The total time to completion, therefore, is minimized 
-when the resources requested closely match the amount of computational 
-resources that can be efficiently utilized by the job. During the development 
-of the computational job, it is best to keep track of an estimate of the 
-computational resources used by the job. Add about a 20% margin on top of the 
-best estimate of the job's resource usage in order to produce a job's resource 
-requests used in the scheduler directives.
-
 If the above sample submission script was saved as `pyjob.slurm`, it would be 
 submitted to the Slurm scheduler with the 
 [sbatch](https://slurm.schedmd.com/sbatch.html) command.
@@ -260,10 +257,8 @@ individual user or for a group of users. A paid compute allocation provides the
 following benefits:
 
 - Guaranteed job start time within one hour
-- No time request limit
 - No job preemption for non-burst jobs
 - Burst capability up to 4x of the allocation's compute resources
-- 5 TB of active group storage
 
 A compute allocation results in the creation of a compute account on RC. The 
 `mybalance` command on RC lists accessible compute accounts and resource 
@@ -378,11 +373,8 @@ To use GPUs, add the `--gpus` resource directive:
 python pyscript.py
 ```
 
-Only software that has been explicitly written to run on GPUs can take 
-advantage of GPUs. Adding the `--gpus` option to a Slurm script for a CPU-only 
-program will not speed up the execution time and will just waste resources and 
-increase the queue time. Furthermore, some codes are only written to use a 
-single GPU, so avoid requesting multiple GPUs unless the program can use them.
+Requesting GPU resources for a job is only beneficial if the software running 
+within the job is GPU-enabled.
 
 
 ## Job Management and Monitoring
@@ -395,8 +387,10 @@ running and queued jobs for a specific user:
 $ squeue -u <user>
 ```
 
-A useful environment variable is the `SQUEUE_FORMAT` variable and can be set, 
-for example, with the following command:
+A useful environment variable is the `SQUEUE_FORMAT` variable which enables 
+customization of the details shown by the `squeue` command. This variable can 
+be set, for example, with the following command to provide a highly descriptive 
+`squeue` output:
 
 ```
 $ export SQUEUE_FORMAT="%.9i %9P %35j %.8u %.2t %.12M %.12L %.5C %.7m %.4D %R"

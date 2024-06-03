@@ -67,7 +67,7 @@ versions and configuration. A location should be specified that contains the
 custom software installations and the module files for the custom software 
 installations should be stored together in a common location. This module 
 location can be added to the `$MODULEPATH` environment variable so users can 
-access the software modules just as they would for the central software stack.
+access the software modules just as they would for the central software stack. The [LMod](https://lmod.readthedocs.io/en/latest/) documentation contains more detailed information on creating custom software modules.
 
 
 ### Anaconda
@@ -89,6 +89,8 @@ command:
 ```
 $ module load anaconda
 ```
+
+Usage of Anaconda may cause storage quota issues since environments and packages are stored within `~/.conda` by default. This issue can be easily resolved by moving the `~/.conda` directory to the work directory and creating a link in its place pointing to the new location in the work directory. This is described further in the [Handling Data](04_HandlingData.md#Managing-Large-Configuration-Files) section.
 
 
 #### Installation Example
@@ -265,6 +267,43 @@ envrionment's R installation. Explicitly adding the conda environment's *lib*
 directory to the `LD_LIBRARY_PATH` variable seems to clear up this issue.
 
 
+### Compiling From Source
+
+Compiling software from source is the most involved option for using software 
+on RC, but it gives the user the highest level of control. Research computing 
+software is often developed by academic researchers that do not place a large 
+effort on packaging their software so that it can be easily deployed on other 
+systems. If the developer does not package the software using a package 
+manager, then the only option is to build the software from source. It is best 
+to follow the installation instructions from the developer to successfully 
+install the software from source.
+
+It is recommended to build software on a node with the same processor type that 
+will be used for running the software. On a compute node, running the following 
+command displays the processor type:
+
+```
+$ cat /sys/devices/cpu/caps/pmu_name
+```
+
+Software builds are not typically back-compatible and will not run successfully 
+on processors older than the processor used to build. It is recommended to 
+build on haswell (the oldest processor architecture on RC) if you wish to have 
+full compatibility across all RC compute nodes. To optimize for performance, 
+however, build on the same processor on which the software runs.
+
+<div align="center">
+    | Release Date | Processor |
+    | :----: | :----: |
+    | 2013 | haswell |
+    | 2014 | broadwell |
+    | 2015 | skylake |
+    | 2019 | cascadelake |
+    | 2019 | icelake |
+    | 2023 | sapphirerapids |
+</div>
+
+
 ### Containers
 
 A container is a standard unit of software with two modes:
@@ -365,43 +404,6 @@ The recommended workflow for building containers is shown below:
 [//]:<> (<p align="center">)
 [//]:<> (  <img src="images/ContainerWorkflow.png">)
 [//]:<> (</p>)
-
-
-### Compiling From Source
-
-Compiling software from source is the most involved option for using software 
-on RC, but it gives the user the highest level of control. Research computing 
-software is often developed by academic researchers that do not place a large 
-effort on packaging their software so that it can be easily deployed on other 
-systems. If the developer does not package the software using a package 
-manager, then the only option is to build the software from source. It is best 
-to follow the installation instructions from the developer to successfully 
-install the software from source.
-
-It is recommended to build software on a node with the same processor type that 
-will be used for running the software. On a compute node, running the following 
-command displays the processor type:
-
-```
-$ cat /sys/devices/cpu/caps/pmu_name
-```
-
-Software builds are not typically back-compatible and will not run successfully 
-on processors older than the processor used to build. It is recommended to 
-build on haswell (the oldest processor architecture on RC) if you wish to have 
-full compatibility across all RC compute nodes. To optimize for performance, 
-however, build on the same processor on which the software runs.
-
-<div align="center">
-    | Release Date | Processor |
-    | :----: | :----: |
-    | 2013 | haswell |
-    | 2014 | broadwell |
-    | 2015 | skylake |
-    | 2019 | cascadelake |
-    | 2019 | icelake |
-    | 2023 | sapphirerapids |
-</div>
 
 
 ## Software-Specific Guides
@@ -553,5 +555,31 @@ $ module load r/4.2.1
 $ R
 > install.packages("units")
 > library(units)
+```
+
+
+#### R Packages with Anaconda
+
+The R installation itself and its R packages can be easily installed and 
+managed within an conda environment. Creating a conda environment containing 
+its own R installation and some R packages can be accomplished with the 
+following:
+
+```
+(base) $ conda create -n r_env
+(base) $ conda activate r_env
+(r_env) $ conda install r-base
+(r_env) $ conda install r-tidyverse
+```
+
+Note that after `r-base` is the base R installation, and R packages (or in the 
+case of `tidyverse`, a bundle of packages) usually are named `r-*` in conda 
+repos.
+
+Alternatively, the creation of this environment can be completed with a single 
+line.
+
+```
+(base) $ conda create -n r_env r-base r-tidyverse
 ```
 
