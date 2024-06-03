@@ -6,7 +6,7 @@ title: Roar Collab User Guide
 
 Welcome to the Roar Collab User Guide! 
 
-The Roar Collab User Guide introduces users to 
+The Roar Collab User Guide introduces users to the 
 [Institute for Computational and Data Science (ICDS)](https://icds.psu.edu), to 
 the Roar Collab computing cluster, and provides information on the use of Roar 
 Collab.

@@ -292,7 +292,6 @@ build on haswell (the oldest processor architecture on RC) if you wish to have
 full compatibility across all RC compute nodes. To optimize for performance, 
 however, build on the same processor on which the software runs.
 
-<div align="center">
     | Release Date | Processor |
     | :----: | :----: |
     | 2013 | haswell |
@@ -301,7 +300,6 @@ however, build on the same processor on which the software runs.
     | 2019 | cascadelake |
     | 2019 | icelake |
     | 2023 | sapphirerapids |
-</div>
 
 
 ### Containers
