@@ -7,4 +7,6 @@ theme:
   logo: images/PSU_ICDS_logo_blue.png
 
 markdown_extensions:
-  - admonition
+    - admonition
+    - pymdownx.details
+    - pymdownx.superfences
