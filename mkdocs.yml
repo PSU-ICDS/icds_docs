@@ -7,7 +7,8 @@ theme:
   logo: images/PSU_ICDS_logo_blue.png
   site_favicon: images/favicon.png
 
-extra_css: [extra.css]
+extra_css: 
+    - css/extra.css
 
 markdown_extensions:
     - admonition
