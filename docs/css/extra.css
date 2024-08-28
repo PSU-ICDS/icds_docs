@@ -17,6 +17,10 @@
 
 .rst-content code {
     font-weight: 1000;
-    color: #0000FF;
-    background: #EEEEEE;
+    color: #008000;
+}
+
+.rst-content pre code {
+    font-weight: 1000;
+    color: #008000;
 }
