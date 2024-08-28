@@ -5,6 +5,26 @@ theme:
   name: readthedocs
   highlightjs: false
   logo: images/PSU_ICDS_logo_blue.png
+  favicon: images/favicon.png
+  theme:
+    palette: 
+
+      # Palette toggle for light mode
+      - scheme: default
+        primary: grey
+        accent: blue
+        toggle:
+          icon: material/toggle-switch 
+          name: Switch to dark mode
+
+      # Palette toggle for dark mode
+      - scheme: slate
+        primary: grey
+        accent: blue
+        toggle:
+          icon: material/toggle-switch-off-outline
+          name: Switch to light mode
+
 
 markdown_extensions:
     - admonition
