@@ -3,7 +3,15 @@
 }
 
 .wy-nav-side {
-    font-size: 22px;
     font-weight: 1000;
     background: #041E42;
+}
+
+.toctree-l1 {
+    font-size: 22px;
+}
+
+.code {
+    color: #0000FF;
+    background-color: #D3D3D3;
 }
