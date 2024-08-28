@@ -11,7 +11,12 @@
     font-size: 22px;
 }
 
-.code {
+.toctree-l2 {
+    font-size: 16px;
+}
+
+.rst-content code {
+    font-weight: 1000;
     color: #0000FF;
-    background-color: #D3D3D3;
+    background: #EEEEEE;
 }
