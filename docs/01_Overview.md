@@ -218,7 +218,7 @@ Roar is shared by many users, and a user's operating behavior can inadvertently 
 Exercise good citizenship to mitigate the risk of adversely impacting the system and the ICDS research community.
 
 
-???+ failure  "**Don't!**    Do Not Perform Computationally-Intensive Tasks On Submit Nodes"
+!!! failure  "**Don't!**    Do Not Perform Computationally-Intensive Tasks On Submit Nodes"
 
     The submit nodes (with a `submit*` hostname) are not configured to handle intensive computational tasks. Dozens, and sometimes hundreds, of users may be logged on at any one time. Think of the submit nodes as a prep area, where users may edit and manage files, initiate file transfers, submit new jobs, and track existing jobs. The submit nodes serve as an interface to the system and to the computational resources.
 
@@ -227,17 +227,17 @@ Exercise good citizenship to mitigate the risk of adversely impacting the system
     Since the submit nodes are not configured for intensive computations, the computational performance is poor. Additionally, running computationally expensive or disk-intensive tasks on a submit node negatively impacts performance for other users. Habitually running jobs on the submit nodes can potentially lead to account suspension.
 
 
-???+ success  "**Do!**    Remain Cognizant of Storage Quotas"
+!!! success  "**Do!**    Remain Cognizant of Storage Quotas"
     
     All available storage locations have associated quotas. If the usage of a storage location approaches these quotas, software may not function nominally and may produce cryptic error messages. The [Handling Data](04_HandlingData.md) section provides further details on checking storage usage relative to the quotas.
 
 
-???+ failure  "**Don't!**    Do Not Use Scratch as a Primary Storage Location"
+!!! failure  "**Don't!**    Do Not Use Scratch as a Primary Storage Location"
 
     Scratch serves as a temporary repository for compute output and is explicitly designed for short-term usage. Unlike other storage locations, scratch is not backed up. Files are subject to automatic removal after 30 days. Only utilize scratch for files that are non-critical and/or can be easily regenerated. The [Handling Data](04_HandlingData.md) section provides further details on storage options.
 
 
-???+ success  "**Do!**    Try To Minimize Resource Requests"
+!!! success  "**Do!**    Try To Minimize Resource Requests"
     
     The amount of time jobs are queued grows as the amount of requested resources increases. To minimize the amount of time a job is queued, minimize the amount of resources requested. It is best to run small test cases to verify that the computational workflow runs successfully before scaling up the process to a large dataset. The [Submitting Jobs](03_SubmittingJobs.md) section provides further details on requesting computational resources.
 
