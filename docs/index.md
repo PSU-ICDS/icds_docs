@@ -1,8 +1,4 @@
 
----
-title: Roar User Guide
----
-
 
 # Roar User Guide
 

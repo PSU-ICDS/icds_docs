@@ -3,7 +3,7 @@ site_url: https://icds-docs.readthedocs.io/en/latest
 
 theme: 
   name: readthedocs
-  highlightjs: false
+  include_homepage_in_sidebar: false
   logo: img/PSU_ICDS_logo_chip.png
   site_favicon: img/favicon.ico
 
