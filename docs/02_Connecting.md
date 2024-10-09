@@ -66,13 +66,9 @@ To connect, an RC account linked to an active Penn State access account user ID 
 By default, port 22 is used for secure shell connections. 
 A password must be entered and then multi-factor authentication must be completed successfully to complete the login.
 
-!!! warning
+!!! warning  "Do Not Perform Computationally Intensive Tasks On Submit Nodes"
 
-    The connection to the system is made with a submit node. Submit nodes are  
-    configured primarily to handle incoming user connections and non-intensive 
-    computational tasks like editing small files. To perform computational 
-    tasks, compute resources must be used. See 
-    [Submitting Jobs](03_SubmittingJobs.md) for more details.
+    The connection to the system is made with a submit node. Submit nodes are configured primarily to handle incoming user connections and non-intensive computational tasks like editing small files. To perform computational tasks, compute resources must be used. See [Submitting Jobs](03_SubmittingJobs.md) for more details.
 
 
 [//]: <> (#### X11 Forwarding)
