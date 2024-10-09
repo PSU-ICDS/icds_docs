@@ -26,7 +26,7 @@ Its primary functions are to
 ### Slurm Resource Directives
 
 A compute session can be reached via either a batch job or an interactive job. 
-The following sections provide more details on intiating compute sessions: [Interactive Jobs](#InteractiveJobs), [Interactive Jobs Through the Roar Portal](#InteractiveJobsThroughtheRoarPortal), and [Batch Jobs](#BatchJobs).
+The following sections provide more details on intiating compute sessions: [Interactive Jobs](#Interactive-Jobs), [Interactive Jobs Through the Roar Portal](#Interactive-Jobs-Through-the-Roar-Portal), and [Batch Jobs](#Batch-Jobs).
 
 Resource directives are used to request a specific set of compute resources for a compute session. 
 The following table lists some of the most useful resource directives.

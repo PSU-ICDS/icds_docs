@@ -78,7 +78,7 @@ $ module load anaconda
 
 Usage of Anaconda may cause storage quota issues since environments and packages are stored within `~/.conda` by default. 
 This issue can be easily resolved by moving the `~/.conda` directory to the work directory and creating a link in its place pointing to the new location in the work directory. 
-This is described further in the [Handling Data](04_HandlingData.md) section on [Managing Large Configuration Files](04_HandlingData.md#Managing-Large-Configuration-Files).
+This is described further in the [Handling Data](04_HandlingData.md) section on [Managing Large Configuration Files](04_HandlingData.md#Managing%20Large%20Configuration%20Files).
 
 
 #### Installation Example

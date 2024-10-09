@@ -8,7 +8,7 @@ Restricted group storage on RR is provided on an as-needed basis to a principal 
 Most of the material within this ICDS User Guide is common to both Roar Collab (RC) and RR, but some sections specifically refer to RC.
 This [Roar Restricted Addendum](06_RoarRestricted.md) specifically addresses items unique to RR. 
 
-[RR system specifications](01_Overview.md#RoarRestricted) and [RR storage locations](04_HandlingData.md#RoarRestrictedStorage) are described within the linked Roar User Guide sections.
+[RR system specifications](01_Overview.md#Roar%20Restricted) and [RR storage locations](04_HandlingData.md#Roar%20Restricted%20Storage) are described within the linked Roar User Guide sections.
 
 
 ## Accessing Roar Restricted
