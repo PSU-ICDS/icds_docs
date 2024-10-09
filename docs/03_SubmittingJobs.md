@@ -9,7 +9,7 @@
 The Roar computing clusters are shared computational resources. 
 To perform computationally intensive tasks, users must request compute resources and be provided access to those resources. 
 The request/provision process allows the tasks of many users to be scheduled and carried out efficiently to avoid resource contention. 
-[Slurm](https://slurm.schedmd.com) (Simple Linux Utility for Resource Management) is utilized by Roar as the job scheduler and resource manager. 
+[Slurm](https://slurm.schedmd.com) is utilized by Roar as the job scheduler and resource manager. 
 Slurm is an open source, fault-tolerant, and highly scalable cluster management and job scheduling system for Linux clusters. 
 Slurm is rapidly rising in popularity and many other HPC systems use Slurm as well. 
 Its primary functions are to
@@ -189,7 +189,10 @@ $ squeue -u <userid>
 ### Open Queue
 
 All RC users have access to the `open` compute account, which allows users to submit jobs free of charge. 
-Under the `open` compute account, the `open`, `short`, and `ic` partitions are available.
+RR does not offer a free compute account, so users must submit jobs to a compute account provided by a paid compute allocation.
+
+
+Under the `open` compute account on RC, the `open`, `short`, and `ic` partitions are available.
 Any resource limitations associated with compute partitions are set by Slurm via a Quality of Service (QOS) with the same name as the partition.
 The per-user resource limits defined by a QOS for any partition can be displayed with the following command:
 
@@ -215,8 +218,6 @@ RC has somewhat low utilization, however, so the vast majority of `open` jobs ca
 The `open` compute account is entirely adequate for most individual users and for many use cases.
 
 The `open` compute account can be specified using the `--account open` or `-A open` resource directive. To specify the partition, the `--partition <partition>` or `-p <partition>` resource directive is used.
-
-RR does offer a free compute account, so users must submit jobs to a compute account provided by a paid compute allocation.
 
 
 ### Compute Allocations

@@ -64,7 +64,7 @@ sinfo --Format=features:40,nodelist:20,cpus:10,memory:10
 
 This `sinfo` command displays not only the core and memory configuration of the nodes, but it also indicates the processor generation associated with each node. Furthermore, while connected to a specific node, the `lscpu` command provides more detailed information on the specific processor type available on the node. The first column of the output lists the features associated with each block of nodes
 
-To add a column to the `sinfo` command output that indicating the number of GPU(s) associated with each of the node blocks, simply add the `gres` option to the `sinfo` format string:
+To add a column to the `sinfo` command output that indicates the number of GPU(s) associated with each of the node blocks, simply add the `gres` option to the `sinfo` format string:
 
 ```
 sinfo --Format=features:40,nodelist:20,cpus:10,memory:10,gres:10

@@ -26,11 +26,11 @@ Once the collaborator's access account is active, submit an [account request](ht
 
 Users can connect to RC either through the [RC Portal](https://rcportal.hpc.psu.edu) ([rcportal.hpc.psu.edu](https://rcportal.hpc.psu.edu)) or via an `ssh` connection to the `submit.hpc.psu.edu` host.
 
-Users can only connect to RR via the [RR Portal](https://rrportal.hpc.psu.edu) ([rrportal.hpc.psu.edu](https://rrportal.hpc.psu.edu)), and RR is only accessible when connecting either via the Penn State network or via Penn State GlobalProtect VPN. 
+Users can only connect to RR via the [RR Portal](https://rrportal.hpc.psu.edu) ([rrportal.hpc.psu.edu](https://rrportal.hpc.psu.edu)), and RR is only accessible when connecting either via the Penn State network or via the Penn State GlobalProtect VPN. 
 For additional information on connecting to RR, see the [Roar Restricted Addendum](06_RoarRestricted.md).
 
 
-### Roar Portal
+### Roar Portals
 
 Users can connect to Roar through the Roar Portals powered by Open OnDemand. 
 Open OnDemand is an NSF-funded, open-source HPC portal that provides users with a simple graphical web interface to HPC resources. 
@@ -66,7 +66,7 @@ To connect, an RC account linked to an active Penn State access account user ID 
 By default, port 22 is used for secure shell connections. 
 A password must be entered and then multi-factor authentication must be completed successfully to complete the login.
 
-!!! warning  "Do Not Perform Computationally Intensive Tasks On Submit Nodes"
+!!! error  "Do Not Perform Computationally Intensive Tasks On Submit Nodes"
 
     The connection to the system is made with a submit node. Submit nodes are configured primarily to handle incoming user connections and non-intensive computational tasks like editing small files. To perform computational tasks, compute resources must be used. See [Submitting Jobs](03_SubmittingJobs.md) for more details.
 

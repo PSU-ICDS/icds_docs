@@ -330,9 +330,6 @@ The recommended workflow for building containers is shown below:
 ![Recommended container workflow.](img/ContainerWorkflow.png)
 </center>
 
-[//]:<> (<p align="center">)
-[//]:<> (  <img src="img/ContainerWorkflow.png">)
-[//]:<> (</p>)
 
 
 ## Software-Specific Guides

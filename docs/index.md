@@ -1,9 +1,8 @@
----
-title: Roar User Guide
----
 
 
+<center>
 ![](img/PSU_ICDS_logo_blue.png)
+</center>
 
 
 # Roar User Guide
