@@ -2,7 +2,7 @@ site_name: Roar User Guide
 site_url: https://icds-docs.readthedocs.io/en/latest
 
 theme: 
-  name: readthedocs
+  name: material
   highlightjs: false
   logo: img/PSU_ICDS_logo_chip.png
   site_favicon: img/favicon.ico
