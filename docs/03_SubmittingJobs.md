@@ -26,7 +26,7 @@ Its primary functions are to
 ### Slurm Resource Directives
 
 A compute session can be reached via either a batch job or an interactive job. 
-The following sections provide more details on intiating compute sessions: [Batch Jobs](#Batch-Jobs), [Interactive Jobs](#Interactive-Jobs), and [Interactive Jobs Through the Roar Portal](#Interactive-Jobs-Through-the-Roar-Portal).
+The following sections provide more details on intiating compute sessions: [Interactive Jobs](#InteractiveJobs), [Interactive Jobs Through the Roar Portal](#InteractiveJobsThroughtheRoarPortal), and [Batch Jobs](#BatchJobs).
 
 Resource directives are used to request a specific set of compute resources for a compute session. 
 The following table lists some of the most useful resource directives.
@@ -121,7 +121,9 @@ After the interactive session completes, the session will return to the previous
 The Roar Portals are simple graphical web interfaces that provide users with access to Roar. 
 Users can submit and monitor jobs, manage files, and run applications using just a web browser. 
 To access the Roar Portals, users must log in using valid Penn State access account credentials and must also have an account on Roar. 
+
 The [RC Portal](https://rcportal.hpc.psu.edu) is available at the following webpage: [https://rcportal.hpc.psu.edu](https://rcportal.hpc.psu.edu)
+
 The [RR Portal](https://rrportal.hpc.psu.edu) is available at the following webpage: [https://rrportal.hpc.psu.edu](https://rrportal.hpc.psu.edu)
 
 
@@ -186,8 +188,8 @@ $ squeue -u <userid>
 
 ### Open Queue
 
-All RC users have access to the **open** compute account, which allows users to submit jobs free of charge. 
-Under the **open** compute account, the **open**, **short**, and **ic** partitions are available.
+All RC users have access to the `open` compute account, which allows users to submit jobs free of charge. 
+Under the `open` compute account, the `open`, `short`, and `ic` partitions are available.
 Any resource limitations associated with compute partitions are set by Slurm via a Quality of Service (QOS) with the same name as the partition.
 The per-user resource limits defined by a QOS for any partition can be displayed with the following command:
 
@@ -199,7 +201,7 @@ For example, the per-user limits for the `open` partition are displayed by the f
 
 ```
 $ sacctmgr show qos open format=name%10,maxtrespu%40
-``````
+```
 
 Jobs on the `open` compute account will start and run only when sufficient idle compute resources are available. 
 For this reason, there is no guarantee on when an `open` job will start. 

@@ -41,7 +41,7 @@ From an architectural perspective, in addition to the set of compute nodes that 
 A user typically connects to a login-type node, and then requests computational resources via the resource management software. A node that is configured to handle user logins and the submission of resource requests is referred to as a **submit node**, while a node used for computationally intensive tasks is referred to as a **compute node**.
 
 
-### Slurm
+## Slurm
 
 [Slurm (Simple Linux Utility for Resource Management)](https://slurm.schedmd.com/documentation.html) is the software that acts as the job scheduler and resource manager.
 Slurm is an open source, fault-tolerant, and highly scalable cluster management and job scheduling system for Linux clusters. Its primary functions are to
@@ -52,6 +52,28 @@ set of allocated compute resources
  - Arbitrate contention for resources by managing a queue of pending work
 
 Slurm is rapidly rising in popularity and many other computing clusters use Slurm as well. The [Submitting Jobs](03_SubmittingJobs.md) section provides further detail on the use of Slurm on Roar, and [Slurm's documentation](https://slurm.schedmd.com/documentation.html) is a great resource for in-depth details on the usage of Slurm.
+
+
+### Slurm's `sinfo` Command
+
+The ICDS research computing clusters are heterogeneous and somewhat dynamic. To see the different node configurations available, use the following command:
+
+```
+sinfo --Format=features:40,nodelist:20,cpus:10,memory:10
+```
+
+This `sinfo` command displays not only the core and memory configuration of the nodes, but it also indicates the processor generation associated with each node. Furthermore, while connected to a specific node, the `lscpu` command provides more detailed information on the specific processor type available on the node. The first column of the output lists the features associated with each block of nodes
+
+To add a column to the `sinfo` command output that indicating the number of GPU(s) associated with each of the node blocks, simply add the `gres` option to the `sinfo` format string:
+
+```
+sinfo --Format=features:40,nodelist:20,cpus:10,memory:10,gres:10
+```
+
+On a GPU node, running the `nvidia-smi` command displays more detailed information on the GPU(s) available on that node.
+
+Slurm's [sinfo](https://slurm.schedmd.com/sinfo.html) documentation page provides a detailed description of the function and options of the `sinfo` command.
+
 
 
 ## System Specs
@@ -187,28 +209,6 @@ RR utilizes the Red Hat Enterprise Linux (RHEL) 8 operating system to provide us
 
 ![Roar Restricted User Flow Diagram](img/RRUserFlowDiagram.png)
 
-
-
-
-## Slurm's `sinfo` Command
-
-The ICDS research computing clusters are heterogeneous and somewhat dynamic. To see the different node configurations available, use the following command:
-
-```
-sinfo --Format=features:40,nodelist:20,cpus:10,memory:10
-```
-
-This `sinfo` command displays not only the core and memory configuration of the nodes, but it also indicates the processor generation associated with each node. Furthermore, while connected to a specific node, the `lscpu` command provides more detailed information on the specific processor type available on the node. The first column of the output lists the features associated with each block of nodes
-
-To add a column to the `sinfo` command output that indicating the number of GPU(s) associated with each of the node blocks, simply add the `gres` option to the `sinfo` format string:
-
-```
-sinfo --Format=features:40,nodelist:20,cpus:10,memory:10,gres:10
-```
-
-On a GPU node, running the `nvidia-smi` command displays more detailed information on the GPU(s) available on that node.
-
-Slurm's [sinfo](https://slurm.schedmd.com/sinfo.html) documentation page provides a detailed description of the function and options of the `sinfo` command.
 
 
 ## Best Practices

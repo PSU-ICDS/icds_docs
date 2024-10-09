@@ -321,7 +321,7 @@ Container images can be made publicly available, and containers for many use cas
 #### Building Container Images
 
 Containers can be made from scratch using a [definition file](https://apptainer.org/docs/user/latest/definition_files.html#definition-files), or recipe file, which is a text file that specifies the base image, the software to be installed, and other information. 
-The documentation for the [`apptainer build`](https://apptainer.org/docs/user/main/cli/apptainer_build.html) command shows the full usage for the build command. 
+The `apptainer build` command's [documentation](https://apptainer.org/docs/user/main/cli/apptainer_build.html) shows the full usage for the build command. 
 Container images can also be bootstrapped from other images, found on Docker Hub for instance.
 
 The recommended workflow for building containers is shown below:
@@ -331,7 +331,7 @@ The recommended workflow for building containers is shown below:
 </center>
 
 [//]:<> (<p align="center">)
-[//]:<> (  <img src="images/ContainerWorkflow.png">)
+[//]:<> (  <img src="img/ContainerWorkflow.png">)
 [//]:<> (</p>)
 
 

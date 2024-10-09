@@ -1,6 +1,3 @@
----
-title: Roar Restricted Addendum
----
 
 
 # Roar Restricted Addendum
@@ -11,7 +8,7 @@ Restricted group storage on RR is provided on an as-needed basis to a principal 
 Most of the material within this ICDS User Guide is common to both Roar Collab (RC) and RR, but some sections specifically refer to RC.
 This [Roar Restricted Addendum](06_RoarRestricted.md) specifically addresses items unique to RR. 
 
-[RR system specifications](01_Overview.md#Roar-Restricted) and [RR storage locations](04_HandlingData.md#Roar-Restricted-Storage) are described within the linked Roar User Guide sections.
+[RR system specifications](01_Overview.md#RoarRestricted) and [RR storage locations](04_HandlingData.md#RoarRestrictedStorage) are described within the linked Roar User Guide sections.
 
 
 ## Accessing Roar Restricted
@@ -19,7 +16,7 @@ This [Roar Restricted Addendum](06_RoarRestricted.md) specifically addresses ite
 RR accounts are only granted to individuals that require access to an active restricted storage allocation. 
 Also, RR does offer a free compute account, so users must submit jobs to a compute account provided by a paid compute allocation.
 
-To request an account on RR, a user must complete the [Account Request](https://accounts.aci.ics.psue.edu) form and then send an email to icds@psu.edu with the user's PSU access account ID, the restricted storage owner's name and access account ID, and an indication that they are requesting an account on RR.
+To request an account on RR, a user must complete the [Account Request](https://accounts.aci.ics.psu.edu) form and then send an email to **icds@psu.edu** with the user's PSU access account ID, the restricted storage owner's name and access account ID, and an indication that they are requesting an account on RR.
 Non-faculty accounts require approval from a faculty/PI sponsor. 
 The user will then be assigned an RR training module.
 To gain and retain access to RR, users must complete the RR training module via [Penn State LRN](https://lrn.psu.edu) which is required by the Office of Information Security (OIS) to maintain compliance with the Authority to Operate (ATO).
@@ -40,7 +37,7 @@ PIs and any appointed data administrators are responsible for the data and any t
 PIs can request access to the file transfer capability via the Data Transfer Access Form. 
 PIs and any data administrators must attest annually that they still need access to the data manager node.
 
-To request data administrator access, a user must email icds@psu.edu with the faculty/PI sponsor copied. The faculty/PI sponsor must approve that the user should be granted data administrator status. 
+To request data administrator access, a user must email **icds@psu.edu** with the faculty/PI sponsor copied. The faculty/PI sponsor must approve that the user should be granted data administrator status. 
 Upon faculty/PI confirmation, the user must submit the [Data Transfer System Access Request Form](https://pennstate.service-now.com/sp?id=sc_cat_item&sys_id=1bd490a71bfa0e10bd31ed74bd4bcb77). 
 The user will then be added to the necessary groups on RR to grant them access to the data manager nodes.
 

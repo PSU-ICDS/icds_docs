@@ -173,10 +173,11 @@ To download a file, right-click the file and select Download.
 To upload a file, select Upload from the Pane 1 Menu on the right.
 
 Globus provides detailed instructions on the following topics:
- - [Log in and transfer files](https://docs.globus.org/guides/tutorials/manage-files/transfer-files/)
- - [Install and configure Globus Connect for Linux](https://docs.globus.org/globus-connect-personal/install/linux/)
- - [Install and configure Globus Connect for MacOSX](https://docs.globus.org/globus-connect-personal/install/mac/)
- - [Install and configure Globus Connect for Windows](https://docs.globus.org/globus-connect-personal/install/windows/)
+ 
+- [Log in and transfer files](https://docs.globus.org/guides/tutorials/manage-files/transfer-files/)
+- [Install and configure Globus Connect for Linux](https://docs.globus.org/globus-connect-personal/install/linux/)
+- [Install and configure Globus Connect for MacOSX](https://docs.globus.org/globus-connect-personal/install/mac/)
+- [Install and configure Globus Connect for Windows](https://docs.globus.org/globus-connect-personal/install/windows/)
 
 
 ### Files Tab on Roar Collab Portal
