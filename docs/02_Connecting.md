@@ -7,7 +7,7 @@
 
 
 
-### Account Activation
+### PSU Affiliates
 
 All individuals with an active Penn State access account and a Penn State email address may request access to Roar by submitting an [account request](https://www.icds.psu.edu/computing-services/account-setup). 
 A Principal Investigator (PI) must be specified to request an account. 
@@ -15,7 +15,7 @@ The PI must be Penn State faculty and should be a supervisor, advisor or collabo
 Roar Collab (RC) accounts are granted to any users upon PI approval, but Roar Restricted (RR) accounts are only granted to individuals that require access to an active restricted storage allocation. For additional information on RR account activation, see the [Roar Restricted Addendum](06_RoarRestricted.md).
 
 
-#### Non-PSU Affiliates
+### Non-PSU Affiliates
 
 For any external collaborators, a university faculty member must set up a 
 [sponsored access account](https://security.psu.edu/services/penn-state-accts/sponsored) with the university Accounts Office to provide the collaborator with an access account and a Penn State email address. 
@@ -30,7 +30,7 @@ Users can only connect to RR via the [RR Portal](https://rrportal.hpc.psu.edu) (
 For additional information on connecting to RR, see the [Roar Restricted Addendum](06_RoarRestricted.md).
 
 
-### Using the Roar Portal
+### Roar Portal
 
 Users can connect to Roar through the Roar Portals powered by Open OnDemand. 
 Open OnDemand is an NSF-funded, open-source HPC portal that provides users with a simple graphical web interface to HPC resources. 

@@ -180,9 +180,9 @@ Globus provides detailed instructions on the following topics:
 - [Install and configure Globus Connect for Windows](https://docs.globus.org/globus-connect-personal/install/windows/)
 
 
-### Files Tab on Roar Collab Portal
+### RC Portal File Manager
 
-The Files tab on the RC Portal offers a very intuitive interface for file management. 
+The File Manager app on the RC Portal offers a very intuitive interface for file management. 
 Files can be moved, edited, uploaded, and downloaded with relative ease using this utility. 
 Users should limit the use of the RC Portal file manager utility to dealing with small files only.
 

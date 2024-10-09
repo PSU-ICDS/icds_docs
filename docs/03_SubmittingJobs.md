@@ -76,7 +76,7 @@ Slurm makes use of environment variables within the scope of a job, and utilizin
 Further details on the available resource directives for Slurm are defined by Slurm in the documentation of the [salloc](https://slurm.schedmd.com/salloc.html) and [sbatch](https://slurm.schedmd.com/sbatch.html) commands.
 
 
-### A Note on Requesting Resources
+### Requesting Resources
 
 The resource directives should be populated with resource requests that are adequate to complete the job but should be minimal enough that the job can be placed somewhat quickly by the scheduler. 
 The total time to completion of a job is the sum of the time the job is queued plus the time it takes the job to run to completion once placed. 
@@ -116,7 +116,7 @@ This session is terminated either when the time limit is reached or when the `ex
 After the interactive session completes, the session will return to the previous submit node.
 
 
-### Interactive Jobs Through the Roar Portal
+#### Interactive Jobs Through the Roar Portal
 
 The Roar Portals are simple graphical web interfaces that provide users with access to Roar. 
 Users can submit and monitor jobs, manage files, and run applications using just a web browser. 
@@ -269,7 +269,7 @@ $ sacctmgr remove user account=<compute-account> name=<userid>
 ```
 
 
-#### Compute Resources Available
+#### Available Compute Resources
 
 A paid compute allocation will typically cover a certain number of cores across a certain timeframe. 
 The resources associated with a compute allocation are in units of **core-hours**. 

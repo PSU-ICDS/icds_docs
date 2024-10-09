@@ -327,7 +327,7 @@ Container images can also be bootstrapped from other images, found on Docker Hub
 The recommended workflow for building containers is shown below:
 
 <center>
-![Recommended container workflow.](images/ContainerWorkflow.png)
+![Recommended container workflow.](img/ContainerWorkflow.png)
 </center>
 
 [//]:<> (<p align="center">)
@@ -345,7 +345,7 @@ The recommended workflow for building containers is shown below:
 Python is a high-level, general-purpose programming language.
 
 
-#### Python versions on RC
+#### Python versions
 
 Python is available by default to all users on the system software stack, and it is also available on the central software stack. 
 Additionally, users can install their own instances of Python in a variety of ways in either their userspace or in group spaces.
@@ -376,7 +376,7 @@ Note that if `pip` is not available, simply try `pip3` (for python3) or `pip2` (
 R is a free software environment for statistical computing and graphics.
 
 
-#### R Versions on RC
+#### R Versions
 
 R users should make sure that the version of R remains consistent. 
 Several R versions are available, and when a package is installed in one version, it is not always accessible when operating in another version. 
