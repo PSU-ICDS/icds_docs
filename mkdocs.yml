@@ -5,7 +5,7 @@ theme:
   name: readthedocs
   highlightjs: false
   include_homepage_in_sidebar: false
-  logo: img/PSU_ICDS_logo_chip.png
+  logo: img/PSU_ICDS_logo_blue.png
   site_favicon: img/favicon.ico
 
 extra_css: 
