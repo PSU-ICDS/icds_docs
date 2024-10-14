@@ -3,11 +3,6 @@
 # Roar User Guide
 
 
-<center>
-![](img/PSU_ICDS_logo_blue.png)
-</center>
-
-
 Welcome to the Roar User Guide! 
 
 The Roar User Guide introduces users to the [Institute for Computational and Data Sciences (ICDS)](https://icds.psu.edu), to the Roar computing platform, and provides detailed information on the use of Roar.
