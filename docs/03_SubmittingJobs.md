@@ -181,7 +181,7 @@ $ squeue -u <userid>
 ```
 
 
-## Using Dedicated Accounts and Partitions
+## Compute Accounts and Partitions
 
 
 
@@ -241,7 +241,14 @@ To submit a job to a paid compute account, supply the `--account` or `-A` resour
 ```
 
 To enable bursting, if enabled for the compute account, supply the `--partition burst` or `-p burst` resource directive.
-Furthermore, the desired level of bursting for the job (`burst2x`, `burst3x`, `burst4x`, and so on) must be specified using the `--qos` resource directive. 
+Furthermore, the desired level of bursting for the job (`burst2x`, `burst3x`, `burst4x`, and so on) must be specified using the `--qos` resource directive. To enable 2x bursting for a batch job, for example, use the following resource directives:
+
+```
+#SBATCH -A <compute_account>
+#SBATCH -p burst
+#SBATCH --qos burst2x
+```
+
 To list the available compute accounts and the associated available burst partitions, use the following command:
 
 ```
