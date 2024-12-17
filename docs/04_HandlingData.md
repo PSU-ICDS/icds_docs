@@ -156,10 +156,13 @@ RC has Globus endpoints available.
 
 ```
 RC Endpoint:
-PennState ICDS RC
+Penn State ICDS RC
 
 RC Archive Endpoint:
-PennState ICDS Archive
+Penn State ICDS Archive
+
+OneDrive Endpoint:
+Penn State ICDS OneDrive
 ```
 
 To transfer files with Globus, visit the [Globus website](https://www.globus.org/) and log in as a Penn State user with your Penn State access account. 
