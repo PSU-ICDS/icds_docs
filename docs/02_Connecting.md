@@ -24,7 +24,7 @@ Once the collaborator's access account is active, submit an [account request](ht
 
 ## Connecting to Roar
 
-Users can connect to RC either through the [RC Portal](https://rcportal.hpc.psu.edu) ([rcportal.hpc.psu.edu](https://rcportal.hpc.psu.edu)) or via an `ssh` connection to the `submit.hpc.psu.edu` host.
+Users can connect to RC either through the [RC Portal](https://portal.hpc.psu.edu) ([portal.hpc.psu.edu](https://portal.hpc.psu.edu)) or via an `ssh` connection to the `submit.hpc.psu.edu` host.
 
 Users can only connect to RR via the [RR Portal](https://rrportal.hpc.psu.edu) ([rrportal.hpc.psu.edu](https://rrportal.hpc.psu.edu)), and RR is only accessible when connecting either via the Penn State network or via the Penn State GlobalProtect VPN. 
 For additional information on connecting to RR, see the [Roar Restricted Addendum](06_RoarRestricted.md).
