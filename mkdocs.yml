@@ -1,12 +1,24 @@
 site_name: Roar User Guide
-site_url: https://icds-docs.readthedocs.io/en/latest
+site_url: https://docs.icds.psu.edu
+site_description: User documentation for the Roar Supercomputer hosted by the Institute of Computational and Data Sciences at the Pennsylvania State University.
+site_author: Institute of Computational and Data Sciences
+repo_url: https://github.com/PSU-ICDS/icds_docs
 
 theme: 
   name: readthedocs
+#  features:
+#    - content.code.copy
+#    - navigation.sections
+#    - navigation.footer
   highlightjs: false
-  include_homepage_in_sidebar: false
   logo: img/PSU_ICDS_logo_blue.png
   site_favicon: img/favicon.ico
+  next_previous: true
+#extra:
+#  generator: false
+#extra_footer: |
+#  [Contribute to this project](https://github.com/PSU-ICDS/icds_docs/CONTRIBUTING.md)
+
 
 extra_css: 
     - css/extra.css
@@ -15,3 +27,49 @@ markdown_extensions:
     - admonition
     - pymdownx.details
     - pymdownx.superfences
+
+plugins:
+#    - bootstrap4-blockquotes
+#    - bootstrap4-tables
+
+nav:
+    - Getting Started: 
+        - getting-started/system-overview.md
+        - getting-started/before-you-start.md
+        - getting-started/connecting-to-rc.md
+    - Handling Data:
+        - File Storage: handling-data/file-storage.md
+        - Managing Files: 
+             - handling-data/managing-files/managing-files.md
+             - handling-data/managing-files/searching-files.md
+             - handling-data/managing-files/archives.md
+             - handling-data/managing-files/file-permissions.md
+        - Transferring Data: 
+             - handling-data/transferring-data/transfer-overview.md
+             - handling-data/transferring-data/globus.md
+             - handling-data/transferring-data/portal-transfers.md
+             - handling-data/transferring-data/cli-transfers.md
+    - Using Software:
+        - Using Installed Software: software/modules.md
+        - Using Custom Software:
+             - Before You Start: software/installing-from-source/considerations.md
+             - Installing From Source: software/installing-from-source/installing-from-source.md
+             - Using Custom Modules: software/installing-from-source/custom-modules.md
+        - Using Containers: software/using-containers.md
+        - Package Management:
+             - Python Packages: software/loading-packages/python.md
+             - R Libraries: software/loading-packages/r.md
+             - Using Anaconda: software/loading-packages/anaconda.md
+    - Running Jobs:
+        - Using the Portal: running-jobs/portal.md
+        - Using the Command Line:
+             - Scheduler Overview: running-jobs/cli/slurm.md
+             - Interactive Jobs: running-jobs/cli/interactive-jobs.md
+             - Batch Jobs: running-jobs/cli/batch-jobs.md
+        - Paid Resources: 
+             - Using Allocations: running-jobs/paid-resources/allocations.md
+             - Using Credit Accounts: running-jobs/paid-resources/credit-accounts.md
+             - Managing Accounts: running-jobs/paid-resources/managing-accounts.md
+    - Roar Restricted:
+        - Getting Started: roar-restricted/rr-getting-started.md
+        - Handling Data: roar-restricted/rr-handling-data.md
