@@ -14,7 +14,12 @@ and files with a last modified time stamp older than 30 days will be *automatica
 PI-owned **group** storage directories are available for purchase. These are designed for collaborative work or group level software.
 
 Files in home, work, and group are backed up by a sequence of daily "snapshots" which are kept for 90 days. 
-To have files restored from a snapshot, email Client Support at <icds@psu.edu>.
+To have files restored from a snapshot, email Client Support at <icds@psu.edu>. However, no backup is infallible.
+Users are exceptionally strongly encouraged to make an off-ICDS backup plan for critical data such as configuration files
+necessary to replicate their research. Penn State [Information Security](https://security.psu.edu/education-training/data-backup/) 
+has some suggestions. Side note: On that page there is a broken link to the 
+[Penn State University Backup Service](https://pennstate.service-now.com/sp?id=it_service_offering_request_forms&offering_id=0d2d68fb37a75f406a0f94c543990eb8), 
+but you may try this link or perform an Internet search for "Penn State University Backup Service".
 
 
 ## Quotas
