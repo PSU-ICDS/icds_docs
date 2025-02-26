@@ -32,7 +32,7 @@ packages or software only used by a single user, a user's home or work
 directory would be the best choice.
 
 For software used by an entire research group, software can be placed in 
-group storage directories. Care must be taken to ensure [File Permissions](../../handling-data/managing-files.md/#file-permissions) 
+group storage directories. Care must be taken to ensure [File Permissions](../../handling-data/managing-files/file-permissions.md) 
 are set so the files are executable by the entire group.
 
 If a software package would be used by more than a single research group, 
