@@ -68,10 +68,10 @@ of the node the job is running on.
 | `%A` | Job array's master job allocation number |
 | `%a` | Job array ID (index) number |
 
-Examle: Both standard output and standard error are directed to the same file by default, 
+Example: Both standard output and standard error are directed to the same file by default, 
 and the file name is `slurm-%j.out`, where the `%j` is replaced by the job ID. 
 The output and error filenames are customizable, however, using the table of 
-symbols below.
+symbols above.
 
 Additional details on Replacement Symbols can be found in the [Slurm sbatch 
 documentation](https://slurm.schedmd.com/sbatch.html) for batch jobs and the [Slurm salloc 
