@@ -37,6 +37,26 @@ on multiple nodes.
 Finally, some nodes include GPUs (graphical processing units),
 which can accelerate certain compute jobs.
 
+## Available Hardware on RC
+
+| Resource | Cores | Memory (GB) | CPU | GPU | Network | Count |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| Basic | 64 <br> 24 | 256 <br> 128 | Gold 6430 <br> E5-2650v4 || Ethernet| 120 <br> 240 |
+| Standard |48 <br> 48 <br> 24 | 512 <br> 384 <br> 256 | Gold 6342 <br> Gold 6248R <br> E5-2680v3 || Infiniband | 140 <br> 156 <br> 233 |
+| GPU P100 | 28 | 512 <br> 256 | E5-2680v4 |NVIDIA P100 12GB | Infiniband <br> Ethernet| 8 <br> 68 |
+| GPU A100 | 48 | 384 | Gold 6248R | NVIDIA A100 40GB | Infiniband | 38 |
+| GPU V100 | 24 | 512 | E5-2680v3 | NVIDIA V100 32GB | Ethernet | 2 |
+| GPU V100 quad| 24 | 512 | E5-2680v3 | (4x) NVIDIA V100 32GB | Ethernet | 2 |
+| GPU A40 | 36 | 1024 | Gold 6354 | NVIDIA A40 48GB | Ethernet | 12 |
+| High Memory | 48 <br> 56 | 1024 | Gold 6342 <br> E7-4830v4 || Infiniband | 25 <br> 2|
+| AMD Genoa | 64 | 384 | EPYC 9354 || Infiniband | 36|
+
+## Available Hardware on RR
+
+| Resource | Cores | Memory (GB) | CPU | GPU | Network | Count |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| Standard |48 <br> 24 | 384 <br> 256 | Gold 6248R <br> E5-2680v3 || Infiniband | 12 <br> 48 |
+| GPU P100 quad| 28 | 256 | E5-2680v4 | (4x) NVIDIA P100 12GB | Ethernet| 3 |
 <!--
 ### Available Hardware on RC
 
