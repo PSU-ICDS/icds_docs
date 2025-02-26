@@ -16,7 +16,7 @@ batch jobs. This means the amount of cores, memory (RAM), and run-time need to b
 jobs can be started.
 
 Most of these can be specified using the drop down and number entry fields. However, it is possible to add 
-more specialized resource requests by adding custom [directives](../cli/slurm.md/#slurm-resource-directives) by 
+more specialized resource requests by adding custom [directives](cli/slurm.md#slurm-resource-directives) by 
 selecting "Enable advanced Slurm options" and entering the directives into the Sbatch options text box.
 
 To avoid errors, the hardware requested must be accompanied by a compatable account, partition, and node type.

@@ -34,7 +34,7 @@ Connect to the portal using your web browser at [https://portal.hpc.psu.edu]
 
 For more advanced tasks, users can access the command line interface through the portal under the "Clusters" menu:
 
-![..img/RCPortalShell.png]
+![Cluster menu Portal Image](../img/RCPortalShell.png)
 
 ## Connecting via SSH
 

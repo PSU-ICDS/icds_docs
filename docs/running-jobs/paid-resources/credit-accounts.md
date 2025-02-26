@@ -140,7 +140,7 @@ text box:
 --constraint=<feature>
 ```
 
-Any of the features listed in the AVAIL_FEATURES columnfrom the [sinfo output (above)](#sinfo) 
+Any of the features listed in the AVAIL_FEATURES column from the [sinfo output (above)](../cli/slurm.md#sinfo) 
 can be used as a constraint to customize your hardware requests. 
 
 For example, to request a job only run on 
@@ -194,7 +194,7 @@ add a `-C` option to your `salloc` command:
 salloc -N 1 -n 4 -A <alloc> -C <feature> -t 1:00:00
 ```
 
-Any of the "tags" listed in the AVAIL_FEATURES columnfrom the [sinfo output (above)](#sinfo) 
+Any of the "tags" listed in the AVAIL_FEATURES columnfrom the [sinfo output (above)](../cli/slurm.md#sinfo) 
 can be used as a constraint to customize your hardware requests. 
 
 For example, to request a job only run on 
@@ -236,7 +236,7 @@ This can be further modified to request a specific GPU model:
 ```
 
 For more details on available GPU models, please see the current [Compute 
-Hardware](../../getting-started/compute-hardware.md) available. 
+Hardware](../../getting-started/system-overview.md#compute-hardware) available. 
 
 !!! warning "Ensure your software is GPU enabled"
     Requesting GPU resources for a job is only beneficial if the software running within the job 
