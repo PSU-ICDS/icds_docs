@@ -17,7 +17,7 @@ searching locally by default (but can be made to search recursively),
 and returns a list of lines that contain the searched-for pattern.
 
 Like many Unix commands, 
-find and grep have many option that expand their capabilities,
+find and grep have many options that expand their capabilities,
 and can be combined with other Unix commands 
 using pipes (`|`) and redirection (`>`) to perform complex tasks.
 
