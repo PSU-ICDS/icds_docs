@@ -52,7 +52,7 @@ The Jupyter and RStudio Server Interactive Apps allow the use of custom software
 To utilize these, select "Use custom environment" under Environment type and enter commands there to be ran 
 once the job launches.
 
-For example, to use a custom Anaconda environment named `my_env`, the following text should be included in 
+For example, to use a custom Anaconda environment named `myenv`, the following text should be included in 
 the "Environment setup" box:
 
 ```
