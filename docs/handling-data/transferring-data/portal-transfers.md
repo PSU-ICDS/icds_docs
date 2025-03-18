@@ -7,6 +7,10 @@ intuitive interface for file management. Files can be moved, edited, uploaded, a
 with relative ease using this utility. Users should limit the use of the RC Portal file manager 
 utility to dealing with small files only.
 
+!!! warning "Upload Button Issues"
+	There is a known issue where the "Upload" button on the portal does not function as 
+	expected. Please utilize the "Globus" button to transfer files using the [Globus](globus.md)y interface
+
 ## Uploading to the Cloud
 
 The Firefox browser is available from the [Roar Collab Portal Interactive Desktop](../../running-jobs/portal.md)
