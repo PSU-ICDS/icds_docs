@@ -8,9 +8,9 @@ Most material in the User Guide applies to both Roar Collab (RC) and RR. This ad
 
 To request an account on RR, Send an email to icds@psu.edu : 
 
-    o	Indicate that the request is for Roar Restricted
-    o	Include the requestor’s access ID.
-    o	Provide the restricted storage owner's name and access ID.
+ - Indicate that the request is for Roar Restricted
+ - Include the requestor`s access ID.
+ - Provide the restricted storage owner's name and access ID.
 
 Note: Non-faculty accounts require approval from a PI sponsor.
 
