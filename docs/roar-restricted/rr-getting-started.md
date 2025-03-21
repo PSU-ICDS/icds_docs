@@ -1,30 +1,23 @@
 # Roar Restricted
 
-Roar Restricted (RR) is intended for working with restricted data.
-Group storage on RR is provided on an as-needed basis 
-to principal investigators (PIs) who work with restricted data,
-and must comply with more stringent data storage standards.
+Roar Restricted (RR) is designed for working with restricted data. Group storage on RR is provided on an as-needed basis to principal investigators (PIs) who work with restricted data and must comply with stringent data storage standards.
 
-Most material in the User Guide 
-applies to both Roar Collab (RC) and RR.
-This addendum addresses items unique to RR.
+Most material in the User Guide applies to both Roar Collab (RC) and RR. This addendum addresses items unique to RR.
 
-## Accessing
+## Accessing RR
 
-To request an account on RR, a user must complete the 
-[Account Request](https://accounts.hpc.psu.edu) form, 
-and email <icds@psu.edu> to request a RR account.
-The email should include the user's access ID, 
-and the restricted storage owner's name and access ID.
-Non-faculty accounts require approval from a PI sponsor. 
+To request an account on RR, Send an email to icds@psu.edu : 
 
-Before granting accessing RR, the user will be assigned to complete the RR training module
-via [Penn State LRN](https://lrn.psu.edu).
+    o	Indicate that the request is for Roar Restricted
+    o	Include the requestor’s access ID.
+    o	Provide the restricted storage owner's name and access ID.
 
-This training is required by the Office of Information Security (OIS) 
-to maintain compliance with the Authority to Operate (ATO).
+Note: Non-faculty accounts require approval from a PI sponsor.
 
-## Connecting
+Before granting access to RR, users will be assigned the RR training module via Penn State LRN. This training is required by the Office of Information Security (OIS) to maintain compliance with Authority to Operate (ATO) granted to ICDS.
+
+
+## Connecting to RR
 
 To access RR, users must have a paid compute or storage allocation.
 
