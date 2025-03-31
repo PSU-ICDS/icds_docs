@@ -22,4 +22,5 @@ and list approximate transfer rates for large files.
 | RC &harr; laptop | Cyberduck or FileZilla | moderate |
 | OneDrive &harr; laptop | Local Web Browser | slow |
 | RC &harr; most globus collections | Globus | fast |
+
 These are typical but not universal results. Transfers will be limited by the slowest intervening networking or storage componenet.
