@@ -37,7 +37,7 @@ To specify a hardware partition for [credit accounts](paid-resources/credit-acco
  - Account: your_credit_account
  - Sbatch options: --partiton=hardware_partition
 
-For details regarding available hardware partitions, see [Availalbe Hardware Partitions](paid-resources/credit-accounts.md/#available-hardware-partitions)
+For details regarding available hardware partitions, see [Available Hardware Partitions](paid-resources/credit-accounts.md/#available-hardware-partitions)
 
 !!! warning "All jobs must fit inside the resource limits of the partition they are running on"
      If a job requests resources that exceed the partition limits, they will not begin.
