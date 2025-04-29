@@ -1,0 +1,24 @@
+.wy-side-nav-search {
+    background: #FFFFFF;
+}
+
+.wy-nav-side {
+    font-weight: 1000;
+    background: #001E44;
+}
+
+.toctree-l1 {
+    font-size: 16px;
+}
+
+.toctree-l2 {
+    font-size: 14px;
+}
+
+.rst-content code {
+    
+}
+
+.rst-content pre code {
+    
+}
