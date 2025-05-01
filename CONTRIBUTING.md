@@ -11,11 +11,11 @@ For more advanced Git users, you can also create your own fork of the repository
 
 ## Submitting an Issue
 
-New and existing issues can be viewed at <https://github.com/PSU-ICDS/icds_docs/issues>. 
+Issues can be viewed and created at <https://github.com/PSU-ICDS/icds_docs/issues>. 
 
 To add a new issue, please first check to see if the issue has been suggested by another individual. If it has not, create a new issue using the "New issue" button found in the top right corner.
 
-If someone has already created an issue, you can add comments to provide additional information or support.
+If someone has already created an issue for your topic, you can add comments to provide additional information or support.
 
 
 ## Submitting a Discussion
@@ -24,6 +24,8 @@ Discussions can be viewed and created at <https://github.com/PSU-ICDS/icds_docs/
 
 When posting a new discussion, please first check to see if the topic already exists. If it does not, please create a new discussion in the most applicable category.
 
+You can also contribute to an existing discussion by upvoting or adding comments.
+
 
 ## Contributing through Pull Requests
 
@@ -31,7 +33,7 @@ The following instructions assume a familiarity with Git and GitHub, including c
 
 ### Repository and File Structure
 
-The ICDS User Documentation uses MKdocs to format and serve a markdown based set of documents. Content is created in the Markdown format within the `docs` directory.  This content is synced to the webserver and is rendered into HTML. Changes committed to the directory are then deployed live every 5 minutes.
+The ICDS User Documentation uses MkDocs to format and serve a set of Markdown formatted documents. Content hosted in the repository in the Markdown format within the `docs` directory.  This content is synced to the webserver and rendered into the HTML seen on the website. Changes committed to the directory are then deployed live every 5 minutes.
 
 The live documentation is hosted from the `main` branch. Once approved, proposed changes from the staging branch will be made live by appointed individuals.
 
@@ -51,12 +53,12 @@ To preview changes locally:
 
 1. Install necessary tools on your local machine
 	- Python - <https://www.python.org/downloads/release/python-3132/> 
-	- mkdocs - <https://www.mkdocs.org/user-guide/installation/>
+	- MkDocs - <https://www.mkdocs.org/user-guide/installation/>
 	- PyMdown - <https://facelessuser.github.io/pymdown-extensions/installation/>
 
-1. Build the site using `mkdocs build`
-1. Start the server using `mkdocs serve`
-1. View the site in your browser: <http://127.0.0.1:8000/en/latest/>
+2. Build the site using `mkdocs build`
+3. Start the server using `mkdocs serve`
+4. View the site in your browser: <http://127.0.0.1:8000/en/latest/>
 
 
 ## Helpful links:
