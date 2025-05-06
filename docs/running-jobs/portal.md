@@ -46,17 +46,17 @@ The Slurm option to request one A40 GPU looks like:
  - Account: open
  - Sbatch options: --partition=open
 
-To use an [allocation](/paid-resources/allocations.md):
+To use an [allocation](../paid-resources/allocations.md):
 
  - Account: your_allocation_id
  - Sbatch options: --partition=sla-prio
 
-To specify a hardware partition for [credit accounts](/paid-resources/credit-accounts.md):
+To specify a hardware partition for [credit accounts](../paid-resources/credit-accounts.md):
 
  - Account: your_credit_account
  - Sbatch options: --partiton=hardware_partition
 
-For details regarding available hardware partitions, see [Available Hardware Partitions](/paid-resources/credit-accounts.md/#available-hardware-partitions)
+For details regarding available hardware partitions, see [Available Hardware Partitions](../getting-started/compute-hardware.md/#partitions)
 
 !!! warning "All jobs must fit inside the resource limits of the partition they are running on"
      If a job requests resources that exceed the partition limits, they will not begin.
@@ -80,4 +80,4 @@ conda activate myenv
 ```
 
 For more on using Anaconda environments in your Portal jobs, 
-see [Anaconda on Portal](/packages/anaconda.md/#anaconda-on-portal).
+see [Anaconda on Portal](../packages/anaconda.md/#anaconda-on-portal).
