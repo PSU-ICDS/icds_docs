@@ -43,8 +43,23 @@ The Slurm option to request one A40 GPU looks like:
 	you need either a credit account, or a paid allocation 
 	that includes the requested hardware.
 
-!!! warning "All jobs must fit inside the resource limits of the partition they are running on."
-     If resource requests exceed the partition limits, the job will not begin.
+ - Account: open
+ - Sbatch options: --partition=open
+
+To use an [allocation](paid-resources/allocations.md):
+
+ - Account: your_allocation_id
+ - Sbatch options: --partition=sla-prio
+
+To specify a hardware partition for [credit accounts](paid-resources/credit-accounts.md):
+
+ - Account: your_credit_account
+ - Sbatch options: --partiton=hardware_partition
+
+For details regarding available hardware partitions, see [Available Hardware Partitions](paid-resources/credit-accounts.md/#available-hardware-partitions)
+
+!!! warning "All jobs must fit inside the resource limits of the partition they are running on"
+     If a job requests resources that exceed the partition limits, they will not begin.
 
 - Open queue jobs must not exceed 100 cores and 800 GB memory
 - Interactive jobs must not exceed 4 cores and 24 GB memory
