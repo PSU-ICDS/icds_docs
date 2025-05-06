@@ -46,12 +46,12 @@ The Slurm option to request one A40 GPU looks like:
  - Account: open
  - Sbatch options: --partition=open
 
-To use an [allocation](../paid-resources/allocations.md):
+To use an [allocation](../accounts/paying-for-compute.md):
 
  - Account: your_allocation_id
  - Sbatch options: --partition=sla-prio
 
-To specify a hardware partition for [credit accounts](../paid-resources/credit-accounts.md):
+To specify a hardware partition for [credit accounts](../accounts/paying-for-compute.md):
 
  - Account: your_credit_account
  - Sbatch options: --partiton=hardware_partition
