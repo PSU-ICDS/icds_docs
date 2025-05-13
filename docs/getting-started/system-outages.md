@@ -21,9 +21,9 @@ The outage workflow has been updated to make use of serviceNOW and provide track
     -	STORAGE: continue to troubleshoot RDMA timeout issues on RC group storage 
     -	STORAGE: Globus software update from 5.4.80 to 5.4.85. 
     -	NETWORK: resolve hardware error on Interconnect Switch
-    -	SCHEDULER: - Slurm Update from 24.05.4 to 24.05.8
+    -	SCHEDULER: Slurm Update from 24.05.4 to 24.05.8
     -	Operating System Image and Package updates
-    -	tenative package list: [image_pkg_update_list_20250416.txt] (../img/image_pkg_update_list_20250416.txt)
+    -	tenative package list: ![image_pkg_update_list_20250416.txt](../img/image_pkg_update_list_20250416.txt)
     -	final package list (TBD)
     -	Workflow: update symlink at /storage/icds/tools/sw/firefox to point to updated firefox.
     -	Cluster Admin Node Updates
