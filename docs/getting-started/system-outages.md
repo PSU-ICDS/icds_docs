@@ -23,8 +23,7 @@ The outage workflow has been updated to make use of serviceNOW and provide track
     -	NETWORK: resolve hardware error on Interconnect Switch
     -	SCHEDULER: Slurm Update from 24.05.4 to 24.05.8
     -	Operating System Image and Package updates
-    -	tenative package list: [image_pkg_update_list_20250416.txt](../img/image_pkg_update_list_20250416.txt)
-    -	final package list (TBD)
+    -	final package list: [image_pkg_update_list](../img/image_pkg_update_list_2025-05-13.txt)
     -	Workflow: update symlink at /storage/icds/tools/sw/firefox to point to updated firefox.
     -	Cluster Admin Node Updates
     -	Re-sync the software stack between RC and RR
