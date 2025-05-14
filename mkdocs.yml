@@ -39,6 +39,7 @@ nav:
         - getting-started/compute-hardware.md
         - getting-started/tips-for-beginners.md
         - getting-started/connecting.md
+        - getting-started/system-outages.m
     - Accounts:
         - accounts/paying-for-compute.md
         - accounts/managing-accounts.md
@@ -65,4 +66,3 @@ nav:
     - Roar restricted:
         - roar-restricted/accessing-rr.md
         - roar-restricted/data-transfer.md
-             
