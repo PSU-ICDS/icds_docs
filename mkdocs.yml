@@ -39,7 +39,7 @@ nav:
         - getting-started/compute-hardware.md
         - getting-started/tips-for-beginners.md
         - getting-started/connecting.md
-        - getting-started/system-outages.m
+        - getting-started/system-outages.md
     - Accounts:
         - accounts/paying-for-compute.md
         - accounts/managing-accounts.md
