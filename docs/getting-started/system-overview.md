@@ -1,4 +1,4 @@
-# System Overview
+# System overview
 
 Compute clusters like Roar serve many purposes:
 
@@ -7,58 +7,63 @@ Compute clusters like Roar serve many purposes:
 - **interactive computing**, on the equivalent of a powerful workstation
 - **large-scale storage** and access of data files
 
-Roar consists of two clusters:  **Roar Collab**, and **Roar Restricted**.
-Roar Collab is for general use;
-Roar Restricted is only for users working with sensitive data requiring extra security provisions.  
-For details, see the [Roar Restricted](../roar-restricted/rr-getting-started.md) addendum.
-
 ## Architecture
 
-Collab consists of different parts, connected together by networks:
+Roar consists of different parts, connected together by networks:
 
 - **users** of the cluster, who connect to either
-- **submit nodes**, to prepare and submit jobs, or
-- **the Portal**, for interactive computing;
+- **the Portal**, for interactive computing, or
+- **submit nodes**, to prepare and submit jobs;
 - **file storage** for user files, plus
 - **scratch storage** for temporary files; and 
 - **compute nodes**, of several different types.
 
-![architecture](../img/RCUserFlowDiagram.png)
+![architecture](../img/RC-architecture-schematic.png)
 
-## Compute Hardware
+## Accounts
 
-A cluster consists of multiple nodes connected to one or more central filesystems. 
-A node is basically a single computer, roughly comparable to a powerful desktop machine. 
+To log on to Roar, you need a [login account](connecting.md/#login-accounts).
+To work on Roar, you can use the open queue at no cost,
+which gives you access to the Portal, 
+and to batch jobs on vintage hardware.
 
-Some nodes are networked together with fast connections (Infiniband) that enable 
-efficient communication between nodes, allowing large jobs to run in parallel 
-on multiple nodes.
+But to use any of the newer, more powerful hardware, 
+you need either a paid [credit account](../accounts/paying-for-compute.md), 
+or a paid [allocation](../accounts/paying-for-compute.md).
+With credit accounts, you pay only only the compute resources you use,
+and can use any type of nodes you need.
+However, if you require prompt access to specific hardware,
+you can opt for an allocation ---
+in which you reserve specific hardware,
+and pay whether or not you use the compute time.
 
-Finally, some nodes include GPUs (graphical processing units),
-which can accelerate certain compute jobs.
+## Two ways to access 
 
-## Available Hardware on RC
+Roar can be accessed in two ways:  via the web-based Portal <br>
+<https://portal.hpc.psu.edu/pun/sys/dashboard> <br>
+and by "secure shell" ([`ssh`][ssh]) 
+from a terminal application.
+[ssh]: https://linux.die.net/man/1/ssh
 
-| Resource | Count | Cores | Memory (GB) | CPU | CPU Family | GPU | Network |
-| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-| Basic | 120 <br> 240 | 64 <br> 24 | 256 <br> 128 | Gold 6430 <br> E5-2650v4 | sapphirerapids <br> broadwell | | Ethernet|
-| Standard | 140 <br> 156 <br> 233 | 48 <br> 48 <br> 24 | 512 <br> 384 <br> 256 | Gold 6342 <br> Gold 6248R <br> E5-2680v3 | icelake <br> cascadelake <br> haswell | | Infiniband |
-| GPU P100 | 8 <br> 68 | 28 | 512 <br> 256 | E5-2680v4 | broadwell |NVIDIA P100 12GB | Infiniband <br> Ethernet|
-| GPU A100 | 38 | 48 | 384 | Gold 6248R | cascadelake | NVIDIA A100 40GB | Infiniband |
-| GPU V100 | 2 | 24 | 512 | E5-2680v3 | haswell | NVIDIA V100 32GB | Ethernet |
-| GPU V100 quad| 2|  24 | 512 | Gold 6132 | skylake | (4x) NVIDIA V100 32GB | Ethernet |
-| GPU A40 | 12 | 36 | 1024 | Gold 6354 | icelake | NVIDIA A40 48GB | Ethernet |
-| High Memory | 25 <br> 2 | 48 <br> 56 | 1024 | Gold 6342 <br> E7-4830v4 | icelake <br> broadwell | | Infiniband |
-| AMD Genoa | 36 | 64 | 384 | EPYC 9354 | genoa | | Infiniband |
+The Portal (which runs [Open OnDemand](https://openondemand.org))
+is designed mainly for interactive work.
+It provides:
 
-## Available Hardware on RR
+- a Windows-like desktop environment;
+- a web-based file browser, to upload and download files;
+- graphical, number-crunching programs, 
+such as ANSYS, COMSOL, MATLAB, and RStudio.
 
-| Resource | Count | Cores | Memory (GB) | CPU | GPU | Network |
-| ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-| Standard | 12 <br> 48 | 48 <br> 24 | 384 <br> 256 | Gold 6248R <br> E5-2680v3 || Infiniband |
-| GPU P100 quad| 3 | 28 | 256 | E5-2680v4 | (4x) NVIDIA P100 12GB | Ethernet |
-<!--
-### Available Hardware on RC
+The Portal is easy to use, 
+because its preloaded programs can be launched and used without knowing Unix.
+Its Windows-like desktop provides a familiar "feel"
+for users accustomed to laptops (especially Linux laptops).
+From its Terminal application,
+users have access to the full capabilities of Roar,
+needed to prepare and submit jobs.
 
-### Available Hardware on RR
--->
+Roar can also be accessed via SSH (Secure SHell),
+from a terminal application on a laptop.
+For more information about Portal and SSH access,
+see [Connecting](connecting.md).
+
