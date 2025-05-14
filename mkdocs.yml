@@ -38,6 +38,7 @@ nav:
         - getting-started/system-overview.md
         - getting-started/before-you-start.md
         - getting-started/connecting-to-rc.md
+        - getting-started/system-outages.md
     - Handling Data:
         - File Storage: handling-data/file-storage.md
         - Managing Files: 
