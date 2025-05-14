@@ -14,6 +14,7 @@ The outage workflow has been updated to make use of serviceNOW and provide track
 ## Planned Outage 2025-05-14
 
 ### Outage Duration
+
  - Planned May 14, 2025 17:00 -- May 15, 2025 17:00
  - Actual …
 
@@ -36,6 +37,7 @@ The outage workflow has been updated to make use of serviceNOW and provide track
 Post outage ICDS Engineers go through a series of test to show basic connectivity and functionaloty of services (i.e. job submission, SLURM, OOD portal, Globus access, science gateways). This will be followed by application test detailed below. 
 
 Includes sample test for the following applications:
+
  - C
  - alltest (MPI network latency mapping test)
  - bash / SLURM submission testing
@@ -56,6 +58,7 @@ Includes sample test for the following applications:
 
 
 Includes user test for the following applications: 
+
  - Ansys Fluent job
  - MPI fluid solver
  - Gaussian
