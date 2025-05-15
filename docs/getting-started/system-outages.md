@@ -12,6 +12,15 @@ The outage workflow has been updated to make use of serviceNOW and provide track
 ![Outage WorkFlow Diagram](../img/ICDS_Outage_workflow.png)
 
 
+## Planned Outage 2025-05-14
+
+### Outage Duration
+
+ - Planned May 14, 2025 17:00 -- May 15, 2025 17:00
+ - Actual …
+
+### Plan of Action
+
 ## Post Outage Test
 
 Post outage ICDS Engineers go through a series of test to show basic connectivity and functionaloty of services (i.e. job submission, SLURM, OOD portal, Globus access, science gateways). This will be followed by application test detailed below. 
@@ -37,7 +46,8 @@ Includes sample test for the following applications:
  - starccm
 
 
-Includes user test for the following applications:
+Includes user test for the following applications: 
+
 
  - Ansys Fluent job
  - MPI fluid solver
