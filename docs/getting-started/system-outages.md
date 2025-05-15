@@ -12,26 +12,7 @@ The outage workflow has been updated to make use of serviceNOW and provide track
 ![Outage WorkFlow Diagram](../img/ICDS_Outage_workflow.png)
 
 
-### Outage Duration
-
- - Planned May 14, 2025 17:00 -- May 15, 2025 17:00
- - Actual …
-
-### Plan of Action
-
- - STORAGE: troubleshoot power redundancy configuration on RC group storage
- - STORAGE: continue to troubleshoot RDMA timeout issues on RC group storage 
- - STORAGE: Globus software update from 5.4.80 to 5.4.85. 
- - NETWORK: resolve hardware error on Interconnect Switch
- - SCHEDULER: Slurm Update from 24.05.4 to 24.05.8
- - Operating System Image and Package updates
- - final package list: [image_pkg_update_list](../img/image_pkg_update_list_2025-05-13.txt)
- - Workflow: update symlink at /storage/icds/tools/sw/firefox to point to updated firefox.
- - Cluster Admin Node Updates
- - Re-sync the software stack between RC and RR
- - License Updates: MATLAB, COMSOL, Mathematica
-
-### Post Outage Test
+## Post Outage Test
 
 Post outage ICDS Engineers go through a series of test to show basic connectivity and functionaloty of services (i.e. job submission, SLURM, OOD portal, Globus access, science gateways). This will be followed by application test detailed below. 
 
@@ -55,7 +36,7 @@ Includes sample test for the following applications:
  - r
  - starccm
 
-Includes user test for the following applications: 
+Includes user test for the following applications:
 
  - Ansys Fluent job
  - MPI fluid solver
@@ -68,6 +49,7 @@ Includes user test for the following applications:
  
  
 ## Planned Outage 2025-05-14
+
 
 #### Outage Duration
 
@@ -102,8 +84,11 @@ Includes user test for the following applications:
 
  - License Updates: MATLAB, COMSOL, Mathematica, tecplot **Complete**
 
+<<<<<<< HEAD
  - COMSOL configuration change to set license time out to 1 hour of inactivity. Inactivity is defined as no mouse or keyboard activity with the gui **or** active COMSOL model running. **Complete**
 
+=======
+>>>>>>> 9ce08cc (update with outage notes for 2025-05-15)
 
 #### Known issues: 
 
