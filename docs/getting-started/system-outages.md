@@ -36,7 +36,7 @@ Includes sample test for the following applications:
  - r
  - starccm
 
-Includes user test for the following applications:
+Includes user test for the following applications: 
 
  - Ansys Fluent job
  - MPI fluid solver
@@ -46,8 +46,8 @@ Includes user test for the following applications:
  - MATLAB sine_wave 
 
 **Your input is valuable**. At the conclusion of every outage, ICDS engineers run extensive use case tests to ensure that the system will work as expected. If your team runs your own post outage tests or if you have ideas for tests you’d like ICDS engineers to run, [please let us know.](mailto:icds@psu.edu?subject=Post-Outage%20Testing%20Feedback)
- 
  
+
 ## Planned Outage 2025-05-14
 
 
