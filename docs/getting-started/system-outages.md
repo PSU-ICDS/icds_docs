@@ -38,7 +38,6 @@ Includes sample test for the following applications:
 
 Includes user test for the following applications: 
 
-
  - Ansys Fluent job
  - MPI fluid solver
  - Gaussian
