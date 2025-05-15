@@ -12,15 +12,6 @@ The outage workflow has been updated to make use of serviceNOW and provide track
 ![Outage WorkFlow Diagram](../img/ICDS_Outage_workflow.png)
 
 
-## Planned Outage 2025-05-14
-
-### Outage Duration
-
- - Planned May 14, 2025 17:00 -- May 15, 2025 17:00
- - Actual …
-
-### Plan of Action
-
 ## Post Outage Test
 
 Post outage ICDS Engineers go through a series of test to show basic connectivity and functionaloty of services (i.e. job submission, SLURM, OOD portal, Globus access, science gateways). This will be followed by application test detailed below. 
@@ -45,7 +36,6 @@ Includes sample test for the following applications:
  - r
  - starccm
 
-
 Includes user test for the following applications: 
 
 
@@ -58,7 +48,7 @@ Includes user test for the following applications:
 
 **Your input is valuable**. At the conclusion of every outage, ICDS engineers run extensive use case tests to ensure that the system will work as expected. If your team runs your own post outage tests or if you have ideas for tests you’d like ICDS engineers to run, [please let us know.](mailto:icds@psu.edu?subject=Post-Outage%20Testing%20Feedback)
  
-
+ 
 ## Planned Outage 2025-05-14
 
 #### Outage Duration
