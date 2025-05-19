@@ -84,6 +84,7 @@ Includes user test for the following applications:
 
  - License Updates: MATLAB, COMSOL, Mathematica, tecplot **Complete**
 
+
  - COMSOL configuration change to set license TIMEOUT to 1 hour of inactivity. **Complete**
       - Inactivity is defined as no mouse or keyboard activity with the gui **or** active COMSOL model running.
 
