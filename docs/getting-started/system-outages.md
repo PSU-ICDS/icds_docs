@@ -86,7 +86,6 @@ Includes user test for the following applications:
  - COMSOL configuration change to set license time out to 1 hour of inactivity. Inactivity is defined as no mouse or keyboard activity with the gui **or** active COMSOL model running. **Complete**
 
 
-
 #### Known issues: 
 
  - Schrodinger license manager fails to load **Investigating**
