@@ -43,7 +43,7 @@ when running progrms, writing files, or even logging in.
 
 There are two tools to check on your disk usage:
 
-- `check_storage_quotas` reports your total usage;
+- `quota_check` reports your total usage in directories that you have access to;
 - [`du`][du] reports the sizes of files and directories.
 [du]: https://man7.org/linux/man-pages/man1/du.1.html
 
