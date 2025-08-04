@@ -15,7 +15,7 @@ drwxr-s-- 2 root <PIuserID>
 The `d` indicates this is a directory. The next 3 characters control permissions for the owner. The subsequent 3 control
 permissions for the group. And the final 3 control permissions for others (everyone else).
 The `s` setting in the group permissions means 
-every file and folder created within the group folder
+every file and directory created within the group directory
 will have the same group as this parent directory.
 To change permissions use [`chmod`][chmod]:
 [chmod]: https://man7.org/linux/man-pages/man1/chmod.1p.html

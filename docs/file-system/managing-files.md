@@ -1,7 +1,7 @@
 # Managing files
 
 Common tasks on any filesystem include navigating to a directory; listing the files; 
-creating folders; and copying, moving, renaming, and deleting files and folders.
+creating directories; and copying, moving, renaming, and deleting files and directories.
 In classic Linux, these tasks are all performed with command line tools: 
 
 - `cd` (change directory)
@@ -25,7 +25,7 @@ or an `ssh -X` terminal session (`thunar` at the command line).
 
 Alternatively, the [Portal][portal] top menu under Files/Home
 opens a window that enables file management
-(moving, copying, renaming, making and deleting folders).
+(moving, copying, renaming, making and deleting directories).
 [portal]: https://portal.hpc.psu.edu/pun/sys/dashboard
 
 ## File permissions
@@ -38,7 +38,7 @@ drwxr-s-- 2 root <PIuserID>
 ```
 
 The `s` setting in the group permissions means 
-every file and folder created within the group folder
+every file and directory created within the group directory
 will have the same group permissions.
 However, files created elsewhere and moved into group 
 have the permissions they were created with.

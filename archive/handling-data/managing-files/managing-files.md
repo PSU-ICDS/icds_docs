@@ -1,7 +1,7 @@
 # Managing files
 
 Common tasks on any filesystem include navigating to a directory; listing the files; 
-creating folders; and copying, moving, renaming, and deleting files and folders.
+creating directories; and copying, moving, renaming, and deleting files and directories.
 In classic Unix, these tasks are all performed with command line tools: 
 
 - `cd` (change directory)
@@ -25,6 +25,6 @@ or an `ssh -X` terminal session (`thunar` at the command line).
 
 Alternatively, the [Roar Collab Portal][portal] top menu under Files/Home
 opens a window that enables file management
-(moving, copying, renaming, making and deleting folders).
+(moving, copying, renaming, making and deleting directories).
 [portal]: https://portal.hpc.psu.edu/pun/sys/dashboard
 
