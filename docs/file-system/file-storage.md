@@ -67,8 +67,8 @@ This commonly occurs with directories such as
  - `.local` - used by Python
  - `.comsol` - used by Comsol
 
-These [dot files](https://missing.csail.mit.edu/2019/dotfiles/) are hidden by default, 
-but you can view them with `ls -la`.
+These [dot files](https://missing.csail.mit.edu/2019/dotfiles/) (and directories) 
+are hidden by default, but you can view them with `ls -la`.
 
 If the size of one of these directories becomes a problem, 
 it can be moved to `work`, and a link placed in your home directory.
