@@ -54,7 +54,7 @@ module load cmake
 ```
 
 To build from source, the typical procedure
-is to `cd` into the source folder,
+is to `cd` into the source directory,
 and execute in turn:
 
 ```

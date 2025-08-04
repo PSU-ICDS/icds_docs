@@ -27,7 +27,7 @@ from the local machine to the remote with `put <filename>`,
 and from the remote machine to the local with `get <filename>`.
 
 When sftp launches, your location on the local machine
-is the folder in which you launched sftp,
+is the directory in which you launched sftp,
 and your location on the remote machine is your home directory.
 To control where on the remote machine files go to and come from,
 within sftp you can navigate on the remote machine with `cd`
@@ -83,7 +83,7 @@ rsync /work/newData abc123@submit.hpc.psu.edu:/storage/work/abc123/toAnalyze/
 which will prompt for your password and MFA.
 
 Note that the *destination* pathnames end with a `/`;
-this signifies that the copied files will go into the folder `toAnalyze`.
+this signifies that the copied files will go into the directory `toAnalyze`.
 For more examples, visit [Tecmint][tecmint].
 [tecmint]: https://www.tecmint.com/rsync-local-remote-file-synchronization-commands/
 

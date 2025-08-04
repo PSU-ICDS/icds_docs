@@ -20,7 +20,7 @@ ICDS Hosted Endpoints:
 By default, connecting to the Roar Collab endpoint will land in your Home directory. 
 To navigate to other locations on RC or Archive, change the "Path" field.
 
-To see shared collections and files on OneDrive, go up one folder from the start location.
+To see shared collections and files on OneDrive, go up one directory from the start location.
 
 More detailed information on file transfers with Globus can be found in the [Globus 
 documentation](https://docs.globus.org/how-to/get-started/)
