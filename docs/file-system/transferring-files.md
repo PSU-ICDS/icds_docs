@@ -105,10 +105,8 @@ default directory of the group storage.
 
 | Filesystem location | Authorized User |
 | ---- | ---- |
-| `/storage/work/$USER`	| Directory Owner <br> 
-(where $USER matches the Penn State ID of the Directory Owner) |
-| `/storage/group/$USER/default/` | PI / Faculty Owner <br>
-(where $USER matches the Penn State ID of the Faculty Owner) |
+| `/storage/work/$USER`	| Directory Owner <br> (where $USER matches the Penn State ID of the Directory Owner) |
+| `/storage/group/$USER/default/` | PI / Faculty Owner <br> (where $USER matches the Penn State ID of the Faculty Owner) |
 
 
 !!! warning "Permission Errors"
