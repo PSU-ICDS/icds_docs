@@ -20,12 +20,11 @@
 
 The operating system for Roar is Red Hat Enterprise Linux 8 ([RHEL8][rhel8]),
 a variant of Unix.
-Unix a text-based; users interact with the system by typing commands.
-Compute clusters use Linux
-in part because tasks can be automated with scripts.
+Linux is text-based; users interact with the system by typing commands.
+Compute clusters use Linux in part because tasks can be automated with scripts.
 [rhel8]: https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9
 
-This user guide assumes familiarity with Unix,
+This user guide assumes familiarity with Linux,
 which any user who wants to do more than use the Portal needs to learn.
 A tutorial website for Unix can be found [here][unix_tutorial].
 [unix_tutorial]: https://www.tutorialspoint.com/unix/unix_tutorial.pdf
