@@ -43,7 +43,7 @@ when running progrms, writing files, or even logging in.
 
 There are two tools to check on your disk usage:
 
-- `check_storage_quotas` reports your total usage;
+- `quota_check` reports your total usage in directories that you have access to;
 - [`du`][du] reports the sizes of files and directories.
 [du]: https://man7.org/linux/man-pages/man1/du.1.html
 
@@ -67,17 +67,27 @@ This commonly occurs with directories such as
  - `.local` - used by Python
  - `.comsol` - used by Comsol
 
-These [dot files](https://missing.csail.mit.edu/2019/dotfiles/) are hidden by default, 
-but you can view them with `ls -la`.
+These [dot files](https://missing.csail.mit.edu/2019/dotfiles/) (and directories) 
+are hidden by default, but you can view them with `ls -la`.
 
 If the size of one of these directories becomes a problem, 
 it can be moved to `work`, and a link placed in your home directory.
 To make such a link, in your home directory execute (e.g., for `.local`)
 ```
-ln -s .local work/.local
+ln -s $WORK/.local .local
 ```
 This creates an alias (in Unix-speak, a "symbolic link") named `.local`,
 which points to the directory you moved to `work`.
+
+The entire process would look like this:
+```
+# first move the directory to /storage/work/
+mv ~/.local $WORK/.local
+
+# create a symlink in home pointing to the new location in work
+ln -s $WORK/.local .local
+```
+
 
 ## Archive storage
 

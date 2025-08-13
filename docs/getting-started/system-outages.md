@@ -46,6 +46,7 @@ Includes user test for the following applications:
  - MATLAB sine_wave 
 
 **Your input is valuable**. At the conclusion of every outage, ICDS engineers run extensive use case tests to ensure that the system will work as expected. If your team runs your own post outage tests or if you have ideas for tests you’d like ICDS engineers to run, [please let us know.](mailto:icds@psu.edu?subject=Post-Outage%20Testing%20Feedback)
+
  
  
 ## Planned Outage 2025-08-13
@@ -109,6 +110,7 @@ ServiceNow Form
  - Planned May 14, 2025 17:00 -- May 15, 2025 17:00
  - Actual  May 14, 2025 17:00 -- May 15, 2025 17:03
 
+
 #### Plan of Action
 
 
@@ -143,9 +145,11 @@ ServiceNow Form
 
 #### Known issues: 
 
+
  - Schrodinger license manager fails to load **resolved**
 
  - Mathematica license shows as expiring May 30 **resolved**
+
 
 
 
