@@ -1,0 +1,172 @@
+Last metadata expiration check: 20:51:34 ago on Tue 12 Aug 2025 02:29:57 PM EDT.
+Dependencies resolved.
+==========================================================================================================================================================
+ Package                                    Architecture          Version                                           Repository                       Size
+==========================================================================================================================================================
+Installing:
+ kernel                                     x86_64                4.18.0-553.69.1.el8_10                            rhel08-baseos                    11 M
+ kernel-devel                               x86_64                4.18.0-553.69.1.el8_10                            rhel08-baseos                    24 M
+ kernel-modules-extra                       x86_64                4.18.0-553.69.1.el8_10                            rhel08-baseos                    11 M
+Upgrading:
+ apptainer                                  x86_64                1.4.1-1.el8                                       epel                             44 M
+ audit-libs                                 x86_64                3.1.2-1.el8_10.1                                  rhel08-baseos                   125 k
+ autofs                                     x86_64                1:5.1.4-114.el8_10.4                              rhel08-baseos                   720 k
+ cvmfs                                      x86_64                2.13.2-1.el8                                      cvmfs                            16 M
+ cvmfs-libs                                 x86_64                2.13.2-1.el8                                      cvmfs                            12 M
+ device-mapper                              x86_64                8:1.02.181-15.el8_10.2                            rhel08-baseos                   379 k
+ device-mapper-libs                         x86_64                8:1.02.181-15.el8_10.2                            rhel08-baseos                   412 k
+ dracut                                     x86_64                049-237.git20250603.el8_10                        rhel08-baseos                   381 k
+ dracut-network                             x86_64                049-237.git20250603.el8_10                        rhel08-baseos                   112 k
+ e2fsprogs                                  x86_64                1.45.6-6.el8_10                                   rhel08-baseos                   1.0 M
+ e2fsprogs-libs                             x86_64                1.45.6-6.el8_10                                   rhel08-baseos                   233 k
+ emacs                                      x86_64                1:26.1-15.el8_10                                  rhel08-appstream                3.2 M
+ emacs-common                               x86_64                1:26.1-15.el8_10                                  rhel08-appstream                 39 M
+ emacs-filesystem                           noarch                1:26.1-15.el8_10                                  rhel08-baseos                    71 k
+ emacs-nox                                  x86_64                1:26.1-15.el8_10                                  rhel08-appstream                2.8 M
+ gdk-pixbuf2                                x86_64                2.36.12-7.el8_10                                  rhel08-baseos                   467 k
+ gdk-pixbuf2-modules                        x86_64                2.36.12-7.el8_10                                  rhel08-appstream                109 k
+ ghostscript                                x86_64                9.27-17.el8_10                                    rhel08-appstream                 85 k
+ git                                        x86_64                2.43.7-1.el8_10                                   rhel08-appstream                 93 k
+ git-core                                   x86_64                2.43.7-1.el8_10                                   rhel08-appstream                 11 M
+ git-core-doc                               noarch                2.43.7-1.el8_10                                   rhel08-appstream                3.1 M
+ glib2                                      x86_64                2.56.4-166.el8_10                                 rhel08-baseos                   2.5 M
+ glib2-devel                                x86_64                2.56.4-166.el8_10                                 rhel08-baseos                   426 k
+ glibc                                      x86_64                2.28-251.el8_10.25                                rhel08-baseos                   2.2 M
+ glibc-all-langpacks                        x86_64                2.28-251.el8_10.25                                rhel08-baseos                    26 M
+ glibc-common                               x86_64                2.28-251.el8_10.25                                rhel08-baseos                   1.0 M
+ glibc-devel                                x86_64                2.28-251.el8_10.25                                rhel08-baseos                    89 k
+ glibc-gconv-extra                          x86_64                2.28-251.el8_10.25                                rhel08-baseos                   1.6 M
+ glibc-headers                              x86_64                2.28-251.el8_10.25                                rhel08-baseos                   494 k
+ grub2-common                               noarch                1:2.02-167.el8_10                                 rhel08-baseos                   898 k
+ grub2-tools                                x86_64                1:2.02-167.el8_10                                 rhel08-baseos                   2.0 M
+ grub2-tools-minimal                        x86_64                1:2.02-167.el8_10                                 rhel08-baseos                   217 k
+ gstreamer1-plugins-bad-free                x86_64                1.16.1-5.el8_10                                   rhel08-appstream                1.8 M
+ kernel-headers                             x86_64                4.18.0-553.69.1.el8_10                            rhel08-baseos                    12 M
+ kernel-tools                               x86_64                4.18.0-553.69.1.el8_10                            rhel08-baseos                    11 M
+ kernel-tools-libs                          x86_64                4.18.0-553.69.1.el8_10                            rhel08-baseos                    11 M
+ krb5-devel                                 x86_64                1.18.2-32.el8_10                                  rhel08-baseos                   563 k
+ krb5-libs                                  x86_64                1.18.2-32.el8_10                                  rhel08-baseos                   846 k
+ krb5-workstation                           x86_64                1.18.2-32.el8_10                                  rhel08-baseos                   960 k
+ lftp                                       x86_64                4.8.4-6.el8_10                                    rhel08-appstream                883 k
+ libblockdev                                x86_64                2.28-7.el8_10                                     rhel08-appstream                133 k
+ libblockdev-crypto                         x86_64                2.28-7.el8_10                                     rhel08-appstream                 82 k
+ libblockdev-fs                             x86_64                2.28-7.el8_10                                     rhel08-appstream                 88 k
+ libblockdev-loop                           x86_64                2.28-7.el8_10                                     rhel08-appstream                 71 k
+ libblockdev-mdraid                         x86_64                2.28-7.el8_10                                     rhel08-appstream                 78 k
+ libblockdev-part                           x86_64                2.28-7.el8_10                                     rhel08-appstream                 81 k
+ libblockdev-swap                           x86_64                2.28-7.el8_10                                     rhel08-appstream                 73 k
+ libblockdev-utils                          x86_64                2.28-7.el8_10                                     rhel08-appstream                 81 k
+ libcom_err                                 x86_64                1.45.6-6.el8_10                                   rhel08-baseos                    50 k
+ libcom_err-devel                           x86_64                1.45.6-6.el8_10                                   rhel08-baseos                    39 k
+ libgs                                      x86_64                9.27-17.el8_10                                    rhel08-appstream                3.1 M
+ libipa_hbac                                x86_64                2.9.4-5.el8_10.2                                  rhel08-baseos                   129 k
+ libjpeg-turbo                              x86_64                1.5.3-14.el8_10                                   rhel08-appstream                157 k
+ libjpeg-turbo-devel                        x86_64                1.5.3-14.el8_10                                   rhel08-appstream                109 k
+ libkadm5                                   x86_64                1.18.2-32.el8_10                                  rhel08-baseos                   189 k
+ libnfsidmap                                x86_64                1:2.3.3-64.el8_10                                 rhel08-baseos                   123 k
+ libnsl                                     x86_64                2.28-251.el8_10.25                                rhel08-baseos                   111 k
+ libsemanage                                x86_64                2.9-12.el8_10                                     rhel08-baseos                   169 k
+ libsmbclient                               x86_64                4.19.4-9.el8_10                                   rhel08-baseos                   157 k
+ libsoup                                    x86_64                2.62.3-9.el8_10                                   rhel08-baseos                   426 k
+ libss                                      x86_64                1.45.6-6.el8_10                                   rhel08-baseos                    54 k
+ libsss_autofs                              x86_64                2.9.4-5.el8_10.2                                  rhel08-baseos                   132 k
+ libsss_certmap                             x86_64                2.9.4-5.el8_10.2                                  rhel08-baseos                   187 k
+ libsss_idmap                               x86_64                2.9.4-5.el8_10.2                                  rhel08-baseos                   134 k
+ libsss_nss_idmap                           x86_64                2.9.4-5.el8_10.2                                  rhel08-baseos                   142 k
+ libsss_sudo                                x86_64                2.9.4-5.el8_10.2                                  rhel08-baseos                   130 k
+ libvpx                                     x86_64                1.7.0-12.el8_10                                   rhel08-appstream                855 k
+ libwbclient                                x86_64                4.19.4-9.el8_10                                   rhel08-baseos                   130 k
+ libwebp                                    x86_64                1.0.0-11.el8_10                                   rhel08-appstream                274 k
+ libxml2                                    x86_64                2.9.7-21.el8_10.3                                 rhel08-baseos                   697 k
+ libxml2-devel                              x86_64                2.9.7-21.el8_10.3                                 rhel08-appstream                1.0 M
+ libxslt                                    x86_64                1.1.32-6.2.el8_10                                 rhel08-baseos                   250 k
+ linux-firmware                             noarch                20250626-131.gitb05fabcd.el8_10                   rhel08-baseos                   529 M
+ lz4-libs                                   x86_64                1.8.3-5.el8_10                                    rhel08-baseos                    66 k
+ motif                                      x86_64                2.3.4-23.el8_10                                   rhel08-appstream                1.5 M
+ nfs-utils                                  x86_64                1:2.3.3-64.el8_10                                 rhel08-baseos                   515 k
+ pam                                        x86_64                1.3.1-37.el8_10                                   rhel08-baseos                   748 k
+ pam-devel                                  x86_64                1.3.1-37.el8_10                                   rhel08-baseos                   212 k
+ perl                                       x86_64                4:5.26.3-423.el8_10                               rhel08-appstream                 73 k
+ perl-Attribute-Handlers                    noarch                0.99-423.el8_10                                   rhel08-appstream                 89 k
+ perl-CPAN                                  noarch                2.18-402.el8_10                                   rhel08-appstream                575 k
+ perl-Devel-Peek                            x86_64                1.26-423.el8_10                                   rhel08-appstream                 94 k
+ perl-Devel-SelfStubber                     noarch                1.06-423.el8_10                                   rhel08-appstream                 76 k
+ perl-Errno                                 x86_64                1.28-423.el8_10                                   rhel08-baseos                    77 k
+ perl-ExtUtils-Embed                        noarch                1.34-423.el8_10                                   rhel08-appstream                 80 k
+ perl-ExtUtils-Miniperl                     noarch                1.06-423.el8_10                                   rhel08-appstream                 77 k
+ perl-Git                                   noarch                2.43.7-1.el8_10                                   rhel08-appstream                 79 k
+ perl-IO                                    x86_64                1.38-423.el8_10                                   rhel08-baseos                   143 k
+ perl-IO-Zlib                               noarch                1:1.10-423.el8_10                                 rhel08-baseos                    81 k
+ perl-Locale-Maketext-Simple                noarch                1:0.21-423.el8_10                                 rhel08-appstream                 79 k
+ perl-Math-Complex                          noarch                1.59-423.el8_10                                   rhel08-baseos                   109 k
+ perl-Memoize                               noarch                1.03-423.el8_10                                   rhel08-appstream                119 k
+ perl-Module-Loaded                         noarch                1:0.08-423.el8_10                                 rhel08-appstream                 75 k
+ perl-Net-Ping                              noarch                2.55-423.el8_10                                   rhel08-appstream                102 k
+ perl-Pod-Html                              noarch                1.22.02-423.el8_10                                rhel08-appstream                 88 k
+ perl-SelfLoader                            noarch                1.23-423.el8_10                                   rhel08-appstream                 84 k
+ perl-Test                                  noarch                1.30-423.el8_10                                   rhel08-appstream                 91 k
+ perl-Time-Piece                            x86_64                1.31-423.el8_10                                   rhel08-appstream                 99 k
+ perl-devel                                 x86_64                4:5.26.3-423.el8_10                               rhel08-appstream                600 k
+ perl-interpreter                           x86_64                4:5.26.3-423.el8_10                               rhel08-baseos                   6.3 M
+ perl-libnetcfg                             noarch                4:5.26.3-423.el8_10                               rhel08-appstream                 78 k
+ perl-libs                                  x86_64                4:5.26.3-423.el8_10                               rhel08-baseos                   1.6 M
+ perl-macros                                x86_64                4:5.26.3-423.el8_10                               rhel08-baseos                    73 k
+ perl-open                                  noarch                1.11-423.el8_10                                   rhel08-appstream                 78 k
+ perl-utils                                 noarch                5.26.3-423.el8_10                                 rhel08-appstream                129 k
+ platform-python                            x86_64                3.6.8-70.el8_10                                   rhel08-baseos                    89 k
+ platform-python-devel                      x86_64                3.6.8-70.el8_10                                   rhel08-appstream                242 k
+ platform-python-setuptools                 noarch                39.2.0-9.el8_10                                   rhel08-baseos                   633 k
+ python3-audit                              x86_64                3.1.2-1.el8_10.1                                  rhel08-baseos                    88 k
+ python3-libs                               x86_64                3.6.8-70.el8_10                                   rhel08-baseos                   7.9 M
+ python3-libsemanage                        x86_64                2.9-12.el8_10                                     rhel08-baseos                   129 k
+ python3-libxml2                            x86_64                2.9.7-21.el8_10.3                                 rhel08-baseos                   238 k
+ python3-perf                               x86_64                4.18.0-553.69.1.el8_10                            rhel08-baseos                    11 M
+ python3-requests                           noarch                2.20.0-6.el8_10                                   rhel08-baseos                   125 k
+ python3-setuptools                         noarch                39.2.0-9.el8_10                                   rhel08-baseos                   163 k
+ python3-setuptools-wheel                   noarch                39.2.0-9.el8_10                                   rhel08-baseos                   289 k
+ python3-sssdconfig                         noarch                2.9.4-5.el8_10.2                                  rhel08-baseos                   155 k
+ python3-unbound                            x86_64                1.16.2-5.9.el8_10                                 rhel08-appstream                129 k
+ python3.11                                 x86_64                3.11.13-1.el8_10                                  rhel08-appstream                 32 k
+ python3.11-libs                            x86_64                3.11.13-1.el8_10                                  rhel08-appstream                 10 M
+ python3.11-setuptools-wheel                noarch                65.5.1-4.el8_10                                   rhel08-appstream                722 k
+ python3.11-tkinter                         x86_64                3.11.13-1.el8_10                                  rhel08-appstream                410 k
+ rcs                                        x86_64                5.10.1-12.el8                                     epel                            255 k
+ rsync                                      x86_64                3.1.3-23.el8_10                                   rhel08-baseos                   412 k
+ samba-client-libs                          x86_64                4.19.4-9.el8_10                                   rhel08-baseos                   5.0 M
+ samba-common                               noarch                4.19.4-9.el8_10                                   rhel08-baseos                   234 k
+ samba-common-libs                          x86_64                4.19.4-9.el8_10                                   rhel08-baseos                   183 k
+ sqlite                                     x86_64                3.26.0-20.el8_10                                  rhel08-baseos                   668 k
+ sqlite-devel                               x86_64                3.26.0-20.el8_10                                  rhel08-baseos                   164 k
+ sqlite-libs                                x86_64                3.26.0-20.el8_10                                  rhel08-baseos                   580 k
+ sssd                                       x86_64                2.9.4-5.el8_10.2                                  rhel08-baseos                   120 k
+ sssd-ad                                    x86_64                2.9.4-5.el8_10.2                                  rhel08-baseos                   315 k
+ sssd-client                                x86_64                2.9.4-5.el8_10.2                                  rhel08-baseos                   246 k
+ sssd-common                                x86_64                2.9.4-5.el8_10.2                                  rhel08-baseos                   1.7 M
+ sssd-common-pac                            x86_64                2.9.4-5.el8_10.2                                  rhel08-baseos                   197 k
+ sssd-ipa                                   x86_64                2.9.4-5.el8_10.2                                  rhel08-baseos                   380 k
+ sssd-krb5                                  x86_64                2.9.4-5.el8_10.2                                  rhel08-baseos                   166 k
+ sssd-krb5-common                           x86_64                2.9.4-5.el8_10.2                                  rhel08-baseos                   207 k
+ sssd-ldap                                  x86_64                2.9.4-5.el8_10.2                                  rhel08-baseos                   253 k
+ sssd-nfs-idmap                             x86_64                2.9.4-5.el8_10.2                                  rhel08-baseos                   131 k
+ sssd-proxy                                 x86_64                2.9.4-5.el8_10.2                                  rhel08-baseos                   165 k
+ sudo                                       x86_64                1.9.5p2-1.el8_10.1                                rhel08-baseos                   1.0 M
+ tar                                        x86_64                2:1.30-10.el8_10                                  rhel08-baseos                   839 k
+ unbound-libs                               x86_64                1.16.2-5.9.el8_10                                 rhel08-appstream                577 k
+ unzip                                      x86_64                6.0-48.el8_10                                     rhel08-baseos                   196 k
+ webkit2gtk3                                x86_64                2.48.3-1.el8_10                                   rhel08-appstream                 26 M
+ webkit2gtk3-jsc                            x86_64                2.48.3-1.el8_10                                   rhel08-appstream                7.7 M
+Installing dependencies:
+ cvmfs-fuse3                                x86_64                2.13.2-1.el8                                      cvmfs                            14 M
+ grub2-tools-efi                            x86_64                1:2.02-167.el8_10                                 rhel08-baseos                   487 k
+ grub2-tools-extra                          x86_64                1:2.02-167.el8_10                                 rhel08-baseos                   1.1 M
+ kernel-core                                x86_64                4.18.0-553.69.1.el8_10                            rhel08-baseos                    44 M
+ kernel-modules                             x86_64                4.18.0-553.69.1.el8_10                            rhel08-baseos                    36 M
+
+Transaction Summary
+==========================================================================================================================================================
+Install    8 Packages
+Upgrade  147 Packages
+
+Total download size: 983 M
+Is this ok [y/N]: n
+Operation aborted.

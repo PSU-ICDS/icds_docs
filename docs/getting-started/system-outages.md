@@ -38,7 +38,6 @@ Includes sample test for the following applications:
 
 Includes user test for the following applications: 
 
-
  - Ansys Fluent job
  - MPI fluid solver
  - Gaussian
@@ -49,15 +48,69 @@ Includes user test for the following applications:
 **Your input is valuable**. At the conclusion of every outage, ICDS engineers run extensive use case tests to ensure that the system will work as expected. If your team runs your own post outage tests or if you have ideas for tests you’d like ICDS engineers to run, [please let us know.](mailto:icds@psu.edu?subject=Post-Outage%20Testing%20Feedback)
  
  
+## Planned Outage 2025-08-13
+
+#### Outage Duration
+
+ - Planned Aug 13, 2025 17:00 -- May 15, 2025 17:00
+ - Actual  Aug 13, 2025 17:00 -- 
+
+#### Plan of Action
+
+ - STORAGE: update RC group storage firmware, enable RDMA functions 
+
+ - STORAGE: Globus software update from 5.4.85 to 5.4.9
+
+ - SCHEDULER: 
+    - Slurm Update to 24.11 
+    - Implement changes related to instructional use 
+    - Modify accounts with "atype" tag in description field
+
+ - Open OnDemand: 
+    - upgrade to v4 [link](https://discourse.openondemand.org/t/open-ondemand-4-0-release/3959/5)
+    - Improved performance fixes
+    - Shutdown rcportal (old name), link to portal.hpc.psu.edu
+    - Renew SSL Certificate
+
+ - Operating System Image and Package updates
+    - draft package list:  [image_pkg_update_list_2025-08-13.txt](../img/image_pkg_update_list_2025-08-13.txt)
+    - Remove java-11-openjdk
+    - Add RDMA NFS support (deps on storage updates)
+
+ - NETWORK: software updates
+
+ - Data Center Power Maintanace
+
+ - VMWare backend: update infrastructure software, enable iSCSI features
+
+ - Cluster Admin Node Updates
+
+ - Re-sync the software stack between RC and RR
+
+ - Adjust storage for groups impacted by naming convention
+
+
+#### Known issues: 
+
+
+
+#### ServiceNow Links
+
+ServiceNow Form
+
+- RITM0373685  [RITM0373685 ](https://pennstate.service-now.com/now/nav/ui/classic/params/target/sc_req_item.do%3Fsys_id%3D8b87bbaac3aae2d028753df905013122%26sysparm_stack%3D%26sysparm_view%3D)
+
+
 ## Planned Outage 2025-05-14
+
 
 #### Outage Duration
 
  - Planned May 14, 2025 17:00 -- May 15, 2025 17:00
  - Actual  May 14, 2025 17:00 -- May 15, 2025 17:03
 
-
 #### Plan of Action
+
 
  - STORAGE: troubleshoot power redundancy configuration on RC group storage 
    **Complete**
@@ -90,9 +143,10 @@ Includes user test for the following applications:
 
 #### Known issues: 
 
- - Schrodinger license manager fails to load **Investigating**
+ - Schrodinger license manager fails to load **resolved**
 
- - Mathematica license shows as expiring May 30 **Investigating**
+ - Mathematica license shows as expiring May 30 **resolved**
+
 
 
 #### ServiceNow Links
@@ -104,3 +158,5 @@ ServiceNow Form
 
 
 - CHG0121515 [CHG0121515](https://pennstate.service-now.com/nav_to.do?uri=change_request.do%3Fsys_id=39c50baf47302e94fb179df4126d436f%26sysparm_stack=change_request_list.do%3Fsysparm_query=active=true)
+
+
