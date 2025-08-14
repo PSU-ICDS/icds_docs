@@ -54,7 +54,7 @@ Includes user test for the following applications:
 #### Outage Duration
 
  - Planned Aug 13, 2025 17:00 -- Aug 14, 2025 17:00
- - Actual  Aug 13, 2025 17:00 -- Aug 14, 2025 15:00
+ - Actual  Aug 13, 2025 17:00 -- Aug 14, 2025 14:10
 
 #### Plan of Action
 
