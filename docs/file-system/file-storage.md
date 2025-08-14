@@ -71,9 +71,11 @@ These [dot files](https://missing.csail.mit.edu/2019/dotfiles/) (and directories
 are hidden by default, but you can view them with `ls -la`.
 
 If the size of one of these directories becomes a problem, 
-it can be moved to `work`, and creates a [symbolic link] named 
-`.local` in your home directory which points to the directory 
-you moved to `work`.
+it can be moved to `work`, and a [symbolic link] created 
+which points to the directory you moved to `work`.
+
+For example, the commands needed to move the `.local` directory 
+would look like:
 
 ```
 # first move the directory to /storage/work/
