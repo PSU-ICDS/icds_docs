@@ -71,15 +71,12 @@ These [dot files](https://missing.csail.mit.edu/2019/dotfiles/) (and directories
 are hidden by default, but you can view them with `ls -la`.
 
 If the size of one of these directories becomes a problem, 
-it can be moved to `work`, and a link placed in your home directory.
-To make such a link, in your home directory execute (e.g., for `.local`)
-```
-ln -s $WORK/.local .local
-```
-This creates an alias (in Unix-speak, a "symbolic link") named `.local`,
+it can be moved to `work`, and a [symbolic link] created 
 which points to the directory you moved to `work`.
 
-The entire process would look like this:
+For example, the commands needed to move the `.local` directory 
+would look like:
+
 ```
 # first move the directory to /storage/work/
 mv ~/.local $WORK/.local
@@ -87,6 +84,8 @@ mv ~/.local $WORK/.local
 # create a symlink in home pointing to the new location in work
 ln -s $WORK/.local .local
 ```
+
+[symbolic link]:https://www.lenovo.com/us/en/glossary/symbolic-link/
 
 
 ## Archive storage
