@@ -54,45 +54,47 @@ Includes user test for the following applications:
 #### Outage Duration
 
  - Planned Aug 13, 2025 17:00 -- Aug 14, 2025 17:00
- - Actual  Aug 13, 2025 17:00 -- 
+ - Actual  Aug 13, 2025 17:00 -- Aug 14, 2025 14:10
 
 #### Plan of Action
 
- - STORAGE: update RC group storage firmware, enable RDMA functions 
+ - STORAGE: update RC group storage firmware, enable RDMA functions **Complete**
 
- - STORAGE: Globus software update from 5.4.85 to 5.4.9
+ - STORAGE: Globus software update from 5.4.85 to 5.4.87 **Complete**
 
- - SCHEDULER: 
+ - SCHEDULER: **Complete**
     - Slurm Update to 24.11 
     - Implement changes related to instructional use 
     - Modify accounts with "atype" tag in description field
 
- - Open OnDemand: 
+ - Open OnDemand: **Complete**
     - upgrade to v4 [link](https://discourse.openondemand.org/t/open-ondemand-4-0-release/3959/5)
     - Improved performance fixes
     - Shutdown rcportal (old name), link to portal.hpc.psu.edu
     - Renew SSL Certificate
 
- - Operating System Image and Package updates
+ - Operating System Image and Package updates **Complete**
     - draft package list:  [image_pkg_update_list_2025-08-13.txt](../img/image_pkg_update_list_2025-08-13.txt)
     - Remove java-11-openjdk
     - Add RDMA NFS support (deps on storage updates)
 
- - NETWORK: software updates
+ - NETWORK: software updates **Complete**
 
- - Data Center Power Maintanace
+ - Data Center Power Maintanace **Complete**
 
- - VMWare backend: update infrastructure software, enable iSCSI features
+ - VMWare backend: update infrastructure software, enable iSCSI features **Complete**
 
- - Cluster Admin Node Updates
+ - Cluster Admin Node Updates **Complete**
 
- - Re-sync the software stack between RC and RR
+ - Re-sync the software stack between RC and RR **Complete**
 
- - Adjust storage for groups impacted by naming convention
+ - Adjust storage for groups impacted by naming convention **Complete**
 
 
 #### Known issues: 
 
+Julia - GPU Users: 
+Updates to CUDA drivers made during this outage will require users to rebuild the .JULIA folder in their home directories. Users with customizations should rebuild this folder “manually,” while simply deleting the folder will cause it to be rebuilt automatically in a default state. ICDS recommends saving a copy of your .JULIA folder before deleting or editing. For assistance, contact Client Support at ICDS@PSU.EDU.
 
 
 #### ServiceNow Links
