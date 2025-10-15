@@ -63,7 +63,7 @@ use the upload/download buttons on the Globus [web interface][globusweb].
 [globusweb]:  https://www.globus.org
 
  
-## Globus Personal Collection
+### Globus Personal Collection
 
 For users who need to transfer large files (typically larger than 1 GB) between the Roar system and their personal computer, Globus Connect Personal provides a powerful and convenient solution.
 Globus Connect Personal allows you to turn your personal computer (laptop or desktop) into a Globus endpoint, also known as a personal collection. Once set up, you can securely transfer files between your computer and other Globus collections.
