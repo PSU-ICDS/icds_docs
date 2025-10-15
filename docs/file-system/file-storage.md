@@ -12,7 +12,7 @@ Group space can be purchased by PIs in 5 TB increments.
 By default, group members have read access to all files in group. 
 - **scratch**  – temporary storage area intended for large files. 
 
-!!! warning ""
+!!! warning "Temporary Scratch Storage - Read Carefully"
 Scratch is not backed up, and any files older than 30 days will be *automatically deleted*. Users are responsible for ensuring important data is copied elsewhere before expiration.
 
 Files in home, work, and group are backed up by a sequence of daily "snapshots", 
