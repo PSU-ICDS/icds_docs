@@ -6,10 +6,10 @@
 
 !!! warning "Don't store files on scratch."
      [Scratch is not backed up](../file-system/file-storage.md/#quotas), 
-     and files more than 30 days old are deleted.
+     and files older than 30 days old are deleted.
 
 !!! warning "Don't overrun your file storage quota."
-     If you fill your allotted disk space, weird errors result.
+     If you fill your allotted disk space, weird errors occur.
      Keep an eye on your [disk space usage](../file-system/file-storage.md/#quotas).
 
 !!! warning "Don't waste your compute resources."
