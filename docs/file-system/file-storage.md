@@ -7,11 +7,13 @@ These have different purposes:
 - **home** – for configuration files, and links to work, group, and scratch.
 - **work** – for your own work; 
 only you have read-write access to your home and work directories.
-- **scratch**  – for temporary storage of large files.  Scratch is *not backed up*, 
-and files with a time stamp older than 30 days will be *automatically deleted*.
 - **group** – for collaborative work. 
 Group space can be purchased by PIs in 5 TB increments. 
 By default, group members have read access to all files in group. 
+- **scratch**  – temporary storage area intended for large files. 
+
+!!! warning ""
+Scratch is not backed up, and any files older than 30 days will be *automatically deleted*. Users are responsible for ensuring important data is copied elsewhere before expiration.
 
 Files in home, work, and group are backed up by a sequence of daily "snapshots", 
 which are kept for 90 days. 
@@ -31,15 +33,15 @@ Files, directories, and symlinks all count towards inode limits.
 
 | Storage | Path | Size | Inodes | Backup | Purpose |
 | :----: | :----: | :----: | :----: | :----: | :----: |
-| Home | /storage/home | 16 GB | 500,000 | Daily  | Configuration files |
-| Work | /storage/work | 128 GB | 1 million | Daily  | User data |
+| Home | /storage/home | *16 GB* | 500,000 | Daily  | Configuration files |
+| Work | /storage/work | *128 GB* | 1 million | Daily  | User data |
 | Scratch | /scratch | None | 1 million | None | Temporary files |
 | Group | /storage/group | Specific to<br>allocation | 1 million<br>per TB | Daily | Shared data |
 
 ## Checking usage
 
 Exceeding quotas on home or work directories can cause errors 
-when running progrms, writing files, or even logging in.
+when running programs, writing files, or even logging in.
 
 There are two tools to check on your disk usage:
 
