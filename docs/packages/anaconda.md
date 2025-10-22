@@ -56,10 +56,18 @@ and host channel.
 	selected
 	
 Alternately, you can find packages using the `conda search` command. This will only search 
-channels that you have configured to use:
+channels that you have configured to use. For example, a search for the `r-tidyverse` 
+package looks like this:
 
 ```
-conda search <pkgName>
+$ conda search r-tidyverse
+Loading channels: done
+# Name                       Version           Build  Channel
+r-tidyverse                    1.0.0        r3.3.1_0  pkgs/r
+r-tidyverse                    1.0.0        r3.3.2_0  pkgs/r
+r-tidyverse                    1.1.1        r3.3.2_0  conda-forge
+r-tidyverse                    1.1.1        r3.4.1_0  conda-forge
+...
 ```
 
 ### Creating an Anaconda Environment
