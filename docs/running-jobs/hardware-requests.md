@@ -100,8 +100,8 @@ with `constraint` directives.  In a batch script, constraints take the form:
 #SBATCH --constraint=<feature>
 ```
 
-where `<feature>` is one of the features listed by `sinfo` 
-(or multiple features, separated by commas).
+where `<feature>` is one of the features listed by `sinfo`
+(or multiple features, separated by commas). Please see sinfo output above to find various features that can be specified.
 For example, to request `cascadelake` hardware, use `--constraint=cascadelake`.
 
 For an [interactive job][salloc], constraints are given
