@@ -16,6 +16,12 @@
      Use interactive sessions to test your workflow.
      Before a big batch job, run test jobs to make sure your code works.
 
+!!! warning "Always capture job output and error logs"
+    To debug failed or unexpected jobs, **you must save Slurm output and error streams**.  
+    Add these lines to every slurm job script:
+    #SBATCH --output=job_%j.out
+    #SBATCH --error=job_%j.err
+
 ## Roar uses Linux
 
 The operating system for Roar is Red Hat Enterprise Linux 8 ([RHEL8][rhel8]),

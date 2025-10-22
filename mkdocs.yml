@@ -35,6 +35,7 @@ plugins:
 
 nav:
     - Getting started: 
+        - getting-started/glossary.md
         - getting-started/system-overview.md
         - getting-started/compute-hardware.md
         - getting-started/tips-for-beginners.md
@@ -62,7 +63,11 @@ nav:
         - running-jobs/slurm-scheduler.md
         - running-jobs/interactive-jobs.md
         - running-jobs/batch-jobs.md
+        - running-jobs/job-composer.md
         - running-jobs/hardware-requests.md
     - Roar restricted:
         - roar-restricted/accessing-rr.md
         - roar-restricted/data-transfer.md
+    - Getting help:
+        - getting-help/contact.md
+        - getting-help/writing-good-support-requests.md
