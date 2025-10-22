@@ -15,8 +15,9 @@ and list approximate transfer rates for large files.
 | Roar &harr; Archive | Globus | 50 |
 | Roar &rarr; OneDrive | Firefox or Globus | 50 | 
 | OneDrive &rarr; Roar | Firefox or Globus | 10 |
-| Roar &harr; laptop | Portal Files menu | 25 |
+| Roar &harr; laptop | Portal Files menu (< 1GB) | 25 |
 | Roar &harr; laptop | Cyberduck or FileZilla | 15 |
+| Roar &harr; laptop | Globus Personal Collection (> 1GB) | 50 |
 | OneDrive &harr; laptop | web access |20 |
 
 (Transfer rates may be slower, 
@@ -34,8 +35,90 @@ Use this method only for moving small (<1 GB) files;
 for larger files, use [Globus](#globus).
 
 !!! warning "Upload Button Issues"
-	The "Upload" button on the Portal does not work properly. 
+	The "Upload" button on the Portal does not work properly when transfering files above 1GB. 
 	Instead, use the "Globus" button, which accesses the [Globus](#globus) interface.
+
+## Globus
+
+Globus is a web-based tool designed for robust transfers of large files.
+It can move files from Roar to filesystems outside Penn State,
+including our OneDrive accounts.
+Globus is interactive, but time-consuming file transfers 
+can be submitted as batch jobs.
+To get started, go [here][globus].
+[globus]: https://docs.globus.org/how-to/get-started/
+
+Globus moves files between named "collections".
+Many institutions have established collections;   
+ICDS has endpoints for Roar, Archive, and OneDrive:
+
+| Filesystem | Endpoint |
+| ---- | ---- |
+| Roar | Penn State ICDS RC |
+| Archive | Penn State ICDS Archive |
+| PSU OneDrive | Penn State ICDS OneDrive |
+
+To transfer files to or from a laptop,
+use the upload/download buttons on the Globus [web interface][globusweb].
+[globusweb]:  https://www.globus.org
+
+ 
+### Globus Personal Collection
+
+For users who need to transfer large files (typically larger than 1 GB) between the Roar system and their personal computer, Globus Connect Personal provides a powerful and convenient solution.
+Globus Connect Personal allows you to turn your personal computer (laptop or desktop) into a Globus endpoint, also known as a personal collection. Once set up, you can securely transfer files between your computer and other Globus collections.
+
+To get started, download and install the Globus Connect Personal client for your operating system:
+available for [Linux](https://docs.globus.org/globus-connect-personal/install/linux/),
+[macOS](https://docs.globus.org/globus-connect-personal/install/mac/), and
+[Windows](https://docs.globus.org/globus-connect-personal/install/windows/).
+
+### Globus Guest Collections
+
+In addition to providing a robust data transfer option, Globus can also be used to share 
+data with collaborators by creating 
+[Guest Collections](https://docs.globus.org/how-to/guest-collection-share-and-access/). 
+Collections can be set up with a variety of sharing options from complete public access 
+to individual user-level permission levels.
+
+!!! danger "ICDS does not monitor what is shared using Globus Collections"
+
+	Please be mindful that your Collection is set up using appropriate sharing and 
+	permission settings to avoid unintentionally sharing private data.
+
+
+Roar users can set up their own Guest Collections using the Globus interface. However, 
+due to security concerns, there are restrictions on what is enabled by default and who is 
+authorized to create the Collection. 
+
+- User-level Collections can be created anywhere within the user’s work directory.
+- Group-level Collections can only be created by the faculty owner and must be within the 
+default directory of the group storage. 
+
+#### Globus Collections Authorized Directories
+
+| Filesystem location | Authorized User |
+| ---- | ---- |
+| `/storage/work/$USER`	| Directory Owner <br> (where $USER matches the Penn State ID of the Directory Owner) |
+| `/storage/group/$USER/default/` | PI / Faculty Owner <br> (where $USER matches the Penn State ID of the Faculty Owner) |
+
+
+!!! warning "Permission Errors"
+
+	Users can create Guest Collections anywhere in the Roar filesystem that Globus 
+	has access to, however “Permission Denied” errors will occur if they are created 
+	outside of the authorized directories.
+
+#### Exceptions for Shares
+
+For sharing options outside of the restrictions above, please contact Client Support for 
+possible solutions.
+
+!!! tip "Custom Collection locations"
+
+	Collections inside group storage with non-standard naming conventions 
+	(where $USER (above) is not a Penn State ID) will not work by default. 
+	Please contact us to set up an exception.
 
 ## Firefox
 
@@ -49,35 +132,6 @@ Firefox is also available via `ssh -X`, after loading its module with
 `module load firefox`.   
 From the command line, execute `firefox`.
 
-## Globus
-
-Globus is a web-based tool designed for robust transfers of large files.
-It can move files from Roar to filesystems outside Penn State,
-including our OneDrive accounts.
-Globus is interactive, but time-consuming file transfers 
-can be submitted as batch jobs.
-To get started, go [here][globus].
-[globus]: https://docs.globus.org/how-to/get-started/
-
-Globus moves files between named "endpoints".
-Many institutions have established endpoints;   
-ICDS has endpoints for Roar, Archive, and OneDrive:
-
-| Filesystem | Endpoint |
-| ---- | ---- |
-| Roar | Penn State ICDS RC |
-| Archive | Penn State ICDS Archive |
-| PSU OneDrive | Penn State ICDS OneDrive |
-
-To transfer files to or from a laptop,
-use the upload/download buttons on the Globus [web interface][globusweb].
-[globusweb]:  https://www.globus.org
- 
-Alternatively, users can establish a personal endpoint, 
-by installing the Globus Connect Personal client,
-available for [Linux](https://docs.globus.org/globus-connect-personal/install/linux/),
-[macOS](https://docs.globus.org/globus-connect-personal/install/mac/), and
-[Windows](https://docs.globus.org/globus-connect-personal/install/windows/).
 
 ## sftp
 
@@ -103,7 +157,7 @@ from the local machine to the remote with `put <filename>`,
 and from the remote machine to the local with `get <filename>`.
 
 When sftp launches, your location on the local machine
-is the folder in which you launched sftp,
+is the directory in which you launched sftp,
 and your location on the remote machine is your home directory.
 To control where on the remote machine files go to and come from,
 within sftp you can navigate on the remote machine with `cd`
@@ -157,7 +211,7 @@ rsync /work/newData abc123@submit.hpc.psu.edu:/storage/work/abc123/toAnalyze/
 which will prompt for your password and MFA.
 
 Note that the *destination* pathnames end with a `/`;
-this signifies that the copied files will go into the folder `toAnalyze`.
+this signifies that the copied files will go into the directory `toAnalyze`.
 For more examples, visit [Tecmint][tecmint].
 [tecmint]: https://www.tecmint.com/rsync-local-remote-file-synchronization-commands/
 

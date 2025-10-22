@@ -7,11 +7,13 @@ These have different purposes:
 - **home** – for configuration files, and links to work, group, and scratch.
 - **work** – for your own work; 
 only you have read-write access to your home and work directories.
-- **scratch**  – for temporary storage of large files.  Scratch is *not backed up*, 
-and files with a time stamp older than 30 days will be *automatically deleted*.
 - **group** – for collaborative work. 
 Group space can be purchased by PIs in 5 TB increments. 
 By default, group members have read access to all files in group. 
+- **scratch**  – temporary storage area intended for large files. 
+
+!!! warning "Temporary Scratch Storage - Read Carefully"
+Scratch is not backed up, and any files older than 30 days will be *automatically deleted*. Users are responsible for ensuring important data is copied elsewhere before expiration.
 
 Files in home, work, and group are backed up by a sequence of daily "snapshots", 
 which are kept for 90 days. 
@@ -31,19 +33,19 @@ Files, directories, and symlinks all count towards inode limits.
 
 | Storage | Path | Size | Inodes | Backup | Purpose |
 | :----: | :----: | :----: | :----: | :----: | :----: |
-| Home | /storage/home | 16 GB | 500,000 | Daily  | Configuration files |
-| Work | /storage/work | 128 GB | 1 million | Daily  | User data |
+| Home | /storage/home | *16 GB* | 500,000 | Daily  | Configuration files |
+| Work | /storage/work | *128 GB* | 1 million | Daily  | User data |
 | Scratch | /scratch | None | 1 million | None | Temporary files |
 | Group | /storage/group | Specific to<br>allocation | 1 million<br>per TB | Daily | Shared data |
 
 ## Checking usage
 
 Exceeding quotas on home or work directories can cause errors 
-when running progrms, writing files, or even logging in.
+when running programs, writing files, or even logging in.
 
 There are two tools to check on your disk usage:
 
-- `check_storage_quotas` reports your total usage;
+- `quota_check` reports your total usage in directories that you have access to;
 - [`du`][du] reports the sizes of files and directories.
 [du]: https://man7.org/linux/man-pages/man1/du.1.html
 
@@ -67,17 +69,26 @@ This commonly occurs with directories such as
  - `.local` - used by Python
  - `.comsol` - used by Comsol
 
-These [dot files](https://missing.csail.mit.edu/2019/dotfiles/) are hidden by default, 
-but you can view them with `ls -la`.
+These [dot files](https://missing.csail.mit.edu/2019/dotfiles/) (and directories) 
+are hidden by default, but you can view them with `ls -la`.
 
 If the size of one of these directories becomes a problem, 
-it can be moved to `work`, and a link placed in your home directory.
-To make such a link, in your home directory execute (e.g., for `.local`)
-```
-ln -s .local work/.local
-```
-This creates an alias (in Unix-speak, a "symbolic link") named `.local`,
+it can be moved to `work`, and a [symbolic link] created 
 which points to the directory you moved to `work`.
+
+For example, the commands needed to move the `.local` directory 
+would look like:
+
+```
+# first move the directory to /storage/work/
+mv ~/.local $WORK/.local
+
+# create a symlink in home pointing to the new location in work
+ln -s $WORK/.local .local
+```
+
+[symbolic link]:https://www.lenovo.com/us/en/glossary/symbolic-link/
+
 
 ## Archive storage
 
