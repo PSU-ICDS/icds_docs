@@ -6,16 +6,22 @@
 
 !!! warning "Don't store files on scratch."
      [Scratch is not backed up](../file-system/file-storage.md/#quotas), 
-     and files more than 30 days old are deleted.
+     and files older than 30 days old are deleted.
 
 !!! warning "Don't overrun your file storage quota."
-     If you fill your allotted disk space, weird errors result.
+     If you fill your allotted disk space, weird errors occur.
      Keep an eye on your [disk space usage](../file-system/file-storage.md/#quotas).
 
 !!! warning "Don't waste your compute resources."
      Use interactive sessions to test your workflow.
      Before a big batch job, run test jobs to make sure your code works.
 
+!!! warning "Capture job output and error logs"
+    To debug failed or unexpected jobs, it can be helpful to capture output and error streams
+    separately. To do so, add these lines to the slurm job script:
+    #SBATCH --output=job_%j.out
+    #SBATCH --error=job_%j.err
+    
 !!! warning "Using modules"
      Most software on Roar is managed through the software stack and loaded
      using modules. Please check [Modules](../software/modules.md)

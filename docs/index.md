@@ -28,6 +28,8 @@ ICDS also provides training sessions and open office hours;
 check the [ICDS Events page][events] for upcoming offerings.
 [events]: https://www.icds.psu.edu/news-events/events/
 
+This page also lists other events of interest to the computational and data sciences community.
+
 ## Policies
 
 [ICDS-related University polices][policies] regulate data protection,

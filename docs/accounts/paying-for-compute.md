@@ -34,6 +34,8 @@ More expensive nodes cost more to use, reflecting their greater value.
 Current prices for credit accounts and allocations are [here][prices].
 [prices]: https://www.icds.psu.edu/roar-restricted-and-roar-collab-price-lists-2025/#
 
+If you're interested in purchasing credits or allocations, contact us with your requirements at <icds@psu.edu>.
+
 ## Monitoring usage
 
 The `get_balance` command displays current balances for both credit accounts and allocations.
