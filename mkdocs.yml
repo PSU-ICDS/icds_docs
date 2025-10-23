@@ -39,12 +39,13 @@ nav:
         - getting-started/compute-hardware.md
         - getting-started/system-outages.md
     - Getting started: 
-	    - getting-started/glossary.md
+        - getting-started/glossary.md
         - getting-started/tips-for-beginners.md
         - getting-started/connecting.md
     - Accounts:
         - accounts/paying-for-compute.md
-        - accounts/managing-accounts.md
+        - accounts/managing-compute.md
+        - accounts/managing-storage.md
     - File system:
         - file-system/file-storage.md
         - file-system/managing-files.md
@@ -59,7 +60,7 @@ nav:
         - packages/python.md
         - packages/r-libraries.md
         - packages/anaconda.md
-    - Running Jobs:
+    - Running jobs:
         - running-jobs/portal.md
         - running-jobs/slurm-scheduler.md
         - running-jobs/interactive-jobs.md
