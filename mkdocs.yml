@@ -32,7 +32,7 @@ markdown_extensions:
 plugins:
 #    - bootstrap4-blockquotes
 #    - bootstrap4-tables
-
+ 
 nav:
     - Getting started: 
         - getting-started/glossary.md
