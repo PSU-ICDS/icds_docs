@@ -5,7 +5,7 @@
 It is part of **Open OnDemand**, a user-friendly interface for HPC systems, and is built using the **Ruby on Rails** web framework.
 
 
-### Why Use Job Composer?
+### Why use Job Composer?
 
 Many users follow a common workflow:
 1. Copy a previous job directory (their own or a colleague’s)

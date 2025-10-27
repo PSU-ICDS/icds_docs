@@ -15,10 +15,10 @@ and list approximate transfer rates for large files.
 | Roar &harr; Archive | Globus | 50 |
 | Roar &rarr; OneDrive | Firefox or Globus | 50 | 
 | OneDrive &rarr; Roar | Firefox or Globus | 10 |
-| Roar &harr; laptop | Portal Files menu (< 1GB) | 25 |
+| Roar &harr; laptop | Portal Files Menu (< 1GB) | 25 |
 | Roar &harr; laptop | Cyberduck or FileZilla | 15 |
 | Roar &harr; laptop | Globus Personal Collection (> 1GB) | 50 |
-| OneDrive &harr; laptop | web access |20 |
+| OneDrive &harr; laptop | Web Access |20 |
 
 (Transfer rates may be slower, 
 if limited by intervening network or storage speeds.)
@@ -119,19 +119,6 @@ possible solutions.
 	Collections inside group storage with non-standard naming conventions 
 	(where $USER (above) is not a Penn State ID) will not work by default. 
 	Please contact us to set up an exception.
-
-## Firefox
-
-With Firefox, you can access OneDrive and other such sites,
-and upload and download files. <br>
-From the [Portal Interactive Desktop][portalID],
-select Web Browser from the Applications menu.
-[portalID]: ../getting-started/connecting.md#portal
-
-Firefox is also available via `ssh -X`, after loading its module with 
-`module load firefox`.   
-From the command line, execute `firefox`.
-
 
 ## sftp
 
