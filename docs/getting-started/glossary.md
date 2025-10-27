@@ -9,6 +9,7 @@ A computing cluster is a collection of interconnected computers (nodes) that col
 ## Node
 A Node is a single physical computer in the Roar cluster.  
 Each node has its own:
+
 - CPU(s)
 - Memory (RAM)
 - Local storage (usually temporary)
@@ -25,11 +26,13 @@ A Core is a single processing unit within a CPU. Modern CPUs have multiple cores
 Cores execute tasks in parallel.  
 When you request “8 cores,” you’re asking for 8 processing units — possibly on one node or across nodes.
 Note:  
+
 - 1 core = 1 CPU thread (unless hyper-threading is enabled)
 - Parallel performance depends on your application’s ability to utilize multiple cores.
 
 ## GPU
 A Graphics Processing Unit (GPU) is a specialized processor for parallel computation optimized for parallel computations, such as those used in machine learning, scientific simulations, and data visualization. The Roar cluster offers several GPU types:
+
 - **A100**, **A40** — high-end, expensive
 - **V100**, **P100** — mid-range, cost-effective
 
@@ -53,6 +56,8 @@ See [File Storage & Filesystems](../file-system/file-storage.md) for full detail
 Environment modules provide a flexible system for managing software environments on the Roar cluster. Modules allow users to load, unload, or switch between software packages, versions, or dependencies, ensuring the correct tools and libraries are available for specific tasks.
 
 Example: To load Anaconda, run the command `module load anaconda` in the terminal. To list all available modules, use `module avail`. To unload Anaconda, run `module unload anaconda`, and to remove all modules and start fresh, run `module purge`.
+
+See [Modules](../software/modules.md) for more detailed information.
 
 ## Environment Variables
 Environment Variables are dynamic key-value pairs that configure the behavior of programs and scripts in the Roar cluster’s environment. They store information such as file paths, software settings, or system configurations, enabling seamless interaction with the cluster’s tools and resources.
