@@ -64,6 +64,12 @@ Environment Variables are dynamic key-value pairs that configure the behavior of
 Example: To add a custom directory to the PATH variable, run `export PATH=$PATH:/home/username/bin` in the terminal. To view all current environment variables, use the command `printenv`
 
 Note: Environment variables are often set automatically by environment modules but can be customized for specific needs.
+Since Roar uses RHEL, it sets the following variables for you - 
+
+- $USER is your Penn State User ID. 
+- $HOME points to your home directory (/storage/home/$USER).
+- $WORK points to your work directory (/storage/work/$USER).
+- $SCRATCH points to your scratch directory (/storage/scratch/$USER).
 
 ## Batch Jobs
 A batch job is a non-interactive computational task submitted to the Roar cluster for execution without requiring user intervention. Managed by the Slurm workload manager, batch jobs are defined in scripts that specify commands, resource requirements, and output handling. The scheduler allocates resources and runs the job when available, making batch jobs ideal for long-running or resource-intensive computations.
