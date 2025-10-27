@@ -34,14 +34,14 @@ plugins:
 #    - bootstrap4-tables
 
 nav:
-    - System details:
-        - getting-started/system-overview.md
-        - getting-started/compute-hardware.md
-        - getting-started/system-outages.md
     - Getting started: 
         - getting-started/glossary.md
         - getting-started/tips-for-beginners.md
         - getting-started/connecting.md
+    - System details:
+        - system/system-overview.md
+        - system/compute-hardware.md
+        - system/system-outages.md
     - Accounts:
         - accounts/paying-for-compute.md
         - accounts/managing-compute.md
