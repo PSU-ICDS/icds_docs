@@ -60,6 +60,11 @@ lists directory sizes in order from large to small
 (the output of du is "piped" to [sort][sort]).
 [sort]: https://man7.org/linux/man-pages/man1/sort.1.html
 
+To include hidden files and directories as well, use:
+``
+du -sch .[!.]* * | sort -h -r
+``
+
 ## Quota issues in home
 
 Many user configuration files and packages are stored by default in `home`.
