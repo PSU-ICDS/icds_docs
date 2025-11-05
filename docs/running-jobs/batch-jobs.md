@@ -105,15 +105,36 @@ For a repository of example batch workflows, go [here][repository].
 
 ## Queues
 
-The directive `#SBATCH --qos=<queue>` submits batch jobs to a queue, 
-or QoS = "Quality of Service" in SLURM-speak.
-(Queues are like classes of service on an airline flight:
-first, business, economy,...)
+In SLURM, what are commonly called "queues" are technically known as Partitions. A partition is a logical grouping of compute nodes (servers) that your job can run on.
 
-Roar has five queues:  open, normal, debug, express, and interactive.  
+Partitions are the primary way resources are organized. They are used to manage different hardware types, control which users can access which machines, and set default limits.
+
+You must specify a partition to tell SLURM where your job should run. This is done with the #SBATCH directive:
+
+```bash
+#SBATCH --partition=<partition_name>
+```
+
+To see a list of all available partitions and their status, you can use the sinfo command - 
+
+```bash
+sinfo --Format=features:40,nodelist:20,cpus:10,memory:10,partition
+```
+
+!!!warning "Bypass queue for Credit Allocations" 
+	For Credit allocations, to bypass the wait time
+	for your job. You can specify "--qos=express". This will place your job into our priority queue
+	 at an increased cost (2x that of normal credit jobs)
+
+
+## Quality of Service (QOS)
+
+While a partition is where your job runs, Quality of Service (QOS) is how your job is treated. On Roar, most QOS settings are applied automatically based on the partition you choose. For example, submitting to the open partition automatically assigns the open QOS.
+
+Roar has five QoS :  open, normal, debug, express, and interactive.  
 Each serves a different purpose, and has different restrictions.
 
-| queue (QOS) | description | restrictions |
+| QOS | description | restrictions |
 | ---- | ---- | ---- |
 | open | no-cost access | Portal and old hardware only, <br> pre-emptible, time < 2 days |
 | normal | for "normal" jobs | time < 14 days |
@@ -121,7 +142,7 @@ Each serves a different purpose, and has different restrictions.
 | express | for rush jobs; <br> 2x price | time < 14 days |
 | interactive | for Portal jobs | time < 7 days |
 
-To get detailed information about queues, use `sacctmgr list qos`.  
+To get detailed information about QoS, use `sacctmgr list qos`.  
 This command has a lot of [options](https://slurm.schedmd.com/sacctmgr.html),
 and works best with formatting:  an example is
 ```
@@ -138,12 +159,6 @@ which produces output like this:
    debug        1         1 04:00:00    20000     open     1.000000
  express                                10000     open     2.000000
 ```
-
-!!!warning "Bypass queue for Credit Allocations" 
-	For Credit allocations, to bypass the wait time
-	for your job. You can specify "--qos=express". This will place your job into our priority queue
-	 at an increased cost (2x that of normal credit jobs)
-
 
 ## Resource usage
 
