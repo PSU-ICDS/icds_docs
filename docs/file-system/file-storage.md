@@ -12,8 +12,8 @@ Group space can be purchased by PIs in 5 TB increments.
 By default, group members have read access to all files in group. 
 - **scratch**  – temporary storage area intended for large files. 
 
-!!! warning "Temporary Scratch Storage - Read Carefully"
-Scratch is not backed up, and any files older than 30 days will be *automatically deleted*. Users are responsible for ensuring important data is copied elsewhere before expiration.
+!!! danger "Temporary Scratch Storage - Read Carefully"
+     Scratch is not backed up, and any files older than 30 days will be *automatically deleted*. Users are responsible for ensuring important data is copied elsewhere before expiration.
 
 Files in home, work, and group are backed up by a sequence of daily "snapshots", 
 which are kept for 90 days. 
@@ -59,6 +59,11 @@ du -sh * | sort -h -r
 lists directory sizes in order from large to small
 (the output of du is "piped" to [sort][sort]).
 [sort]: https://man7.org/linux/man-pages/man1/sort.1.html
+
+To include hidden files and directories as well, use:
+``
+du -sch .[!.]* * | sort -h -r
+``
 
 ## Quota issues in home
 

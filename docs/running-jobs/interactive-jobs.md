@@ -44,6 +44,18 @@ To launch a session, navigate to the Roar Portal and select **Interactive Apps >
 
 For a detailed guide on how to choose your Account, Queue, number of cores, memory, and run time on this form, please see the **[Selecting Resources](portal.md#selecting-resources)** section of our Portal documentation.
 
+## Firefox
+
+With Firefox, you can access OneDrive and other such sites,
+and upload and download files. <br>
+From the [Portal Interactive Desktop][portalID],
+select Web Browser from the Applications menu.
+[portalID]: ../getting-started/connecting.md#portal
+
+Firefox is also available via `ssh -X`, after loading its module with 
+`module load firefox`.   
+From the command line, execute `firefox`.
+
 ## VirtualGL
 
 For applications that produce graphical output 
