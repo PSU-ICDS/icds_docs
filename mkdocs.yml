@@ -28,6 +28,7 @@ markdown_extensions:
     - admonition
     - pymdownx.details
     - pymdownx.superfences
+    - attr_list
 
 plugins:
 #    - bootstrap4-blockquotes
@@ -70,4 +71,6 @@ nav:
     - Roar restricted:
         - roar-restricted/accessing-rr.md
         - roar-restricted/data-transfer.md
+    - Getting help:
+        - getting-help/getting-help.md
 
