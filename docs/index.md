@@ -28,6 +28,8 @@ ICDS also provides office hours and on-demand support meetings;
 check the [Getting Help](getting-help/getting-help.md#office-hours) page for times 
 and connection details.
 
+This page also lists other events of interest to the computational and data sciences community.
+
 ## Policies
 
 [ICDS-related University polices][policies] regulate data protection,

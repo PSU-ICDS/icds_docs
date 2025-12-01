@@ -33,17 +33,20 @@ markdown_extensions:
 plugins:
 #    - bootstrap4-blockquotes
 #    - bootstrap4-tables
-
+ 
 nav:
     - Getting started: 
-        - getting-started/system-overview.md
-        - getting-started/compute-hardware.md
+        - getting-started/glossary.md
         - getting-started/tips-for-beginners.md
         - getting-started/connecting.md
-        - getting-started/system-outages.md
+    - System details:
+        - system/system-overview.md
+        - system/compute-hardware.md
+        - system/system-outages.md
     - Accounts:
         - accounts/paying-for-compute.md
-        - accounts/managing-accounts.md
+        - accounts/managing-compute.md
+        - accounts/managing-storage.md
     - File system:
         - file-system/file-storage.md
         - file-system/managing-files.md
@@ -58,14 +61,16 @@ nav:
         - packages/python.md
         - packages/r-libraries.md
         - packages/anaconda.md
-    - Running Jobs:
+    - Running jobs:
         - running-jobs/portal.md
         - running-jobs/slurm-scheduler.md
         - running-jobs/interactive-jobs.md
         - running-jobs/batch-jobs.md
+        - running-jobs/job-composer.md
         - running-jobs/hardware-requests.md
     - Roar restricted:
         - roar-restricted/accessing-rr.md
         - roar-restricted/data-transfer.md
     - Getting help:
         - getting-help/getting-help.md
+

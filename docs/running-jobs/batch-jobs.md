@@ -105,15 +105,36 @@ For a repository of example batch workflows, go [here][repository].
 
 ## Queues
 
-The directive `#SBATCH --qos=<queue>` submits batch jobs to a queue, 
-or QoS = "Quality of Service" in SLURM-speak.
-(Queues are like classes of service on an airline flight:
-first, business, economy,...)
+In SLURM, what are commonly called "queues" are technically known as Partitions. A partition is a logical grouping of compute nodes (servers) that your job can run on.
 
-Roar has five queues:  open, normal, debug, express, and interactive.  
+Partitions are the primary way resources are organized. They are used to manage different hardware types, control which users can access which machines, and set default limits.
+
+You must specify a partition to tell SLURM where your job should run. This is done with the #SBATCH directive:
+
+```bash
+#SBATCH --partition=<partition_name>
+```
+
+To see a list of all available partitions and their status, you can use the sinfo command - 
+
+```bash
+sinfo --Format=features:40,nodelist:20,cpus:10,memory:10,partition
+```
+
+!!!warning "Bypass queue for Credit Allocations" 
+	For Credit allocations, to bypass the wait time
+	for your job. You can specify "--qos=express". This will place your job into our priority queue
+	 at an increased cost (2x that of normal credit jobs)
+
+
+## Quality of Service (QOS)
+
+While a partition is where your job runs, Quality of Service (QOS) is how your job is treated. On Roar, most QOS settings are applied automatically based on the partition you choose. For example, submitting to the open partition automatically assigns the open QOS.
+
+Roar has five QoS :  open, normal, debug, express, and interactive.  
 Each serves a different purpose, and has different restrictions.
 
-| queue (QOS) | description | restrictions |
+| QOS | description | restrictions |
 | ---- | ---- | ---- |
 | open | no-cost access | Portal and old hardware only, <br> pre-emptible, time < 2 days |
 | normal | for "normal" jobs | time < 14 days |
@@ -121,7 +142,7 @@ Each serves a different purpose, and has different restrictions.
 | express | for rush jobs; <br> 2x price | time < 14 days |
 | interactive | for Portal jobs | time < 7 days |
 
-To get detailed information about queues, use `sacctmgr list qos`.  
+To get detailed information about QoS, use `sacctmgr list qos`.  
 This command has a lot of [options](https://slurm.schedmd.com/sacctmgr.html),
 and works best with formatting:  an example is
 ```
@@ -164,6 +185,23 @@ generates a report in the batch output file of resources used.
 (`$SLURM_JOB_ID` is a variable that returns the jobID of the batch job.)
 As in the example, sacct takes formatting options to control what it prints;
 `sacct --helpformat` lists all the options.
+
+## Selecting the Number of Nodes and Cores
+
+Choosing the right number of cores (--ntasks) and nodes (--nodes) depends on how your software is designed to run in parallel. It's important to understand if your job is built for a distributed environment or a shared-memory environment.
+
+Most parallel software is multi-threaded, meaning it's designed to run on a single computer and use multiple cores that share the same memory. If this describes your workflow, you should almost always set --nodes=1 and then set --ntasks to the number of independent tasks your job can run at the same time. Requesting more cores than your application can actually use will not speed it up and only wastes resources.
+
+ Some advanced applications (often using MPI) are designed to run across multiple, separate computers at once, communicating over the network. Only if your software is specifically built for this should you set --nodes to a value greater than one.
+
+
+## Selecting Memory for Your Job
+
+Correctly estimating memory (--mem) can be tricky, but it is critical for ensuring your job runs successfully. Requesting too little will cause your job to fail, while requesting too much can increase your queue time and cost.
+
+A good starting point is to calculate the size of the data your application needs to load into memory at one time. Once you have an estimate, it is safe practice to request about 20% more memory than you think you need. This extra buffer accommodates the operating system and other side processes that run alongside your job.
+
+The most reliable method is to run a short test job with a generous memory allocation and then check the actual peak usage. You can use the sacct command after your job finishes to see the MaxRSS (Maximum Resident Set Size). This will tell you precisely how much memory your job used, allowing you to make very accurate requests for future runs.
 
 ## Timing jobs
 
