@@ -35,13 +35,3 @@ Current prices for credit accounts and allocations are [here][prices].
 [prices]: https://www.icds.psu.edu/roar-restricted-and-roar-collab-price-lists-2025/#
 
 If you're interested in purchasing credits or allocations, contact us with your requirements at <icds@psu.edu>.
-
-## Monitoring usage
-
-The `get_balance` command displays current balances for both credit accounts and allocations.
-To learn how to view details for specific accounts and people, use `get_balance --help`.
-
-!!! warning "Request only the hardware you actually need."
-	Jobs paid for by credit accounts will be charged 
-	for the requested hardware, for the actual runtime of the job,
-	whether or not it is actually used.
