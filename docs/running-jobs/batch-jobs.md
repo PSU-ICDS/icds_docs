@@ -3,7 +3,7 @@
 
 For compute jobs that take hours or days to run,
 instead of sitting at the terminal waiting for the results,
-we submit a "batch job" to the queue manager,
+we submit a "batch job" to the workload manager,
 which runs the job when resources are available.
 
 ## Slurm commands
@@ -38,7 +38,7 @@ with a preamble of Slurm [resource directives](slurm-scheduler.md/#resource-dire
 `#SBATCH...` to specify
 
 - an **account** or **allocation** to charge;
-- a **queue** (qos) to submit the job to;
+- a **partition** (qos) to submit the job to;
 - a **partition** (type of nodes) to run on;
 - nodes, cores, memory, GPUs, and time;
 - and other job-related parameters.
@@ -86,15 +86,16 @@ sbatch --export=VAR1=arg1, VAR2=arg2 myScript.sh
 In the script, `$VAR1` and `$VAR2` are set to `arg1` and `arg2`.
 
 For more information on partitions, see [Partitions][partitions].  
-For more information on hardware requests, see [Hardware requests][hardware].
-[partitions]: ../getting-started/compute-hardware.md#partitions
-[hardware]: hardware-requests.md
+For more information on resource requests, see [Resource requests][resource-requests].
+[partitions]: ./resource-requests.md#partitions
+[resource-requests]: resource-requests.md
 
-For a repository of example batch workflows, go [here][repository].
+!!! tip "Job Repository"
+    For a repository of example batch workflows, go [here][repository].
 [repository]: https://github.com/PSU-ICDS/rc-example-jobs
 
-!!!warning "To use the open queue, use --partition=open"
-	Unpaid jobs under the open queue cannot specify a hardware partition,
+!!!warning "To use the open partition, use --partition=open"
+	Unpaid jobs under the open partition cannot specify a hardware partition,
 	but will be assigned to available older CPU hardware.
 
 !!!warning "To use a paid allocation, use --partition=sla-prio"
@@ -102,6 +103,8 @@ For a repository of example batch workflows, go [here][repository].
 	high-memory, or interactive partitions.
 	Instead, --partition=sla-prio tells the job
 	to use the hardware in your allocation.
+<<<<<<< HEAD
+=======
 
 ## Queues
 
@@ -229,3 +232,4 @@ To time a single command in a batch file, use [`time <command>`][time],
 which will write timing information to standard output.
 [time]: https://www.man7.org/linux/man-pages/man1/time.1.html
 
+>>>>>>> 7aee012 (replaced SLURM with Slurm and removed open partition information)
