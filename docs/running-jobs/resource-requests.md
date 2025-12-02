@@ -1,4 +1,4 @@
-# Hardware requests 
+# Resource requests 
 
 Users with paid [credit accounts or allocations](../accounts/paying-for-compute.md)
 can request GPU nodes,
@@ -25,11 +25,9 @@ salloc -A <account> -p standard --gres=gpu:a100:1 ...
 
 If the job is paid by an allocation, use `-p sla-prio` instead of `-p standard`.
 
-For information on available GPU nodes, see [Compute hardware][hardware].
-For the names of different GPU types (a100, a40, v100, p100,...)
+For information on available GPU nodes and for the names of different GPU types (a100, a40, v100, p100,...)
 see [Hardware info][hardwareinfo].
-[hardware]: ../getting-started/compute-hardware.md
-[hardwareinfo]: hardware-requests.md/#hardware-info
+[hardwareinfo]: resource-requests.md/#hardware-info
 
 !!! warning "Make sure your application is GPU-enabled."
     If your application does not use GPUs,   
@@ -119,4 +117,94 @@ salloc -N 1 -n 4 -A <alloc> -C <feature> -t 1:00:00
 	For paid allocations, constraint directives
 	must be consistent with the terms of the allocation.
 	For credit accounts, any hardware can be requested.
+
+## Partitions
+
+In Slurm, what are commonly called "queues" are technically known as Partitions. A partition is a logical grouping of compute nodes (servers) that your job can run on.
+
+Partitions are the primary way resources are organized. They are used to manage different hardware types, control which users can access which machines, and set default limits.
+
+You must specify a partition to tell Slurm where your job should run. This is done with the `#SBATCH` directive:
+
+```bash
+#SBATCH --partition=<partition_name>
+```
+
+To see a list of all available partitions and their status, you can use the `sinfo` command:
+
+```bash
+sinfo --Format=features:40,nodelist:20,cpus:10,memory:10,partition
+```
+
+!!! warning "Bypass wait time for Credit Allocations" 
+	For Credit allocations, to bypass the wait time
+	for your job, you can specify `--qos=express`. This will place your job into our priority list
+	 at an increased cost (2x that of normal credit jobs).
+    **Note:** Ensure approval of account owner before using this option.
+
+## Quality of service (QOS)
+
+While a partition is where your job runs, Quality of Service (QOS) is how your job is treated. On Roar, most QOS settings are applied automatically based on the partition you choose. For example, submitting to the open partition automatically assigns the open QOS.
+
+Roar has five QoS:  open, normal, debug, express, and interactive.  
+Each serves a different purpose, and has different restrictions.
+
+| QOS | description | restrictions |
+| ---- | ---- | ---- |
+| open | no-cost access | Portal and old hardware only, <br> pre-emptible, time < 2 days |
+| normal | for "normal" jobs | time < 14 days |
+| debug	| for testing, debugging, <br> quick analysis | one at a time, time < 4 hours |
+| express | for rush jobs; <br> 2x price | time < 14 days |
+| interactive | for Portal jobs | time < 7 days |
+
+To get detailed information about QoS, use `sacctmgr list qos`.  
+This command has a lot of [options](https://slurm.schedmd.com/sacctmgr.html),
+and works best with formatting:  an example is
+```bash
+sacctmgr list qos format=name%8,maxjobs%8,maxsubmitjobsperuser%9,maxwall%8,\
+priority%8,preempt%8,usagefactor%12 names=open,ic,debug,express,normal
+```
+which produces output like this:
+```
+    Name  MaxJobs MaxSubmit  MaxWall Priority  Preempt  UsageFactor
+-------- -------- --------- -------- -------- -------- ------------
+  normal                                 1000     open     1.000000
+    open      100       200                 0              1.000000
+      ic        1                           0              1.000000
+   debug        1         1 04:00:00    20000     open     1.000000
+ express                                10000     open     2.000000
+```
+
+## Optimizing usage
+
+For credit accounts, it is helpful to estimate how many credits a batch job would use before you actually run it. For this, use `job_estimate`:
+
+```bash
+job_estimate <submit file>
+```
+
+### Selecting nodes, cores, and memory
+
+Choosing the right resources is critical for efficiency.
+
+*   **Nodes and Cores**: Most software is multi-threaded (runs on one computer, multiple cores). Set `--nodes=1` and `--ntasks` to the number of cores needed. Only request multiple nodes if your software uses MPI for distributed computing.
+*   **Memory**: Requesting too little memory causes failure; too much wastes resources. Start by estimating your data size and add a 20% buffer.
+
+#### Timing and efficiency
+
+Test new workflows with short jobs before submitting long ones. You can time jobs using the `time` command or `date` commands in your script.
+
+To check the efficiency of a completed job, use the `seff` command:
+
+```bash
+seff <jobid>
+```
+
+This will report the CPU and memory efficiency, helping you adjust future requests.
+
+You can also use `sacct` for detailed resource usage:
+
+```bash
+sacct -j $SLURM_JOB_ID --format=JobID,JobName,MaxRSS,Elapsed,TotalCPU,State
+```
 

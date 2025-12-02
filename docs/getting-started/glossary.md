@@ -41,7 +41,7 @@ GPUs are only available to:
 - Allocations with GPU access
 
 Request via `--gres=gpu:<type>:<count>` in Slurm.  
-See [Hardware Requests](../running-jobs/hardware-requests.md) for more detailed information on GPUs.
+See [Resource Requests](../running-jobs/resource-requests.md) for more detailed information on GPUs.
 
 ## Partition
 A partition is a logical grouping of nodes in the Roar cluster, defined by shared access policies, time limits, and billing rates. Partitions allow the system to prioritize and allocate resources based on job requirements and user privileges.

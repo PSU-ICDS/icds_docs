@@ -66,8 +66,7 @@ nav:
         - running-jobs/slurm-scheduler.md
         - running-jobs/interactive-jobs.md
         - running-jobs/batch-jobs.md
-        - running-jobs/job-composer.md
-        - running-jobs/hardware-requests.md
+        - running-jobs/resource-requests.md
     - Roar restricted:
         - roar-restricted/accessing-rr.md
         - roar-restricted/data-transfer.md
