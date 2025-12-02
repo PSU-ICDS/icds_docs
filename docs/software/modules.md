@@ -8,13 +8,13 @@ To manage conflicts that arise from different applications requiring
 different versions of libraries, Roar uses the [Lmod Environment Module
 System](https://lmod.readthedocs.io/en/latest/).
 
-## Finding and Checking Software
+## Finding software
 
 !!! note "Check for existing software"
 	Before using a module, check if the software is already
 	available or if it needs to be loaded.
 
-### Check if an application is preloaded
+### Check for preloaded applications
 
 Use the `which` command. If the application is on your `$PATH`, `which`
 will return the full path to the executable.
@@ -23,7 +23,7 @@ will return the full path to the executable.
 which <appName>
 ```
 
-### Search the entire module library
+### Search available modules
 
 If `which` doesn't find the application, use `module spider` to search
 all available modules, including those that are currently hidden due to
@@ -33,7 +33,7 @@ environment constraints.
 module spider <moduleName>
 ```
 
-## Essential Module Commands
+## Module commands
 
 These commands are the core of interacting with **Lmod**.
 
@@ -49,7 +49,7 @@ These commands are the core of interacting with **Lmod**.
 | `module show <name>` | Displays environment variables, paths, and changes the module file executes upon loading. | `module show hdf5` |
 
 
-### Identifying the Default Version
+### Identifying default versions
 
 When you run `module avail <name>` or `module spider <name>`, the
 default version for a module is often indicated by a special marker
@@ -76,13 +76,13 @@ To force usage of the old stack, you can unload the new stack with the command
 `module unuse /storage/icds/sw8/modulefiles`.
 
 
-## Advanced Module Concepts
+## Advanced module concepts
 
 !!! tip "Compilers and Dependencies"
 	Understanding compiler and dependency relationships is
 	crucial for stability and reproducibility.
 
-### Compiler and Dependency Control
+### Compiler and dependency control
 
 Many scientific applications (like MPI, HDF5, or specific libraries) are
 compiled against a specific base compiler (e.g., GCC, Intel, AOCC).\
@@ -99,7 +99,7 @@ module load gcc/11.2.0      # 1. Load the required compiler
 module load openmpi/4.1.3   # 2. Load the application/library built with that compiler
 ```
 
-### Version Control is Essential
+### Version control
 
 Always specify the full module name and version (e.g., `hdf5/1.13.1-gcc-11.2.0`).
 
@@ -110,7 +110,7 @@ Loading a module without a version (e.g., `module load hdf5`) loads the
 	Specifying the version ensures your job runs consistently and reproducibly.
 
 
-## Tips for robust batch scripts
+## Tips for batch scripts
 
 Batch jobs are highly sensitive to their environment. Follow these best practices to 
 ensure reliable execution:
