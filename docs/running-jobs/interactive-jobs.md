@@ -15,7 +15,6 @@ In the above example, `--nodes` or `-N` is the number of nodes,
 [slurm]: slurm-scheduler.md
 
 Option `-A or --account <account>` specifies your paid credit account or allocation;
-to run under the open queue, use `-A open` or `--account open`
 
 To request an interactive job with a GPU, under a credit account use
 
@@ -29,14 +28,14 @@ Under a paid allocation (that includes GPU nodes), use
 salloc --account=<your_allocation> --partition=sla-prio --ntasks=4 --mem=32G --time=01:00:00 --gres=gpu:a100:1
 ```
 
-For more details, see [Hardware requests](hardware-requests.md).
+For more details, see [Hardware requests](resource-requests.md).
 
 !!!warning "GPUs are only available to paid accounts."
 	To request GPUs for an interactive job,
 	you must have a paid credit account,
 	or a paid allocation that includes GPU nodes.
 
-## Interactive Desktop
+## Interactive desktop
 
 The Interactive Desktop provides a full graphical user interface (GUI) that runs on a compute node, similar to a remote desktop. This is ideal for running software with graphical components (e.g., MATLAB, Ansys Workbench) or for managing files and multiple terminal windows in a familiar visual environment.
 
