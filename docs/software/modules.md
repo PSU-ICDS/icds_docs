@@ -141,17 +141,6 @@ srun ./my_parallel_executable
 ```
 
 !!! warning "Avoid loading modules in `.bashrc`"
-	Avoid automatically loading modules in your `~/.bashrc` on HPC systems. This can cause 
-	errors and software conflicts, especially within batch jobs.
-
-*Risks of modifying `~/.bashrc`*:
-
--   **Hidden Dependencies:** Your login environment may conflict with
-    project requirements.
--   **Inconsistent Jobs:** Batch jobs may fail if `~/.bashrc` isn't
-    executed.
--   **Login Delays:** Loading many modules can slow down login time.
-
-**Recommendation:**\
-For batch jobs, always define the environment explicitly within the job
-script.
+	Automatically loading modules in your `~/.bashrc` can cause errors and software conflicts 
+	on HPC systems, including inhibiting login altogether. Always be cautious when making 
+	modifications to your configuration files.
