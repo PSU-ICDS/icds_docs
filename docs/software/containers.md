@@ -1,4 +1,4 @@
-# Apptainer Containers on Roar
+# Using Containers
 
 Containers address the issue of software and dependency complexity by storing the 
 application, its dependencies, and a minimal operating system in a single, portable 
@@ -26,11 +26,11 @@ This guide focuses solely on **using and running** pre-built containers on Roar.
 Building a complex or customized container image is an advanced topic that is not covered 
 comprehensively here.
 
-### Building Containers (Off-Site)
+### Notice on Building Containers
 
-Building an Apptainer image from a definition file (a`pptainer build <image> <definition>``) 
+Building an Apptainer image from a definition file (``apptainer build <image> <definition>``) 
 **cannot be done on Roar**. Building requires **root (administrative) privileges**, which 
-are not available to users on the compute nodes.
+are not available to non-administrative users on ICDS systems.
 
 - You must build your containers on a dedicated, appropriate machine (e.g., your personal 
 workstation or a cloud service) where you have full **root access**.
@@ -50,10 +50,14 @@ container image for experimentation and modification:
 apptainer build --sandbox <sandbox_directory> <container_image>
 ```
 
-!!! warning "Use /tmp for sandbox or build directories"
-	Container build or sandbox directories **must not** be located on the 
-	high-throughput **Scratch filesystem (/scratch/\$USER)**. Instead, use the `/tmp` 
-	directory on the node for temporary, high-speed write operations.
+> ** WARNING **
+>
+> Use /tmp for sandbox or build directories
+>
+>	Container build or sandbox directories **must not** use the 
+>	**Scratch filesystem (/scratch/\$USER)**, as use of scratch may
+>   result in container corruption. Instead, use the `/tmp` 
+>	directory.
 
 ## Container Discovery and Setup
 
@@ -87,9 +91,10 @@ When using containers, be aware of potential **module conflicts** with the host 
 
 - **Do not load environment modules on the host (Roar) that are intended to be used _inside_ 
 the container.**
-- If you load an **R** module on the host system, the host's **R library path** will often 
+- This can lead to unexpected errors or the use of unintended or unexpected software versions.
+	- For example, if you load an **R** module on the host system, the host's **R library path** will often 
 be exposed to and prioritized by the container, overriding the container's built-in R 
-libraries. This can lead to unexpected errors or use of the wrong software versions.
+libraries. 
 - **Best Practice:** Run a `module purge` in your batch script _before_ starting the 
 container to ensure a clean host environment.
 
@@ -129,11 +134,10 @@ module load openmpi/4.1.5
 srun apptainer exec /storage/work/\$USER/images/my_mpi_code.sif /usr/bin/my_parallel_executable
 ```
 
-## Further Container Learning Resources
+## More Information
 
-For a more comprehensive understanding of container technology and advanced usage, 
-consider these external resources:
+For a more comprehensive understanding of container technology and advanced usage, consider these external resources:
 
 - **Pawsey Supercomputer Centre:** [Introduction to Containers](https://www.google.com/search?q=https://support.pawsey.org.au/documentation/display/US/Introduction%2Bto%2BContainers)
-- **The Apptainer Documentation:** The official user guide and full command reference.
+- **The Apptainer Documentation:** [The official user guide and full command reference.](https://apptainer.org/docs/user/main/quick_start.html)
 - **HPC Carpentry / Code Refinery:** Look for tutorials on [containerization for scientific research](https://www.google.com/search?q=https://coderefinery.org/lessons/containers/) for hands-on, research-focused examples.
