@@ -1,4 +1,4 @@
-# Using Modules
+# Using modules
 
 The Roar software environment is split into two parts: **preloaded
 software** (available immediately upon login) and **modular software**
@@ -7,8 +7,6 @@ software** (available immediately upon login) and **modular software**
 To manage conflicts that arise from different applications requiring
 different versions of libraries, Roar uses the [Lmod Environment Module
 System](https://lmod.readthedocs.io/en/latest/).
-
-------------------------------------------------------------------------
 
 ## Finding and Checking Software
 
@@ -34,8 +32,6 @@ environment constraints.
 ``` bash
 module spider <moduleName>
 ```
-
-------------------------------------------------------------------------
 
 ## Essential Module Commands
 
@@ -70,6 +66,15 @@ $ module avail python
 
 Running `module load python` will load version **3.10.4**.
 
+### Changing default software stack
+
+In January 2026, ICDS implemented a new software stack based on the Spack package manager. 
+This may cause changes in the dependent version loaded or implentation of a new instalation 
+for existing versions. 
+
+To force usage of the old stack, you can unload the new stack with the command 
+`module unuse /storage/icds/sw8/modulefiles`.
+
 
 ## Advanced Module Concepts
 
@@ -87,61 +92,59 @@ module first.
 When using `module spider`, it will often inform you about dependencies,
 guiding you to the correct module sequence.
 
-!!! example "Example Sequence (Compiler Dependency):**
-	
-	``` bash
-	module load gcc/11.2.0    # 1. Load the required compiler
-	module load openmpi/4.1.3 # 2. Load the application/library built with that compiler
-	```
+Here's an example of a compile dependency being loaded before the desired application: 
+
+``` bash
+module load gcc/11.2.0      # 1. Load the required compiler
+module load openmpi/4.1.3   # 2. Load the application/library built with that compiler
+```
 
 ### Version Control is Essential
 
 Always specify the full module name and version (e.g., `hdf5/1.13.1-gcc-11.2.0`).
 
 Loading a module without a version (e.g., `module load hdf5`) loads the
-**current default**.\ The default version can change over time due to system upgrades.
+**current default**. The default version can change over time due to system upgrades.
 
-!!! warning "Consistent Module Use"
+!!! tip "Consistent Module Use"
 	Specifying the version ensures your job runs consistently and reproducibly.
 
 
-## Tips for Writing Robust Batch Scripts
+## Tips for robust batch scripts
 
-Batch jobs are highly sensitive to their environment.\
-Follow these best practices to ensure reliable execution:
+Batch jobs are highly sensitive to their environment. Follow these best practices to 
+ensure reliable execution:
 
-| Tip | Description | Example |
-|-----|--------------|----------|
-| Use `module purge` first. | Start your script with a clean environment to prevent conflicts. | `module purge` |
-| Load only what is necessary. | Avoid unnecessary modules to reduce conflicts and startup delays. | `module load intel/2021.5.0` |
-| Specify full versions. | Always use the `<name>/<version>` syntax to guarantee reproducibility. | `module load python/3.9.7` |
+- Use `module purge` first. Start your script with a clean environment to prevent conflicts 
+by using the command `module purge`
+- Load only what is necessary. Avoid unnecessary modules to reduce conflicts and startup delays.
+- Specify full versions. Always use the `<name>/<version>` syntax to help ensure reproducibility, 
+such as `module load python/3.9.7` instead of `module load python`
 
 
-!!! example "An example of a Robust Batch Script:**
+Here's an example of a robust batch script using the tips outlined above:
 	
-	``` bash
-	#!/bin/bash
-	#SBATCH --job-name=MyMPIJob
-	#SBATCH --nodes=4
-	
-	# 1. Start with a clean slate
-	module purge
-	
-	# 2. Load dependencies explicitly
-	module load gcc/11.2.0
-	module load openmpi/4.1.3
-	
-	# 3. Execute the job
-	srun ./my_parallel_executable
-	```
+``` bash
+#!/bin/bash
+#SBATCH --job-name=MyMPIJob
+#SBATCH --nodes=4
 
-## Warning on Automatic Loading in `~/.bashrc`
+# 1. Start with a clean slate
+module purge
 
-!!! warning "Avoid loading modules in `.bashrc`
+# 2. Load dependencies explicitly
+module load gcc/11.2.0
+module load openmpi/4.1.3
+
+# 3. Execute the job
+srun ./my_parallel_executable
+```
+
+!!! warning "Avoid loading modules in `.bashrc`"
 	Avoid automatically loading modules in your `~/.bashrc` on HPC systems. This can cause 
 	errors and software conflicts, especially within batch jobs.
 
-### Risks of Modifying `~/.bashrc`
+*Risks of modifying `~/.bashrc`*:
 
 -   **Hidden Dependencies:** Your login environment may conflict with
     project requirements.
@@ -150,7 +153,5 @@ Follow these best practices to ensure reliable execution:
 -   **Login Delays:** Loading many modules can slow down login time.
 
 **Recommendation:**\
-Use `module save` and `module restore` to manage your default
-interactive environment.\
 For batch jobs, always define the environment explicitly within the job
 script.
