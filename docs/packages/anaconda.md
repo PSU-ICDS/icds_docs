@@ -29,7 +29,7 @@ This table summarizes useful Anaconda commands:
 | `conda env create –f env_name.yml` | Loads an environment from a file |
 
 
-## Creating and Managing Environments
+## Creating and managing environments
 
 !!! tip "Anaconda should only be used on compute nodes"
 	Anaconda processes running on the submit nodes are often killed. Please start an 
@@ -41,8 +41,16 @@ To access Anaconda, you will need to load the module:
 ```
 module load anaconda
 ```
+### Deactivating base environment
 
-### Finding Packages
+Older versions of Anaconda create a default base version which can be identified by the 
+text `(base)` at the front of your prompt. Deactivate this environment to avoid issues by 
+using the command `conda deactivate` before loading or creating a new environemnt.
+
+To avoid activating this base environment entirely, you will need to remove the conda init 
+portion found in your `~/.bashrc` file, or [contact ICDS Support for assistance](../getting-help/getting-help.md).
+
+### Finding packages
 
 There are two primary ways to find available packages. the first is to search by package 
 name on the [Anaconda Package Repository](https://anaconda.org). This will display all 
@@ -70,7 +78,7 @@ r-tidyverse                    1.1.1        r3.4.1_0  conda-forge
 ...
 ```
 
-### Creating an Anaconda Environment
+### Creating an environment
 
 Once the module is loaded, we can create a new environment using `conda create`:
 ```
@@ -84,13 +92,13 @@ end of the `conda create` command:
 conda create -n <environmentName> <pkg1> <pkg2> <pkg3>
 ```
 
-### Using an Anaconda Environment
+### Using an environment
 Once an environment is created, you can activate it using `conda activate`:
 ```
 conda activate <environmentName>
 ```
 
-### Installing packages in an Existing Environment
+### Installing packages in an existing environment
 
 To add packages to an existing environment, activate the environment by first loading the 
 Anaconda module and activating the environment (as above). Once active, you can install 
