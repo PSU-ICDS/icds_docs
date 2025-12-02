@@ -66,7 +66,7 @@ Our team of HPC experts will respond as quickly as possible.
 3. If the job/problem is large, **try to reproduce with a smaller/sample example** first.
 
 ## What to Include in the ticket (Minimum)
-- **Descriptive subject line.** Example: `sbatch: error: Batch job submission failed: Invalid account or account/partition combination specified` OR `SLURM: sbatch fails with "permission denied" on login02`
+- **Descriptive subject line.** Example: `sbatch: error: Batch job submission failed: Invalid account or account/partition combination specified` OR `Slurm: sbatch fails with "permission denied" on login02`
 - **What you are trying to achieve.**  
 - **When it started** and **whether it worked before**.  
 - **What you already tried** (and what *did* work).  
@@ -150,14 +150,14 @@ Please include:
     ```
 - Server response (any banner/message shown)
 
-### B) Problems Submitting or Running SLURM Jobs
+### B) Problems Submitting or Running Slurm Jobs
 Please include:
 
 - **Working directory path** where you run the job  
 - **Submission script** content (entire `sbatch` script)  
 - **Exact submission command** you used (e.g., `sbatch job.slurm`)  
-- **Job ID** returned by SLURM  
-- **SLURM diagnostics** (copy/paste text):
+- **Job ID** returned by Slurm  
+- **Slurm diagnostics** (copy/paste text):
  ```bash
      $ sacct -j <JobID> --format=User%8,Account%10,JobID%10,state%10,time%10,elapsed%10,nnodes%3,NTasks%3,ncpus%3,nodelist%40,Reqmem%6,AllocTRES%36,Reason%30 
  ```

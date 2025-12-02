@@ -85,7 +85,7 @@ But output and error filenames can be customized:
 `#SBATCH -e = <file>` redirects standard error to `<file>`,
 and ` #SBATCH -o` likewise redirects standard output.
 
-SLURM variables `%x` (job name) and `%u` (username)
+Slurm variables `%x` (job name) and `%u` (username)
 are useful for this purpose. It's a good practice to name your output files to keep your directory organized. 
 For example,
 

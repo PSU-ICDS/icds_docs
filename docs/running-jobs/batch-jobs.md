@@ -8,9 +8,9 @@ which runs the job when resources are available.
 
 ## Slurm commands
 
-On Roar, the queue manager is SLURM (Simple Linux Utility for Resource Management).  
+On Roar, the queue manager is Slurm (Simple Linux Utility for Resource Management).  
 Besides `salloc` for [interactive jobs](interactive-jobs.md)),
-the basic SLURM commands are:
+the basic Slurm commands are:
 
 | Command | Effect|
 | ---- | ---- | 
@@ -18,11 +18,11 @@ the basic SLURM commands are:
 | `squeue -u <userid>` | check on jobs submitted by `<userid>` |
 | `scancel <jobID>` | cancel the job | 
 
-When you execute `sbatch myJob.sh`, SLURM responds with something like
+When you execute `sbatch myJob.sh`, Slurm responds with something like
 ```
 Submitted batch job 25789352
 ```
-To check on your jobs, execute `squeue -u <userID>`; SLURM responds with something like
+To check on your jobs, execute `squeue -u <userID>`; Slurm responds with something like
 ```
 JOBID		PARTITION	NAME		USER	ST	TIME	NODES	NODELIST(REASON)
 25789352	open 		myJob.sh	abc123	R	1:18:31	1		p-sc-2008
@@ -32,7 +32,7 @@ To cancel the job, execute `scancel 25789352`.
 
 ## Batch scripts
 
-Jobs submitted to SLURM are in the form of a "batch script". 
+Jobs submitted to Slurm are in the form of a "batch script". 
 A batch script is a shell script that executes commands, 
 with a preamble of Slurm [resource directives](slurm-scheduler.md/#resource-directives) 
 `#SBATCH...` to specify
@@ -105,11 +105,14 @@ For a repository of example batch workflows, go [here][repository].
 
 ## Queues
 
-In SLURM, what are commonly called "queues" are technically known as Partitions. A partition is a logical grouping of compute nodes (servers) that your job can run on.
+In Slurm, what are commonly called "queues" are technically known as Partitions. A 
+partition is a logical grouping of compute nodes (servers) that your job can run on.
 
-Partitions are the primary way resources are organized. They are used to manage different hardware types, control which users can access which machines, and set default limits.
+Partitions are the primary way resources are organized. They are used to manage different 
+hardware types, control which users can access which machines, and set default limits.
 
-You must specify a partition to tell SLURM where your job should run. This is done with the #SBATCH directive:
+You must specify a partition to tell Slurm where your job should run. This is done with 
+the #SBATCH directive:
 
 ```bash
 #SBATCH --partition=<partition_name>
@@ -136,11 +139,10 @@ Each serves a different purpose, and has different restrictions.
 
 | QOS | description | restrictions |
 | ---- | ---- | ---- |
-| open | no-cost access | Portal and old hardware only, <br> pre-emptible, time < 2 days |
 | normal | for "normal" jobs | time < 14 days |
 | debug	| for testing, debugging, <br> quick analysis | one at a time, time < 4 hours |
 | express | for rush jobs; <br> 2x price | time < 14 days |
-| interactive | for Portal jobs | time < 7 days |
+| interactive | for Portal jobs | one at a time, 4 core and 64 GB max, time < 48 hours |
 
 To get detailed information about QoS, use `sacctmgr list qos`.  
 This command has a lot of [options](https://slurm.schedmd.com/sacctmgr.html),
@@ -154,7 +156,6 @@ which produces output like this:
     Name  MaxJobs MaxSubmit  MaxWall Priority  Preempt  UsageFactor
 -------- -------- --------- -------- -------- -------- ------------
   normal                                 1000     open     1.000000
-    open      100       200                 0              1.000000
       ic        1                           0              1.000000
    debug        1         1 04:00:00    20000     open     1.000000
  express                                10000     open     2.000000
@@ -172,7 +173,7 @@ job_estimate <submit file>
 which reports the cost in credits.
 For more on `job_estimate`, execute `job_estimate --help`.
 
-The SLURM command [`sacct`][sacct]
+The Slurm command [`sacct`][sacct]
 reports the resources used by a completed batch job,
 which helps users learn what resources to request next time.
 At the bottom of a batch script, the command

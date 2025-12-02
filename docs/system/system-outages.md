@@ -14,13 +14,13 @@ The outage workflow has been updated to make use of serviceNOW and provide track
 
 ## Post Outage Test
 
-Post outage ICDS Engineers go through a series of test to show basic connectivity and functionaloty of services (i.e. job submission, SLURM, OOD portal, Globus access, science gateways). This will be followed by application test detailed below. 
+Post outage ICDS Engineers go through a series of test to show basic connectivity and functionaloty of services (i.e. job submission, Slurm, OOD portal, Globus access, science gateways). This will be followed by application test detailed below. 
 
 Includes sample test for the following applications:
 
  - C
  - alltest (MPI network latency mapping test)
- - bash / SLURM submission testing
+ - bash / Slurm submission testing
  - comsol
  - cpp
  - fluent
