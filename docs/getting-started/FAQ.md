@@ -53,7 +53,7 @@ This error means you are trying to read, write, or execute a file or directory t
 
 ---
 
-## Quota issues in home
+### Quota issues in home
 
 Many user configuration files and packages are stored by default in `home`.
 If these become too large, they can exceed the quota and cause errors. 
