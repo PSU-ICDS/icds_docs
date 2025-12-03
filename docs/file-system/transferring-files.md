@@ -30,7 +30,7 @@ if limited by intervening network or storage speeds.)
 Below is a plot of observed file transfer speeds using Globus between March 2021 and 
 November 2025 for all ICDS Globus collections.
 
-![Globus Data Transfers](globus-data-transfers.png)
+![Globus Data Transfers](../img/globus-data-transfers.png)
 
 
 ## Portal

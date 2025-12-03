@@ -1,6 +1,6 @@
 # Resource requests 
 
-Users with paid [credit accounts or allocations](../accounts/paying-for-compute.md)
+Users with paid [credit accounts or allocations](../accounts/paid-resources.md)
 can request GPU nodes,
 and fine-tune their hardware requests with `constraint` directives.
 

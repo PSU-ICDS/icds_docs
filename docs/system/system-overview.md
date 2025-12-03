@@ -28,8 +28,8 @@ which gives you access to the Portal,
 and to batch jobs on vintage hardware.
 
 But to use any of the newer, more powerful hardware, 
-you need either a paid [credit account](../accounts/paying-for-compute.md), 
-or a paid [allocation](../accounts/paying-for-compute.md).
+you need either a paid [credit account](../accounts/paid-resources.md), 
+or a paid [allocation](../accounts/paid-resources.md).
 With credit accounts, you pay only only the compute resources you use,
 and can use any type of nodes you need.
 However, if you require prompt access to specific hardware,
@@ -76,7 +76,9 @@ sinfo --Format=features:40,nodelist:20,cpus:10,memory:10,partition
 
 ## Quality of Service (QOS)
 
-While a partition is where your job runs, Quality of Service (QOS) is how your job is treated. On Roar, most QOS settings are applied automatically based on the partition you choose. For example, submitting to the open partition automatically assigns the open QOS.
+While a partition is where your job runs, Quality of Service (QOS) is how your job is 
+treated. On Roar, most QOS settings are applied automatically based on the partition you 
+choose. For example, submitting to the open partition automatically assigns the open QOS.
 
 Roar has five QoS :  open, normal, debug, express, and interactive.  
 Each serves a different purpose, and has different restrictions.

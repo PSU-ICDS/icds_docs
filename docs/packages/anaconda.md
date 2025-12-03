@@ -48,7 +48,8 @@ text `(base)` at the front of your prompt. Deactivate this environment to avoid 
 using the command `conda deactivate` before loading or creating a new environemnt.
 
 To avoid activating this base environment entirely, you will need to remove the conda init 
-portion found in your `~/.bashrc` file, or [contact ICDS Support for assistance](../getting-help/getting-help.md).
+portion found in your `~/.bashrc` file, or 
+[contact ICDS Support for assistance](../getting-started/getting-help.md).
 
 ### Finding packages
 
