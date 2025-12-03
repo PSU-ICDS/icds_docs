@@ -50,17 +50,14 @@ container image for experimentation and modification:
 apptainer build --sandbox <sandbox_directory> <container_image>
 ```
 
->[!WARNING]
->
-> Use /tmp for sandbox or build directories.
->
->	Container build or sandbox directories **must not** use the 
->	**Scratch filesystem (/scratch/\$USER)**, as use of scratch may
->   result in container corruption. Use of the `/tmp` directory is
->   encouraged as an alternative.
->
->   When using `/tmp`, note that when the job ends, the `/tmp` directory
->   is automatically deleted.
+!!! warning "Use /tmp for sandbox or build directories"
+    Container build or sandbox directories **must not** use the 
+    **Scratch filesystem (/scratch/\$USER)**, as use of scratch may
+    result in container corruption. Use of the `/tmp` directory is
+    encouraged as an alternative.
+    
+    When using `/tmp`, note that when the job ends, the `/tmp` directory
+	is automatically deleted.
 
 ## Container Discovery and Setup
 
@@ -136,27 +133,26 @@ module load openmpi/4.1.5
 # Use srun with apptainer exec to launch a parallel command
 srun --mpi=pmix apptainer exec /storage/work/\$USER/images/my_mpi_code.sif /usr/bin/my_parallel_executable
 ```
->[!NOTE]
->
->The container must be built using the same MPI as selected on the host via the module load.
->
->In this example, the container should be built with OpenMPI 4.1.5 with pmix support.
->
->If there is a version of mpi type mismatch, the job could lock up or run as a set of
->singleton jobs (multiple copies of a single processor job).
->
+!!! tip "MPI compatibility"
+    The container must be built using the same MPI as selected on the host via the module load.
+    
+    In this example, the container should be built with OpenMPI 4.1.5 with pmix support.
+    
+    If there is a version of mpi type mismatch, the job could lock up or run as a set of
+    singleton jobs (multiple copies of a single processor job).
 
->[!WARNING]
->
->Due to the complexities of running containerized MPI jobs across nodes, it is recommended
->that you [first contact ICDS](mailto:idcs@psu.edu) for assistance prior to starting.
->
+!!! warning "Ask for help"
+    Due to the complexities of running containerized MPI jobs across nodes, it is recommended
+    that you [first contact ICDS](mailto:idcs@psu.edu) for assistance prior to starting.
 
 ## Apptainer Cache
 
-Apptainer automatically uses a directory `.apptainer`, located in your ***$HOME*** directory. As home directories on ICDS systems are small, you may wish to use an alternate location of the apptainer cache.
+Apptainer automatically uses a directory `.apptainer`, located in your ***$HOME*** directory. 
+As home directories on ICDS systems are small, you may wish to use an alternate location of 
+the apptainer cache.
 
-You can set this location via the environment variable ***APPTAINER_CACHEDIR***, setting it to an alternate location such as your ***WORK*** directory.
+You can set this location via the environment variable ***APPTAINER_CACHEDIR***, setting it 
+to an alternate location such as your ***WORK*** directory.
 
 ```
 export APPTAINER_CACHEDIR=/storage/work/$USER
@@ -164,10 +160,8 @@ export APPTAINER_CACHEDIR=/storage/work/$USER
 
 You should regularly clean your cache by running the command `apptainer cache clean`. 
 
->[!NOTE]
->
->You can first see what file will be cleaned by using the --dry-run option to the clean command.
->
+!!! note "Clear your cache using dry-run"
+    You can first see what file will be cleaned by using the `--dry-run option` to the clean command.
 
 
 ## More Information
