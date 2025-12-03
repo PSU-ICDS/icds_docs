@@ -40,9 +40,6 @@ see [Hardware info][hardwareinfo].
 
 ## Hardware info
 
-Even within different hardware partitions, not all nodes on Roar are identical.
-Often, software compiled for one type of CPU or GPU will not run on another, older type.
-
 To find out about hardware on different nodes, there are several options.
 
 If you are logged onto a compute node with an [interactive job][salloc], 
@@ -50,49 +47,14 @@ the command `lscpu` displays information about the CPUs;
 `nvidia-smi` displays information about the GPUs (if present).
 [salloc]: interactive-jobs.md
 
-The Slurm command [`sinfo`][sinfo] displays information about *all* Roar nodes.
-Its output is more easily read with some formatting options,
-[sinfo]: https://slurm.schedmd.com/sinfo.html
-
-```
-sinfo --Format=features:30,nodelist:20,cpus:5,memory:10,gres:30
-```
-
-On Roar, `sinfo` output would look like:
-```
-AVAIL_FEATURES                NODELIST            CPUS MEMORY    GRES
-bc,basic,broadwell,open       p-bc-[5001-5240]    24   126400    (null)
-sc,standard,broadwell,open    p-hc-[6001-6002]    56   1024000   (null)
-sc,standard,haswell,open      p-sc-[2337-2569]    24   257800    (null)
-bc,basic,sapphirerapids       p-bc-[5401-5520]    64   255000    (null)
-standard,a100_1g,mig,cascadelap-gc-3037           48   380000    gpu:a100_1g:14(S:0-11,36-47)
-sc,standard,icelake           p-sc-[2169-2308]    48   512000    (null)
-sc,standard,cascadelake       p-sc-[2001-2156]    48   380000    (null)
-standard,a100,cascadelake     p-gc-[3001-3004,300648   380000    gpu:a100:2(S:0-11,36-47)
-sc,standard,genoa             p-zc-[7001-7035]    64   380000    (null)
-standard,a100_3g,mig,cascadelap-gc-3036           48   380000    gpu:a100_3g:4(S:0-11,36-47)
-standard,a100_3g,a100_1g,cascap-gc-3005           48   380000    gpu:a100_3g:3(S:0-11,36-47),gp
-standard,p100,broadwell       p-gc-[3101-3109,311228   256000+   gpu:p100:1(S:0-13)
-standard,p100,broadwell       p-gc-[3110-3111,311328   256000    gpu:p100:1(S:14-27)
-standard,v100,haswell         p-gc-[3192-3193]    24   256000    gpu:v100:1(S:0-11)
-standard,v100,skylake         p-gc-[3201-3202]    28   770000    gpu:v100:4(S:0-27)
-standard,a40                  p-ic-[4001-4012]    36   500000    gpu:a40:1(S:0-17)
-hc,himem,icelake              p-sc-[2309-2336]    48   1024000   (null)
-ma                            p-cl-0001           20   3045000   (null)
-interactive,p100,broadwell    p-gc-[3161-3176]    28   256000    (null)
-v100s,mri,mgc                 p-mc-[3470-3472]    40   1540000   gpu:v100s:10(S:0-39)
-t4,nih,mgc                    p-mc-[3477-3480]    40   1540000   gpu:t4:16(S:0-39)
-rtx6000,mri,mgc               p-mc-[3473-3474]    40   770000    gpu:rtx_6000:3(S:0-9,20-39)
-v100nv,mri,mgc                p-mc-[3475-3476]    40   770000    gpu:v100:4(S:0-39)
-```
-
-Evidently, node attributes serve to identify nodes with a given
+Additionally, `sinfo` can be used to identify node attributes. Node attributes serve to identify nodes with a given:
 
 - CPU type (broadwell, haswell, ...)
 - GPU type (a100, a40, v100, p100)
 - partition (bc, sc, hc, gc, ic,...)
 - specific hardware combinations (p100_256, 3gc20gb, ...)
 
+See [System Overview](../system/system-overview.md) for more information.
 
 ## Constraints
 
@@ -119,62 +81,7 @@ salloc -N 1 -n 4 -A <alloc> -C <feature> -t 1:00:00
 	must be consistent with the terms of the allocation.
 	For credit accounts, any hardware can be requested.
 
-## Partitions
 
-In Slurm, what are commonly called "queues" are technically known as Partitions. A partition is a logical grouping of compute nodes (servers) that your job can run on.
-
-Partitions are the primary way resources are organized. They are used to manage different hardware types, control which users can access which machines, and set default limits.
-
-You must specify a partition to tell Slurm where your job should run. This is done with the `#SBATCH` directive:
-
-```bash
-#SBATCH --partition=<partition_name>
-```
-
-To see a list of all available partitions and their status, you can use the `sinfo` command:
-
-```bash
-sinfo --Format=features:40,nodelist:20,cpus:10,memory:10,partition
-```
-
-!!! warning "Bypass wait time for Credit Allocations" 
-	For Credit allocations, to bypass the wait time
-	for your job, you can specify `--qos=express`. This will place your job into our priority list
-	 at an increased cost (2x that of normal credit jobs).
-    **Note:** Ensure approval of account owner before using this option.
-
-## Quality of service (QOS)
-
-While a partition is where your job runs, Quality of Service (QOS) is how your job is treated. On Roar, most QOS settings are applied automatically based on the partition you choose. For example, submitting to the open partition automatically assigns the open QOS.
-
-Roar has five QoS:  open, normal, debug, express, and interactive.  
-Each serves a different purpose, and has different restrictions.
-
-| QOS | description | restrictions |
-| ---- | ---- | ---- |
-| open | no-cost access | Portal and old hardware only, <br> pre-emptible, time < 2 days |
-| normal | for "normal" jobs | time < 14 days |
-| debug	| for testing, debugging, <br> quick analysis | one at a time, time < 4 hours |
-| express | for rush jobs; <br> 2x price | time < 14 days |
-| interactive | for Portal jobs | time < 7 days |
-
-To get detailed information about QoS, use `sacctmgr list qos`.  
-This command has a lot of [options](https://slurm.schedmd.com/sacctmgr.html),
-and works best with formatting:  an example is
-```bash
-sacctmgr list qos format=name%8,maxjobs%8,maxsubmitjobsperuser%9,maxwall%8,\
-priority%8,preempt%8,usagefactor%12 names=open,ic,debug,express,normal
-```
-which produces output like this:
-```
-    Name  MaxJobs MaxSubmit  MaxWall Priority  Preempt  UsageFactor
--------- -------- --------- -------- -------- -------- ------------
-  normal                                 1000     open     1.000000
-    open      100       200                 0              1.000000
-      ic        1                           0              1.000000
-   debug        1         1 04:00:00    20000     open     1.000000
- express                                10000     open     2.000000
-```
 
 ## Optimizing usage
 
