@@ -25,9 +25,9 @@ and list approximate transfer rates for large files.
 (Transfer rates may be slower, 
 if limited by intervening network or storage speeds.)
 
-### Historical transfer rates
+### Historical transfer durations
 
-Below is a plot of observed file transfer speeds using Globus between March 2021 and 
+Below is a plot of observed file transfer times using Globus between March 2021 and 
 November 2025 for all ICDS Globus collections.
 
 ![Globus Data Transfers](../img/globus-data-transfers.png)
