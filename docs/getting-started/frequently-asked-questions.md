@@ -1,4 +1,4 @@
-## Frequent Asked Questions
+## Frequently Asked Questions
 
 This section covers some of the most common errors and questions that arise when working with on Roar Collab.
 
