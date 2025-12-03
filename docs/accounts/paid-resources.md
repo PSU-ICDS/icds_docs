@@ -1,10 +1,9 @@
-# Paying for compute
+# Paid resources
 
-To access newer hardware including GPUs, to run jobs without risk of pre-emption,
-and to run with wall times longer than the 48-hour limit on the open queue,
-users must pay for compute time.
+ICDS offers paid compute in the form of credits and allocations. We also offer extended,
+group-level storage.
 
-There are two ways to pay for compute time on Roar:  credit accounts, and allocations.
+## Compute offerings
 
 **Credit accounts** are like Starbucks cards:  
 
@@ -25,6 +24,22 @@ PIs can manage the account, adding group members to the list of allowed users.
 PIs can have multiple accounts and allocations, with different user lists, 
 paid by different sources of funds, for different research projects.
 
+## Storage offerings
+
+Paid storage is available as group or archive storage.
+
+**Group storage** is shared storage that is mounted to the cluster, meaning the files can 
+be accessed and modified in place. This storage is intended for use within computing jobs 
+and can be shared with a specified group of individuals.
+
+Group storage membership can be managed by you through the use of [User Managed Groups](accounts/managing-storage.md).
+or by requesting that members be added to the storage's collab group by emailing us at 
+<icds@psu.edu>.
+
+**Archive storage** is shared storage that is separate from the computing resource. This 
+storage is intended for long term file storage and files need to be transferred out before 
+they can be accessed or modified.
+
 ## Prices
 
 Prices for different compute nodes are set proportional to the cost of the hardware,
@@ -34,4 +49,5 @@ More expensive nodes cost more to use, reflecting their greater value.
 Current prices for credit accounts and allocations are [here][prices].
 [prices]: https://www.icds.psu.edu/roar-restricted-and-roar-collab-price-lists-2025/#
 
-If you're interested in purchasing credits or allocations, contact us with your requirements at <icds@psu.edu>.
+If you're interested in purchasing credits or allocations, contact us with your 
+requirements or questions at <icds@psu.edu>.
