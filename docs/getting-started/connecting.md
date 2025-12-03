@@ -16,7 +16,40 @@ which provides them with a Penn State access account and email address.
 Once the sponsored account is active, a Roar account can be requested.
 [sponsored]: https://security.psu.edu/services/penn-state-accts/sponsored/
 
-## Portal
+
+## Two ways to access 
+
+Roar can be accessed mainly using two ways:  via the web-based Portal <br>
+<https://portal.hpc.psu.edu/pun/sys/dashboard> <br>
+or by using the "secure shell" ([`ssh`][ssh]) 
+from a terminal application.
+[ssh]: https://linux.die.net/man/1/ssh
+
+The Portal (which runs [Open OnDemand](https://openondemand.org))
+is designed mainly for interactive work.
+It provides:
+
+- a Windows-like desktop environment;
+- a web-based file browser, to upload and download files;
+- graphical, number-crunching programs, 
+such as ANSYS, COMSOL, MATLAB, and RStudio.
+
+The Portal is easy to use, 
+because its preloaded programs can be launched and used without knowing Unix.
+Its Windows-like desktop provides a familiar "feel"
+for users accustomed to laptops (especially Linux laptops).
+From its Terminal application,
+users have access to the full capabilities of Roar,
+needed to prepare and submit jobs.
+
+Roar can also be accessed via SSH (Secure SHell),
+from a terminal application on a laptop.
+For more information about Portal and SSH access,
+see [Connecting](connecting.md).
+
+
+
+### Portal
 
 For users who are unfamiliar with the Linux command line,
 or who prefer an interactive graphical interface, 
@@ -28,7 +61,7 @@ the [Web Portal](https://portal.hpc.psu.edu) (which runs Open OnDemand) provides
    
 For advanced tasks, Portal users can access the command line interface under the "Clusters" menu called "_RC Shell Access".
 
-## SSH
+### SSH
 
 Alternatively, you can access the Roar via the ["secure shell" (SSH)](https://linux.die.net/man/1/ssh) 
 from a terminal application.

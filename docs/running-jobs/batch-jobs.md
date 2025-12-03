@@ -103,66 +103,7 @@ For more information on resource requests, see [Resource requests][resource-requ
 	high-memory, or interactive partitions.
 	Instead, --partition=sla-prio tells the job
 	to use the hardware in your allocation.
-<<<<<<< HEAD
-=======
 
-## Queues
-
-In Slurm, what are commonly called "queues" are technically known as Partitions. A 
-partition is a logical grouping of compute nodes (servers) that your job can run on.
-
-Partitions are the primary way resources are organized. They are used to manage different 
-hardware types, control which users can access which machines, and set default limits.
-
-You must specify a partition to tell Slurm where your job should run. This is done with 
-the #SBATCH directive:
-
-```bash
-#SBATCH --partition=<partition_name>
-```
-
-To see a list of all available partitions and their status, you can use the sinfo command - 
-
-```bash
-sinfo --Format=features:40,nodelist:20,cpus:10,memory:10,partition
-```
-
-!!!warning "Bypass queue for Credit Allocations" 
-	For Credit allocations, to bypass the wait time
-	for your job. You can specify "--qos=express". This will place your job into our priority queue
-	 at an increased cost (2x that of normal credit jobs)
-
-
-## Quality of Service (QOS)
-
-While a partition is where your job runs, Quality of Service (QOS) is how your job is treated. On Roar, most QOS settings are applied automatically based on the partition you choose. For example, submitting to the open partition automatically assigns the open QOS.
-
-Roar has five QoS :  open, normal, debug, express, and interactive.  
-Each serves a different purpose, and has different restrictions.
-
-| QOS | description | restrictions |
-| ---- | ---- | ---- |
-| normal | for "normal" jobs | time < 14 days |
-| debug	| for testing, debugging, <br> quick analysis | one at a time, time < 4 hours |
-| express | for rush jobs; <br> 2x price | time < 14 days |
-| interactive | for Portal jobs | one at a time, 4 core and 64 GB max, time < 48 hours |
-
-To get detailed information about QoS, use `sacctmgr list qos`.  
-This command has a lot of [options](https://slurm.schedmd.com/sacctmgr.html),
-and works best with formatting:  an example is
-```
-sacctmgr list qos format=name%8,maxjobs%8,maxsubmitjobsperuser%9,maxwall%8,\
-priority%8,preempt%8,usagefactor%12 names=open,ic,debug,express,normal
-```
-which produces output like this:
-```
-    Name  MaxJobs MaxSubmit  MaxWall Priority  Preempt  UsageFactor
--------- -------- --------- -------- -------- -------- ------------
-  normal                                 1000     open     1.000000
-      ic        1                           0              1.000000
-   debug        1         1 04:00:00    20000     open     1.000000
- express                                10000     open     2.000000
-```
 
 ## Resource usage
 
@@ -232,4 +173,3 @@ To time a single command in a batch file, use [`time <command>`][time],
 which will write timing information to standard output.
 [time]: https://www.man7.org/linux/man-pages/man1/time.1.html
 
->>>>>>> 7aee012 (replaced SLURM with Slurm and removed open partition information)
