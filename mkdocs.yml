@@ -39,6 +39,7 @@ nav:
         - getting-started/glossary.md
         - getting-started/tips-for-beginners.md
         - getting-started/connecting.md
+        - getting-started/FAQ.md
     - System details:
         - system/system-overview.md
         - system/compute-hardware.md

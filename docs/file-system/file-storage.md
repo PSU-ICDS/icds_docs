@@ -60,40 +60,11 @@ lists directory sizes in order from large to small
 (the output of du is "piped" to [sort][sort]).
 [sort]: https://man7.org/linux/man-pages/man1/sort.1.html
 
-To include hidden files and directories as well, use:
-``
-du -sch .[!.]* * | sort -h -r
-``
-
-## Quota issues in home
-
-Many user configuration files and packages are stored by default in `home`.
-If these become too large, they can exceed the quota and cause errors. 
-This commonly occurs with directories such as
-
- - `.local` - used by Python
- - `.comsol` - used by Comsol
-
-These [dot files](https://missing.csail.mit.edu/2019/dotfiles/) (and directories) 
-are hidden by default, but you can view them with `ls -la`.
-
-If the size of one of these directories becomes a problem, 
-it can be moved to `work`, and a [symbolic link] created 
-which points to the directory you moved to `work`.
-
-For example, the commands needed to move the `.local` directory 
-would look like:
-
-```
-# first move the directory to /storage/work/
-mv ~/.local $WORK/.local
-
-# create a symlink in home pointing to the new location in work
-ln -s $WORK/.local .local
-```
-
-[symbolic link]:https://www.lenovo.com/us/en/glossary/symbolic-link/
-
+!!! tip "Include hidden files"
+    To include hidden files and directories as well, use:
+    ```bash
+    du -sch .[!.]* * | sort -h -r
+    ```
 
 ## Archive storage
 
@@ -112,3 +83,8 @@ before transferring.
      please contact ICDS or the [Office of Information Security](https://security.psu.edu).
 
 
+!!! warning "Running out of space in your home directory?"
+
+    You're probably hitting the **home quota** because of large hidden directories like `.local`, `.cache`, or `.comsol`.
+    → See the full solution in the FAQ:  
+    [**FAQ**](./FAQ.md#quota-issues-in-home)
