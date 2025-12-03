@@ -1,4 +1,4 @@
-## FAQ
+## Frequent Asked Questions
 
 This section covers some of the most common errors and questions that arise when working with on Roar Collab.
 
@@ -82,3 +82,16 @@ ln -s $WORK/.local .local
 ```
 
 [symbolic link]:https://www.lenovo.com/us/en/glossary/symbolic-link/
+
+
+---
+
+### Job fails after hours or days. How can I help support reproduce the issue?
+
+Provide a minimal, fast, reproducible example by reducing:
+Input size (smaller dataset/grid/iteration count)
+Runtime (seconds or minutes instead of hours)
+Resources (fewer cores/nodes)
+Often the underlying issue appears when the problem is minimized. Even if it does not, the smaller example allows support to reproduce and fix the issue much more quickly.
+
+For further help, contact [ICDS help desk](getting-help.md) 
