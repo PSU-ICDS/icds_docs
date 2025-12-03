@@ -5,6 +5,8 @@ on Roar, archival storage,
 OneDrive, or your laptop or desktop machine
 to be transferred -- copied from one place to another.
 
+## File transfer rates
+
 Multiple tools exist to perform these file transfers.
 No single tool is best for all cases;
 below, we recommend methods, 
@@ -22,6 +24,14 @@ and list approximate transfer rates for large files.
 
 (Transfer rates may be slower, 
 if limited by intervening network or storage speeds.)
+
+### Historical transfer rates
+
+Below is a plot of observed file transfer speeds using Globus between March 2021 and 
+November 2025 for all ICDS Globus collections.
+
+![Globus Data Transfers](globus-data-transfers.png)
+
 
 ## Portal
 
@@ -61,7 +71,6 @@ ICDS has endpoints for Roar, Archive, and OneDrive:
 To transfer files to or from a laptop,
 use the upload/download buttons on the Globus [web interface][globusweb].
 [globusweb]:  https://www.globus.org
-
  
 ### Globus Personal Collection
 
