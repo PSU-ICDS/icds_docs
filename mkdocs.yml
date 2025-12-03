@@ -40,6 +40,7 @@ nav:
         - getting-started/tips-for-beginners.md
         - getting-started/connecting.md
         - getting-started/FAQ.md
+	- getting-started/getting-help.md
     - System details:
         - system/system-overview.md
         - system/compute-hardware.md
@@ -71,6 +72,4 @@ nav:
     - Roar restricted:
         - roar-restricted/accessing-rr.md
         - roar-restricted/data-transfer.md
-    - Getting help:
-        - getting-help/getting-help.md
 
