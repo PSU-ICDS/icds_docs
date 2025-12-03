@@ -6,8 +6,8 @@ site_author: Institute of Computational and Data Sciences
 #edit_url: edit/staging/docs/
 
 theme: 
-  name: material
-#  features:
+  name: readthedocs
+  features:
 #    - content.code.copy
 #    - navigation.sections
 #    - navigation.footer
