@@ -18,8 +18,8 @@ Each node has its own:
 Think of a node as a complete server dedicated to running jobs.  Multiple jobs can run on one node if resources allow.
 Example > “Your job is running on node `submit03`”
 
-## Processor
-A processor (or CPU, Central Processing Unit) is the hardware component within a node responsible for executing computational tasks. A single processor contains multiple cores, each capable of running independent threads. For example, a node with two processors, each with 32 cores, provides 64 cores total.
+## CPU
+The CPU (also called processor) is the hardware component within a node responsible for executing computational tasks. A single CPU contains multiple cores, each capable of running independent threads. For example, a node with two processors, each with 32 cores, provides 64 cores total.
 
 ## Core
 A Core is a single processing unit within a CPU. Modern CPUs have multiple cores (e.g., 64 cores per node).
@@ -42,6 +42,13 @@ GPUs are only available to:
 
 Request via `--gres=gpu:<type>:<count>` in Slurm.  
 See [Resource Requests](../running-jobs/resource-requests.md) for more detailed information on GPUs.
+
+## Serial Processing
+Serial processing (Single-core job) means your program runs on only one core at a time. Instructions are executed sequentially; even if the node has 128 cores available, a serial job will use just one of them.
+Most traditional software and many simple scripts are serial unless explicitly written or compiled for parallelism.
+
+## Parallel Processing
+Basically means a task which is designed to use multiple cores (or GPUs) simultaneously to complete work faster by splitting it into parts that run at the same time.
 
 ## Partition
 A partition is a logical grouping of nodes in the Roar cluster, defined by shared access policies, time limits, and billing rates. Partitions allow the system to prioritize and allocate resources based on job requirements and user privileges.
