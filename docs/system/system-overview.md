@@ -40,10 +40,21 @@ and pay whether or not you use the compute time.
 ## Partitions
 
 In Slurm, what are commonly called "queues" are technically known as Partitions. A 
-partition is a logical grouping of compute nodes (servers) that your job can run on.
+partition is a logical grouping of compute nodes (servers) that your job can run on. 
 
-Partitions are the primary way resources are organized. They are used to manage different 
-hardware types, control which users can access which machines, and set default limits.
+Nodes on Roar are grouped into four different hardware partitions:
+
+- **basic** – CPU nodes without Infiniband, for jobs that fit on a single node.
+- **standard** – CPU nodes with Infiniband (essential for multinode jobs).
+- **himem** – CPU nodes with extra memory, for memory-intensive jobs.
+- **interactive** – Nodes with graphics cards, that service the Portal.
+
+All the various types of GPU nodes are grouped into the standard partition,
+except the P100 GPU nodes that service the interactive partition.
+
+In addition, there is a partition not associated with specific hardware:
+
+- **sla-prio** - For paid allocations, with whatever hardware the allocation includes.
 
 You must specify a partition to tell Slurm where your job should run. This is done with 
 the #SBATCH directive:
@@ -62,7 +73,6 @@ sinfo --Format=features:40,nodelist:20,cpus:10,memory:10,partition
 	For Credit allocations, to bypass the wait time
 	for your job. You can specify "--qos=express". This will place your job into our priority queue
 	 at an increased cost (2x that of normal credit jobs)
-
 
 ## Quality of Service (QOS)
 

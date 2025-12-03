@@ -21,19 +21,3 @@ The different types of nodes available on Roar are:
 | High Memory | 25 <br> 2 | 48 <br> 56 | 1024 | Gold 6342 <br> E7-4830v4 | icelake <br> broadwell | Infiniband |
 | interactive | 8  | 28 | 512 | E5-2680v4 <br> + P100 GPU | broadwell| Infiniband <br> Ethernet|
 
-## Partitions
-
-Nodes on Roar are grouped into four different hardware partitions:
-
-- **basic** – CPU nodes without Infiniband, for jobs that fit on a single node.
-- **standard** – CPU nodes with Infiniband (essential for multinode jobs).
-- **himem** – CPU nodes with extra memory, for memory-intensive jobs.
-- **interactive** – Nodes with graphics cards, that service the Portal.
-
-All the various types of GPU nodes are grouped into the standard partition,
-except the P100 GPU nodes that service the interactive partition.
-
-In addition, there are two partitions not associated with specific hardware:
-
-- **open** - Older CPU hardware, used with the open queue.
-- **sla-prio** - For paid allocations, with whatever hardware the allocation includes.
