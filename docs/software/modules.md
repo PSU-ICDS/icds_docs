@@ -72,8 +72,11 @@ In January 2026, ICDS implemented a new software stack based on the Spack packag
 This may cause changes in the dependent version loaded or implentation of a new instalation 
 for existing versions. 
 
-To force usage of the old stack, you can unload the new stack with the command 
-`module unuse /storage/icds/sw8/modulefiles`.
+To force usage of the old stack, you can unload the new stack with the command:
+
+```
+module unuse /storage/icds/sw8/modulefiles/Core
+```
 
 
 ## Advanced module concepts
