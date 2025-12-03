@@ -28,7 +28,7 @@ if limited by intervening network or storage speeds.)
 ### Historical transfer durations
 
 Below is a plot of observed file transfer times using Globus between March 2021 and 
-November 2025 for all ICDS Globus collections.
+November 2025 for Roar Collab Globus collections.
 
 ![Globus Data Transfers](../img/globus-data-transfers.png)
 
