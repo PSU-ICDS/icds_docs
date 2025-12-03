@@ -4,13 +4,13 @@ This page idefines essential terms used throughout the Roar User Guide.
 Understanding these concepts will help you use the system efficiently and communicate clearly with support.
 
 ## Computing Cluster
-A computing cluster is a collection of interconnected computers (nodes) that collaborate to perform computational tasks. The Roar computing cluster is a high-performance computing (HPC) system designed for research, comprising numerous nodes equipped with CPUs, GPUs, memory, and storage, all coordinated by the Slurm workload manager to process jobs efficiently.
+A computing cluster is a collection of interconnected computers [(nodes)](#node) that collaborate to perform computational tasks. The Roar computing cluster is a high-performance computing (HPC) system designed for research, comprising numerous nodes equipped with CPUs, GPUs, memory, and storage, all coordinated by the Slurm workload manager to process jobs efficiently.
 
 ## Node
 A Node is a single physical computer in the Roar cluster.  
 Each node has its own:
 
-- CPU(s)
+- [CPU(s)](#CPU)
 - Memory (RAM)
 - Local storage (usually temporary)
 - Network interface
@@ -19,12 +19,12 @@ Think of a node as a complete server dedicated to running jobs.  Multiple jobs c
 Example > “Your job is running on node `submit03`”
 
 ## CPU
-The CPU (also called processor) is the hardware component within a node responsible for executing computational tasks. A single CPU contains multiple cores, each capable of running independent threads. For example, a node with two processors, each with 32 cores, provides 64 cores total.
+The CPU (also called processor) is the hardware component within a node responsible for executing computational tasks. A single CPU contains multiple [cores](#core), each capable of running independent threads. For example, a node with two processors, each with 32 cores, provides 64 cores total.
 
 ## Core
-A Core is a single processing unit within a CPU. Modern CPUs have multiple cores (e.g., 64 cores per node).
+A Core is a single processing unit within a [CPU](#cpu). Modern CPUs have multiple cores (e.g., 64 cores per node).
 Cores execute tasks in parallel.  
-When you request “8 cores,” you’re asking for 8 processing units — possibly on one node or across nodes.
+When you request “8 cores,” you’re asking for 8 processing units — possibly on one [node](#node) or across nodes.
 Note:  
 
 - 1 core = 1 CPU thread (unless hyper-threading is enabled)
@@ -48,7 +48,11 @@ Serial processing (Single-core job) means your program runs on only one core at 
 Most traditional software and many simple scripts are serial unless explicitly written or compiled for parallelism.
 
 ## Parallel Processing
-Basically means a task which is designed to use multiple cores (or GPUs) simultaneously to complete work faster by splitting it into parts that run at the same time.
+Parallel processing refers to a computational approach where a task is divided into smaller sub-tasks that are executed simultaneously across multiple processing units, such as CPU cores or GPUs.  
+The main idea is to speed up execution by taking advantage of hardware that can perform multiple operations at the same time. Instead of processing each part of a task sequentially, the task is split into independent chunks, which are then processed concurrently.  
+
+Parallel processing is widely used in scenarios where large datasets or complex computations are involved, such as scientific simulations, image and video processing, machine learning, and big data analytics. By efficiently distributing work across multiple [cores](#core) or [GPUs](#gpu), it can significantly reduce execution time and improve overall performance.
+
 
 ## Partition
 A partition is a logical grouping of nodes in the Roar cluster, defined by shared access policies, time limits, and billing rates. Partitions allow the system to prioritize and allocate resources based on job requirements and user privileges.
