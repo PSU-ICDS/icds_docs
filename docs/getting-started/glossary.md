@@ -1,4 +1,4 @@
-# Glossary & Key Concepts
+# Glossary and Key Concepts
 
 This page idefines essential terms used throughout the Roar User Guide.  
 Understanding these concepts will help you use the system efficiently and communicate clearly with support.
@@ -57,7 +57,7 @@ See [Compute Hardware](../system/compute-hardware.md) for more details on availa
 ## Directory
 A Directory is a folder in the filesystem : a location where files are stored.
 On Roar, key directories include the home, work, group and scratch directories.
-See [File Storage & Filesystems](../file-system/file-storage.md) for full details.
+See [File Storage and Filesystems](../file-system/file-storage.md) for full details.
 
 ## Environment Modules
 Environment modules provide a flexible system for managing software environments on the Roar cluster. Modules allow users to load, unload, or switch between software packages, versions, or dependencies, ensuring the correct tools and libraries are available for specific tasks.
