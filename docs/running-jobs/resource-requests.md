@@ -34,8 +34,9 @@ see [Hardware info][hardwareinfo].
     requesting GPUs will do nothing except deplete your accounts.  
 
 !!! Warning "Generic GPU requests (--gres=gpu:1) may allocate the most expensive GPU available"
-When you request a generic GPU with --gres=gpu:1, Slurm assigns any available GPU, often the highest-cost model (e.g. A100) even if a cheaper one (e.g. P100) would suffice.
-This increases your costs unnecessarily if your job doesn’t require high-end hardware.
+	When you request a generic GPU with --gres=gpu:1, Slurm assigns any available GPU, 
+	often the highest-cost model (e.g. A100) even if a cheaper one (e.g. P100) would suffice.
+	This increases your costs unnecessarily if your job doesn’t require high-end hardware.
 
 ## Hardware info
 
