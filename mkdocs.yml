@@ -36,8 +36,8 @@ plugins:
  
 nav:
     - Getting started: 
-        - getting-started/glossary.md
         - getting-started/tips-for-beginners.md
+        - getting-started/glossary.md
         - getting-started/connecting.md
         - getting-started/frequently-asked-questions.md
         - getting-started/getting-help.md
