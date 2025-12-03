@@ -87,4 +87,4 @@ before transferring.
 
 !!! warning "Running out of space in your home directory?"
     You're probably hitting the **home quota** because of large hidden directories like `.local`, `.cache`, or `.comsol`.
-    → See the full solution in the [FAQ](../getting-started/FAQ.md#quota-issues-in-home)
+    → See the full solution in the [FAQ](../getting-started/frequently-asked-questions.md#quota-issues-in-home)
