@@ -55,8 +55,8 @@ nav:
         - file-system/transferring-files.md
     - Software:
         - software/modules.md
-        - software/installing-from-source.md
         - software/custom-modules.md
+        - software/installing-from-source.md
         - software/containers.md
     - Packages: 
         - packages/python.md

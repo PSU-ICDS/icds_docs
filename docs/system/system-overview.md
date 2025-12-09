@@ -74,7 +74,7 @@ sinfo --Format=features:40,nodelist:20,cpus:10,memory:10,partition
 
 !!!warning "Bypass queue for Credit Allocations" 
 	For Credit allocations, to bypass the wait time
-	for your job. You can specify "--qos=express". This will place your job into our priority queue
+	for your job. You can specify ``--qos=express``. This will place your job into our priority queue
 	 at an increased cost (2x that of normal credit jobs)
 
 ## Quality of Service (QOS)
@@ -88,10 +88,10 @@ Each serves a different purpose, and has different restrictions.
 
 | QOS | description | restrictions |
 | ---- | ---- | ---- |
-| normal | for "normal" jobs | time < 14 days |
-| debug	| for testing, debugging, <br> quick analysis | one at a time, time < 4 hours |
-| express | for rush jobs; <br> 2x price | time < 14 days |
-| interactive | for Portal jobs | one at a time, 4 core and 64 GB max, time < 48 hours |
+| normal | for "normal" jobs | runtime < 14 days |
+| debug	| for testing, debugging, and code compilation | one job per user <br> runtime < 4 hours |
+| express | for rush jobs; <br> **charges 2x price** | runtime < 14 days |
+| interactive | for Portal jobs requiring graphical support | one job per user <br> 4 core and 64 GB max <br> runtime < 48 hours |
 
 To get detailed information about QoS, use `sacctmgr list qos`.  
 This command has a lot of [options](https://slurm.schedmd.com/sacctmgr.html),

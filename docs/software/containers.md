@@ -38,13 +38,9 @@ workstation or a cloud service) where you have full **root access**.
 
 ### Building and Sandbox Alternatives on Roar
 
-While full image builds are restricted, Apptainer offers alternatives for development:
-
-- **fakeroot:** The --fakeroot option allows you to perform some root-like operations 
-(like installing packages) during a build process, but it is often insufficient for 
-complex system-level configuration.
-- **Sandbox Directory:** You can build a writable "sandbox" directory from an existing 
-container image for experimentation and modification:
+While full image builds are restricted, Apptainer offers a sandbox option for development. 
+To build a writable "sandbox" directory from an existing container image for experimentation 
+and modification:
 
 ```
 apptainer build --sandbox <sandbox_directory> <container_image>
@@ -59,22 +55,25 @@ apptainer build --sandbox <sandbox_directory> <container_image>
     When using `/tmp`, note that when the job ends, the `/tmp` directory
 	is automatically deleted.
 
-## Container Discovery and Setup
+## Common Apptainer commands
 
 Containers can either be downloaded from a public repository or transferred after being 
-built elsewhere.
+built elsewhere. Here are the most common Apptainer commands used:
 
-| Command | Description | Example |
-| --- | --- | --- |
-| `apptainer pull <resource>://<container>` | Downloads a container image from a remote registry (e.g., Sylabs Cloud, Docker Hub) and converts it to the native Apptainer (.sif) format. | `apptainer pull docker://ubuntu:20.04` |
-| `apptainer shell <container>` | Runs an interactive shell inside the container for debugging or setup. | `apptainer shell my_image.sif` |
-| `apptainer exec <container> <command>` | Executes a single command inside the container without dropping you into a shell. | `apptainer exec my_image.sif python script.py` |
-| `apptainer run <container>` | Executes the container's predefined **runscript**, which is often the main application entry point. | `apptainer run my_app.sif --input data.txt` |
+ - `apptainer pull <resource>://<container>` - Downloads a container image from a remote 
+ registry (e.g., Sylabs Cloud, Docker Hub) and converts it to the native Apptainer (.sif) 
+ format. For example, `apptainer pull docker://ubuntu:20.04`.
+ - `apptainer shell <container>` - Runs an interactive shell inside the container for 
+ debugging or setup. For example, `apptainer shell my_image.sif`
+ - `apptainer exec <container> <command>` - Executes a single command inside the container 
+ without dropping you into a shell. For example, `apptainer exec my_image.sif python script.py`
+ - `apptainer run <container>` - Executes the container's predefined **runscript**, 
+ which is often the main application entry point. For example, `apptainer run my_app.sif --input data.txt` 
+ 
+## Accessing storage within a container
 
-## Container and Host Filesystem Sharing
-
-A notable feature of Apptainer on ICDS systems is that the container environment automatically **shares 
-(binds)** several critical directories from the host system:
+A notable feature of Apptainer on ICDS systems is that the container environment automatically
+ **shares (binds)** several critical directories from the host system:
 
 - Your Home directory: `/storage/home/\$USER`
 - Your Work directory: `/storage/work/\$USER`
@@ -85,22 +84,25 @@ A notable feature of Apptainer on ICDS systems is that the container environment
 This seamless binding means you can read and write files directly between your containerized 
 application and your standard HPC storage locations.
 
-## Module Conflicts and Environment
+## Module conflicts and environment
 
 When using containers, be aware of potential **module conflicts** with the host system:
 
-- **Do not load environment modules on the host (Roar) that are intended to be used _inside_ 
-the container.**
-- This can lead to unexpected errors or the use of unintended or unexpected software versions.
-	- For example, if you load an **R** module on the host system, the host's **R library path** will often 
-be exposed to and prioritized by the container, overriding the container's built-in R 
-libraries. 
-- **Best Practice:** Run a `module purge` in your batch script _before_ starting the 
-container to ensure a clean host environment.
+!!! warning Do not load environment modules on the host (Roar) that are intended to be used _inside_ 
+the container.
+    This can lead to unexpected errors or the use of unintended or unexpected software versions.
+	
+	For example, if you load an **R** module on the host system, the host's **R 
+	library path** will often be exposed to and prioritized by the container, overriding 
+	the container's built-in R libraries. 
 
-## Containers with Slurm and MPI
+!!! tip "Use `module purge` to avoid unintended conflicts
+    Run a `module purge` in your batch script _before_ starting the container to ensure a 
+    clean host environment.
 
-**Running a Non-MPI Container**
+## Containers with Slurm
+
+### Running non-MPI containers
 
 The apptainer run or apptainer exec command is used directly in your Slurm batch script.
 
@@ -113,7 +115,7 @@ The apptainer run or apptainer exec command is used directly in your Slurm batch
 apptainer run /storage/work/\$USER/images/my_app.sif --input data.in
 ```
 
-**Running Parallel (MPI) Applications**
+### Running parallel (MPI) applications
 
 To run parallel code, Apptainer must use the **host system's MPI library** and 
 infrastructure to launch processes. This requires that the host MPI version be compatible 
@@ -133,7 +135,8 @@ module load openmpi/4.1.5
 # Use srun with apptainer exec to launch a parallel command
 srun --mpi=pmix apptainer exec /storage/work/\$USER/images/my_mpi_code.sif /usr/bin/my_parallel_executable
 ```
-!!! tip "MPI compatibility"
+
+!!! important "MPI compatibility"
     The container must be built using the same MPI as selected on the host via the module load.
     
     In this example, the container should be built with OpenMPI 4.1.5 with pmix support.
@@ -141,7 +144,7 @@ srun --mpi=pmix apptainer exec /storage/work/\$USER/images/my_mpi_code.sif /usr/
     If there is a version of mpi type mismatch, the job could lock up or run as a set of
     singleton jobs (multiple copies of a single processor job).
 
-!!! warning "Ask for help"
+!!! tip "Ask for help"
     Due to the complexities of running containerized MPI jobs across nodes, it is recommended
     that you [first contact ICDS](mailto:idcs@psu.edu) for assistance prior to starting.
 
