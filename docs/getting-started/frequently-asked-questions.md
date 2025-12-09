@@ -127,7 +127,14 @@ For further help, contact [ICDS help desk](getting-help.md)
 
 This can be caused by a few different reasons.
 
-1. Your home directory is over quota
+1. You don't have an active account on our systems
+
+If you have not logged into the portal before, you will need to [request a login account](connecting.md/#roar-account-creation) 
+before you can access Roar Collab. To verify that your account request went through 
+successfully, you should receive a confirmation email once you submit the form and another 
+email once the account is created.
+
+2. Your home directory is over quota
 
 The portal writes session and job files to your home directory. If your home directory is 
 over quota, this may prevent logging in. Please use [Globus](http://www.globus.org) to 
@@ -138,7 +145,7 @@ Many times, file usage in home may be inside hidden directories. Please see
 [Quota issues in home](frequently-asked-questions/#quota-issues-in-home) for more information 
 on how to handle these issues.
 
-2. Your portal session files have become corrupted
+3. Your portal session files have become corrupted
 
 This issue should self correct, however you can manually reset your portal session by 
 using this link:

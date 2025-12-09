@@ -1,6 +1,6 @@
-# Getting Help
+# Getting help
 
-## Contacting ICDS Support
+## Contacting Client Support
 
 If you need help using Roar (RC or RR), please submit your support request **one of the following ways**:
 
