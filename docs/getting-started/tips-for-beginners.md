@@ -116,7 +116,7 @@ See [Resource Requests](../running-jobs/resource-requests.md) for more detailed 
 A Node is a single physical computer in the Roar cluster.  
 Each node has its own:
 
-- [CPU(s)](#CPU)
+- [CPU(s)](#cpu)
 - Memory (RAM)
 - Local storage (usually temporary)
 - Network interface

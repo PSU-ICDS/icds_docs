@@ -123,7 +123,7 @@ conda activate <environmentName>
 ## Anaconda on Portal
 
 If you want to use an Anaconda environment for Python or R in a Portal interactive session, 
-special considerations apply. (see also [Portal custom environments](../running-jobs/portal.md/#custom-environments)).
+special considerations apply. (see also [Portal custom environments](../running-jobs/portal.md/#using-custom-environments)).
 
 ### Jupyter Server
 

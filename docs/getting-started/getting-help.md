@@ -29,6 +29,6 @@ If you are unable to make our scheduled office hours, you can also schedule an o
 session with one of our support staff.
 
 On-demand sessions are available during business hours, Monday through Friday. For times 
-outside of these hours, [contact us](#contacting-icds-support) for more details.
+outside of these hours, [contact us](#contacting-client-support) for more details.
 
 [Schedule an On-Demand Support session](https://tinyurl.com/ICDS-Support){ .md-button }

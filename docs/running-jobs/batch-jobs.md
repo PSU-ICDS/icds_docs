@@ -85,9 +85,8 @@ sbatch --export=VAR1=arg1, VAR2=arg2 myScript.sh
 ```
 In the script, `$VAR1` and `$VAR2` are set to `arg1` and `arg2`.
 
-For more information on partitions, see [Partitions][partitions].  
+For more information on partitions, see [Partitions][../system/system-overview.md/#partitions].  
 For more information on resource requests, see [Resource requests][resource-requests].
-[partitions]: ./resource-requests.md#partitions
 [resource-requests]: resource-requests.md
 
 !!! tip "Job Repository"
@@ -133,20 +132,36 @@ As in the example, sacct takes formatting options to control what it prints;
 
 ## Selecting the Number of Nodes and Cores
 
-Choosing the right number of cores (--ntasks) and nodes (--nodes) depends on how your software is designed to run in parallel. It's important to understand if your job is built for a distributed environment or a shared-memory environment.
+Choosing the right number of cores (--ntasks) and nodes (--nodes) depends on how your 
+software is designed to run in parallel. It's important to understand if your job is built 
+for a distributed environment or a shared-memory environment.
 
-Most parallel software is multi-threaded, meaning it's designed to run on a single computer and use multiple cores that share the same memory. If this describes your workflow, you should almost always set --nodes=1 and then set --ntasks to the number of independent tasks your job can run at the same time. Requesting more cores than your application can actually use will not speed it up and only wastes resources.
+Most parallel software is multi-threaded, meaning it's designed to run on a single computer 
+and use multiple cores that share the same memory. If this describes your workflow, you 
+should almost always set --nodes=1 and then set --ntasks to the number of independent tasks 
+your job can run at the same time. Requesting more cores than your application can actually 
+use will not speed it up and only wastes resources.
 
- Some advanced applications (often using MPI) are designed to run across multiple, separate computers at once, communicating over the network. Only if your software is specifically built for this should you set --nodes to a value greater than one.
+Some advanced applications (often using MPI) are designed to run across multiple, separate 
+computers at once, communicating over the network. Only if your software is specifically 
+built for this should you set `--nodes` to a value greater than one.
 
 
 ## Selecting Memory for Your Job
 
-Correctly estimating memory (--mem) can be tricky, but it is critical for ensuring your job runs successfully. Requesting too little will cause your job to fail, while requesting too much can increase your queue time and cost.
+Correctly estimating memory (--mem) can be tricky, but it is critical for ensuring your job 
+runs successfully. Requesting too little will cause your job to fail, while requesting too 
+much can increase your queue time and cost.
 
-A good starting point is to calculate the size of the data your application needs to load into memory at one time. Once you have an estimate, it is safe practice to request about 20% more memory than you think you need. This extra buffer accommodates the operating system and other side processes that run alongside your job.
+A good starting point is to calculate the size of the data your application needs to load 
+into memory at one time. Once you have an estimate, it is safe practice to request about 
+20% more memory than you think you need. This extra buffer accommodates the operating 
+ystem and other side processes that run alongside your job.
 
-The most reliable method is to run a short test job with a generous memory allocation and then check the actual peak usage. You can use the sacct command after your job finishes to see the MaxRSS (Maximum Resident Set Size). This will tell you precisely how much memory your job used, allowing you to make very accurate requests for future runs.
+The most reliable method is to run a short test job with a generous memory allocation and 
+then check the actual peak usage. You can use the sacct command after your job finishes to 
+see the MaxRSS (Maximum Resident Set Size). This will tell you precisely how much memory 
+your job used, allowing you to make very accurate requests for future runs.
 
 ## Timing jobs
 

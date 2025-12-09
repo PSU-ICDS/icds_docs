@@ -25,7 +25,7 @@ Additional information on the Roar Collab system configuration can be found in
 
 ## Accounts
 
-To log on to Roar, you need a [login account](connecting.md/#login-accounts).
+To log on to Roar, you need a [login account](../getting-started/connecting.md/#roar-account-creation).
 To work on Roar, you can use the open queue at no cost,
 which gives you access to the Portal, 
 and to batch jobs on vintage hardware.

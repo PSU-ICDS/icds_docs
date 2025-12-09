@@ -142,7 +142,7 @@ move or delete files in your home directory to free up space. For more informati
 to use Globus, please see our [Globus documentation](../file-system/transferring-files.md#globus).
 
 Many times, file usage in home may be inside hidden directories. Please see 
-[Quota issues in home](frequently-asked-questions/#quota-issues-in-home) for more information 
+[Quota issues in home](#quota-issues-in-home) for more information 
 on how to handle these issues.
 
 3. Your portal session files have become corrupted
