@@ -51,7 +51,7 @@ specific type required (e.g., standard CPU or GPU-enabled node).
 
 To run your job using a [credit account or allocation](../accounts/paid-resources.md),
 select the relevant account ID from the Account drop-down menu. Then select a corresponding 
-[partition][../system/system-overview.md$#partitions].
+[partition](../system/system-overview.md$#partitions).
 
  - Credit accounts need to use one of the hardware partitions: `basic`, `standard`, `himem`, or `interactive`
  - Allocations need to use the `sla-prio` partition 
