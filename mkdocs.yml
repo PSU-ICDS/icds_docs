@@ -45,6 +45,7 @@ nav:
         - system/compute-hardware.md
         - system/system-outages.md
     - Accounts:
+        - accounts/read-credits.md
         - accounts/paid-resources.md
         - accounts/managing-compute.md
         - accounts/managing-storage.md
