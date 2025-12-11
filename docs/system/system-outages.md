@@ -1,4 +1,4 @@
-# System Outages
+# System outages
 
 ICDS engineers have updateed and expanded the outage protocol to improve recovery time and expand testing. 
 
@@ -12,7 +12,7 @@ The outage workflow has been updated to make use of serviceNOW and provide track
 ![Outage WorkFlow Diagram](../img/ICDS_Outage_workflow.png)
 
 
-## Post Outage Test
+## Post outage test
 
 Post outage ICDS Engineers go through a series of test to show basic connectivity and functionaloty of services (i.e. job submission, Slurm, OOD portal, Globus access, science gateways). This will be followed by application test detailed below. 
 
@@ -49,14 +49,14 @@ Includes user test for the following applications:
 
  
  
-## Planned Outage 2025-08-13
+## Planned outage 2025-08-13
 
-#### Outage Duration
+#### Outage duration
 
  - Planned Aug 13, 2025 17:00 -- Aug 14, 2025 17:00
  - Actual  Aug 13, 2025 17:00 -- Aug 14, 2025 14:10
 
-#### Plan of Action
+#### Plan of action
 
  - STORAGE: update RC group storage firmware, enable RDMA functions **Complete**
 
@@ -91,29 +91,29 @@ Includes user test for the following applications:
  - Adjust storage for groups impacted by naming convention **Complete**
 
 
-#### Known issues: 
+#### Known issues 
 
 Julia - GPU Users: 
 Updates to CUDA drivers made during this outage will require users to rebuild the .JULIA folder in their home directories. Users with customizations should rebuild this folder “manually,” while simply deleting the folder will cause it to be rebuilt automatically in a default state. ICDS recommends saving a copy of your .JULIA folder before deleting or editing. For assistance, contact Client Support at ICDS@PSU.EDU.
 
 
-#### ServiceNow Links
+#### ServiceNow links
 
-ServiceNow Form
+ServiceNow form
 
 - RITM0373685  [RITM0373685 ](https://pennstate.service-now.com/now/nav/ui/classic/params/target/sc_req_item.do%3Fsys_id%3D8b87bbaac3aae2d028753df905013122%26sysparm_stack%3D%26sysparm_view%3D)
 
 
-## Planned Outage 2025-05-14
+## Planned outage 2025-05-14
 
 
-#### Outage Duration
+#### Outage duration
 
  - Planned May 14, 2025 17:00 -- May 15, 2025 17:00
  - Actual  May 14, 2025 17:00 -- May 15, 2025 17:03
 
 
-#### Plan of Action
+#### Plan of action
 
 
  - STORAGE: troubleshoot power redundancy configuration on RC group storage 
@@ -155,7 +155,7 @@ ServiceNow Form
 
 
 
-#### ServiceNow Links
+#### ServiceNow links
 
 ServiceNow Form
 

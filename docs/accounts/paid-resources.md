@@ -1,9 +1,12 @@
 # Paid resources
 
-ICDS offers paid compute in the form of credits and allocations. We also offer extended,
-group-level storage.
+All users are automatically provided a set number of [READ credits](read-credits.md) each month. 
+For extended computing, ICDS offers paid compute in the form of credits and allocations. 
+We also offer extended, group-level storage either mounted on the compute cluster or as an 
+archive option.
 
 ## Compute offerings
+
 
 **Credit accounts** are like Starbucks cards:  
 

@@ -1,4 +1,4 @@
-# Using Containers
+# Using containers
 
 Containers address the issue of software and dependency complexity by storing the 
 application, its dependencies, and a minimal operating system in a single, portable 
@@ -148,7 +148,7 @@ srun --mpi=pmix apptainer exec /storage/work/\$USER/images/my_mpi_code.sif /usr/
     Due to the complexities of running containerized MPI jobs across nodes, it is recommended
     that you [first contact ICDS](mailto:idcs@psu.edu) for assistance prior to starting.
 
-## Apptainer Cache
+## Apptainer cache
 
 Apptainer automatically uses a directory `.apptainer`, located in your ***$HOME*** directory. 
 As home directories on ICDS systems are small, you may wish to use an alternate location of 
@@ -167,7 +167,7 @@ You should regularly clean your cache by running the command `apptainer cache cl
     You can first see what file will be cleaned by using the `--dry-run option` to the clean command.
 
 
-## More Information
+## More information
 
 For a more comprehensive understanding of container technology and advanced usage, consider these external resources:
 
