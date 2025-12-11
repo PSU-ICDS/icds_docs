@@ -7,15 +7,11 @@ These have different purposes:
 - **home** – for configuration files, and links to work, group, and scratch.
 - **work** – for your own work; 
 only you have read-write access to your home and work directories.
+- **scratch**  – for temporary storage of large files.  Scratch is *not backed up*, 
+and files with a time stamp older than 30 days will be *automatically deleted*.
 - **group** – for collaborative work. 
 Group space can be purchased by PIs in 5 TB increments. 
 By default, group members have read access to all files in group. 
-- **scratch**  – temporary storage area intended for large files. 
-
-!!! danger "Temporary Scratch Storage - Read Carefully"
-     Scratch is not backed up, and any files older than 30 days will be *automatically 
-     deleted*. Users are responsible for ensuring important data is copied elsewhere 
-     before expiration.
 
 Files in home, work, and group are backed up by a sequence of daily "snapshots", 
 which are kept for 90 days. 
@@ -35,15 +31,21 @@ Files, directories, and symlinks all count towards inode limits.
 
 | Storage | Path | Size | Inodes | Backup | Purpose |
 | :----: | :----: | :----: | :----: | :----: | :----: |
-| Home | /storage/home | *16 GB* | 500,000 | Daily  | Configuration files |
-| Work | /storage/work | *128 GB* | 1 million | Daily  | User data |
-| Scratch | /scratch | None | 1 million | None | Temporary files |
+| Home | /storage/home | 16 GB | 500,000 | Daily  | Configuration files |
+| Work | /storage/work | 128 GB | 1 million | Daily  | User data |
+| Scratch | /scratch | 50 TB* | 1 million | None | Temporary files |
 | Group | /storage/group | Specific to<br>allocation | 1 million<br>per TB | Daily | Shared data |
+
+!!! warning "Scratch quota grace period"
+    Scratch quotas have a brief grace period when exceeding the size quota 
+    to avoid interruption to running jobs. Monitor scratch usage and maintain 
+    file storage below the quota to avoid job run errors.
+
 
 ## Checking usage
 
 Exceeding quotas on home or work directories can cause errors 
-when running programs, writing files, or even logging in.
+when running progrms, writing files, or even logging in.
 
 There are two tools to check on your disk usage:
 
@@ -62,11 +64,35 @@ lists directory sizes in order from large to small
 (the output of du is "piped" to [sort][sort]).
 [sort]: https://man7.org/linux/man-pages/man1/sort.1.html
 
-!!! tip "Include hidden files"
-    To include hidden files and directories as well, use:
-    ```bash
-    du -sch .[!.]* * | sort -h -r
-    ```
+## Quota issues in home
+
+Many user configuration files and packages are stored by default in `home`.
+If these become too large, they can exceed the quota and cause errors. 
+This commonly occurs with directories such as
+
+ - `.local` - used by Python
+ - `.comsol` - used by Comsol
+
+These [dot files](https://missing.csail.mit.edu/2019/dotfiles/) (and directories) 
+are hidden by default, but you can view them with `ls -la`.
+
+If the size of one of these directories becomes a problem, 
+it can be moved to `work`, and a [symbolic link] created 
+which points to the directory you moved to `work`.
+
+For example, the commands needed to move the `.local` directory 
+would look like:
+
+```
+# first move the directory to /storage/work/
+mv ~/.local $WORK/.local
+
+# create a symlink in home pointing to the new location in work
+ln -s $WORK/.local .local
+```
+
+[symbolic link]:https://www.lenovo.com/us/en/glossary/symbolic-link/
+
 
 ## Archive storage
 
@@ -85,6 +111,3 @@ before transferring.
      please contact ICDS or the [Office of Information Security](https://security.psu.edu).
 
 
-!!! warning "Running out of space in your home directory?"
-    You're probably hitting the **home quota** because of large hidden directories like `.local`, `.cache`, or `.comsol`.
-    → See the full solution in the [FAQ](../getting-started/faq.md#quota-issues-in-home)
