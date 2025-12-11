@@ -1,24 +1,68 @@
 .wy-side-nav-search {
-    background: #FFFFFF;
+  background: #FFFFFF;
 }
 
 .wy-nav-side {
-    font-weight: 1000;
-    background: #001E44;
+  font-weight: 1000;
+  background: #001E44;
 }
 
 .toctree-l1 {
-    font-size: 16px;
+  font-size: 16px;
 }
 
 .toctree-l2 {
-    font-size: 14px;
+  font-size: 14px;
 }
 
-.rst-content code {
-    
+.rst-content code {}
+
+.rst-content pre code {}
+
+/* Allow tables to wrap instead of scrolling */
+.md-typeset table {
+  white-space: normal;
 }
 
-.rst-content pre code {
-    
+.md-typeset table td,
+.md-typeset table th {
+  white-space: normal;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+/* Fix logo visibility */
+.md-header__button.md-logo img {
+  background-color: white;
+  padding: 2px;
+  border-radius: 4px;
+}
+
+/* Style main navigation titles */
+.md-nav--primary>.md-nav__list>.md-nav__item>.md-nav__link,
+.md-nav--primary>.md-nav__list>.md-nav__item>.md-nav__title {
+  font-weight: bold;
+  font-size: 1.05rem;
+  text-decoration: underline;
+  /* text-decoration-thickness: 2px; */
+  line-height: 1.4;
+}
+
+/* Sticky footer */
+.md-footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+
+/* Fix main content overlap with sticky footer */
+.md-main__inner {
+  padding-bottom: 3rem;
+}
+
+/* Fix sidebar overlap with sticky footer */
+.md-sidebar__inner {
+  padding-bottom: 3rem;
 }
