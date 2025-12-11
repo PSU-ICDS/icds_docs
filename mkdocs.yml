@@ -6,17 +6,24 @@ site_author: Institute of Computational and Data Sciences
 #edit_url: edit/staging/docs/
 
 theme: 
-  name: readthedocs
+  name: material
   features:
-#    - content.code.copy
-#    - navigation.sections
-#    - navigation.footer
-  highlightjs: false
+    - content.code.copy
+    - navigation.sections
+    - navigation.expand
+    - toc.follow
+  highlightjs: true
   logo: img/PSU_ICDS_logo_blue.png
   site_favicon: img/favicon.ico
   next_previous: true
-#extra:
-#  generator: false
+
+repo_url: https://github.com/PSU-ICDS/icds_docs
+edit_url: null
+
+copyright: 'Contribute to this documentation at <a href="https://github.com/PSU-ICDS/icds_docs">https://github.com/PSU-ICDS/icds_docs</a>'
+
+extra:
+  generator: false
 #extra_footer: |
 #  [Contribute to this project](https://github.com/PSU-ICDS/icds_docs/CONTRIBUTING.md)
 
