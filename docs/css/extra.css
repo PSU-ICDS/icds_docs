@@ -4,7 +4,6 @@
 
 .wy-nav-side {
   font-weight: 1000;
-  background: #001E44;
 }
 
 .toctree-l1 {
@@ -59,7 +58,7 @@
 
 /* Fix main content overlap with sticky footer */
 .md-main__inner {
-  padding-bottom: 3rem;
+#  padding-bottom: 3rem;
 }
 
 /* Fix sidebar overlap with sticky footer */
@@ -68,8 +67,45 @@
 }
 
 /* Logo size */
-.md-header__title .md-logo img {
-  height: 64px;
+.md-header .md-logo img {
+  height: 70px;
   width: auto;
+}
+
+.md-header {
+  background-color: #001E44;
+}
+
+.md-nav__title {
+    display: none;
+}
+
+
+
+
+/* Change L1 nav text color and remove underline */
+.md-header-nav__link,
+.md-nav--primary > .md-nav__list > .md-nav__item > .md-nav__link {
+  color: #1E407C !important;
+  text-decoration: none !important;
+}
+
+/* Ensure current active L1 nav item also has the correct color and no underline */
+.md-header-nav__link.md-header-nav__link--active,
+.md-nav--primary > .md-nav__list > .md-nav__item.md-nav__item--active > .md-nav__link {
+  color: #1E407C !important;
+  text-decoration: none !important;
+}
+
+/* Optional: change link color on hover to maintain consistency */
+.md-header-nav__link:hover,
+.md-nav--primary > .md-nav__list > .md-nav__item > .md-nav__link:hover {
+  color: #15305a !important; /* A slightly darker shade for hover effect */
+  text-decoration: none !important;
+}
+
+/* Also target links within the sidebar to ensure consistency if L1 items appear there */
+.md-nav__link {
+    text-decoration: none !important;
 }
 
