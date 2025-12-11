@@ -33,8 +33,14 @@ Files, directories, and symlinks all count towards inode limits.
 | :----: | :----: | :----: | :----: | :----: | :----: |
 | Home | /storage/home | 16 GB | 500,000 | Daily  | Configuration files |
 | Work | /storage/work | 128 GB | 1 million | Daily  | User data |
-| Scratch | /scratch | None | 1 million | None | Temporary files |
+| Scratch | /scratch | 50 TB* | 1 million | None | Temporary files |
 | Group | /storage/group | Specific to<br>allocation | 1 million<br>per TB | Daily | Shared data |
+
+!!! warning "Scratch quota grace period"
+    Scratch quotas have a brief grace period when exceeding the size quota 
+    to avoid interruption to running jobs. Monitor scratch usage and maintain 
+    file storage below the quota to avoid job run errors.
+
 
 ## Checking usage
 
