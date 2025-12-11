@@ -66,3 +66,10 @@
 .md-sidebar__inner {
   padding-bottom: 3rem;
 }
+
+/* Logo size */
+.md-header__title .md-logo img {
+  height: 32px;
+  width: auto;
+}
+
