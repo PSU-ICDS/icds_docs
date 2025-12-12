@@ -1,4 +1,4 @@
-# READ credits
+# READ credits (Open account)
 
 Beginning January 2026, ICDS has replaced the historical Open Queue and now provides 
 Research Exploration and Discovery (READ) Credits to all system users. READ credits include 

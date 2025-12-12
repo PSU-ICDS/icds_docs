@@ -111,6 +111,7 @@ ln -s $WORK/.local .local
 ## Job fails after hours or days. How can I help support reproduce the issue?
 
 Provide a minimal, fast, reproducible example by reducing:
+
 - Input size (smaller dataset/grid/iteration count)
 - Runtime (seconds or minutes instead of hours)
 - Resources (fewer cores/nodes)
