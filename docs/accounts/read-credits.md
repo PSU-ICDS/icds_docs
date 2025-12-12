@@ -9,5 +9,11 @@ identically to paid credits and users can use them to run jobs on any
 Additionally, researchers can request additional READ credits through a lightweight 
 application process.
 
+!!! warning "General READ credits do not rollover"
+    General READ credits (those offered to users on a monthly basis) do not rollover. Credit balances 
+    reset at the start of each month and unused credits are lost.
+    
+    This does not apply to additional credits granted through the application process.
+
 For more information on READ credits, including how to request additional credits, please 
 [visit our website](https://icds.psu.edu/funding/new-read-credits/).
