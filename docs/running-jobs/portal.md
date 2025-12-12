@@ -43,12 +43,12 @@ specific type required (e.g., standard CPU or GPU-enabled node).
 ### Advanced Slurm Options
 
 Using Advanced Slurm options allows you to enter custom 
-[Resource directives](./slurm.md#resource-directives). These options allow you to fully 
+[Resource directives](./slurm-scheduler.md#resource-directives). These options allow you to fully 
 customize your hardware allocation even allowing you to override the form restrictions 
 for node and core count, memory, and runtime.
 
 To do this, on a job submit form, ensure the "Enable advanced Slurm options" box is checked. 
-This will cause the "Sbatch options" box to appear. Enter the desired [Resource directives](slurm.md#resource-directives) here.
+This will cause the "Sbatch options" box to appear. Enter the desired [Resource directives](./slurm-scheduler.md#resource-directives) here.
 
 For example, to request 8 cores (tasks), 128GB memory, and 8 hour run time - the Sbatch options box 
 should contain:
@@ -86,7 +86,7 @@ For more information, please see the
 
 To run your job using a [credit account or allocation](../accounts/paid-resources.md),
 select the relevant account ID from the Account drop-down menu. Then select a corresponding 
-[partition](../system/system-overview.md$#partitions).
+[partition](../system/system-overview.md#partitions).
 
  - Credit accounts need to use one of the hardware partitions: `basic`, `standard`, `himem`, or `interactive`
  - Allocations need to use the `sla-prio` partition 

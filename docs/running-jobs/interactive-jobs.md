@@ -40,7 +40,7 @@ Under a paid allocation (that includes GPU nodes), use
 salloc --account=<your_allocation> --partition=sla-prio --ntasks=4 --mem=32G --time=01:00:00 --gres=gpu:a100:1
 ```
 
-For more details, see [Hardware requests](resource-requests.md).
+For more details, see [Resource requests](resource-requests.md).
 
 ## Firefox
 

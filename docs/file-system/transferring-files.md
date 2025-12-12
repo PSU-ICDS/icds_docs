@@ -86,7 +86,7 @@ available for [Linux](https://docs.globus.org/globus-connect-personal/install/li
 
 In addition to providing a robust data transfer option, Globus can also be used to share 
 data with collaborators by creating 
-[Guest Collections](https://docs.globus.org/how-to/guest-collection-share-and-access/). 
+[Guest Collections](https://docs.globus.org/guides/tutorials/manage-files/share-files/). 
 Collections can be set up with a variety of sharing options from complete public access 
 to individual user-level permission levels.
 
