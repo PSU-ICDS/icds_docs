@@ -47,24 +47,13 @@
   line-height: 1.4;
 }
 
-/* Sticky footer */
+/* footer */
 .md-footer {
-  position: fixed;
   bottom: 0;
   width: 100%;
   z-index: 10;
 }
 
-
-/* Fix main content overlap with sticky footer */
-.md-main__inner {
-#  padding-bottom: 3rem;
-}
-
-/* Fix sidebar overlap with sticky footer */
-.md-sidebar__inner {
-  padding-bottom: 3rem;
-}
 
 /* Logo size */
 .md-header .md-logo img {
