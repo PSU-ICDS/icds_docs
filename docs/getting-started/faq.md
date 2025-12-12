@@ -148,7 +148,7 @@ on how to handle these issues.
 This issue should self correct, however you can manually reset your portal session by 
 using this link:
 
-(https://portal.hpc.psu.edu/nginx/stop?redir=/pun/sys/dashboard/)
+<https://portal.hpc.psu.edu/nginx/stop?redir=/pun/sys/dashboard/>
 
 **Local browser issues**
 
