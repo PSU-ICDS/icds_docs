@@ -15,6 +15,15 @@ You can access files using the UI on the portal by going to the top bar: **Files
 You can run interactive jobs from the home page or by navigating via the top bar: 
 **Interactive Apps** > **[Select the app you would like to run]**.
 
+## Command Line Access
+
+For advanced tasks, access to the command line interface is accessible two ways in the portal.
+
+The first is by selecting "Clusters -> _RC Shell Access".
+
+The second is inside an [Interactive Job](#interactive-jobs), such as the Persistant Terminal or 
+[Interactive Desktop App](#interactive-desktop).
+
 ## Selecting resources
 
 When launching an interactive app, you must specify the computational resources for your 

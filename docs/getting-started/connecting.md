@@ -19,10 +19,10 @@ Once the sponsored account is active, a Roar account can be requested.
 
 ## Two ways to access 
 
-Roar can be accessed mainly using two ways:  via the web-based Portal <br>
-<https://portal.hpc.psu.edu/pun/sys/dashboard> <br>
-or by using the "secure shell" ([`ssh`][ssh]) 
-from a terminal application.
+Roar can be accessed mainly using two ways:
+
+ - via [the web-based Portal](#portal)
+ - by using the "secure shell" ([`ssh`][ssh]) from a terminal application.
 [ssh]: https://linux.die.net/man/1/ssh
 
 The Portal (which runs [Open OnDemand](https://openondemand.org))
@@ -44,9 +44,6 @@ needed to prepare and submit jobs.
 
 Roar can also be accessed via SSH (Secure SHell),
 from a terminal application on a laptop.
-For more information about Portal and SSH access,
-see [Connecting](connecting.md).
-
 
 
 ### Portal
