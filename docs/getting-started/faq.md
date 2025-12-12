@@ -156,4 +156,4 @@ using this link:
 There may be an issue with your local session files. Try using a different browser, 
 an incognito or private viewing window, or clearing your cache including login sessions.
 
-If you are stil encountering issues after trying the above, please [contact us]<icds@psu.edu> for more assistance.
+If you are stil encountering issues after trying the above, please [contact us](mailto:icds@psu.edu) for more assistance.
