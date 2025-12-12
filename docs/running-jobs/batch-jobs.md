@@ -43,68 +43,83 @@ with a preamble of Slurm [resource directives](slurm-scheduler.md/#resource-dire
 - nodes, cores, memory, GPUs, and time;
 - and other job-related parameters.
 
-An example is:
+For more information on partitions, see [Partitions][../system/system-overview.md/#partitions].  
+For more information on resource requests, see [Resource requests][resource-requests].
+[resource-requests]: resource-requests.md
+
+An example batch script:
 
 ```
 #!/bin/bash
-#SBATCH --account=...
-#SBATCH --qos=normal
+#SBATCH --account=account_id
 #SBATCH --partition=basic
 #SBATCH --nodes=1
 #SBATCH --ntasks=8
 #SBATCH --mem=1gb
 #SBATCH --time=4:00:00
-#SBATCH --job-name=...
+#SBATCH --job-name=example-job
+#SBATCH --output=example-job.%j.out
 
-# as usual, cd to the submit directory
-cd $SLURM_SUBMIT_DIR
+# load software
+module load python/3.11.2
 
-# load the needed module
-module load gromacs-2019.6
-
-SYSTEM=$SLURM_SUBMIT_DIR/System
-gmx grompp -f $SYSTEM/nvt.mdp -c $SYSTEM/min.gro -p $SYSTEM/testJob.top -o nvt.tpr 
-gmx mdrun -nt 8 -nb cpu -deffnm nvt
+python3 myscript.py
 ```
 
-The first line `#!/bin/bash` is the "shebang", which says the script 
-should be run under `bash` (a Linux shell).
-Everything after the last `#SBATCH` are commands to be executed;
-lines with `#` other than `#SBATCH` are ordinary bash script comments.
-Most scripts start with `cd $SLURM_SUBMIT_DIR`,
-which is the directory from which the job was submitted.
-
-`sbatch` can pass arguments to batch scripts like this:
-```
-sbatch myScript.sh arg1 arg2
-```
-In the script, arguments `arg1` and `arg2` can be accessed with `$1` and `$2` as usual.  
-`sbatch` can also pass values by assigning variables like this:
-```
-sbatch --export=VAR1=arg1, VAR2=arg2 myScript.sh
-```
-In the script, `$VAR1` and `$VAR2` are set to `arg1` and `arg2`.
-
-For more information on partitions, see [Partitions][../system/system-overview.md/#partitions].  
-For more information on resource requests, see [Resource requests][resource-requests].
-[resource-requests]: resource-requests.md
-
-!!! tip "Job Repository"
-    For a repository of example batch workflows, go [here][repository].
-[repository]: https://github.com/PSU-ICDS/rc-example-jobs
-
-!!!warning "To use the open partition, use --partition=open"
-	Unpaid jobs under the open partition cannot specify a hardware partition,
-	but will be assigned to available older CPU hardware.
-
-!!!warning "To use a paid allocation, use --partition=sla-prio"
+!!! tip "To use a paid allocation, use --partition=sla-prio"
 	Jobs under a paid allocation do not specify the basic, standard,
 	high-memory, or interactive partitions.
 	Instead, --partition=sla-prio tells the job
 	to use the hardware in your allocation.
 
 
-## Resource usage
+The first line `#!/bin/bash` is the "shebang", which says the script 
+should be run under `bash` (a Linux shell).
+Everything after the last `#SBATCH` are commands to be executed;
+lines with `#` other than `#SBATCH` are ordinary bash script comments.
+
+### Arguments in batch scripts
+
+`sbatch` can pass arguments to batch scripts like this:
+
+```
+sbatch myScript.sh arg1 arg2
+```
+
+In the script, arguments `arg1` and `arg2` can be accessed with `$1` and `$2` as usual:
+
+```
+#!/bin/bash
+#SBATCH --account=account_id
+...
+
+python3 myscript.py $1 $2
+```
+  
+`sbatch` can also pass values by assigning variables like this:
+```
+sbatch --export=VAR1=arg1, VAR2=arg2 myScript.sh
+```
+
+In the script, `$VAR1` and `$VAR2` are set to `arg1` and `arg2`.
+
+```
+#!/bin/bash
+#SBATCH --account=account_id
+...
+
+python3 myscript.py $VAR1 $VAR2
+```
+
+### Batch Script Examples
+
+ICDS offers a curated repository of example submit scripts for many of our 
+most popular software packages, including StarCCM, COMSOL, MATLAB, R, python, and more.
+
+[ICDS Example Job Repository](https://github.com/PSU-ICDS/rc-example-jobs){ .md-button }
+
+
+## Estimating resource usage
 
 For credit accounts, it is helpful to estimate how many credits a batch job would use
 before you actually run it. For this, use `job_estimate`:
@@ -125,12 +140,12 @@ At the bottom of a batch script, the command
 ```
 sacct -j $SLURM_JOB_ID --format=JobID,JobName,MaxRSS,Elapsed,TotalCPU,State
 ```
-generates a report in the batch output file of resources used.
-(`$SLURM_JOB_ID` is a variable that returns the jobID of the batch job.)
-As in the example, sacct takes formatting options to control what it prints;
-`sacct --helpformat` lists all the options.
 
-## Selecting the Number of Nodes and Cores
+generates a report in the batch output file of resources used. Using the 
+`--format` flag controls what content is displayed. See `sacct --helpformat` 
+for more formatting options.
+
+### Selecting nodes and cores
 
 Choosing the right number of cores (--ntasks) and nodes (--nodes) depends on how your 
 software is designed to run in parallel. It's important to understand if your job is built 
@@ -147,7 +162,7 @@ computers at once, communicating over the network. Only if your software is spec
 built for this should you set `--nodes` to a value greater than one.
 
 
-## Selecting Memory for Your Job
+### Selecting memory for Your Job
 
 Correctly estimating memory (--mem) can be tricky, but it is critical for ensuring your job 
 runs successfully. Requesting too little will cause your job to fail, while requesting too 
@@ -163,7 +178,7 @@ then check the actual peak usage. You can use the sacct command after your job f
 see the MaxRSS (Maximum Resident Set Size). This will tell you precisely how much memory 
 your job used, allowing you to make very accurate requests for future runs.
 
-## Timing jobs
+### Timing jobs
 
 It is good practice to test a new workflow
 by running small short jobs before submitting big long jobs.

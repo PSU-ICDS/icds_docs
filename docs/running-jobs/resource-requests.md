@@ -1,21 +1,21 @@
 # Resource requests 
 
 Users with paid [credit accounts or allocations](../accounts/paid-resources.md)
-can request GPU nodes,
-and fine-tune their hardware requests with `constraint` directives.
+can request GPU nodes, and fine-tune their hardware requests with `constraint` directives.
 
 ## GPUs
 
 GPUs are only available to paid credit accounts,
 or allocations that include GPU nodes.  
-For a batch job paid by a credit account, to request a single GPU:
+
+To request a single GPU:
 
 ```
---partition=standard
 --gres=gpu:1
 ```
 
 To request n GPUs, replace 1 above by n.  
+
 To request a specific model of GPU, use `--gres=gpu:a100:1`.
 
 For an interactive job paid by a credit account, use `salloc`:
@@ -29,14 +29,14 @@ For information on available GPU nodes and for the names of different GPU types 
 see [Hardware info][hardwareinfo].
 [hardwareinfo]: resource-requests.md/#hardware-info
 
-!!! warning "Make sure your application is GPU-enabled."
-    If your application does not use GPUs,   
-    requesting GPUs will do nothing except deplete your accounts.  
+!!! tip "Make sure your application is GPU-enabled."
+    If your application does not use GPUs, requesting GPUs will do nothing 
+    except deplete your accounts.  
 
-!!! Warning "Generic GPU requests (--gres=gpu:1) may allocate the most expensive GPU available"
-	When you request a generic GPU with --gres=gpu:1, Slurm assigns any available GPU, 
-	often the highest-cost model (e.g. A100) even if a cheaper one (e.g. P100) would suffice.
-	This increases your costs unnecessarily if your job doesn’t require high-end hardware.
+!!! warning "Generic GPU requests (--gres=gpu:1) may allocate the most expensive GPU available"
+    When you request a generic GPU with --gres=gpu:1, Slurm assigns any available GPU, 
+    often the highest-cost model (e.g. A100) even if a cheaper one (e.g. P100) would suffice.
+    This increases your costs unnecessarily if your job doesn’t require high-end hardware.
 
 ## Hardware info
 

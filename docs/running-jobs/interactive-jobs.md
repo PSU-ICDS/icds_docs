@@ -2,7 +2,19 @@
 
 For compute-intensive tasks that require real-time user interaction—such as working with MATLAB, debugging code, or running Gaussian calculations—you should not run them on the login nodes. Login nodes are for light work like editing files and submitting jobs.
 
-Instead, you must request an interactive session on a compute node. The salloc command does this by first finding and allocating the resources you request, and then giving you a new command prompt directly on that compute node.
+Instead, you must request an interactive session on a compute node. There are two main ways to do this.
+
+## Portal interactive apps
+
+Our [Web Portal](portal.md) provides a number of interactive apps including popular IDEs such as Jupyter, RStudio, and CodeServer. 
+Additionally, the Interactive Desktop provides a full graphical user interface similar to a remote desktop where you can launch software 
+with graphical components and manage files interactively.
+
+[See our Portal documentation for more information](portal.md){ .md-button }
+
+## Command line interactive sessions
+ 
+The salloc command does this by first finding and allocating the resources you request, and then giving you a new command prompt directly on that compute node.
 
 You can then run all your intensive commands in that new shell for the duration of the allocation.
 ```
@@ -29,19 +41,6 @@ salloc --account=<your_allocation> --partition=sla-prio --ntasks=4 --mem=32G --t
 ```
 
 For more details, see [Hardware requests](resource-requests.md).
-
-!!!warning "GPUs are only available to paid accounts."
-	To request GPUs for an interactive job,
-	you must have a paid credit account,
-	or a paid allocation that includes GPU nodes.
-
-## Interactive desktop
-
-The Interactive Desktop provides a full graphical user interface (GUI) that runs on a compute node, similar to a remote desktop. This is ideal for running software with graphical components (e.g., MATLAB, Ansys Workbench) or for managing files and multiple terminal windows in a familiar visual environment.
-
-To launch a session, navigate to the Roar Portal and select **Interactive Apps > Interactive Desktop** from the top menu. You will then be presented with a form to request the necessary computational resources.
-
-For a detailed guide on how to choose your Account, Queue, number of cores, memory, and run time on this form, please see the **[Selecting Resources](portal.md#selecting-resources)** section of our Portal documentation.
 
 ## Firefox
 

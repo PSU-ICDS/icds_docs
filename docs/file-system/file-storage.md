@@ -39,13 +39,13 @@ Files, directories, and symlinks all count towards inode limits.
 !!! warning "Scratch quota grace period"
     Scratch quotas have a brief grace period when exceeding the size quota 
     to avoid interruption to running jobs. Monitor scratch usage and maintain 
-    file storage below the quota to avoid job run errors.
+    file storage below the quota to avoid job interruptions.
 
 
 ## Checking usage
 
 Exceeding quotas on home or work directories can cause errors 
-when running progrms, writing files, or even logging in.
+when running programs, writing files, or even logging in.
 
 There are two tools to check on your disk usage:
 
