@@ -15,7 +15,7 @@ You can access files using the UI on the portal by going to the top bar: **Files
 You can run interactive jobs from the home page or by navigating via the top bar: 
 **Interactive Apps** > **[Select the app you would like to run]**.
 
-### Selecting resources
+## Selecting resources
 
 When launching an interactive app, you must specify the computational resources for your 
 job. These options are typically selected using dropdowns and input fields on the 
@@ -31,51 +31,36 @@ specific type required (e.g., standard CPU or GPU-enabled node).
 * **Run Time:** The maximum duration your job is permitted to run (also known as 
 "wall time"), typically in an HH:MM:SS format.
 
-!!! note "Advanced Slurm Options"
-    To override the default choices for nodes, cores, memory, and run time,
-    check the box "Enable advanced Slurm options",
-    and type Slurm [resource directives][slurmdir] one per line into the text box, like this:
-    [slurmdir]: slurm-scheduler.md#resource-directives
-    ```
-    --ntasks=8
-    --mem=128GB
-    --time=8:00:00
-    ```
-    The above requests 8 cores (tasks), 128GB memory, and 8 hour run time.
+### Advanced Slurm Options
+
+Using Advanced Slurm options allows you to enter custom 
+[Resource directives](./slurm.md#resource-directives). These options allow you to fully 
+customize your hardware allocation even allowing you to override the form restrictions 
+for node and core count, memory, and runtime.
+
+To do this, on a job submit form, ensure the "Enable advanced Slurm options" box is checked. 
+This will cause the "Sbatch options" box to appear. Enter the desired [Resource directives](slurm.md#resource-directives) here.
+
+For example, to request 8 cores (tasks), 128GB memory, and 8 hour run time - the Sbatch options box 
+should contain:
+
+```
+--ntasks=8
+--mem=128GB
+--time=8:00:00
+```
     
 !!! warning "All jobs must fit inside the resource limits of the partition they are running on"
      If a job requests resources that exceed the partition limits, they will not begin.
 
+### Requesting GPUs
 
-#### Using paid accounts
+To request a GPU with your interactive job, you will need to utilize [Advanced Slurm Options](#advanced-slurm-options) 
+to enter the `--gres` directive specifying the number of and model of GPU needed.
 
-To run your job using a [credit account or allocation](../accounts/paid-resources.md),
-select the relevant account ID from the Account drop-down menu. Then select a corresponding 
-[partition](../system/system-overview.md$#partitions).
+See [Resource requests -> GPUs](resource-requests.md#gpus) for more information.
 
- - Credit accounts need to use one of the hardware partitions: `basic`, `standard`, `himem`, or `interactive`
- - Allocations need to use the `sla-prio` partition 
-
-#### Requesting GPUs
-
-ICDS offers NVIDIA GPU resources. These are available for use with a credit account on the 
-`standard` partition, or as part of a dedicated allocation.
-
-To request access to a GPU within a job, the `--gres` directive is used. For example, to 
-request 1 GPU as part of a job's resources:
-
-```
---gres=gpu:1
-```
-
-This request will give you a single GPU of whatever type is available. To request a specific 
-type of GPU, you must include the hardware attribute. For example, to request 1 A100 GPU:
-
-```
---gres=gpu:a100:1
-```
-
-### Interactive desktop
+## Interactive Desktop
 
 The Interactive Desktop provides a full graphical user interface (GUI) on a compute node. 
 To launch a session, select **Interactive Apps > Interactive Desktop** from the top menu. 
@@ -87,6 +72,15 @@ The Job Composer allows you to create and submit batch jobs directly from the we
 
 For more information, please see the 
 [Open OnDemand documentation on the Job Composer](https://osc.github.io/ood-documentation/release-1.8/applications/job-composer.html).
+
+## Using paid accounts
+
+To run your job using a [credit account or allocation](../accounts/paid-resources.md),
+select the relevant account ID from the Account drop-down menu. Then select a corresponding 
+[partition](../system/system-overview.md$#partitions).
+
+ - Credit accounts need to use one of the hardware partitions: `basic`, `standard`, `himem`, or `interactive`
+ - Allocations need to use the `sla-prio` partition 
 
 
 ## Using custom environments
