@@ -94,14 +94,14 @@ Includes user test for the following applications:
 #### Known issues 
 
 Julia - GPU Users: 
-Updates to CUDA drivers made during this outage will require users to rebuild the .JULIA folder in their home directories. Users with customizations should rebuild this folder “manually,” while simply deleting the folder will cause it to be rebuilt automatically in a default state. ICDS recommends saving a copy of your .JULIA folder before deleting or editing. For assistance, contact Client Support at ICDS@PSU.EDU.
+Updates to CUDA drivers made during this outage will require users to rebuild the `.julia` folder in their home directories. Users with customizations should rebuild this folder “manually,” while simply deleting the folder will cause it to be rebuilt automatically in a default state. ICDS recommends saving a copy of your `.julia` folder before deleting or editing. For assistance, contact Client Support at <icds@psu.edu>.
 
 
 #### ServiceNow links
 
 ServiceNow form
 
-- RITM0373685  [RITM0373685 ](https://pennstate.service-now.com/now/nav/ui/classic/params/target/sc_req_item.do%3Fsys_id%3D8b87bbaac3aae2d028753df905013122%26sysparm_stack%3D%26sysparm_view%3D)
+- [RITM0373685 ](https://pennstate.service-now.com/now/nav/ui/classic/params/target/sc_req_item.do%3Fsys_id%3D8b87bbaac3aae2d028753df905013122%26sysparm_stack%3D%26sysparm_view%3D)
 
 
 ## Planned outage 2025-05-14
@@ -160,9 +160,9 @@ ServiceNow form
 ServiceNow Form
 
 
-- RITM0362423 [RITM0362423](https://pennstate.service-now.com/nav_to.do?uri=sc_req_item.do%3Fsys_id=9dc5c7af47302e94fb179df4126d439c%26sysparm_stack=sc_req_item_list.do%3Fsysparm_query=active=true)
+- [RITM0362423](https://pennstate.service-now.com/nav_to.do?uri=sc_req_item.do%3Fsys_id=9dc5c7af47302e94fb179df4126d439c%26sysparm_stack=sc_req_item_list.do%3Fsysparm_query=active=true)
 
 
-- CHG0121515 [CHG0121515](https://pennstate.service-now.com/nav_to.do?uri=change_request.do%3Fsys_id=39c50baf47302e94fb179df4126d436f%26sysparm_stack=change_request_list.do%3Fsysparm_query=active=true)
+- [CHG0121515](https://pennstate.service-now.com/nav_to.do?uri=change_request.do%3Fsys_id=39c50baf47302e94fb179df4126d436f%26sysparm_stack=change_request_list.do%3Fsysparm_query=active=true)
 
 
