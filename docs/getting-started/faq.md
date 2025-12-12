@@ -36,8 +36,6 @@ Either the resource configuration does not exist, or the only matching nodes are
 - **(Reserved for maintenace):** Your job is not expected to complete prior to a 
 scheduled outage and has been held until after the outage is over.
 
----
-
 ##  Why did my job fail with an "Out of Memory" error?
 
 This typically means your job tried to use more memory (RAM) than you allocated with the 
@@ -79,7 +77,7 @@ users are not added to any groups.
     PI/owner of the storage and request access.
  
 
-### Quota issues in home
+## Quota issues in home
 
 Many user configuration files and packages are stored by default in `home`.
 If these become too large, they can exceed the quota and cause errors. 
@@ -110,7 +108,7 @@ ln -s $WORK/.local .local
 [symbolic link]:https://www.lenovo.com/us/en/glossary/symbolic-link/
 
 
-### Job fails after hours or days. How can I help support reproduce the issue?
+## Job fails after hours or days. How can I help support reproduce the issue?
 
 Provide a minimal, fast, reproducible example by reducing:
 - Input size (smaller dataset/grid/iteration count)
@@ -123,18 +121,18 @@ the smaller example allows support to reproduce and fix the issue much more quic
 
 For further help, contact [ICDS help desk](getting-help.md) 
 
-### I can't login to the portal
+## I can't login to the portal
 
 This can be caused by a few different reasons.
 
-1. You don't have an active account on our systems
+**You don't have an active account on our systems**
 
 If you have not logged into the portal before, you will need to [request a login account](connecting.md/#roar-account-creation) 
 before you can access Roar Collab. To verify that your account request went through 
 successfully, you should receive a confirmation email once you submit the form and another 
 email once the account is created.
 
-2. Your home directory is over quota
+**Your home directory is over quota**
 
 The portal writes session and job files to your home directory. If your home directory is 
 over quota, this may prevent logging in. Please use [Globus](http://www.globus.org) to 
@@ -145,9 +143,16 @@ Many times, file usage in home may be inside hidden directories. Please see
 [Quota issues in home](#quota-issues-in-home) for more information 
 on how to handle these issues.
 
-3. Your portal session files have become corrupted
+**Your portal session files have become corrupted**
 
 This issue should self correct, however you can manually reset your portal session by 
 using this link:
 
 (https://portal.hpc.psu.edu/nginx/stop?redir=/pun/sys/dashboard/)
+
+**Local browser issues**
+
+There may be an issue with your local session files. Try using a different browser, 
+an incognito or private viewing window, or clearing your cache including login sessions.
+
+If you are stil encountering issues after trying the above, please [contact us]<icds@psu.edu> for more assistance.
