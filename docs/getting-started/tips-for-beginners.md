@@ -58,8 +58,8 @@ A computing cluster is a collection of interconnected computers [(nodes)](#node)
 
 ### Core
 A Core is a single processing unit within a [CPU](#cpu). Modern CPUs have multiple cores (e.g., 64 cores per node).
-Cores execute tasks in parallel.  
-When you request “8 cores,” you’re asking for 8 processing units — possibly on one [node](#node) or across nodes.
+Cores execute tasks in parallel. When you request “8 cores,” you’re asking for 8 processing units — possibly on one [node](#node) or across nodes.
+
 Note:  
 
 - 1 core = 1 CPU thread (unless hyper-threading is enabled)
@@ -72,7 +72,7 @@ The CPU (also called processor) is the hardware component within a node responsi
 ### Directory
 A Directory is a folder in the filesystem : a location where files are stored.
 On Roar, key directories include the home, work, group and scratch directories.
-See [File Storage and Filesystems](../file-system/file-storage.md) for full details.
+See [File Storage](../file-system/file-storage.md) for full details.
 
 ### Environment Modules
 Environment modules provide a flexible system for managing software environments on the Roar cluster. Modules allow users to load, unload, or switch between software packages, versions, or dependencies, ensuring the correct tools and libraries are available for specific tasks.
@@ -86,7 +86,8 @@ Environment Variables are dynamic key-value pairs that configure the behavior of
 Example: To add a custom directory to the PATH variable, run `export PATH=$PATH:/home/username/bin` in the terminal. To view all current environment variables, use the command `printenv`
 
 Note: Environment variables are often set automatically by environment modules but can be customized for specific needs.
-Since Roar uses RHEL, it sets the following variables for you - 
+
+Since Roar uses RHEL, it sets the following variables for you:
 
 - $USER is your Penn State User ID. 
 - $HOME points to your home directory (/storage/home/$USER).
@@ -100,6 +101,7 @@ A Graphics Processing Unit (GPU) is a specialized processor for parallel computa
 - **V100**, **P100** — mid-range, cost-effective
 
 GPUs are only available to:
+
 - Paid credit accounts
 - Allocations with GPU access
 
@@ -127,7 +129,7 @@ Parallel processing is widely used in scenarios where large datasets or complex 
 
 ### Partition
 A partition is a logical grouping of nodes in the Roar cluster, defined by shared access policies, time limits, and billing rates. Partitions allow the system to prioritize and allocate resources based on job requirements and user privileges.
-See [Compute Hardware](../system/compute-hardware.md) for more details on available partitions.
+See [System Overview](../system/system-overview.md#partitions) for more details on available partitions.
 
 
 ### Serial Processing

@@ -4,7 +4,7 @@
 
 Access to Roar requires a login account.
 All users have access to user-level [storage space](../file-system/file-storage.md),
-and free access to the [open queue](../running-jobs/portal.md).
+and a moderate amout of free credits in their user level [READ credit/Open account](../accounts/read-credits.md).
 
 Anyone with a Penn State access ID can [request an account on Roar](https://accounts.hpc.psu.edu/users/).
 Students and postdocs must be sponsored by a Penn State faculty member (their supervisor, advisor or collaborator). 
