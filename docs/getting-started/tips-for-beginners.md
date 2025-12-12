@@ -32,21 +32,15 @@ The operating system for Roar is Red Hat Enterprise Linux 8 ([RHEL8][rhel8]),
 a variant of Unix.
 Linux is text-based; users interact with the system by typing commands.
 Compute clusters use Linux in part because tasks can be automated with scripts.
-[rhel8]: https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9
+[rhel8]: https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/8
 
 This user guide assumes familiarity with Linux,
 which any user who wants to do more than use the Portal needs to learn.
-A tutorial website for Unix can be found [here][unix_tutorial].
-[unix_tutorial]: https://www.tutorialspoint.com/unix/unix_tutorial.pdf
-The first chapter of [this book][unixphysics] is also helpful.
-An introduction to Unix
-written for research undergraduates and graduate students,
-is [here](../pdf/unixGuide.pdf).
-[unixphysics]: https://www.oreilly.com/library/view/effective-computation-in/9781491901564/?sso_link=yes&sso_link_from=pennsylvania-state-university
 
-See also the online lesson [HPC Carpentry lesson "Introduction
-to Using the Shell in a HPC Context"](https://www.hpc-carpentry.org/hpc-shell/),
-which can be followed after [logging onto Roar](connecting.md/#ssh).
+To learn more about Linux, we recommend the following resources:
+ - [Unix tutorial]: https://www.tutorialspoint.com/unix/unix_tutorial.pdf
+ - [Effective Computation in Physics - Chapter One](https://www.oreilly.com/library/view/effective-computation-in/9781491901564/?sso_link=yes&sso_link_from=pennsylvania-state-university)
+ - [Introduction to Using the Shell in an HPC Context by HPC Carpentry](https://www.hpc-carpentry.org/hpc-shell/) which can be followed after [logging onto Roar](connecting.md/#ssh).
 
 
 ## Glossary and key concepts
