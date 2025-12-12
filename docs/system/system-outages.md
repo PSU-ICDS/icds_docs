@@ -48,6 +48,20 @@ Includes user test for the following applications:
 **Your input is valuable**. At the conclusion of every outage, ICDS engineers run extensive use case tests to ensure that the system will work as expected. If your team runs your own post outage tests or if you have ideas for tests you’d like ICDS engineers to run, [please let us know.](mailto:icds@psu.edu?subject=Post-Outage%20Testing%20Feedback)
 
  
+## Planned outage 2026-01-08
+
+#### Outage duration
+
+ - Planned Jan 08, 2026 17:00 -- Jan 10, 2026 17:00
+
+#### Plan of action
+
+ - DATA CENTER: Power circuit and UPS maintenance
+ - STORAGE: Migrate /scratch
+ - SCHEDULER: Reconfigure open usage
+ - CLUSTER: reconfigure node support
+ - Operating System: Security and system software updates
+
  
 ## Planned outage 2025-08-13
 

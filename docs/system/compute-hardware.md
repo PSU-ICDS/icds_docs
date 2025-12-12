@@ -11,13 +11,13 @@ The different types of nodes available on Roar are:
 
 | Resource | Count | Cores | Memory <br> (GB) | CPU | CPU <br> Family | Network |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-| Basic | 120 <br> 240 | 64 <br> 24 | 256 <br> 128 | Gold 6430 <br> E5-2650v4 | sapphirerapids <br> broadwell | Ethernet|
-| Standard | 140 <br> 156 <br> 233 <br> 36 | 48 <br> 48 <br> 24 <br> 64 | 512 <br> 384 <br> 256 <br> 384 | Gold 6342 <br> Gold 6248R <br> E5-2680v3 <br> EPYC 9354 | icelake <br> cascadelake <br> haswell <br> AMD Genoa | Infiniband |
+| Basic | 120 | 64 | 256 | Gold 6430 | sapphirerapids | Ethernet|
+| Standard | 140 <br> 35 | 48 <br> 64 | 512 <br> 384 | Gold 6342 <br> EPYC 9354 | icelake <br> AMD Genoa | Infiniband |
 | 2xGPU A100 <br> (40GB) | 38 | 48 | 384 | Gold 6248R | cascadelake | Infiniband |
 | GPU V100 <br> (32GB)| 2 | 24 | 512 | E5-2680v3 | haswell | Ethernet |
 | 4xGPU V100 <br> (32GB) | 2|  24 | 512 | Gold 6132 | skylake | Ethernet |
 | GPU A40 <br> (48GB) | 12 | 36 | 1024 | Gold 6354 | icelake | Ethernet |
-| GPU P100 <br> (12 GB) | 68 | 28 | 256 | E5-2680v4 | broadwell| Infiniband <br> Ethernet|
-| High Memory | 25 <br> 2 | 48 <br> 56 | 1024 | Gold 6342 <br> E7-4830v4 | icelake <br> broadwell | Infiniband |
-| interactive | 8  | 28 | 512 | E5-2680v4 <br> + P100 GPU | broadwell| Infiniband <br> Ethernet|
+| GPU P100 <br> (12 GB) | 60 | 28 | 256 | E5-2680v4 | broadwell| Infiniband <br> Ethernet|
+| High Memory | 25 | 48 | 1024 | Gold 6342 | icelake | Infiniband |
+| interactive | 16 | 28 | 512 | E5-2680v4 <br> + P100 GPU | broadwell| Infiniband <br> Ethernet|
 
