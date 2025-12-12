@@ -94,6 +94,7 @@ Includes user test for the following applications:
 #### Known issues 
 
 Julia - GPU Users: 
+
 Updates to CUDA drivers made during this outage will require users to rebuild the `.julia` folder in their home directories. Users with customizations should rebuild this folder “manually,” while simply deleting the folder will cause it to be rebuilt automatically in a default state. ICDS recommends saving a copy of your `.julia` folder before deleting or editing. For assistance, contact Client Support at <icds@psu.edu>.
 
 
