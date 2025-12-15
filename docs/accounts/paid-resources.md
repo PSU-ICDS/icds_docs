@@ -50,7 +50,7 @@ and at a level competitive with the cost of buying your own cluster.
 More expensive nodes cost more to use, reflecting their greater value.
 
 Current prices for credit accounts and allocations are [here][prices].
-[prices]: https://www.icds.psu.edu/roar-restricted-and-roar-collab-price-lists-2025/#
+[prices]: https://icds.psu.edu/services/roar/details-rates/
 
 If you're interested in purchasing credits or allocations, contact us with your 
 requirements or questions at <icds@psu.edu>.

@@ -149,7 +149,7 @@ on how to handle these issues.
 This issue should self correct, however you can manually reset your portal session by 
 using this link:
 
-<https://portal.hpc.psu.edu/nginx/stop?redir=/pun/sys/dashboard/>
+[Portal session reset link](https://portal.hpc.psu.edu/nginx/stop?redir=/pun/sys/dashboard/){ .md-button }
 
 **Local browser issues**
 

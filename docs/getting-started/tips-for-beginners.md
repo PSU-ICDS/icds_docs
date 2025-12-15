@@ -28,15 +28,19 @@
 
 ## Roar uses Linux
 
-The operating system for Roar is Red Hat Enterprise Linux 8 ([RHEL8][rhel8]), a Unix-like operating system widely used in high-performance computing environments. While Linux supports both graphical and command-line interfaces, HPC systems like Roar are optimized for batch processing and automation. Users typically interact with the system through command-line tools and scripts to submit jobs and manage resources efficiently. For convenience, Roar also provides a web-based graphical interface via the Portal.  [rhel8]: https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/8
+The operating system for Roar is Red Hat Enterprise Linux 8 
+([RHEL8](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/8))
+a variant of Unix. Linux is text-based; users interact with the system by typing commands.
+Compute clusters use Linux in part because tasks can be automated with scripts.
 
-This user guide assumes familiarity with Linux,
-which any user who wants to do more than use the Portal needs to learn.
+This user guide assumes familiarity with Linux, which any user who wants to 
+do more than use the Portal needs to learn.
 
 To learn more about Linux, we recommend the following resources:
+
  - [Unix tutorial]: https://www.tutorialspoint.com/unix/unix_tutorial.pdf
  - [Effective Computation in Physics - Chapter One](https://www.oreilly.com/library/view/effective-computation-in/9781491901564/?sso_link=yes&sso_link_from=pennsylvania-state-university)
- - [Introduction to Using the Shell in an HPC Context by HPC Carpentry](https://www.hpc-carpentry.org/hpc-shell/) which can be followed after [logging onto Roar](connecting.md/#ssh).
+ - [Introduction to Using the Shell in an HPC Context by HPC Carpentry](https://www.hpc-carpentry.org/hpc-shell/) which can be followed after [logging onto Roar](connecting.md/#two-ways-to-access) and [accessing the command line](../running-jobs/portal.md#command-line-access).
 
 
 ## Glossary and key concepts
