@@ -4,7 +4,7 @@ Beginning January 2026, ICDS has replaced the historical Open Queue and now prov
 Research Exploration and Discovery (READ) Credits to all system users. READ credits include 
 a moderate amount of credits for free to all system users. These credits will operate 
 identically to paid credits and users can use them to run jobs on any 
-[available hardware](../system/compute-hardware.md) using credit-compatible.
+[available hardware](../system/compute-hardware.md) using credit-compatible partitions.
 
 Additionally, researchers can request additional READ credits through a lightweight 
 application process.
