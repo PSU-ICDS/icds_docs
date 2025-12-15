@@ -1,7 +1,8 @@
 # Resource requests 
 
 Users with paid [credit accounts or allocations](../accounts/paid-resources.md)
-can request GPU nodes, and fine-tune their hardware requests with `constraint` directives.
+can request GPU nodes, and fine-tune their hardware requests with `constraint` 
+directives.
 
 ## GPUs
 
@@ -49,10 +50,10 @@ the command `lscpu` displays information about the CPUs;
 
 Additionally, `sinfo` can be used to identify node attributes. Node attributes serve to identify nodes with a given:
 
-- CPU type (broadwell, haswell, ...)
+- CPU type (icelake, haswell, ...)
 - GPU type (a100, a40, v100, p100)
-- partition (bc, sc, hc, gc, ic,...)
-- specific hardware combinations (p100_256, 3gc20gb, ...)
+- partition (basic, standard, ...)
+- unique hardware (a100_3g, ...)
 
 See [System Overview](../system/system-overview.md) for more information.
 
@@ -69,18 +70,18 @@ where `<feature>` is one of the features listed by `sinfo`
 (or multiple features, separated by commas). Please see sinfo output above to find various features that can be specified.
 For example, to request `cascadelake` hardware, use `--constraint=cascadelake`.
 
-For an [interactive job][salloc], constraints are given
-with a `-C` option to `salloc`:
+For an [interactive job][salloc], constraints are given with a `--constraint` 
+or `-C` option to `salloc`:
 
 ```
 salloc -N 1 -n 4 -A <alloc> -C <feature> -t 1:00:00
 ```
 
-!!!warning "Resource requests must match the allocation."
-	For paid allocations, constraint directives
-	must be consistent with the terms of the allocation.
-	For credit accounts, any hardware can be requested.
-
+!!! warning "Resource requests must match the allocation."
+    For paid allocations, constraint directives
+    must be consistent with the terms of the allocation.
+    For credit accounts, any hardware in the credit partitions 
+    can be requested.
 
 
 ## Optimizing usage
