@@ -13,7 +13,7 @@ function like job queueing, resource allocation, policy enforcement, execution a
 ## Resource directives
 
 Resource directives are used to specify how a job behaves and the resources to be allocated. 
-directives can be used to define resources such as cores memory, and time needed. But they 
+Directives can be used to define resources such as cores memory, and time needed. But they 
 can also be used to set job options such as email alerts, job dependencies, and more.
 
 They are required for all jobs including both [interactive jobs](interactive-jobs.md) 
@@ -45,7 +45,7 @@ The most common directives are:
     `slurm-%j.out`(where `%j` is the jobID). But output and error filenames can be 
      customized by using `--output=filename` to redirect output to a specified file.
      If only `--output` is specified, both standard output and error will be directed to 
-     the file. specifying `--error=filename` will direct standard error to its own file.
+     the file. Specifying `--error=filename` will direct standard error to its own file.
 
 
 ### Specifying resource directives
