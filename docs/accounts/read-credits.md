@@ -17,3 +17,12 @@ application process.
 
 For more information on READ credits, including how to request additional credits, please 
 [visit our website](https://icds.psu.edu/funding/new-read-credits/).
+
+## Using READ credits (Open account)
+
+To use the monthly allocated READ credits, jobs will need to be submitted 
+using the `open` account and a corresponding credit partition (`basic`, `standard`, 
+`himem`, or `interactive`).
+
+Jobs submitted to the `open` partition or without a partition specified will 
+default to the `basic` partition.
