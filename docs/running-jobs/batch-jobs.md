@@ -37,13 +37,12 @@ A batch script is a shell script that executes commands,
 with a preamble of Slurm [resource directives](slurm-scheduler.md/#resource-directives) 
 `#SBATCH...` to specify
 
-- an **account** or **allocation** to charge;
-- a **partition** (qos) to submit the job to;
+- a **Slurm account id** to charge;
 - a **partition** (type of nodes) to run on;
 - nodes, cores, memory, GPUs, and time;
 - and other job-related parameters.
 
-For more information on partitions, see [Partitions][../system/system-overview.md/#partitions].  
+For more information on partitions, see [Partitions](../system/system-overview.md/#partitions).  
 For more information on resource requests, see [Resource requests][resource-requests].
 [resource-requests]: resource-requests.md
 
@@ -171,7 +170,7 @@ much can increase your queue time and cost.
 A good starting point is to calculate the size of the data your application needs to load 
 into memory at one time. Once you have an estimate, it is safe practice to request about 
 20% more memory than you think you need. This extra buffer accommodates the operating 
-ystem and other side processes that run alongside your job.
+system and other side processes that run alongside your job.
 
 The most reliable method is to run a short test job with a generous memory allocation and 
 then check the actual peak usage. You can use the sacct command after your job finishes to 
