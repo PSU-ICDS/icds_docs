@@ -11,8 +11,6 @@ theme:
     - content.code.copy
     - navigation.sections
     - navigation.expand
-    - navigation.tabs
-    - navigation.top
     - navigation.tracking
     - toc.follow
   highlightjs: true
