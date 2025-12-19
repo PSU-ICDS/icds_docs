@@ -39,7 +39,7 @@ Once logged into the [Portal](../running-jobs/portal.md), a searchable list
 of available software can be found by selecting the "Available Modules" 
 from the "Clusters" menu.
 
-!(available software list via portal)[../img/RCPortalShell.png]
+![available software list via portal](../img/RCPortalShell.png)
 
 ## Module commands
 
