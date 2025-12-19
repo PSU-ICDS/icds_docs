@@ -21,6 +21,8 @@ For advanced tasks, access to the command line interface is accessible two ways 
 
 The first is by selecting "Clusters -> _RC Shell Access".
 
+![command line access via portal](../img/RCPortalShell.png)
+
 The second is inside an [Interactive Job](#interactive-jobs), such as the Persistant Terminal or 
 [Interactive Desktop App](#interactive-desktop).
 
