@@ -11,6 +11,9 @@ theme:
     - content.code.copy
     - navigation.sections
     - navigation.expand
+    - navigation.tabs
+    - navigation.top
+    - navigation.tracking
     - toc.follow
   highlightjs: true
   logo: img/PSU_ICDS_logo_blue.png
