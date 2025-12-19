@@ -18,7 +18,7 @@ Roar consists of different parts, connected together by networks:
 - **scratch storage** for temporary files; and 
 - **compute nodes**, of several different types.
 
-![architecture](../img/RC-architecture-schematic.png)
+![architecture](../img/RCUserFlowDiagram.png)
 
 Additional information on the Roar Collab system configuration can be found in 
 [Compute Hardware](compute-hardware.md)
