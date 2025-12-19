@@ -33,7 +33,7 @@ environment constraints.
 module spider <moduleName>
 ```
 
-### Software List on Portal
+### Software list on portal
 
 Once logged into the [Portal](../running-jobs/portal.md), a searchable list 
 of available software can be found by selecting the "Available Modules" 
