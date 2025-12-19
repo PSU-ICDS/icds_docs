@@ -33,6 +33,14 @@ environment constraints.
 module spider <moduleName>
 ```
 
+### Software List on Portal
+
+Once logged into the [Portal](../running-jobs/portal.md), a searchable list 
+of available software can be found by selecting the "Available Modules" 
+from the "Clusters" menu.
+
+!(available software list via portal)[../img/RCPortalShell.png]
+
 ## Module commands
 
 These commands are the core of interacting with **Lmod**.
