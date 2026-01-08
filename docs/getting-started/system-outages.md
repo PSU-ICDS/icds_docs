@@ -1,4 +1,4 @@
-# System Outages
+# System outages
 
 ICDS engineers have updateed and expanded the outage protocol to improve recovery time and expand testing. 
 
@@ -12,15 +12,15 @@ The outage workflow has been updated to make use of serviceNOW and provide track
 ![Outage WorkFlow Diagram](../img/ICDS_Outage_workflow.png)
 
 
-## Post Outage Test
+## Post outage test
 
-Post outage ICDS Engineers go through a series of test to show basic connectivity and functionaloty of services (i.e. job submission, SLURM, OOD portal, Globus access, science gateways). This will be followed by application test detailed below. 
+Post outage ICDS Engineers go through a series of test to show basic connectivity and functionaloty of services (i.e. job submission, Slurm, OOD portal, Globus access, science gateways). This will be followed by application test detailed below. 
 
 Includes sample test for the following applications:
 
  - C
  - alltest (MPI network latency mapping test)
- - bash / SLURM submission testing
+ - bash / Slurm submission testing
  - comsol
  - cpp
  - fluent
@@ -48,15 +48,29 @@ Includes user test for the following applications:
 **Your input is valuable**. At the conclusion of every outage, ICDS engineers run extensive use case tests to ensure that the system will work as expected. If your team runs your own post outage tests or if you have ideas for tests you’d like ICDS engineers to run, [please let us know.](mailto:icds@psu.edu?subject=Post-Outage%20Testing%20Feedback)
 
  
- 
-## Planned Outage 2025-08-13
+## Planned outage 2026-01-08
 
-#### Outage Duration
+#### Outage duration
+
+ - Planned Jan 08, 2026 17:00 -- Jan 10, 2026 17:00
+
+#### Plan of action
+
+ - DATA CENTER: Power circuit and UPS maintenance
+ - STORAGE: Migrate /scratch
+ - SCHEDULER: Reconfigure open usage
+ - CLUSTER: reconfigure node support
+ - Operating System: Security and system software updates
+
+ 
+## Planned outage 2025-08-13
+
+#### Outage duration
 
  - Planned Aug 13, 2025 17:00 -- Aug 14, 2025 17:00
  - Actual  Aug 13, 2025 17:00 -- Aug 14, 2025 14:10
 
-#### Plan of Action
+#### Plan of action
 
  - STORAGE: update RC group storage firmware, enable RDMA functions **Complete**
 
@@ -91,29 +105,30 @@ Includes user test for the following applications:
  - Adjust storage for groups impacted by naming convention **Complete**
 
 
-#### Known issues: 
+#### Known issues 
 
 Julia - GPU Users: 
-Updates to CUDA drivers made during this outage will require users to rebuild the .JULIA folder in their home directories. Users with customizations should rebuild this folder “manually,” while simply deleting the folder will cause it to be rebuilt automatically in a default state. ICDS recommends saving a copy of your .JULIA folder before deleting or editing. For assistance, contact Client Support at ICDS@PSU.EDU.
+
+Updates to CUDA drivers made during this outage will require users to rebuild the `.julia` folder in their home directories. Users with customizations should rebuild this folder “manually,” while simply deleting the folder will cause it to be rebuilt automatically in a default state. ICDS recommends saving a copy of your `.julia` folder before deleting or editing. For assistance, contact Client Support at <icds@psu.edu>.
 
 
-#### ServiceNow Links
+#### ServiceNow links
 
-ServiceNow Form
+ServiceNow form
 
-- RITM0373685  [RITM0373685 ](https://pennstate.service-now.com/now/nav/ui/classic/params/target/sc_req_item.do%3Fsys_id%3D8b87bbaac3aae2d028753df905013122%26sysparm_stack%3D%26sysparm_view%3D)
-
-
-## Planned Outage 2025-05-14
+- [RITM0373685 ](https://pennstate.service-now.com/now/nav/ui/classic/params/target/sc_req_item.do%3Fsys_id%3D8b87bbaac3aae2d028753df905013122%26sysparm_stack%3D%26sysparm_view%3D)
 
 
-#### Outage Duration
+## Planned outage 2025-05-14
+
+
+#### Outage duration
 
  - Planned May 14, 2025 17:00 -- May 15, 2025 17:00
  - Actual  May 14, 2025 17:00 -- May 15, 2025 17:03
 
 
-#### Plan of Action
+#### Plan of action
 
 
  - STORAGE: troubleshoot power redundancy configuration on RC group storage 
@@ -155,14 +170,14 @@ ServiceNow Form
 
 
 
-#### ServiceNow Links
+#### ServiceNow links
 
 ServiceNow Form
 
 
-- RITM0362423 [RITM0362423](https://pennstate.service-now.com/nav_to.do?uri=sc_req_item.do%3Fsys_id=9dc5c7af47302e94fb179df4126d439c%26sysparm_stack=sc_req_item_list.do%3Fsysparm_query=active=true)
+- [RITM0362423](https://pennstate.service-now.com/nav_to.do?uri=sc_req_item.do%3Fsys_id=9dc5c7af47302e94fb179df4126d439c%26sysparm_stack=sc_req_item_list.do%3Fsysparm_query=active=true)
 
 
-- CHG0121515 [CHG0121515](https://pennstate.service-now.com/nav_to.do?uri=change_request.do%3Fsys_id=39c50baf47302e94fb179df4126d436f%26sysparm_stack=change_request_list.do%3Fsysparm_query=active=true)
+- [CHG0121515](https://pennstate.service-now.com/nav_to.do?uri=change_request.do%3Fsys_id=39c50baf47302e94fb179df4126d436f%26sysparm_stack=change_request_list.do%3Fsysparm_query=active=true)
 
 
