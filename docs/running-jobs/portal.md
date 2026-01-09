@@ -5,67 +5,96 @@ offers a visual desktop environment, file management,
 and Integrated Developer Environments (IDEs) such as Jupyter and RStudio.
 [portal]: <https://portal.hpc.psu.edu>
 
+## File management
+
+You can access files using the UI on the portal by going to the top bar: **Files** > 
+**Your Storage Location** (e.g., `home`, `work`, `scratch`, or `group` directories).
+
+## Interactive jobs
+
+You can run interactive jobs from the home page or by navigating via the top bar: 
+**Interactive Apps** > **[Select the app you would like to run]**.
+
+## Command Line Access
+
+For advanced tasks, access to the command line interface is accessible two ways in the portal.
+
+The first is by selecting "Clusters -> _RC Shell Access".
+
+![command line access via portal](../img/RCPortalShell.png)
+
+The second is inside an [Interactive Job](#interactive-jobs), such as the Persistant Terminal or 
+[Interactive Desktop App](#interactive-desktop).
+
 ## Selecting resources
 
-Interactive jobs on the Portal use various resources:
-queue, number and type of nodes, number of cores, memory (RAM), run time.
-For the casual user, the default choices for these resources are sufficient:
-1 node, 4 cores, 64GB, 1 hour, open queue.
+When launching an interactive app, you must specify the computational resources for your 
+job. These options are typically selected using dropdowns and input fields on the 
+application's launch page. The key resources you will need to define are:
 
-To pay for your job with [credit account or allocation](../accounts/paying-for-compute.md),
-select it from the Account drop-down menu.
+* **Account:** The allocation or group that the job's usage will be billed against.
+* **Partition:** The specific partition (a set of nodes) where your job will run. 
+Different partitions may offer different hardware (e.g., CPUs, GPUs) or have varying policies.
+* **Number and Type of Nodes:** The quantity of machines your job will use and the 
+specific type required (e.g., standard CPU or GPU-enabled node).
+* **Number of Cores:** The total number of CPU cores to be allocated for your job.
+* **Memory (RAM):** The amount of memory reserved for your job, usually specified in Gigabytes (GB).
+* **Run Time:** The maximum duration your job is permitted to run (also known as 
+"wall time"), typically in an HH:MM:SS format.
 
-With a credit account, you can choose a hardware [partition][partitions]
-from the Partition drop-down menu to run your job.
-With an allocation, select "sla-prio" from the Partition menu.
-[partitions]: ../getting-started/compute-hardware.md#partitions
+### Advanced Slurm Options
 
-To override the default choices for nodes, cores, memory, and run time,
-check the box "Enable advanced Slurm options",
-and type Slurm [resource directives][slurmdir] one per line into the text box, like this:
-[slurmdir]: slurm-scheduler.md#resource-directives
+Using Advanced Slurm options allows you to enter custom 
+[Resource directives](./slurm-scheduler.md#resource-directives). These options allow you to fully 
+customize your hardware allocation even allowing you to override the form restrictions 
+for node and core count, memory, and runtime.
+
+To do this, on a job submit form, ensure the "Enable advanced Slurm options" box is checked. 
+This will cause the "Sbatch options" box to appear. Enter the desired [Resource directives](./slurm-scheduler.md#resource-directives) here.
+
+For example, to request 8 cores (tasks), 128GB memory, and 8 hour run time - the Sbatch options box 
+should contain:
+
 ```
 --ntasks=8
 --mem=128GB
 --time=8:00:00
 ```
-The above requests 8 cores (tasks), 128GB memory, and 8 hour run time.
-
-To request a GPU, you must be running on the standard partition, 
-or have an allocation that includes GPUs.
-The Slurm option to request one A40 GPU looks like:
-```
---gres=gpu:a40:1
-```
-
-!!! warning "Hardware you request must be compatible with the account you specify."
-	If you ask for high-memory nodes, standard nodes, or GPUs, 
-	you need either a credit account, or a paid allocation 
-	that includes the requested hardware.
-
- - Account: open
- - Sbatch options: --partition=open
-
-To use an [allocation](../accounts/paying-for-compute.md):
-
- - Account: your_allocation_id
- - Sbatch options: --partition=sla-prio
-
-To specify a hardware partition for [credit accounts](../accounts/paying-for-compute.md):
-
- - Account: your_credit_account
- - Sbatch options: --partiton=hardware_partition
-
-For details regarding available hardware partitions, see [Available Hardware Partitions](../getting-started/compute-hardware.md/#partitions)
-
+    
 !!! warning "All jobs must fit inside the resource limits of the partition they are running on"
      If a job requests resources that exceed the partition limits, they will not begin.
 
-- Open queue jobs must not exceed 100 cores and 800 GB memory
-- Interactive jobs must not exceed 4 cores and 24 GB memory
-- Allocation limits are defined by the terms of the allocation
+### Requesting GPUs
 
-## Custom environments
+To request a GPU with your interactive job, you will need to utilize [Advanced Slurm Options](#advanced-slurm-options) 
+to enter the `--gres` directive specifying the number of and model of GPU needed.
+
+See [Resource requests -> GPUs](resource-requests.md#gpus) for more information.
+
+## Interactive Desktop
+
+The Interactive Desktop provides a full graphical user interface (GUI) on a compute node. 
+To launch a session, select **Interactive Apps > Interactive Desktop** from the top menu. 
+For more details, see the [Open OnDemand documentation](https://openondemand.org/).
+
+## Job composer
+
+The Job Composer allows you to create and submit batch jobs directly from the web interface.
+
+For more information, please see the 
+[Open OnDemand documentation on the Job Composer](https://osc.github.io/ood-documentation/release-1.8/applications/job-composer.html).
+
+## Using paid accounts
+
+To run your job using a [credit account or allocation](../accounts/paid-resources.md),
+select the relevant account ID from the Account drop-down menu. Then select a corresponding 
+[partition](../system/system-overview.md#partitions).
+
+ - Credit accounts need to use one of the hardware partitions: `basic`, `standard`, `himem`, or `interactive`
+ - Allocations need to use the `sla-prio` partition 
+
+
+## Using custom environments
 
 Jupyter and RStudio Server allow the use of custom software or environments. 
 To use these, select "Use custom environment" under Environment type 

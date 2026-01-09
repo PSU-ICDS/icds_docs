@@ -5,6 +5,8 @@ on Roar, archival storage,
 OneDrive, or your laptop or desktop machine
 to be transferred -- copied from one place to another.
 
+## File transfer rates
+
 Multiple tools exist to perform these file transfers.
 No single tool is best for all cases;
 below, we recommend methods, 
@@ -15,12 +17,21 @@ and list approximate transfer rates for large files.
 | Roar &harr; Archive | Globus | 50 |
 | Roar &rarr; OneDrive | Firefox or Globus | 50 | 
 | OneDrive &rarr; Roar | Firefox or Globus | 10 |
-| Roar &harr; laptop | Portal Files menu | 25 |
+| Roar &harr; laptop | Portal Files Menu (< 1GB) | 25 |
 | Roar &harr; laptop | Cyberduck or FileZilla | 15 |
-| OneDrive &harr; laptop | web access |20 |
+| Roar &harr; laptop | Globus Personal Collection (> 1GB) | 50 |
+| OneDrive &harr; laptop | Web Access |20 |
 
 (Transfer rates may be slower, 
 if limited by intervening network or storage speeds.)
+
+### Historical transfer durations
+
+Below is a plot of observed file transfer times using Globus between March 2021 and 
+November 2025 for Roar Collab Globus collections.
+
+![Globus Data Transfers](../img/globus-data-transfers.png)
+
 
 ## Portal
 
@@ -34,20 +45,8 @@ Use this method only for moving small (<1 GB) files;
 for larger files, use [Globus](#globus).
 
 !!! warning "Upload Button Issues"
-	The "Upload" button on the Portal does not work properly. 
+	The "Upload" button on the Portal does not work properly when transfering files above 1GB. 
 	Instead, use the "Globus" button, which accesses the [Globus](#globus) interface.
-
-## Firefox
-
-With Firefox, you can access OneDrive and other such sites,
-and upload and download files. <br>
-From the [Portal Interactive Desktop][portalID],
-select Web Browser from the Applications menu.
-[portalID]: ../getting-started/connecting.md#portal
-
-Firefox is also available via `ssh -X`, after loading its module with 
-`module load firefox`.   
-From the command line, execute `firefox`.
 
 ## Globus
 
@@ -73,8 +72,12 @@ To transfer files to or from a laptop,
 use the upload/download buttons on the Globus [web interface][globusweb].
 [globusweb]:  https://www.globus.org
  
-Alternatively, users can establish a personal collection, 
-by installing the Globus Connect Personal client,
+### Globus Personal Collection
+
+For users who need to transfer large files (typically larger than 1 GB) between the Roar system and their personal computer, Globus Connect Personal provides a powerful and convenient solution.
+Globus Connect Personal allows you to turn your personal computer (laptop or desktop) into a Globus endpoint, also known as a personal collection. Once set up, you can securely transfer files between your computer and other Globus collections.
+
+To get started, download and install the Globus Connect Personal client for your operating system:
 available for [Linux](https://docs.globus.org/globus-connect-personal/install/linux/),
 [macOS](https://docs.globus.org/globus-connect-personal/install/mac/), and
 [Windows](https://docs.globus.org/globus-connect-personal/install/windows/).
@@ -83,7 +86,7 @@ available for [Linux](https://docs.globus.org/globus-connect-personal/install/li
 
 In addition to providing a robust data transfer option, Globus can also be used to share 
 data with collaborators by creating 
-[Guest Collections](https://docs.globus.org/how-to/guest-collection-share-and-access/). 
+[Guest Collections](https://docs.globus.org/guides/tutorials/manage-files/share-files/). 
 Collections can be set up with a variety of sharing options from complete public access 
 to individual user-level permission levels.
 
@@ -125,8 +128,6 @@ possible solutions.
 	Collections inside group storage with non-standard naming conventions 
 	(where $USER (above) is not a Penn State ID) will not work by default. 
 	Please contact us to set up an exception.
-
-
 
 ## sftp
 

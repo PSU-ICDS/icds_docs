@@ -3,14 +3,14 @@
 
 For compute jobs that take hours or days to run,
 instead of sitting at the terminal waiting for the results,
-we submit a "batch job" to the queue manager,
+we submit a "batch job" to the workload manager,
 which runs the job when resources are available.
 
 ## Slurm commands
 
-On Roar, the queue manager is SLURM (Simple Linux Utility for Resource Management).  
+On Roar, the queue manager is Slurm (Simple Linux Utility for Resource Management).  
 Besides `salloc` for [interactive jobs](interactive-jobs.md)),
-the basic SLURM commands are:
+the basic Slurm commands are:
 
 | Command | Effect|
 | ---- | ---- | 
@@ -18,11 +18,11 @@ the basic SLURM commands are:
 | `squeue -u <userid>` | check on jobs submitted by `<userid>` |
 | `scancel <jobID>` | cancel the job | 
 
-When you execute `sbatch myJob.sh`, SLURM responds with something like
+When you execute `sbatch myJob.sh`, Slurm responds with something like
 ```
 Submitted batch job 25789352
 ```
-To check on your jobs, execute `squeue -u <userID>`; SLURM responds with something like
+To check on your jobs, execute `squeue -u <userID>`; Slurm responds with something like
 ```
 JOBID		PARTITION	NAME		USER	ST	TIME	NODES	NODELIST(REASON)
 25789352	open 		myJob.sh	abc123	R	1:18:31	1		p-sc-2008
@@ -32,114 +32,93 @@ To cancel the job, execute `scancel 25789352`.
 
 ## Batch scripts
 
-Jobs submitted to SLURM are in the form of a "batch script". 
+Jobs submitted to Slurm are in the form of a "batch script". 
 A batch script is a shell script that executes commands, 
 with a preamble of Slurm [resource directives](slurm-scheduler.md/#resource-directives) 
 `#SBATCH...` to specify
 
-- an **account** or **allocation** to charge;
-- a **queue** (qos) to submit the job to;
+- a **Slurm account id** to charge;
 - a **partition** (type of nodes) to run on;
 - nodes, cores, memory, GPUs, and time;
 - and other job-related parameters.
 
-An example is:
+For more information on partitions, see [Partitions](../system/system-overview.md/#partitions).  
+For more information on resource requests, see [Resource requests][resource-requests].
+[resource-requests]: resource-requests.md
+
+An example batch script:
 
 ```
 #!/bin/bash
-#SBATCH --account=...
-#SBATCH --qos=normal
+#SBATCH --account=account_id
 #SBATCH --partition=basic
 #SBATCH --nodes=1
 #SBATCH --ntasks=8
 #SBATCH --mem=1gb
 #SBATCH --time=4:00:00
-#SBATCH --job-name=...
+#SBATCH --job-name=example-job
+#SBATCH --output=example-job.%j.out
 
-# as usual, cd to the submit directory
-cd $SLURM_SUBMIT_DIR
+# load software
+module load python/3.11.2
 
-# load the needed module
-module load gromacs-2019.6
-
-SYSTEM=$SLURM_SUBMIT_DIR/System
-gmx grompp -f $SYSTEM/nvt.mdp -c $SYSTEM/min.gro -p $SYSTEM/testJob.top -o nvt.tpr 
-gmx mdrun -nt 8 -nb cpu -deffnm nvt
+python3 myscript.py
 ```
 
-The first line `#!/bin/bash` is the "shebang", which says the script 
-should be run under `bash` (a Linux shell).
-Everything after the last `#SBATCH` are commands to be executed;
-lines with `#` other than `#SBATCH` are ordinary bash script comments.
-Most scripts start with `cd $SLURM_SUBMIT_DIR`,
-which is the directory from which the job was submitted.
-
-`sbatch` can pass arguments to batch scripts like this:
-```
-sbatch myScript.sh arg1 arg2
-```
-In the script, arguments `arg1` and `arg2` can be accessed with `$1` and `$2` as usual.  
-`sbatch` can also pass values by assigning variables like this:
-```
-sbatch --export=VAR1=arg1, VAR2=arg2 myScript.sh
-```
-In the script, `$VAR1` and `$VAR2` are set to `arg1` and `arg2`.
-
-For more information on partitions, see [Partitions][partitions].  
-For more information on hardware requests, see [Hardware requests][hardware].
-[partitions]: ../getting-started/compute-hardware.md#partitions
-[hardware]: hardware-requests.md
-
-For a repository of example batch workflows, go [here][repository].
-[repository]: https://github.com/PSU-ICDS/rc-example-jobs
-
-!!!warning "To use the open queue, use --partition=open"
-	Unpaid jobs under the open queue cannot specify a hardware partition,
-	but will be assigned to available older CPU hardware.
-
-!!!warning "To use a paid allocation, use --partition=sla-prio"
+!!! tip "To use a paid allocation, use --partition=sla-prio"
 	Jobs under a paid allocation do not specify the basic, standard,
 	high-memory, or interactive partitions.
 	Instead, --partition=sla-prio tells the job
 	to use the hardware in your allocation.
 
-## Queues
 
-The directive `#SBATCH --qos=<queue>` submits batch jobs to a queue, 
-or QoS = "Quality of Service" in SLURM-speak.
-(Queues are like classes of service on an airline flight:
-first, business, economy,...)
+The first line `#!/bin/bash` is the "shebang", which says the script 
+should be run under `bash` (a Linux shell).
+Everything after the last `#SBATCH` are commands to be executed;
+lines with `#` other than `#SBATCH` are ordinary bash script comments.
 
-Roar has five queues:  open, normal, debug, express, and interactive.  
-Each serves a different purpose, and has different restrictions.
+### Arguments in batch scripts
 
-| queue (QOS) | description | restrictions |
-| ---- | ---- | ---- |
-| open | no-cost access | Portal and old hardware only, <br> pre-emptible, time < 2 days |
-| normal | for "normal" jobs | time < 14 days |
-| debug	| for testing, debugging, <br> quick analysis | one at a time, time < 4 hours |
-| express | for rush jobs; <br> 2x price | time < 14 days |
-| interactive | for Portal jobs | time < 7 days |
+`sbatch` can pass arguments to batch scripts like this:
 
-To get detailed information about queues, use `sacctmgr list qos`.  
-This command has a lot of [options](https://slurm.schedmd.com/sacctmgr.html),
-and works best with formatting:  an example is
 ```
-sacctmgr list qos format=name%8,maxjobs%8,maxsubmitjobsperuser%9,maxwall%8,\
-priority%8,preempt%8,usagefactor%12 names=open,ic,debug,express,normal
-```
-which produces output like this:
-```
-    Name  MaxJobs MaxSubmit  MaxWall Priority  Preempt  UsageFactor
--------- -------- --------- -------- -------- -------- ------------
-  normal                                 1000     open     1.000000
-    open      100       200                 0              1.000000
-      ic        1                           0              1.000000
-   debug        1         1 04:00:00    20000     open     1.000000
- express                                10000     open     2.000000
+sbatch myScript.sh arg1 arg2
 ```
 
-## Resource usage
+In the script, arguments `arg1` and `arg2` can be accessed with `$1` and `$2` as usual:
+
+```
+#!/bin/bash
+#SBATCH --account=account_id
+...
+
+python3 myscript.py $1 $2
+```
+  
+`sbatch` can also pass values by assigning variables like this:
+```
+sbatch --export=VAR1=arg1, VAR2=arg2 myScript.sh
+```
+
+In the script, `$VAR1` and `$VAR2` are set to `arg1` and `arg2`.
+
+```
+#!/bin/bash
+#SBATCH --account=account_id
+...
+
+python3 myscript.py $VAR1 $VAR2
+```
+
+### Batch Script Examples
+
+ICDS offers a curated repository of example submit scripts for many of our 
+most popular software packages, including StarCCM, COMSOL, MATLAB, R, python, and more.
+
+[ICDS Example Job Repository](https://github.com/PSU-ICDS/rc-example-jobs){ .md-button }
+
+
+## Estimating resource usage
 
 For credit accounts, it is helpful to estimate how many credits a batch job would use
 before you actually run it. For this, use `job_estimate`:
@@ -151,7 +130,7 @@ job_estimate <submit file>
 which reports the cost in credits.
 For more on `job_estimate`, execute `job_estimate --help`.
 
-The SLURM command [`sacct`][sacct]
+The Slurm command [`sacct`][sacct]
 reports the resources used by a completed batch job,
 which helps users learn what resources to request next time.
 At the bottom of a batch script, the command
@@ -160,12 +139,45 @@ At the bottom of a batch script, the command
 ```
 sacct -j $SLURM_JOB_ID --format=JobID,JobName,MaxRSS,Elapsed,TotalCPU,State
 ```
-generates a report in the batch output file of resources used.
-(`$SLURM_JOB_ID` is a variable that returns the jobID of the batch job.)
-As in the example, sacct takes formatting options to control what it prints;
-`sacct --helpformat` lists all the options.
 
-## Timing jobs
+generates a report in the batch output file of resources used. Using the 
+`--format` flag controls what content is displayed. See `sacct --helpformat` 
+for more formatting options.
+
+### Selecting nodes and cores
+
+Choosing the right number of cores (--ntasks) and nodes (--nodes) depends on how your 
+software is designed to run in parallel. It's important to understand if your job is built 
+for a distributed environment or a shared-memory environment.
+
+Most parallel software is multi-threaded, meaning it's designed to run on a single computer 
+and use multiple cores that share the same memory. If this describes your workflow, you 
+should almost always set --nodes=1 and then set --ntasks to the number of independent tasks 
+your job can run at the same time. Requesting more cores than your application can actually 
+use will not speed it up and only wastes resources.
+
+Some advanced applications (often using MPI) are designed to run across multiple, separate 
+computers at once, communicating over the network. Only if your software is specifically 
+built for this should you set `--nodes` to a value greater than one.
+
+
+### Selecting memory for Your Job
+
+Correctly estimating memory (--mem) can be tricky, but it is critical for ensuring your job 
+runs successfully. Requesting too little will cause your job to fail, while requesting too 
+much can increase your queue time and cost.
+
+A good starting point is to calculate the size of the data your application needs to load 
+into memory at one time. Once you have an estimate, it is safe practice to request about 
+20% more memory than you think you need. This extra buffer accommodates the operating 
+system and other side processes that run alongside your job.
+
+The most reliable method is to run a short test job with a generous memory allocation and 
+then check the actual peak usage. You can use the sacct command after your job finishes to 
+see the MaxRSS (Maximum Resident Set Size). This will tell you precisely how much memory 
+your job used, allowing you to make very accurate requests for future runs.
+
+### Timing jobs
 
 It is good practice to test a new workflow
 by running small short jobs before submitting big long jobs.

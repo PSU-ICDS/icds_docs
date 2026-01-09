@@ -26,7 +26,7 @@ Google searches on these commands are often helpful
 (e.g., "Unix how to find and delete large files").
 Here are a few examples of each.
 [unix_tutorial2]: https://www.tutorialspoint.com/unix/unix_tutorial.pdf
-[grep_tutorial]: https://danielmiessler.com/p/grep/
+[grep_tutorial]: https://danielmiessler.com/blog/grep
 [find_tutorial]: https://snapshooter.com/learn/linux/find
 
 ## Searching for files (find)

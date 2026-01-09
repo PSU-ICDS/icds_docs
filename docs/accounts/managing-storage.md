@@ -1,26 +1,4 @@
-# Managing accounts
-
-Account coordinators can add and remove other users and coordinators.
-The account owner is automatically designated as an account coordinator, 
-but they can appoint other users to serve as coordinators.
-
-To add and remove users from a compute account, use `sacctmgr`:
-
-```
-$ sacctmgr add user account=<compute-account> name=<userid>
-$ sacctmgr remove user account=<compute-account> name=<userid>
-```
-
-To add or remove coordinators:
-
-```
-$ sacctmgr add coordinator account=<compute-account> name=<userid>
-$ sacctmgr remove coordinator account=<compute-account> name=<userid>
-```
-
-!!! warning "Account coordinators control ALL access to the account"
-    Coordinators can add and remove other coordinators, including the account owner.
-
+# Managing storage
 
 ## Group storage
 

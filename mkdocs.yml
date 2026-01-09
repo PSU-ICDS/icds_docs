@@ -7,7 +7,7 @@ site_author: Institute of Computational and Data Sciences
 
 theme: 
   name: readthedocs
-#  features:
+  features:
 #    - content.code.copy
 #    - navigation.sections
 #    - navigation.footer
@@ -33,17 +33,22 @@ markdown_extensions:
 plugins:
 #    - bootstrap4-blockquotes
 #    - bootstrap4-tables
-
+ 
 nav:
     - Getting started: 
-        - getting-started/system-overview.md
-        - getting-started/compute-hardware.md
         - getting-started/tips-for-beginners.md
         - getting-started/connecting.md
-        - getting-started/system-outages.md
+        - getting-started/faq.md
+        - getting-started/getting-help.md
+    - System details:
+        - system/system-overview.md
+        - system/compute-hardware.md
+        - system/system-outages.md
     - Accounts:
-        - accounts/paying-for-compute.md
-        - accounts/managing-accounts.md
+        - accounts/read-credits.md
+        - accounts/paid-resources.md
+        - accounts/managing-compute.md
+        - accounts/managing-storage.md
     - File system:
         - file-system/file-storage.md
         - file-system/managing-files.md
@@ -51,21 +56,20 @@ nav:
         - file-system/transferring-files.md
     - Software:
         - software/modules.md
-        - software/installing-from-source.md
         - software/custom-modules.md
+        - software/installing-from-source.md
         - software/containers.md
     - Packages: 
         - packages/python.md
         - packages/r-libraries.md
         - packages/anaconda.md
-    - Running Jobs:
+    - Running jobs:
         - running-jobs/portal.md
         - running-jobs/slurm-scheduler.md
         - running-jobs/interactive-jobs.md
         - running-jobs/batch-jobs.md
-        - running-jobs/hardware-requests.md
+        - running-jobs/resource-requests.md
     - Roar restricted:
         - roar-restricted/accessing-rr.md
         - roar-restricted/data-transfer.md
-    - Getting help:
-        - getting-help/getting-help.md
+

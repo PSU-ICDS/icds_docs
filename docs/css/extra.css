@@ -22,3 +22,15 @@
 .rst-content pre code {
     
 }
+
+/* Allow tables to wrap instead of scrolling */
+.md-typeset table {
+  white-space: normal;
+}
+
+.md-typeset table td,
+.md-typeset table th {
+  white-space: normal;
+  word-wrap: break-word;
+  word-break: break-word;
+}
