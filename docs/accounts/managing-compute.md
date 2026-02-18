@@ -37,7 +37,7 @@ $ sacctmgr remove coordinator account=<compute-account> name=<userid>
     to be able to use the account for jobs.
 
 
-## Monitoring usage
+## Monitoring available balance
 
 The `get_balance` command displays current balances for both credit accounts and allocations.
 To learn how to view details for specific accounts and people, use `get_balance --help`.
@@ -46,3 +46,44 @@ To learn how to view details for specific accounts and people, use `get_balance 
 	Jobs paid for by credit accounts will be charged 
 	for the requested hardware, for the actual runtime of the job,
 	whether or not it is actually used.
+
+
+## Managing child accounts
+
+
+### Creating a child account
+
+```
+my_account create account=<child crch account> parent=<parent_cr_account>
+```
+
+Account ids are in the form of `prefix_type_suffix`, where type is `crch` for child accounts. 
+Child accounts can have custom suffixes but must inherit the prefix of the parent account.
+
+For example, for a parent account named `research_cr_default`, the child account 
+`research_crch_professor1` is valid where `research2_crch_default` is not.
+
+### Adding users and coordinators
+
+```
+my_account add account=<child crch account> user=userid coordinator=user=id
+```
+
+users are granted use access of the account
+coordinators are granted coordinator and use access of the account
+
+### Set available balance
+
+```
+my_account set available=n account=<child crch account>
+```
+
+where n is the desired available balance in the child account
+
+!!! note Child accounts are authorized spenders with a credit limit, not independent accounts
+    Credits are not removed from the parent account until they are spent. The child balance 
+    is a maximum spending limit against the pool of credits held in the parent account. The 
+    parent account balance contains the total credits available to all child accounts.
+    
+    It is possible for the child account's available balance to fall below the set 
+    threshold if the balance in the parent account is low.
