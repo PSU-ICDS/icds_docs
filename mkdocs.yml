@@ -43,7 +43,6 @@ nav:
     - System details:
         - system/system-overview.md
         - system/compute-hardware.md
-        - system/system-outages.md
     - Accounts:
         - accounts/read-credits.md
         - accounts/paid-resources.md
@@ -70,7 +69,4 @@ nav:
         - running-jobs/interactive-jobs.md
         - running-jobs/batch-jobs.md
         - running-jobs/resource-requests.md
-    - Roar restricted:
-        - roar-restricted/accessing-rr.md
-        - roar-restricted/data-transfer.md
-
+ 

@@ -1,14 +1,13 @@
 # Connecting
 
-## Roar Account Creation
+## Login accounts
 
 Access to Roar requires a login account.
-All users have access to user-level [storage space](../file-system/file-storage.md),
-and a moderate amout of free credits in their user level [READ credit/Open account](../accounts/read-credits.md).
+All users have access to some [storage space](../file-system/file-storage.md),
+and some free [READ credits](../accounts/read-credits.md).
 
 Anyone with a Penn State access ID can [request an account on Roar](https://accounts.hpc.psu.edu/users/).
 Students and postdocs must be sponsored by a Penn State faculty member (their supervisor, advisor or collaborator). 
-Once approved, you can connect to the Roar resources using your PSU credentials.
 
 For external collaborators, 
 Penn State faculty can set up [sponsored access accounts][sponsored],
@@ -19,14 +18,14 @@ Once the sponsored account is active, a Roar account can be requested.
 
 ## Two ways to access 
 
-Roar can be accessed mainly using two ways:
+Roar can be accessed in two ways:
 
  - via [the web-based Portal](#portal)
  - by using the "secure shell" ([`ssh`][ssh]) from a terminal application.
 [ssh]: https://linux.die.net/man/1/ssh
 
 The Portal (which runs [Open OnDemand](https://openondemand.org))
-is designed mainly for interactive work.
+is designed for interactive work.
 It provides:
 
 - a Windows-like desktop environment;
@@ -35,7 +34,7 @@ It provides:
 such as ANSYS, COMSOL, MATLAB, and RStudio.
 
 The Portal is easy to use, 
-because its preloaded programs can be launched and used without knowing Unix.
+because its preloaded programs can be used without knowing Unix.
 Its Windows-like desktop provides a familiar "feel"
 for users accustomed to laptops (especially Linux laptops).
 From its Terminal application,
@@ -45,10 +44,9 @@ needed to prepare and submit jobs.
 Roar can also be accessed via SSH (Secure SHell),
 from a terminal application on a laptop.
 
-
 ### Portal
 
-For users who are unfamiliar with the Linux command line,
+For users who are unfamiliar with Linux,
 or who prefer an interactive graphical interface, 
 the [Web Portal](https://portal.hpc.psu.edu) (which runs Open OnDemand) provides:
 
@@ -60,7 +58,7 @@ For advanced tasks, Portal users can access the command line interface under the
 
 ### SSH
 
-Alternatively, you can access the Roar via the ["secure shell" (SSH)](https://linux.die.net/man/1/ssh) 
+Alternatively, users can access the Roar via the ["secure shell" (SSH)](https://linux.die.net/man/1/ssh) 
 from a terminal application.
 
 On Windows, use the Command Prompt (installed by default), 
@@ -75,7 +73,7 @@ From the terminal, log on to a submit node using the command
 which verifies your identity.
 To set up MFA, visit the [PSU accounts portal](https://accounts.psu.edu/2fa).
 
-#### X forwarding
+### X forwarding
 
 To use any Roar application that "opens a window"
 (an  "X Window" or "X11" application), 
@@ -92,15 +90,12 @@ When you log on to Roar from off-campus,
 X Window applications can sometimes be slow to update the display;
 the [Portal](../running-jobs/portal.md)  works better in such circumstances.
 
-
-on the PC, use [Notepad++](https://notepad-plus-plus.org).
-
 ## Text editors
 
 Linux is a text-based operating system;
 programs, batch scripts, and parameter files are text files.
-To work on Linux, you need a good text editor.  
-There are several options available, depending on your preferences and how you're accessing the system.  
+To work on Linux, you need a good text editor.
+There are several options available.
 
 ### Terminal based editors
 
@@ -139,10 +134,10 @@ runs Python code interactively, has a debugger, and so on.
 [vscode]: https://code.visualstudio.com/docs/remote/vscode-server
 
 Files can be created or edited on your laptop and then transferred to Roar. 
-If you choose to do this, be sure to use a plain text editor, not a word processor like Microsoft Word.
+Be sure to use a plain text editor, not a word processor like Microsoft Word.
 On the Mac, use [BBEdit](https://www.barebones.com/products/bbedit/);
-On PC, use [Notepad++](https://notepad-plus-plus.org)
+On PC, use [Notepad++](https://notepad-plus-plus.org).
 
-Alternatively, files can also be edited directly through the Roar portal under the Files section.
+Files can also be edited directly on the Roar portal under the Files section.
 
 

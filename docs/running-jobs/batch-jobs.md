@@ -3,7 +3,7 @@
 
 For compute jobs that take hours or days to run,
 instead of sitting at the terminal waiting for the results,
-we submit a "batch job" to the workload manager,
+submit a "batch job" to the workload manager,
 which runs the job when resources are available.
 
 ## Slurm commands
@@ -37,14 +37,12 @@ A batch script is a shell script that executes commands,
 with a preamble of Slurm [resource directives](slurm-scheduler.md/#resource-directives) 
 `#SBATCH...` to specify
 
-- a **Slurm account id** to charge;
-- a **partition** (type of nodes) to run on;
+- an [account](../accounts/paid-resources.md) to charge;
+- a [partition](../system/system-overview.md/#partitions) (type of nodes) to run on;
 - nodes, cores, memory, GPUs, and time;
 - and other job-related parameters.
 
-For more information on partitions, see [Partitions](../system/system-overview.md/#partitions).  
-For more information on resource requests, see [Resource requests][resource-requests].
-[resource-requests]: resource-requests.md
+For more information on using Slurm to request hardware, see [Hardware requests](resource-requests.md).
 
 An example batch script:
 
@@ -66,8 +64,8 @@ python3 myscript.py
 ```
 
 !!! tip "To use a paid allocation, use --partition=sla-prio"
-	Jobs under a paid allocation do not specify the basic, standard,
-	high-memory, or interactive partitions.
+	Jobs under a paid allocation do not specify hardware partitions 
+	(basic, standard, high-memory, or interactive).
 	Instead, --partition=sla-prio tells the job
 	to use the hardware in your allocation.
 
@@ -77,7 +75,7 @@ should be run under `bash` (a Linux shell).
 Everything after the last `#SBATCH` are commands to be executed;
 lines with `#` other than `#SBATCH` are ordinary bash script comments.
 
-### Arguments in batch scripts
+### Arguments
 
 `sbatch` can pass arguments to batch scripts like this:
 
@@ -110,7 +108,7 @@ In the script, `$VAR1` and `$VAR2` are set to `arg1` and `arg2`.
 python3 myscript.py $VAR1 $VAR2
 ```
 
-### Batch Script Examples
+### Batch script examples
 
 ICDS offers a curated repository of example submit scripts for many of our 
 most popular software packages, including StarCCM, COMSOL, MATLAB, R, python, and more.
@@ -118,66 +116,10 @@ most popular software packages, including StarCCM, COMSOL, MATLAB, R, python, an
 [ICDS Example Job Repository](https://github.com/PSU-ICDS/rc-example-jobs){ .md-button }
 
 
-## Estimating resource usage
+## Estimating credit usage
 
-For credit accounts, it is helpful to estimate how many credits a batch job would use
-before you actually run it. For this, use `job_estimate`:
-
-```
-job_estimate <submit file>
-```
-
-which reports the cost in credits.
-For more on `job_estimate`, execute `job_estimate --help`.
-
-Additionally, for users who schedule jobs interactively through the portal, an estimate of the credits required for the job is displayed near the Launch button once you select your batch options and partition. This estimate updates dynamically based on your selections, allowing you to understand the approximate credit cost before starting the job.
-
-The Slurm command [`sacct`][sacct]
-reports the resources used by a completed batch job,
-which helps users learn what resources to request next time.
-At the bottom of a batch script, the command
-[sacct]: https://slurm.schedmd.com/sacct.html
-
-```
-sacct -j $SLURM_JOB_ID --format=JobID,JobName,MaxRSS,Elapsed,TotalCPU,State
-```
-
-generates a report in the batch output file of resources used. Using the 
-`--format` flag controls what content is displayed. See `sacct --helpformat` 
-for more formatting options.
-
-### Selecting nodes and cores
-
-Choosing the right number of cores (--ntasks) and nodes (--nodes) depends on how your 
-software is designed to run in parallel. It's important to understand if your job is built 
-for a distributed environment or a shared-memory environment.
-
-Most parallel software is multi-threaded, meaning it's designed to run on a single computer 
-and use multiple cores that share the same memory. If this describes your workflow, you 
-should almost always set --nodes=1 and then set --ntasks to the number of independent tasks 
-your job can run at the same time. Requesting more cores than your application can actually 
-use will not speed it up and only wastes resources.
-
-Some advanced applications (often using MPI) are designed to run across multiple, separate 
-computers at once, communicating over the network. Only if your software is specifically 
-built for this should you set `--nodes` to a value greater than one.
-
-
-### Selecting memory for Your Job
-
-Correctly estimating memory (--mem) can be tricky, but it is critical for ensuring your job 
-runs successfully. Requesting too little will cause your job to fail, while requesting too 
-much can increase your queue time and cost.
-
-A good starting point is to calculate the size of the data your application needs to load 
-into memory at one time. Once you have an estimate, it is safe practice to request about 
-20% more memory than you think you need. This extra buffer accommodates the operating 
-system and other side processes that run alongside your job.
-
-The most reliable method is to run a short test job with a generous memory allocation and 
-then check the actual peak usage. You can use the sacct command after your job finishes to 
-see the MaxRSS (Maximum Resident Set Size). This will tell you precisely how much memory 
-your job used, allowing you to make very accurate requests for future runs.
+To learn how to estimate credit usage before running a batch job, 
+go [here](../accounts/paid-resources.md/#estimating-job-costs).
 
 ### Timing jobs
 
@@ -188,8 +130,7 @@ it is helpful to time such test jobs.
 
 Many well-designed applications display timing information
 at the end of the log files they generate.
-If this is not the case for your application,
-you can find out how long a batch job takes
+Or, you can find out how long a batch job takes
 by sandwiching the commands you execute
 between [`date`][date] commands:
 [date]: https://man7.org/linux/man-pages/man1/date.1.html
@@ -205,39 +146,24 @@ which will write timing information to standard output.
 [time]: https://www.man7.org/linux/man-pages/man1/time.1.html
 
 
-## Cron jobs with scrontab
+## Recurring jobs
 
 For jobs that need to run on a recurring schedule,
-you can use `scrontab` to submit cron jobs to Slurm.
-`scrontab` is a Slurm utility that allows you to schedule batch jobs
-to run at specified times, similar to the Unix `crontab` command.
+`scrontab` is a Slurm utility to schedule batch jobs to run at specified times, 
+similar to the Unix `crontab` command.
 
 ### Using scrontab
 
-To create or edit a cron schedule, use:
+To create or edit a cron schedule, `scrontab -e` opens an editor 
+where you can specify when your batch jobs should run.
+The syntax is similar to Unix crontab, with the addition of Slurm directives.
 
-```
-scrontab -e
-```
-
-This opens an editor where you can specify when your batch jobs should run.
-The syntax is similar to standard Unix crontab with the addition of Slurm directives.
-
-To view your current scrontab schedule, use:
-
-```
-scrontab -l
-```
-
-To remove your scrontab schedule, use:
-
-```
-scrontab -r
-```
+To view your current scrontab schedule, use `scrontab -l`. <br>
+To remove your scrontab schedule, use `scrontab -r`.
 
 ### scrontab format
 
-Each line in your scrontab file represents one scheduled job and has the format:
+Each line in a scrontab file represents one scheduled job and has the format:
 
 ```
 <minute> <hour> <day_of_month> <month> <day_of_week> <slurm_directives> <batch_script>
@@ -259,14 +185,6 @@ The time fields work the same as standard Unix crontab:
 
 Use `*` to match any value, or specify ranges and lists as needed.
 
-### Example scrontab entry
-
-To run a Python script every Monday at 9:00 AM using your allocation:
-
-```
-0 9 * * 1 --account=my_account --partition=sla-prio --job-name=weekly-analysis /home/user/scripts/analysis.sh
-```
-
-For more information on scrontab, see the [Slurm scrontab documentation][scrontab].
+For more information, see [Slurm scrontab documentation][scrontab].
 [scrontab]: https://slurm.schedmd.com/scrontab.html
 

@@ -10,7 +10,7 @@ or before the application is launched by using a package manager.
 ## pip
 
 `pip` is the package installer for Python.
-To load Python packages on Roar, use `pip` with the option `--user`
+To load Python packages, use `pip` with the option `--user`
 (which directs Python to install the package for a single user):
 
 ```
@@ -24,6 +24,6 @@ To remedy this, see [Quota issues in home](../getting-started/faq.md/#quota-issu
 
 Python installations can also be managed with [Anaconda](./anaconda.md/#anaconda).
 
-Anaconda offers a convient way to build several different package environments which can 
-be ideal for different per-project builds. It is also usable with most popular scripting 
-languages such as Python, R, and Julia.
+Anaconda offers a convenient way to build several different package environments which can 
+be ideal for different per-project builds. It is usable with most popular scripting 
+languages, including Python, R, and Julia.

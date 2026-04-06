@@ -148,7 +148,7 @@ the smaller example allows support to reproduce and fix the issue much more quic
 
 For further help, contact [ICDS help desk](getting-help.md) 
 
-## I can't login to the portal
+## I can't log in to the portal
 
 This can be caused by a few different reasons.
 
