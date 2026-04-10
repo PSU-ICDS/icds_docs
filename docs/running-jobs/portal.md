@@ -17,15 +17,15 @@ You can run interactive jobs from the Portal home page, or by navigating via the
 
 ## Command line access
 
-You can access the command line interface from the menu bar: 
-**Clusters** -> **_RC Shell Access"**
+You can access the command line interface from the menu bar: **Clusters** -> **_RC Shell Access**. <br>
+Or, you can launch the Terminal app (top left menu, **Applications** > **Terminal Emulator**) 
+from within an Interactive Desktop session.
 
 ## Interactive Desktop
 
 The Interactive Desktop provides a full graphical user interface (GUI) on a compute node. 
 To launch a session, select **Interactive Apps > Interactive Desktop** from the top menu. 
 For more details, see the [Open OnDemand documentation](https://openondemand.org/).
-
 
 ## Selecting resources
 
@@ -45,14 +45,15 @@ using dropdowns and input fields on the application's launch page, including:
 	Credit accounts should use `basic`, `standard`, `himem`, or `interactive` partition.
 	Allocations use the `sla-prio` partition. 
 
-### Slurm directives
+### Advanced Slurm options
 
 With Slurm directives, you can customize your hardware allocation, 
 and override form restrictions for node and core count, memory, and run time.
 
 To do this, check "Enable advanced Slurm options", 
-which causes the "Sbatch options" dialog box to appear;
-enter the desired [resource directives](./slurm-scheduler.md#resource-directives).
+which causes the "Sbatch options" dialog box to appear.
+There, you can specify [Slurm directives](slurm-scheduler.md/#slurm-directives) 
+to customize your node and core count, memory, run time, or [hardware allocation](resource-requests.md).
 
 For example, to request 8 cores (tasks), 128GB memory, and 8 hour run time,
 the Sbatch options box should contain:
@@ -68,7 +69,7 @@ the Sbatch options box should contain:
 
 ### Requesting GPUs
 
-To request a GPU with a Portal session, use [Slurm options](#slurm-options) 
+To request a GPU with a Portal session, use [advanced Slurm options](#advanced-slurm-options) 
 to enter a `--gres` directive, with the number and type of GPU needed
 (e.g. `--gres=gpu:a100:1`).  See [GPUs](resource-requests.md#gpus).
 

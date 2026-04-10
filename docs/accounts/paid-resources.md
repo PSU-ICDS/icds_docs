@@ -4,7 +4,7 @@ All users are automatically provided a fixed number of [READ credits](read-credi
 Beyond this level, ICDS offers paid compute in the form of credits and allocations. 
 
 All users are also provided some file storage space in `work` and `home`.
-ICDS also offers paid group storage mounted on the cluster, and paid archival storage.
+ICDS also offers paid group storage mounted on the cluster, and paid archive storage.
 
 ## Compute offerings
 
@@ -29,7 +29,7 @@ paid by different sources of funds, for different research projects.
 
 ## Storage offerings
 
-Paid storage is available as group or archival storage.
+Paid storage is available as group or archive storage.
 
 **Group storage** is shared storage that is mounted on the cluster. 
 This storage is intended for use with compute jobs 

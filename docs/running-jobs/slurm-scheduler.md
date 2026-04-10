@@ -36,9 +36,8 @@ The most common directives are:
 
 By default, standard output and standard error are both directed to `slurm-<jobID>.out`. <br>
 Output filenames can be customized: `--output=<outFile>` 
-directs standard error and output to ``<outFile>``,
-and `--error=<errFile>` directs standard error to its own file `<errFile>`.
-
+directs standard error and output to ``<outFile>``;
+adding `--error=<errFile>` directs standard error to its own file `<errFile>`.
 
 ### Specifying Slurm directives
 

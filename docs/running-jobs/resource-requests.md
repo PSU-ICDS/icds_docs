@@ -9,7 +9,7 @@ to specify what kind of CPU nodes to run on.
 
 ## GPUs
 
-GPUs are only available to credit accounts,
+GPUs are available to all credit accounts,
 or allocations that include GPU nodes.  
 
 To request a single GPU of a given type (here, A100), use ``--gres=gpu:a100:1`.

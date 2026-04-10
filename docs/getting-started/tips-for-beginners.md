@@ -44,10 +44,13 @@ To learn more about Linux, we recommend the following resources:
 
 Understanding these concepts will help you use the system and communicate with support.
 
-### Directory
-A directory is a folder in the filesystem, in which files are stored.
-On Roar, key directories include home, work, group and scratch.
-See [File Storage](../file-system/file-storage.md) for details.
+### Batch job
+A [batch job](../running-jobs/batch-jobs.md)
+is a compute job submitted for execution without user intervention.
+Batch jobs are defined in scripts that specify commands, resources, and output files.
+The [SLURM scheduler](../running-jobs/slurm-scheduler.md)
+allocates resources and schedules the job to run.
+Batch jobs are ideal for long-running or resource-intensive computations.
 
 ### Cluster and nodes
 A cluster is a set of interconnected compute nodes that work together.
@@ -60,6 +63,24 @@ typically 32 or 64 cores per CPU.
 Each core can run independent tasks.
 Multiple cores can perform tasks in parallel, 
 if your application supports parallel execution.
+
+### Directory
+A directory is a folder in the filesystem, in which files are stored.
+On Roar, key directories include home, work, group and scratch.
+See [File Storage](../file-system/file-storage.md) for details.
+
+### Environment variables
+Environment variables store file paths and software settings
+used by programs and scripts.
+For example:
+
+- $USER is your Penn State User ID. 
+- $HOME points to your home directory (/storage/home/$USER).
+- $WORK points to your work directory (/storage/work/$USER).
+- $SCRATCH points to your scratch directory (/storage/scratch/$USER).
+- $PATH is the set of places the system looks for executable files.
+
+To view all your environment variables, use `printenv`.
 
 ### GPU
 A Graphics Processing Unit (GPU) is a specialized processor for parallel computation.
@@ -75,13 +96,10 @@ for more about GPUs, and
 [Hardware requests](../running-jobs/resource-requests.md) 
 for how to request them.
 
-### Batch job
-A [batch job](../running-jobs/batch-jobs.md)
-is a compute job submitted for execution without user intervention.
-Batch jobs are defined in scripts that specify commands, resources, and output files.
-The [SLURM scheduler](../running-jobs/slurm-scheduler.md)
-allocates resources and schedules the job to run.
-Batch jobs are ideal for long-running or resource-intensive computations.
+### Modules
+[Modules](../software/modules.md) 
+provide a system for managing software environments;
+users can load and unload different versions of software packages.
 
 ### Partition
 A [partition](../system/system-overview.md#partitions)
@@ -98,22 +116,4 @@ machine learning, and data analytics.
 In serial processing, a task runs on only one core.
 Unless explicitly written and compiled for parallel processing,
 all programs and scripts are serial. 
-
-### Modules
-[Modules](../software/modules.md) 
-provide a system for managing software environments;
-users can load and unload different versions of software packages.
-
-### Environment variables
-Environment variables store file paths and software settings
-used by programs and scripts.
-For example:
-
-- $USER is your Penn State User ID. 
-- $HOME points to your home directory (/storage/home/$USER).
-- $WORK points to your work directory (/storage/work/$USER).
-- $SCRATCH points to your scratch directory (/storage/scratch/$USER).
-- $PATH is the set of places the system looks for executable files.
-
-To view all your environment variables, use `printenv`.
 

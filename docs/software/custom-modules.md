@@ -1,6 +1,8 @@
 # Custom modules
 
-Users can create and use custom module files.  Common components of a modulefile are:
+Users can create and use custom module files 
+(for details, see the [Lmod documentation](https://lmod.readthedocs.io/en/latest/)).
+Common components of a modulefile are:
 
 - **whatis():** Supplies information for `module info` and `module spider` output
 - **load():** Loads other modules when this module is loaded

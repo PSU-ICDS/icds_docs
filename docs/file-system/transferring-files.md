@@ -1,7 +1,7 @@
 # Transferring files
 
 Computational workflows often require files 
-on Roar, archival storage, 
+on Roar, archive storage, 
 OneDrive, or your laptop or desktop machine
 to be transferred -- copied from one place to another.
 
@@ -64,7 +64,8 @@ use the upload/download buttons on the Globus [web interface][globusweb].
  
 ### Globus Connect Personal
 
-Globus Connect Personal can turn your personal computer (laptop or desktop) into a Globus endpoint. 
+Globus Connect Personal can make files from your personal computer
+(laptop or desktop) available as a Globus collection.
 Once set up, you can securely transfer files between your computer and other Globus collections.
 
 To get started, download and install the Globus Connect Personal client, available for
