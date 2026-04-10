@@ -43,7 +43,7 @@ for larger files, use [Globus](#globus).
 
 [Globus][globus] is a web-based tool designed for transfers of large files.
 It can move files from Roar to filesystems outside Penn State,
-including our OneDrive accounts.
+including our PSU OneDrive accounts.
 Globus is interactive, but time-consuming file transfers 
 can be submitted as batch jobs.
 [globus]: https://docs.globus.org/how-to/get-started/
@@ -68,7 +68,7 @@ Globus Connect Personal can make files from your personal computer
 (laptop or desktop) available as a Globus collection.
 Once set up, you can securely transfer files between your computer and other Globus collections.
 
-To get started, download and install the Globus Connect Personal client, available for
+To get started, download and install the Globus Connect Personal client,
 available for [Linux](https://docs.globus.org/globus-connect-personal/install/linux/),
 [macOS](https://docs.globus.org/globus-connect-personal/install/mac/), and
 [Windows](https://docs.globus.org/globus-connect-personal/install/windows/).

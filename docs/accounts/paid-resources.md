@@ -35,9 +35,9 @@ Paid storage is available as group or archive storage.
 This storage is intended for use with compute jobs 
 and can be shared with a specified group of users.
 
-Group storage membership can be managed via [User Managed Groups](managing-storage.md),
-or by requesting that members be added to the storage collab group by emailing us at 
-<icds@psu.edu>.
+Group storage membership can be managed
+by requesting that members be added (via email, to <icds@psu.edu>),
+or by setting up a [User Managed Group](managing-storage.md).
 
 **Archive storage** is intended for long-term file retention.
 Files in archive storage must be transferred to the cluster
