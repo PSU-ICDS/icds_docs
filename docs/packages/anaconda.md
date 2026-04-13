@@ -58,7 +58,7 @@ will display all publicly available packages,
 and indicate the host channel, package version, and download count.
 
 !!! tip "Select a current, highly-used package from a reputable channel"
-	When selecting a package, se reputable channels such as `conda-forge` and `bio-conda`, 
+	When selecting a package, use reputable channels such as `conda-forge` and `bio-conda`, 
 	or developer channels such as `R`.  Check for a recent version number.
 	Finally, commonly used packages will have a high download count.
 	
