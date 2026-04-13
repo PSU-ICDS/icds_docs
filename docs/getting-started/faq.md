@@ -83,24 +83,34 @@ users are not added to any groups.
 
 ## Quota issues in home
 
-Many user configuration files and packages are stored by default in `home`.
-If these become too large, they can exceed the quota and cause errors. 
-This commonly occurs with directories such as
+"Permission Denied" and "Quota exceeded" are common errors that occur when storage levels 
+have exceeded the quota for that location. Deleting unnecessary items, archiving past data, 
+and moving files and directories are the most common ways to solve this issue.
+
+#### Dotfiles
+
+This problem can be particularly challenging if the large items are 
+[dot files](https://missing.csail.mit.edu/2019/dotfiles/) (and directories). These are hidden 
+default and are commonly used to store user-specific packages and configuration files.
+
+Many of these are stored in `home` by default which can lead to errors and connection issues.
+Common examples of these directories are:
 
  - `.conda` - used by Anaconda
  - `.comsol` - used by Comsol
- - `.local` - used by Python
+ - `.local`
 
-These [dot files](https://missing.csail.mit.edu/2019/dotfiles/) (and directories) 
-are hidden by default, but you can view them with `ls -la`.
+To accurately assess your storage usage, ensure you account for dotfiles. These hidden 
+files are often overlooked but can consume a significant amount of space.
 
-To accurately assess your storage usage, ensure you account for dotfiles. These hidden files are often overlooked but can consume a significant amount of space.
+Dotfiles can be viewed in the command line with the command `ls -la`.
 
 If you prefer a GUI, you can reveal hidden files as follows:
 
  - For Globus, In the file browser settings, select `Show Hidden Files`
  - Using the Portal, under the Files section, check the box for `Show Dotfiles`.
 
+To solve quota issues especially those due to do
 If you prefer using the [command line](../running-jobs/portal.md#command-line-access), use the command to list all files and directories including hidden ones, sorted by size:
 ```
 du -sch .[!.]* * | sort -h
