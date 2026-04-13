@@ -1,6 +1,6 @@
 # Paid resources
 
-All users are automatically provided a fixed number of [READ credits](read-credits.md) each month. 
+All users are automatically provided a fixed number of [free credits](read-credits.md) each month. 
 Beyond this level, ICDS offers paid compute in the form of credits and allocations. 
 
 All users are also provided some file storage space in `work` and `home`.
@@ -26,6 +26,18 @@ PIs can manage the account, adding group members to the list of allowed users.
 
 PIs can have multiple accounts and allocations, with different user lists, 
 paid by different sources of funds, for different research projects.
+
+## Using credit accounts and allocations
+
+All credit accounts and allocations have names.
+A user's free credit account is named `open`;
+the default name for a paid credit account is `<userID>_cr_default`.
+
+When [Portal sessions](../running-jobs/portal.md),
+[interactive jobs](../running-jobs/interactive-jobs.md),
+or [batch jobs](../running-jobs/batch-jobs.md) are paid for,
+the account or allocation name is given,
+and the corresponding account or allocation charged.
 
 ## Storage offerings
 
