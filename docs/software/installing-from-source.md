@@ -11,11 +11,6 @@ Depending on how well designed and documented the software is,
 installation may be straightforward and self-contained, 
 or may require extensive modification to install missing dependent packages.
 
-!!! note "Container support on the RC cluster"
-    Docker and Docker Compose are not supported due to privilege restrictions.
-    Use Apptainer instead; it can run Docker images but does not support Docker Compose or multi-container orchestration.
-
-
 ## No root access
 
 If you have worked with a laptop running Linux,
@@ -30,8 +25,7 @@ This means you cannot:
 ## Hardware
 
 To avoid hardware incompatibiities, 
-you should build software on a node with the same processor type 
-that will be used to run the software,
+build software on a node with the same CPU type that will be used to run the software,
 by using an interactive batch session to log onto the desired compute node.
 On a compute node, to display the processor type, execute:
 
@@ -58,10 +52,11 @@ available only on the newer processors.
 
 ## wget
 
-The first step is to get the source package (typically a tarball of some sort)
+The first step is to get the source package (often a tarball)
 from the developer website onto Roar.
 If you are logged on with the Portal Interactive Desktop or an SSH -X session, 
-you can launch Firefox and download software using the browser.
+you can launch [Firefox](../running-jobs/portal.md/#firefox) 
+and download software using the browser.
 
 Alternatively, you can use [`wget`][wget],
 to download source packages from the web:

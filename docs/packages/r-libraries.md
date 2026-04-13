@@ -50,8 +50,7 @@ for RStudio, `R_LIBS_USER` must also be modified.
 ## Dependencies
 
 
-Some R packages require additional software or changes to the user environment, 
-before the package can be installed. 
+Some R packages require additional software or changes to the user environment. 
 
 For example, some R packages use CMake to perform installations;
 others may require a particular version of a compiler to be loaded.

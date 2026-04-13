@@ -1,26 +1,20 @@
 
 # Slurm scheduler
 
-Roar is a shared system used by many researchers and uses [Slurm](https://slurm.schedmd.com)
-for scheduling. The Slurm scheduler is the cluster's essential resource manager, 
-responsible for fairly and efficiently distributing compute resources (like CPUs, memory, 
-and GPUs) to all users. It acts as the system's workload manager, preventing conflicts 
- and ensuring orderly access to the hardware.
+Roar uses [Slurm](https://slurm.schedmd.com) to fairly and efficiently distribute resources 
+(CPUs, memory, and GPUs) among many different compute jobs.
 
-When you submit a job, you specify the resources you need. Slurm then performs several key 
-function like job queueing, resource allocation, policy enforcement, execution and monitoring.
+## Slurm directives
 
-## Resource directives
+Slurm directives are used to specify the resources a job needs,
+such as cores, memory, and execution time.
+The can also be used to control how a job behaves,
+with options such as email alerts, job dependencies, and more.
 
-Resource directives are used to specify how a job behaves and the resources to be allocated. 
-Directives can be used to define resources such as cores memory, and time needed. But they 
-can also be used to set job options such as email alerts, job dependencies, and more.
-
-They are required for all jobs including both [interactive jobs](interactive-jobs.md) 
+Slurm directives are required for both [interactive jobs](interactive-jobs.md) 
 and [batch jobs](batch-jobs.md).
-
-Interactive jobs via the [Portal](portal.md) also use resource directives, though they are 
-often specified through the request forms.
+[Portal](portal.md) sessions also use Slurm directives, 
+which are typically specified via the request form that launches the session.
 
 The most common directives are:
 
@@ -40,36 +34,22 @@ The most common directives are:
 | `-e` | `--error` | direct standard error to a file |
 | `-o` | `--output` | direct standard output to a file |
 
-!!! tip "Custom output file names"
-    By default, batch job standard output and standard error are both directed to 
-    `slurm-%j.out`(where `%j` is the jobID). But output and error filenames can be 
-     customized by using `--output=filename` to redirect output to a specified file.
-     If only `--output` is specified, both standard output and error will be directed to 
-     the file. Specifying `--error=filename` will direct standard error to its own file.
+By default, standard output and standard error are both directed to `slurm-<jobID>.out`. <br>
+Output filenames can be customized: `--output=<outFile>` 
+directs standard error and output to ``<outFile>``;
+adding `--error=<errFile>` directs standard error to its own file `<errFile>`.
 
+### Specifying Slurm directives
 
-### Specifying resource directives
+Slurm directives appear at the top of a [batch script](batch-jobs.md) using ``#SBATCH``, 
+or as options for [interactive jobs](interactive-jobs.md) launched with `salloc` or `srun`. 
 
-You provide these directives at the top of a batch script using #SBATCH, or as options on 
-the command line (e.g., with salloc or srun). 
-
-On the portal, you can use resource directives to further customize your job requests.
-
-!!! warning "Note on Tasks vs. Cores"
-     For most jobs, you can think of one **task** as one **CPU core**. So, `--ntasks=8` 
-     requests 8 cores.
-
-!!! warning "Note on Memory" 
-    Be careful when requesting memory!
-    
-    `--mem=16G` requests 16 GB of memory **for the entire node**.
-    
-    `--mem-per-cpu=4G` requests 4 GB of memory **for each core** you've requested. If you 
-    requested 4 cores, this would total 16 GB.
+On the Portal, you can use resource directives to further customize your job requests.
 
 ## Environment variables
 
-Slurm defines environment variables within the scope of a job:
+Slurm defines environment variables for jobs, which can be accessed in batch scripts
+to make them respond more flexibly:
 
 | Environment Variable | Description |
 | ---- | ---- |
@@ -82,17 +62,10 @@ Slurm defines environment variables within the scope of a job:
 | `SLURM_QUEUE` | Queue (partition) |
 | `SLURM_SUBMIT_DIR` | Directory of job submission |
 
-These can be used in your submit script to make them more dynamic to the resources allocated.
-
-!!! tip "Use $SLURM_NTASKS for parallel jobs"
-    Using `$SLURM_NTASKS` to specify the number of parallel tasks in your submit script 
-    allows your job to dynamically adapt to the jobs resource request without having to 
-    modify your script in multiple locations.
-
 ## Replacement symbols
 
 Replacement symbols can be used in Slurm directives,
-to build job names and filenames with information specific to the job being run:
+to customize filenames with information specific to the job being run:
 
 | Symbol | Description |
 | :----: | ---- |
@@ -101,14 +74,11 @@ to build job names and filenames with information specific to the job being run:
 | `%u` | Username |
 | `%N` | Hostname where the job is running |
 
+For example, `--output=%x.%j.out` directs batch output to a file
+named with the job name and jobID.
 
 For more information on Slurm directives, environment variables, and replacement symbols, 
 see [Slurm sbatch documentation](https://slurm.schedmd.com/sbatch.html) for batch jobs 
 and [Slurm salloc documentation](https://slurm.schedmd.com/salloc.html) for interactive jobs.
-
-!!! tip "Replacement symbols to create unique output files"
-    Using replacement symbols in your resource requests can be used to create unique output 
-    file names for each run of a job. For example `--output=myjob.%j.out` will create a 
-    different output file for each job using the Slurm Job ID to replace `%j`
 
 

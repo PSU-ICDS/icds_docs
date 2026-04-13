@@ -21,6 +21,6 @@ The different types of nodes available on Roar are:
 | High Memory <br> (20 GB/core) | 25 | 48 | 1024 | Gold 6342 | icelake | Infiniband |
 | Interactive | 16 | 28 | 512 | E5-2680v4 <br> + P100 GPU | broadwell| Infiniband <br> Ethernet|
 
-Note: While cluster nodes are configured with the memory described above, some of the memory
-is reserved for the operating system and system processes, so not all memory is available for
-user jobs.  We normally reserve less than 10GB of memory for the operating system.
+Note: cluster nodes are configured with memory as described above,
+but some memory (< 10 GB) is reserved for the operating system, 
+and thus available for user jobs.

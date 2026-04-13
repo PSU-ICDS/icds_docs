@@ -1,28 +1,28 @@
-# READ credits (Open account)
+# Free credits ["open" account]
 
-Beginning January 2026, ICDS has replaced the historical Open Queue and now provides 
-Research Exploration and Discovery (READ) Credits to all system users. READ credits include 
-a moderate amount of credits for free to all system users. These credits will operate 
-identically to paid credits and users can use them to run jobs on any 
-[available hardware](../system/compute-hardware.md) using credit-compatible partitions.
+ICDS now provides some free credits to all users, automatically allocated each month; <br>
+these are called "Research Exploration and Discovery" (READ) credits.
 
-Additionally, researchers can request additional READ credits through a lightweight 
-application process.
+Free credits go into a credit account named `open`
+(an echo of the old "open" queue); <br>
+[paid credits](paid-resources.md) go into other credit accounts
+(the default name is `<userID>_cr_default`).
 
-!!! warning "General READ credits do not rollover"
-    General READ credits (those offered to users on a monthly basis) do not rollover. Credit balances 
-    reset at the start of each month and unused credits are lost.
+To pay for [Portal sessions](../running-jobs/portal.md),
+[interactive jobs](../running-jobs/interactive-jobs.md),
+or [batch jobs](../running-jobs/batch-jobs.md) with free credits, <br>
+specify `open` as the account name.
+
+Just like paid credits, free credits can be used to pay for jobs
+on any [available hardware](../system/compute-hardware.md).
+
+!!! warning "Automatic credits do not roll over."
+    Automatically allocated credits do not roll over; 
+    unused credits are lost at the end of the month.
+
+Researchers can request supplemental free credits with a simple application. <br>
+(Unlike automatic free  credits, supplemental free credits do roll over.)    
     
-    This does not apply to additional credits granted through the application process.
-
-For more information on READ credits, including how to request additional credits, please 
+For more information on free "READ" credits,
+including how to request supplemental credits, please 
 [visit our website](https://icds.psu.edu/funding/new-read-credits/).
-
-## Using READ credits (Open account)
-
-To use the monthly allocated READ credits, jobs will need to be submitted 
-using the `open` account and a corresponding credit partition (`basic`, `standard`, 
-`himem`, or `interactive`).
-
-Jobs submitted to the `open` partition or without a partition specified will 
-default to the `basic` partition.

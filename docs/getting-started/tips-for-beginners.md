@@ -4,29 +4,25 @@
      Submit nodes are for preparing files, submitting jobs, 
      examining results, and transferring files.
 
-!!! note "Avoid storing important files in Scratch"
+!!! note "Avoid storing important files in scratch."
      [Scratch is not backed up](../file-system/file-storage.md/#quotas), 
      and files older than 30 days old are deleted.
 
-!!! note "Monitor your storage quota"
+!!! note "Monitor your storage quota."
      If you fill your allotted disk space, weird errors occur.
      Keep an eye on your [disk space usage](../file-system/file-storage.md/#quotas).
 
-!!! note "Use compute resources responsibly"
-     Always run small test jobs to verify that your code, inputs, and resource
-    requests behave as expected. 
-    Refer to the [`job_estimate`](../running-jobs/batch-jobs.md/#estimating-resource-usage) command to estimate credit consumption from your job script before submission.
+!!! note "Use compute resources responsibly."
+    Always run small test jobs first, to make sure your big job will work. 
+    Use [`job_estimate`](../running-jobs/batch-jobs.md/#estimating-resource-usage) 
+    to estimate the cost of your job in credits before you run it.
 
-!!! note "Always capture job output and error logs"
-    To debug failed or unexpected jobs, it can be helpful to capture output and error streams
-    separately. To do so, add these lines to the slurm job script:
+!!! note "Capture job output and error logs."
+    To debug failed batch jobs, it helps to separate output and error streams, 
+    by adding these lines to the job script:
     `#SBATCH --output=job_%j.out`
     `#SBATCH --error=job_%j.err`
     
-!!! note "Load software using modules"
-     Most software on Roar is managed through the software stack and loaded
-     using modules. Please check [Modules](../software/modules.md)
-
 ## Roar uses Linux
 
 The operating system for Roar is Red Hat Enterprise Linux 8 
@@ -44,95 +40,80 @@ To learn more about Linux, we recommend the following resources:
  - [Introduction to Using the Shell in an HPC Context by HPC Carpentry](https://www.hpc-carpentry.org/hpc-shell/) which can be followed after [logging onto Roar](connecting.md/#two-ways-to-access) and [accessing the command line](../running-jobs/portal.md#command-line-access).
 
 
-## Glossary and key concepts
+## Glossary
 
-This page idefines essential terms used throughout the Roar User Guide.  
-Understanding these concepts will help you use the system efficiently and communicate clearly with support.
+Understanding these concepts will help you use the system and communicate with support.
 
-### Batch Jobs
-A batch job is a computational task submitted to the Roar cluster for execution.  In many cases these tasks can be executed without requiring user intervention. Managed by the Slurm workload manager, batch jobs are defined in scripts that specify commands, resource requirements, and output handling. The scheduler allocates resources and runs the job when available, making batch jobs ideal for long-running or resource-intensive computations.
+### Batch job
+A [batch job](../running-jobs/batch-jobs.md)
+is a compute job submitted for execution without user intervention.
+Batch jobs are defined in scripts that specify commands, resources, and output files.
+The [SLURM scheduler](../running-jobs/slurm-scheduler.md)
+allocates resources and schedules the job to run.
+Batch jobs are ideal for long-running or resource-intensive computations.
 
-See [Batch Jobs](../running-jobs/batch-jobs.md) for more detailed information.
+### Cluster and nodes
+A cluster is a set of interconnected compute nodes that work together.
+A node is a single computer in the cluster, usually with two CPUs.
+Multiple jobs can run at the same time on a single node.
 
-### Computing Cluster
-A computing cluster is a collection of interconnected computers [(nodes)](#node) that collaborate to perform computational tasks. The Roar computing cluster is a high-performance computing (HPC) system designed for research, comprising numerous nodes equipped with CPUs, GPUs, memory, and storage, all coordinated by the Slurm workload manager to process jobs efficiently.
-
-### Core
-A Core is a single processing unit within a [CPU](#cpu). Modern CPUs have multiple cores (e.g., 64 cores per node).
-Cores execute tasks in parallel. When you request “8 cores,” you’re asking for 8 processing units — possibly on one [node](#node) or across nodes.
-
-Note:  
-
-- 1 core = 1 CPU thread (unless hyper-threading is enabled)
-- Parallel performance depends on your application’s ability to utilize multiple cores.
-
-
-### CPU
-The CPU (also called processor) is the hardware component within a node responsible for executing computational tasks. A single CPU contains multiple [cores](#core), each capable of running independent threads. For example, a node with two processors, each with 32 cores, provides 64 cores total.
+### CPUs and cores
+A CPU (central processing unit) contains multiple cores,
+typically 32 or 64 cores per CPU.
+Each core can run independent tasks.
+Multiple cores can perform tasks in parallel, 
+if your application supports parallel execution.
 
 ### Directory
-A Directory is a folder in the filesystem : a location where files are stored.
-On Roar, key directories include the home, work, group and scratch directories.
-See [File Storage](../file-system/file-storage.md) for full details.
+A directory is a folder in the filesystem, in which files are stored.
+On Roar, key directories include home, work, group and scratch.
+See [File Storage](../file-system/file-storage.md) for details.
 
-### Environment Modules
-Environment modules provide a flexible system for managing software environments on the Roar cluster. Modules allow users to load, unload, or switch between software packages, versions, or dependencies, ensuring the correct tools and libraries are available for specific tasks.
-
-Example: To load Anaconda, run the command `module load anaconda` in the terminal. To list all available modules, use `module avail`. To unload Anaconda, run `module unload anaconda`, and to remove all modules and start fresh, run `module purge`.
-
-See [Modules](../software/modules.md) for more detailed information.
-
-### Environment Variables
-Environment Variables are dynamic key-value pairs that configure the behavior of programs and scripts in the Roar cluster’s environment. They store information such as file paths, software settings, or system configurations, enabling seamless interaction with the cluster’s tools and resources.
-Example: To add a custom directory to the PATH variable, you can run something similar to `export PATH=$PATH:/home/username/bin` in the terminal. To view all current environment variables, use the command `printenv`
-
-Note: Environment variables are often set automatically by environment modules but can be customized for specific needs.
-
-Since Roar uses RHEL, it sets the following variables for you:
+### Environment variables
+Environment variables store file paths and software settings
+used by programs and scripts.
+For example:
 
 - $USER is your Penn State User ID. 
 - $HOME points to your home directory (/storage/home/$USER).
 - $WORK points to your work directory (/storage/work/$USER).
 - $SCRATCH points to your scratch directory (/storage/scratch/$USER).
+- $PATH is the set of places the system looks for executable files.
+
+To view all your environment variables, use `printenv`.
 
 ### GPU
-A Graphics Processing Unit (GPU) is a specialized processor for parallel computation optimized for parallel computations, such as those used in machine learning, scientific simulations, and data visualization. The Roar cluster offers several GPU types:
+A Graphics Processing Unit (GPU) is a specialized processor for parallel computation.
+which speeds execution of programs written to use GPUs.
+Some but not all nodes have GPUs.
+Roar offers several GPU types:
 
 - **A100**, **A40** — high-end, expensive
 - **V100**, **P100** — mid-range, cost-effective
 
-GPUs are only available to:
+See [Compute hardware](../system/compute-hardware.md)
+for more about GPUs, and 
+[Hardware requests](../running-jobs/resource-requests.md) 
+for how to request them.
 
-- Paid credit accounts
-- Allocations with GPU access
-
-Request via `--gres=gpu:<type>:<count>` in Slurm.  
-See [Resource Requests](../running-jobs/resource-requests.md) for more detailed information on GPUs.
-
-### Node
-A Node is a single physical computer in the Roar cluster.  
-Each node has its own:
-
-- [CPU(s)](#cpu)
-- Memory (RAM)
-- Local storage (usually temporary)
-- Network interface
-
-Think of a node as a complete server dedicated to running jobs.  Multiple jobs can run on one node if resources allow.
-Example > “Your job is running on node `submit03`”
-
-
-### Parallel Processing
-Parallel processing refers to a computational approach where a task is divided into smaller sub-tasks that are executed simultaneously across multiple processing units, such as CPU cores or GPUs.
-The main idea is to speed up execution by taking advantage of hardware that can perform multiple operations at the same time. Instead of processing each part of a task sequentially, the task is split into independent chunks, which are then processed concurrently.  
-
-Parallel processing is widely used in scenarios where large datasets or complex computations are involved, such as scientific simulations, image and video processing, machine learning, and big data analytics. By efficiently distributing work across multiple [cores](#core) or [GPUs](#gpu), it can significantly reduce execution time and improve overall performance.
+### Modules
+[Modules](../software/modules.md) 
+provide a system for managing software environments;
+users can load and unload different versions of software packages.
 
 ### Partition
-A partition is a logical grouping of nodes in the Roar cluster, defined by shared access policies, time limits, and billing rates. Partitions allow the system to prioritize and allocate resources based on job requirements and user privileges.
-See [System Overview](../system/system-overview.md#partitions) for more details on available partitions.
+A [partition](../system/system-overview.md#partitions)
+is a group of nodes with similar hardware, access policies, and billing rates. 
+Users specify partitions when launching Portal sessions, 
+interactive jobs, or batch jobs.
 
+### Parallel processing
+In parallel processing, a task is divided 
+across multiple CPU cores or GPUs to speed execution.
+Parallel processing is used in simulations, image processing, 
+machine learning, and data analytics.
 
-### Serial Processing
-Serial processing (Single-core job) means your program runs on only one core at a time. Instructions are executed sequentially; even if the node has 128 cores available, a serial job will use just one of them.
-Most traditional software and many simple scripts are serial unless explicitly written or compiled for parallelism.
+In serial processing, a task runs on only one core.
+Unless explicitly written and compiled for parallel processing,
+all programs and scripts are serial. 
+
