@@ -14,7 +14,7 @@
 
 !!! note "Use compute resources responsibly."
     Always run small test jobs first, to make sure your big job will work. 
-    Use [`job_estimate`](../running-jobs/batch-jobs.md/#estimating-resource-usage) 
+    Use [`job_estimate`](../running-jobs/batch-jobs.md#estimating-credit-usage) 
     to estimate the cost of your job in credits before you run it.
 
 !!! note "Capture job output and error logs."

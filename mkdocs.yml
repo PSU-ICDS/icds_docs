@@ -37,11 +37,19 @@ plugins:
 #    - bootstrap4-tables
  
 nav:
-    - Getting started: 
+    - Home: index.md
+    - Getting started:
         - getting-started/tips-for-beginners.md
         - getting-started/connecting.md
-        - getting-started/faq.md
         - getting-started/getting-help.md
+        - FAQ and Guides:
+            - getting-started/guides/faq.md
+            - getting-started/guides/job-not-starting.md
+            - getting-started/guides/out-of-memory-error.md
+            - getting-started/guides/permission-denied.md
+            - getting-started/guides/quota-issues-in-home.md
+            - getting-started/guides/reproducing-job-failures.md
+            - getting-started/guides/portal-login-issues.md
     - System details:
         - system/system-overview.md
         - system/compute-hardware.md
@@ -71,4 +79,7 @@ nav:
         - running-jobs/interactive-jobs.md
         - running-jobs/batch-jobs.md
         - running-jobs/resource-requests.md
- 
+    - Roar Restricted:
+        - roar-restricted/accessing-rr.md
+        - roar-restricted/data-transfer.md
+

@@ -79,7 +79,7 @@ This commonly occurs with directories such as
  - `.comsol` - used by Comsol
  - `.conda` - used by Anaconda
 
-For more information, see [Quota issues in $HOME](../getting-started/faq.md#quota-issues-in-home). 
+For more information, see [Quota issues in $HOME](../getting-started/guides/quota-issues-in-home.md). 
 
 ## Archive storage
 

@@ -29,4 +29,4 @@ you can also schedule an on-demand session with one of our support staff.
 
 On-demand sessions are available during business hours, Monday through Friday.
 To schedule a session, go [here](https://tinyurl.com/ICDS-Support){ .md-button }.
-For times outside these hours, [contact us](#contacting-client-support) for more details.
+For times outside these hours, [contact us](#support-requests) for more details.

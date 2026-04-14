@@ -25,7 +25,7 @@ Additional information on the Roar Collab system configuration can be found in
 
 ## Accounts
 
-To log on to Roar, you need a [login account](../getting-started/connecting.md/#roar-account-creation).
+To log on to Roar, you need a [login account](../getting-started/connecting.md#login-accounts).
 You can use free [READ credits](../accounts/read-credits.md), 
 given to all users, which can be spent on any of Roar's hardware.
 If your compute needs grow beyond what free credits can pay for,
