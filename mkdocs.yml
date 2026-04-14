@@ -46,10 +46,20 @@ nav:
             - getting-started/guides/faq.md
             - getting-started/guides/job-not-starting.md
             - getting-started/guides/out-of-memory-error.md
+            - getting-started/guides/job-timed-out.md
+            - getting-started/guides/job-no-output.md
+            - getting-started/guides/script-fails-in-batch.md
             - getting-started/guides/permission-denied.md
             - getting-started/guides/quota-issues-in-home.md
+            - getting-started/guides/monitoring-storage-usage.md
             - getting-started/guides/reproducing-job-failures.md
             - getting-started/guides/portal-login-issues.md
+            - getting-started/guides/module-not-found.md
+            - getting-started/guides/installing-python-packages.md
+            - getting-started/guides/running-gpu-job.md
+            - getting-started/guides/recurring-jobs-scrontab.md
+            - getting-started/guides/transferring-files-globus.md
+            - getting-started/guides/using-vscode.md
     - System details:
         - system/system-overview.md
         - system/compute-hardware.md
