@@ -12,8 +12,8 @@ to specify what kind of CPU nodes to run on.
 GPUs are available to all credit accounts,
 or allocations that include GPU nodes.  
 
-To request a single GPU of a given type (here, A100), use ``--gres=gpu:a100:1`.
-(To request n GPUs, replace 1 by n.)  
+To request a single GPU of a given type (here, A100), use `--gres=gpu:a100:1`
+(where 1 is the number of GPU cards *per node*).
 
 For information on the different GPU nodes (a100, a40, v100, p100,...)
 see [Hardware info][hardwareinfo].
