@@ -1,34 +1,32 @@
 # Getting help
 
-## Contacting Client Support
+## Support requests
 
-If you need help using Roar (RC or RR), please submit your support request **one of the following ways**:
+Support requests can be submitted in three ways:
 
 - **Email**: <icds@psu.edu>
-- **Service Portal**: [Submit a ticket via ServiceNow](https://pennstate.service-now.com/sp?id=sc_cat_item&sys_id=dd1c98f11b57e510bd31ed74bd4bcb1a)
-- **Support Ticket** : Submit through the Roar portal
+- **Service Portal**: [via ServiceNow](https://pennstate.service-now.com/sp?id=sc_cat_item&sys_id=dd1c98f11b57e510bd31ed74bd4bcb1a)
+- **Support Ticket** : through the Roar [Portal][portal]
+[portal]: <https://portal.hpc.psu.edu>
 
-Our team of HPC experts will respond as quickly as possible.
-
-### Before You Write
-1. **Search the [ICDS documentation](https://docs.icds.psu.edu/).**  
+### Before you write
+1. **Search the User Guide.**  
 2. **Search the web** using the exact error text and tool name.  
-3. If the job/problem is large, **try to reproduce with a smaller/sample example** first.
+3. If the failed job is large, **try to reproduce the error with a smaller example** first.
 
-## Office Hours
+## Office hours
 
-ICDS Client Support hosts virtual office hours on Zoom every Thursday and Friday from 12 pm to 1 pm EST.
-
-Feel free to drop by with your questions or issues for real-time support.
+ICDS Client Support hosts virtual office hours on Zoom 
+every Thursday and Friday from 12 pm to 1 pm EST;
+drop by with your questions for real-time support.
 
 [Join Office Hours on Zoom](https://psu.zoom.us/j/98725809058){ .md-button }
 
-### On Demand Support
+### On-demand support
 
-If you are unable to make our scheduled office hours, you can also schedule an on-demand 
-session with one of our support staff.
+If you are unable to make our scheduled office hours, 
+you can also schedule an on-demand session with one of our support staff.
 
-On-demand sessions are available during business hours, Monday through Friday. For times 
-outside of these hours, [contact us](#contacting-client-support) for more details.
-
-[Schedule an On-Demand Support session](https://tinyurl.com/ICDS-Support){ .md-button }
+On-demand sessions are available during business hours, Monday through Friday.
+To schedule a session, go [here](https://tinyurl.com/ICDS-Support){ .md-button }.
+For times outside these hours, [contact us](#contacting-client-support) for more details.

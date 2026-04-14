@@ -1,8 +1,8 @@
 # Custom modules
 
-Within the [Lmod Environment Module System](https://lmod.readthedocs.io/en/latest/). 
-users can create and use custom module files.
-<br> Common components of a modulefile are:
+Users can create and use custom module files 
+(for details, see the [Lmod documentation](https://lmod.readthedocs.io/en/latest/)).
+Common components of a modulefile are:
 
 - **whatis():** Supplies information for `module info` and `module spider` output
 - **load():** Loads other modules when this module is loaded
@@ -48,15 +48,10 @@ prepend_path('PKG_CONFIG_PATH', pathJoin(base,'lib64/pkgconfig'))
 
 ## Loading custom modules
 
-The `module use` command
-
-```
-module use <module_directory>
-```
-
+The command `module use <module_directory` 
 tells LMOD to look for your modules in `<module_directory>`.
 
-Adding the `module use` line to your `.bashrc` file 
+Adding this command to your `.bashrc` file 
 will make the modules accessable upon login.
 
 Creating module files within group storage directories can make them accessable to all group members. 
