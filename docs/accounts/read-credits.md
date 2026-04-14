@@ -6,7 +6,7 @@ these are called "Research Exploration and Discovery" (READ) credits.
 Free credits go into a credit account named `open`
 (an echo of the old "open" queue); <br>
 [paid credits](paid-resources.md) go into other credit accounts
-(the default name is `<userID>_cr_default`).
+(typically named `<userID>_cr_default`).
 
 To pay for [Portal sessions](../running-jobs/portal.md),
 [interactive jobs](../running-jobs/interactive-jobs.md),
