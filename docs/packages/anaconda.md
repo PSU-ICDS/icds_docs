@@ -31,42 +31,39 @@ This table summarizes useful Anaconda commands:
 
 ## Creating and managing environments
 
-!!! tip "Anaconda should only be used on compute nodes"
+!!! tip "Anaconda should only be used on compute nodes."
 	Anaconda processes running on the submit nodes are often killed. Please start an 
-	interactive session first using the `salloc` command or running a Persistent Terminal 
-	or Interactive Desktop session on the portal.
+	interactive job first with [`salloc`](../running-jobs/interactive-jobs.md), 
+	or a Persistent Terminal or Interactive Desktop session 
+	on the [Portal](../running-jobs/portal.md).
 	
-To access Anaconda, you will need to load the module:
+To access Anaconda, first load its module with `module load anaconda`.
 
-```
-module load anaconda
-```
 ### Deactivating base environment
 
-Older versions of Anaconda create a default base version which can be identified by the 
-text `(base)` at the front of your prompt. Deactivate this environment to avoid issues by 
-using the command `conda deactivate` before loading or creating a new environemnt.
+Older versions of Anaconda create a default base version, 
+which can be identified by the text `(base)` at the front of your prompt. 
+To avoid compatibility issues before loading or creating a new environment,
+deactivate this environment with `conda deactivate`.
 
-To avoid activating this base environment entirely, you will need to remove the conda init 
-portion found in your `~/.bashrc` file, or 
+To avoid activating this base environment entirely, 
+remove the `conda init` command from your `~/.bashrc` file, or 
 [contact ICDS Support for assistance](../getting-started/getting-help.md).
 
 ### Finding packages
 
-There are two primary ways to find available packages. the first is to search by package 
-name on the [Anaconda Package Repository](https://anaconda.org). This will display all 
-publicly available packages and provide information such as package version, download count, 
-and host channel.
+Packages can be found in two ways. First, searching by package 
+name on the [Anaconda Package Repository](https://anaconda.org) 
+will display all publicly available packages, 
+and indicate the host channel, package version, and download count.
 
 !!! tip "Select a current, highly-used package from a reputable channel"
-	When selecting a package to use, check the version number for a recent version. Also, 
-	try to pick reputable channels such as `conda-forge`, `bio-conda`, or developer channels 
-	such as `R`. Download count will provide a clue on what packages are most commonly 
-	selected
+	When selecting a package, use reputable channels such as `conda-forge` and `bio-conda`, 
+	or developer channels such as `R`.  Check for a recent version number.
+	Finally, commonly used packages will have a high download count.
 	
-Alternately, you can find packages using the `conda search` command. This will only search 
-channels that you have configured to use. For example, a search for the `r-tidyverse` 
-package looks like this:
+Alternately, use `conda search <package>`, which searches for packages in channels
+you have configured to use.  For example:
 
 ```
 $ conda search r-tidyverse
@@ -81,19 +78,19 @@ r-tidyverse                    1.1.1        r3.4.1_0  conda-forge
 
 ### Creating an environment
 
-Once the module is loaded, we can create a new environment using `conda create`:
+Once the desired modules are loaded, create a new environment using `conda create`:
 ```
 conda create -n <environmentName>
 ```
 
-We can also install packages into the new environment by specifying their name(s) at the 
+Or, install packages into the new environment by specifying their name(s) at the 
 end of the `conda create` command:
 
 ```
 conda create -n <environmentName> <pkg1> <pkg2> <pkg3>
 ```
 
-### Using an environment
+### Activating an environment
 Once an environment is created, you can activate it using `conda activate`:
 ```
 conda activate <environmentName>
@@ -101,33 +98,24 @@ conda activate <environmentName>
 
 ### Installing packages in an existing environment
 
-To add packages to an existing environment, activate the environment by first loading the 
-Anaconda module and activating the environment (as above). Once active, you can install 
-additional packages using `conda install`:
-```
-conda install <package>
-```
-
+To add packages to an existing environment, 
+first load the Anaconda module and activate the environment. 
+Then, install additional packages using `conda install <package>`.
 
 ## Anaconda in batch scripts
 
-To use an Anaconda environment in a batch script, you will need to load the anaconda module 
-and activate your environment before running your commands.
-
-```
-module load anaconda
-conda activate <environmentName>
-```
-
+To use an Anaconda environment in a batch script, 
+include `module load anaconda` and `conda activate` commands 
+at the top of the script.
 
 ## Anaconda on Portal
 
-If you want to use an Anaconda environment for Python or R in a Portal interactive session, 
+To use an Anaconda environment for Python or R in a Portal interactive session, 
 special considerations apply. (see also [Portal custom environments](../running-jobs/portal.md/#using-custom-environments)).
 
-### Jupyter Server
+### Jupyter server
 
-The Jupyter Server can be used with a pre-defined Python environment,
+The Jupyter server can be used with a pre-defined Python environment,
 which you select from the "Environment type" dropdown menu 
 that appears as you configure the session.
 
@@ -146,22 +134,22 @@ conda activate <environment>
 conda install -y ipykernel
 ```
 
-Finally,  you will need to set up the custom kernel for use in Jupyter. With the environment 
-loaded, use the command:
+Finally, you will need to set up the custom kernel for use in Jupyter. 
+With the environment loaded, use the command:
 
 ```
 ipython kernel install --user --name=<environment>
 ```
 
-If this is executed correctly, then when the interactive Jupyter session begins, the 
-environment should be displayed in the kernel list.
+After this, when the interactive Jupyter session begins, 
+the environment should be displayed in the kernel list.
 
 ### RStudio 
 
-Likewise, RStudio can be used with a default environment, selected from the 
-"Environment selection" dropdown menu. While some additional packages can be installed 
-from within the RStudio interface, it is often better to add packages directly to the 
-environment by using the `conda install` command.
+RStudio can be used with a default environment, 
+selected from the "Environment selection" dropdown menu. 
+Additional packages can be installed from within the RStudio interface;
+alternatively, use `conda install` to add packages directly to the environment.
 
 To use a custom environment in an RStudio session, select "Use custom text field", and enter:
 

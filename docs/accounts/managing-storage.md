@@ -2,10 +2,9 @@
 
 ## Group storage
 
-Group storage access is controlled by membership in collab groups. 
-Each account owner has a collab group, which has access to their group directory. 
+Group storage access is controlled by membership in the corresponding collab group. 
 To add and remove users from a collab group, 
-the group owner must send a request to <icds@psu.edu>.
+the group owner can send a request to <icds@psu.edu>.
 
 To customize group storage permissions, 
 such as creating multiple collab groups or changing subdirectory permissions, 
@@ -13,9 +12,10 @@ contact <icds@psu.edu>.
 
 ## User-managed groups
 
-If a group space owner wants more control over access,
+If a group space owner wants direct control over group access,
 or wants to designate a group coordinator, 
-they may wish to create a User Managed Group [(UMG)][UMG].
+they may create a User Managed Group [(UMG)][UMG].
+
 A UMG allows a group space owner to manage the group access list and group roles 
 via [Penn State Accounts Management](https://accounts.psu.edu/manage). 
 To create a UMG, select the following options:
@@ -41,8 +41,7 @@ $ getent group icds.rc.<umg_name>
 After a UMG is created, the owner can submit a request to <icds@psu.edu> 
 to associate this UMG with the `<owner>_collab` group. 
 Then the group owner has control over access and roles of the `<owner>_collab` group,
-by modifying the UMG membership. 
-Therafter, the owner can modify group membership directly, without contacting ICDS.
-(Note that any user added as a UMG member must have an active Roar account 
-to access data on Roar.)
+by modifying the UMG membership, without contacting ICDS.
+(Note: users added as UMG members must have an active Roar account 
+to access data.)
 

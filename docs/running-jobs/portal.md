@@ -7,69 +7,19 @@ and Integrated Developer Environments (IDEs) such as Jupyter and RStudio.
 
 ## File management
 
-You can access files using the UI on the portal by going to the top bar: **Files** > 
+You can access files on the Portal from the menu bar: **Files** > 
 **Your Storage Location** (e.g., `home`, `work`, `scratch`, or `group` directories).
 
 ## Interactive jobs
 
-You can run interactive jobs from the home page or by navigating via the top bar: 
+You can run interactive jobs from the Portal home page, or by navigating via the top bar: 
 **Interactive Apps** > **[Select the app you would like to run]**.
 
-## Command Line Access
+## Command line access
 
-For advanced tasks, access to the command line interface is accessible two ways in the portal.
-
-The first is by selecting "Clusters -> _RC Shell Access".
-
-![command line access via portal](../img/RCPortalShell.png)
-
-The second is inside an [Interactive Job](#interactive-jobs), such as the Persistant Terminal or 
-[Interactive Desktop App](#interactive-desktop).
-
-## Selecting resources
-
-When launching an interactive app, you must specify the computational resources for your 
-job. These options are typically selected using dropdowns and input fields on the 
-application's launch page. The key resources you will need to define are:
-
-* **Account:** The allocation or group that the job's usage will be billed against.
-* **Partition:** The specific partition (a set of nodes) where your job will run. 
-Different partitions may offer different hardware (e.g., CPUs, GPUs) or have varying policies.
-* **Number and Type of Nodes:** The quantity of machines your job will use and the 
-specific type required (e.g., standard CPU or GPU-enabled node).
-* **Number of Cores:** The total number of CPU cores to be allocated for your job.
-* **Memory (RAM):** The amount of memory reserved for your job, usually specified in Gigabytes (GB).
-* **Run Time:** The maximum duration your job is permitted to run (also known as 
-"wall time"), typically in an HH:MM:SS format.
-
-### Advanced Slurm Options
-
-Using Advanced Slurm options allows you to enter custom 
-[Resource directives](./slurm-scheduler.md#resource-directives). These options allow you to fully 
-customize your hardware allocation even allowing you to override the form restrictions 
-for node and core count, memory, and runtime.
-
-To do this, on a job submit form, ensure the "Enable advanced Slurm options" box is checked. 
-This will cause the "Sbatch options" box to appear. Enter the desired [Resource directives](./slurm-scheduler.md#resource-directives) here.
-
-For example, to request 8 cores (tasks), 128GB memory, and 8 hour run time - the Sbatch options box 
-should contain:
-
-```
---ntasks=8
---mem=128GB
---time=8:00:00
-```
-    
-!!! warning "All jobs must fit inside the resource limits of the partition they are running on"
-     If a job requests resources that exceed the partition limits, they will not begin.
-
-### Requesting GPUs
-
-To request a GPU with your interactive job, you will need to utilize [Advanced Slurm Options](#advanced-slurm-options) 
-to enter the `--gres` directive specifying the number of and model of GPU needed.
-
-See [Resource requests -> GPUs](resource-requests.md#gpus) for more information.
+You can access the command line interface from the menu bar: **Clusters** -> **_RC Shell Access**. <br>
+Or, you can launch the Terminal app (top left menu, **Applications** > **Terminal Emulator**) 
+from within an Interactive Desktop session.
 
 ## Interactive Desktop
 
@@ -77,26 +27,68 @@ The Interactive Desktop provides a full graphical user interface (GUI) on a comp
 To launch a session, select **Interactive Apps > Interactive Desktop** from the top menu. 
 For more details, see the [Open OnDemand documentation](https://openondemand.org/).
 
-## Job composer
+## Selecting resources
 
-The Job Composer allows you to create and submit batch jobs directly from the web interface.
+When launching an interactive app, you specify the computational resources for your job, 
+using dropdowns and input fields on the application's launch page, including:
 
-For more information, please see the 
-[Open OnDemand documentation on the Job Composer](https://osc.github.io/ood-documentation/release-1.8/applications/job-composer.html).
+* **Account:** to pay for the job.
+* **Partition:** the type of nodes where your job will run. 
+(see [partitions](../system/system-overview.md)) 
+* **Number and type of nodes:** how many and what kind <br> 
+(e.g., standard CPU or GPU-enabled node).
+* **Number of cores:** total number of CPU cores for your job.
+* **Memory (RAM):** total memory, usually in Gigabytes (GB).
+* **Run time:** maximum duration, in HH:MM:SS format.
 
-## Using paid accounts
+!!! note "When using credits, specify a hardware partition."
+	Credit accounts should use `basic`, `standard`, `himem`, or `interactive` partition.
+	Allocations use the `sla-prio` partition. 
 
-To run your job using a [credit account or allocation](../accounts/paid-resources.md),
-select the relevant account ID from the Account drop-down menu. Then select a corresponding 
-[partition](../system/system-overview.md#partitions).
+### Advanced Slurm options
 
- - Credit accounts need to use one of the hardware partitions: `basic`, `standard`, `himem`, or `interactive`
- - Allocations need to use the `sla-prio` partition 
+With Slurm directives, you can customize your hardware allocation, 
+and override form restrictions for node and core count, memory, and run time.
 
+To do this, check "Enable advanced Slurm options", 
+which causes the "Sbatch options" dialog box to appear.
+There, you can specify [Slurm directives](slurm-scheduler.md/#slurm-directives) 
+to customize your node and core count, memory, run time, or [hardware allocation](resource-requests.md).
+
+For example, to request 8 cores (tasks), 128GB memory, and 8 hour run time,
+the Sbatch options box should contain:
+
+```
+--ntasks=8
+--mem=128GB
+--time=8:00:00
+```
+    
+!!! warning "Jobs must fit inside the resource limits of the partition they will run on."
+     If a job requests resources that exceed the partition limits, they will not run.
+
+### Requesting GPUs
+
+To request a GPU with a Portal session, use [advanced Slurm options](#advanced-slurm-options) 
+to enter a `--gres` directive, with the number and type of GPU needed
+(e.g. `--gres=gpu:a100:1`).  See [GPUs](resource-requests.md#gpus).
+
+## VirtualGL
+
+For interactive applications that produce graphical output 
+(plots, figures, graphical user interfaces, and so on),
+using VirtualGL can speed up the drawing.
+
+For this to work, you must request a Portal session with a GPU node.
+Then, launch your application with `vglrun <application>`.  For example:
+```
+module load matlab
+vglrun matlab
+```
 
 ## Using custom environments
 
-Jupyter and RStudio Server allow the use of custom software or environments. 
+Jupyter and RStudio Server allow the use of custom environments. 
 To use these, select "Use custom environment" under Environment type 
 and enter commands to be run when the job launches.
 
@@ -108,5 +100,32 @@ module load anaconda
 conda activate myenv
 ```
 
-For more on using Anaconda environments in your Portal jobs, 
-see [Anaconda on Portal](../packages/anaconda.md/#anaconda-on-portal).
+For more information, see [Anaconda on Portal](../packages/anaconda.md/#anaconda-on-portal).
+
+## Firefox
+
+The Firefox web browser is available from the [Portal Interactive Desktop][portalID]
+(after logging in, select Web Browser from the Applications menu).
+With Firefox, you can access OneDrive and other such sites,
+and upload and download files.
+[portalID]: ../getting-started/connecting.md#portal
+
+Firefox is also available via `ssh -X`, 
+after loading its module with `module load firefox`.   
+From the command line, execute `firefox`.
+
+Users may need to set the default browser.
+This can be done in the `.bashrc` file, with
+```
+BROWSER=/storage/icds/tools/sw/firefox/firefox 
+```
+Or, in an Interactive Desktop session, navigate to 
+Applications > Settings > Settings Manager, 
+then select Default Applications. 
+Under the Internet tab, there is a field for Web Browser;
+Firefox is located at /storage/icds/tools/sw/firefox/firefox.
+
+!!! note "Using Firefox in Interactive Desktops"
+    When using Firefox to save or upload files, you may be prompted for a path.
+    Your home and work directories are `/storage/home/<username>` and `/storage/work/<username>`.
+

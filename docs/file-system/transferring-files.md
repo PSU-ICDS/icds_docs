@@ -1,13 +1,13 @@
 # Transferring files
 
 Computational workflows often require files 
-on Roar, archival storage, 
+on Roar, archive storage, 
 OneDrive, or your laptop or desktop machine
 to be transferred -- copied from one place to another.
 
 ## File transfer rates
 
-Multiple tools exist to perform these file transfers.
+Multiple tools exist to perform file transfers.
 No single tool is best for all cases;
 below, we recommend methods, 
 and list approximate transfer rates for large files.
@@ -25,37 +25,27 @@ and list approximate transfer rates for large files.
 (Transfer rates may be slower, 
 if limited by intervening network or storage speeds.)
 
-### Historical transfer durations
-
-Below is a plot of observed file transfer times using Globus between March 2021 and 
-November 2025 for Roar Collab Globus collections.
-
-![Globus Data Transfers](../img/globus-data-transfers.png)
-
-
 ## Portal
 
-The [Portal][portal] top menu under Files/Home
-opens a window that enables convenient file transfer 
-between Roar and your laptop.
-With this utility, small files can be conveniently moved, edited, uploaded, and downloaded. 
+The [Portal][portal] top menu under Files/Home opens a window 
+that enables file transfer between Roar and your laptop.
+With this utility, small files can be moved, edited, uploaded, and downloaded. 
 [portal]: https://portal.hpc.psu.edu/pun/sys/dashboard
 
 Use this method only for moving small (<1 GB) files;
 for larger files, use [Globus](#globus).
 
 !!! warning "Upload Button Issues"
-	The "Upload" button on the Portal does not work properly when transfering files above 1GB. 
+	The "Upload" button on the Portal fails when transfering files above 1GB. 
 	Instead, use the "Globus" button, which accesses the [Globus](#globus) interface.
 
 ## Globus
 
-Globus is a web-based tool designed for robust transfers of large files.
+[Globus][globus] is a web-based tool designed for transfers of large files.
 It can move files from Roar to filesystems outside Penn State,
-including our OneDrive accounts.
+including our PSU OneDrive accounts.
 Globus is interactive, but time-consuming file transfers 
 can be submitted as batch jobs.
-To get started, go [here][globus].
 [globus]: https://docs.globus.org/how-to/get-started/
 
 Globus moves files between named "collections".
@@ -72,56 +62,44 @@ To transfer files to or from a laptop,
 use the upload/download buttons on the Globus [web interface][globusweb].
 [globusweb]:  https://www.globus.org
  
-### Globus Personal Collection
+### Globus Connect Personal
 
-For users who need to transfer large files (typically larger than 1 GB) between the Roar system and their personal computer, Globus Connect Personal provides a powerful and convenient solution.
-Globus Connect Personal allows you to turn your personal computer (laptop or desktop) into a Globus endpoint, also known as a personal collection. Once set up, you can securely transfer files between your computer and other Globus collections.
+Globus Connect Personal can make files from your personal computer
+(laptop or desktop) available as a Globus collection.
+Once set up, you can securely transfer files between your computer and other Globus collections.
 
-To get started, download and install the Globus Connect Personal client for your operating system:
+To get started, download and install the Globus Connect Personal client,
 available for [Linux](https://docs.globus.org/globus-connect-personal/install/linux/),
 [macOS](https://docs.globus.org/globus-connect-personal/install/mac/), and
 [Windows](https://docs.globus.org/globus-connect-personal/install/windows/).
 
 ### Globus Guest Collections
 
-In addition to providing a robust data transfer option, Globus can also be used to share 
-data with collaborators by creating 
+Globus can be used to share data with collaborators by creating 
 [Guest Collections](https://docs.globus.org/guides/tutorials/manage-files/share-files/). 
 Collections can be set up with a variety of sharing options from complete public access 
 to individual user-level permission levels.
 
-!!! danger "ICDS does not monitor what is shared using Globus Collections"
-
-	Please be mindful that your Collection is set up using appropriate sharing and 
-	permission settings to avoid unintentionally sharing private data.
-
-
-Roar users can set up their own Guest Collections using the Globus interface. However, 
-due to security concerns, there are restrictions on what is enabled by default and who is 
-authorized to create the Collection. 
+Guest Collections are subject to the following restrictions:
 
 - User-level Collections can be created anywhere within the user’s work directory.
-- Group-level Collections can only be created by the faculty owner and must be within the 
-default directory of the group storage. 
+- Group-level Collections can only be created by the faculty owner, 
+within the default directory of the group storage. 
 
 #### Globus Collections Authorized Directories
 
 | Filesystem location | Authorized User |
 | ---- | ---- |
-| `/storage/work/$USER`	| Directory Owner <br> (where $USER matches the Penn State ID of the Directory Owner) |
-| `/storage/group/$USER/default/` | PI / Faculty Owner <br> (where $USER matches the Penn State ID of the Faculty Owner) |
+| `/storage/work/$USER`	| Directory Owner |
+| `/storage/group/$USER/default/` | PI / Faculty Owner |
 
+(where $USER matches the Penn State ID of the directory owner)
 
 !!! warning "Permission Errors"
 
-	Users can create Guest Collections anywhere in the Roar filesystem that Globus 
-	has access to, however “Permission Denied” errors will occur if they are created 
-	outside of the authorized directories.
-
-#### Exceptions for Shares
-
-For sharing options outside of the restrictions above, please contact Client Support for 
-possible solutions.
+	Users can create Guest Collections anywhere in the Roar filesystem Globus 
+	can access; “Permission Denied” errors will occur if they are created 
+	outside of authorized directories.
 
 !!! tip "Custom Collection locations"
 

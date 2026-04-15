@@ -18,15 +18,20 @@ systems.
 
 The container platform available on Roar is `apptainer` (formerly Singularity).
 
-## Building Containers
+!!! note "Container support"
+    Docker and Docker Compose are not supported due to privilege restrictions.
+    Apptainer can run Docker images, but does not support Docker Compose or multi-container orchestration.
 
-### Using Containers vs. Building Containers
+
+## Building containers
+
+### Using vs. building containers
 
 This guide focuses solely on **using and running** pre-built containers on Roar. 
 Building a complex or customized container image is an advanced topic that is not covered 
 comprehensively here.
 
-### Notice on Building Containers
+### Notice on building containers
 
 Building an Apptainer image from a definition file (``apptainer build <image> <definition>``) 
 **cannot be done on Roar**. Building requires **root (administrative) privileges**, which 
@@ -36,7 +41,7 @@ are not available to non-administrative users on ICDS systems.
 workstation or a cloud service) where you have full **root access**.
 - After building, you can transfer the resulting .sif image file to Roar.
 
-### Building and Sandbox Alternatives on Roar
+### Building and sandbox alternatives
 
 While full image builds are restricted, Apptainer offers a sandbox option for development. 
 To build a writable "sandbox" directory from an existing container image for experimentation 

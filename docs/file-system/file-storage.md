@@ -79,8 +79,7 @@ This commonly occurs with directories such as
  - `.comsol` - used by Comsol
  - `.conda` - used by Anaconda
 
-Please see [Quota issues in $HOME](../getting-started/faq.md#quota-issues-in-home) for more information 
-on how to handle these issues.
+For more information, see [Quota issues in $HOME](../getting-started/faq.md#quota-issues-in-home). 
 
 ## Archive storage
 
@@ -89,13 +88,13 @@ The [Globus][globus] web interface is the only way to access these files,
 so access is neither quick nor convenient.
 [globus]: transferring-files.md#globus
 
-If you store a directory that contains many files, 
-you should pack the directory into a single file with `tar`
+To store a directory that contains many files, 
+pack the directory into a single file with `tar`
 (see [Packing files](managing-files.md#packing-files))
 before transferring.
 
 !!! warning "Avoid using archive storage for sensitive data."
-     If you need to archive data or software that must adhere to regulatory requirements
-     please contact ICDS or the [Office of Information Security](https://security.psu.edu).
+     If you need to archive sensitive data or software subject to regulatory requirements,
+     contact ICDS or the [Office of Information Security](https://security.psu.edu).
 
 

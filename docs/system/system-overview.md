@@ -26,13 +26,12 @@ Additional information on the Roar Collab system configuration can be found in
 ## Accounts
 
 To log on to Roar, you need a [login account](../getting-started/connecting.md/#roar-account-creation).
-To work on Roar, you can use the open queue at no cost,
-which gives you access to the Portal, 
-and to batch jobs on vintage hardware.
-
-But to use any of the newer, more powerful hardware, 
+You can use free [READ credits](../accounts/read-credits.md), 
+given to all users, which can be spent on any of Roar's hardware.
+If your compute needs grow beyond what free credits can pay for,
 you need either a paid [credit account](../accounts/paid-resources.md), 
 or a paid [allocation](../accounts/paid-resources.md).
+
 With credit accounts, you pay only only the compute resources you use,
 and can use any type of nodes you need.
 However, if you require prompt access to specific hardware,
@@ -42,8 +41,7 @@ and pay whether or not you use the compute time.
 
 ## Partitions
 
-In Slurm, what are commonly called "queues" are technically known as Partitions. A 
-partition is a logical grouping of compute nodes (servers) that your job can run on. 
+A partition is a group of similar compute nodes that your job can run on. 
 
 Nodes on Roar are grouped into four different hardware partitions:
 
@@ -52,45 +50,22 @@ Nodes on Roar are grouped into four different hardware partitions:
 - **himem (20 GB/core)** – CPU nodes with extra memory, for memory-intensive jobs.
 - **interactive** – Nodes with graphics cards, that service the Portal.
 
-All GPU nodes are available in the standard partition.
-
+All GPU nodes are available in the standard partition. <br>
 In addition, there is a partition not associated with specific hardware:
 
 - **sla-prio** - For paid allocations, with whatever hardware the allocation includes.
 
-You must specify a partition to tell Slurm where your job should run. This is done with 
-the #SBATCH directive:
-
-```bash
-#SBATCH --partition=<partition_name>
-```
-
-!!! tip Selecting the correct partition
-    Unless you have specific resource demands (such as graphical support or 
-    Infiniband) it is best to select the partition that best suites the memory 
-    per core ratio your jobs need. 
-    
-    For example, if you need 8 cores and 64 GB of memory, the standard 
-    partition would best fit your memory to core ratio.
-
-To see a list of all available partitions and their status, you can use the sinfo command - 
-
-```bash
-sinfo --Format=features:40,nodelist:20,cpus:10,memory:10,partition
-```
-
-!!!warning "Bypass queue for Credit Allocations" 
-	For Credit allocations, to bypass the wait time
-	for your job. You can specify ``--qos=express``. This will place your job into our priority queue
-	 at an increased cost (2x that of normal credit jobs)
+Partitions are specified when launching a [Portal](../running-jobs/portal.md) session,
+an [interactive job](../running-jobs/interactive-jobs.md), 
+or a [batch job](../running-jobs/batch-jobs.md).
 
 ## Quality of Service (QOS)
 
-While a partition is where your job runs, Quality of Service (QOS) is how your job is 
-treated. On Roar, most QOS settings are applied automatically based on the partition you 
-choose. For example, submitting to the open partition automatically assigns the open QOS.
+A partition is *where* your job runs; Quality of Service (QOS) is *how* your job runs. <br>
+Default QOS settings are applied automatically based on the partition you 
+choose. 
 
-Roar has five QoS :  open, normal, debug, express, and interactive.  
+Roar has four QoS :  normal, debug, express, and interactive.  
 Each serves a different purpose, and has different restrictions.
 
 | QOS | description | restrictions |
@@ -99,20 +74,3 @@ Each serves a different purpose, and has different restrictions.
 | debug	| for testing, debugging, and code compilation | one job per user <br> runtime < 4 hours |
 | express | for rush jobs; <br> **charges 2x price** | runtime < 14 days |
 | interactive | for Portal jobs requiring graphical support | one job per user <br> 4 core and 64 GB max <br> runtime < 48 hours |
-
-To get detailed information about QoS, use `sacctmgr list qos`.  
-This command has a lot of [options](https://slurm.schedmd.com/sacctmgr.html),
-and works best with formatting:  an example is
-```
-sacctmgr list qos format=name%8,maxjobs%8,maxsubmitjobsperuser%9,maxwall%8,\
-priority%8,preempt%8,usagefactor%12 names=open,ic,debug,express,normal
-```
-which produces output like this:
-```
-    Name  MaxJobs MaxSubmit  MaxWall Priority  Preempt  UsageFactor
--------- -------- --------- -------- -------- -------- ------------
-  normal                                 1000     open     1.000000
-      ic        1                           0              1.000000
-   debug        1         1 04:00:00    20000     open     1.000000
- express                                10000     open     2.000000
-```
