@@ -15,12 +15,12 @@ The different types of nodes available on Roar are:
 | Standard <br> (8 GB/core) | 140 <br> 35 | 48 <br> 64 | 512 <br> 384 | Gold 6342 <br> EPYC 9354 | icelake <br> AMD Genoa | Infiniband |
 | 2xGPU A100 <br> (40GB) | 38 | 48 | 384 | Gold 6248R | cascadelake | Infiniband |
 | GPU V100 <br> (32GB) | 2 | 24 | 512 | E5-2680v3 | haswell | Ethernet |
-| 4xGPU V100 <br> (32GB) | 2|  24 | 512 | Gold 6132 | skylake | Ethernet |
+| 4xGPU V100 <br> (32GB) | 2|  28 | 768 | Gold 6132 | skylake | Ethernet |
 | GPU A40 <br> (48GB) | 12 | 36 | 1024 | Gold 6354 | icelake | Ethernet |
 | GPU P100 <br> (12 GB) | 60 | 28 | 256 | E5-2680v4 | broadwell| Infiniband <br> Ethernet|
-| High Memory <br> (20 GB/core) | 25 | 48 | 1024 | Gold 6342 | icelake | Infiniband |
-| Interactive | 16 | 28 | 512 | E5-2680v4 <br> + P100 GPU | broadwell| Infiniband <br> Ethernet|
+| High Memory <br> (20 GB/core) | 28 | 48 | 1024 | Gold 6342 | icelake | Infiniband |
+| Interactive | 16 | 28 | 256 | E5-2680v4 <br> + P100 GPU | broadwell| Infiniband <br> Ethernet|
 
 Note: cluster nodes are configured with memory as described above,
 but some memory (< 10 GB) is reserved for the operating system, 
-and thus available for user jobs.
+and thus unavailable for user jobs.
