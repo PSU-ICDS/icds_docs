@@ -61,8 +61,9 @@ Prices for different nodes are set proportional to the cost of the hardware,
 and competitive with the cost of buying your own cluster.
 More expensive nodes cost more to use, reflecting their greater value.
 
-To purchase credits or allocations, read the [current pricing and details][prices] 
-or contact us at <icds@psu.edu>.[prices]: https://icds.psu.edu/services/roar/details-rates/
+To purchase credits or allocations, read the 
+[current pricing and details](https://icds.psu.edu/services/roar/details-rates/)
+or contact us at <icds@psu.edu>.
 
 ## Estimating job costs
 
