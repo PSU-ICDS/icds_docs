@@ -47,13 +47,12 @@ found on the Portal or the command line utility `my_account`.
 To access the Slurm Account Manager, 
 
 
+### Slurm Account Manager
 
-### Manage users and coordinators
+#### Manage users and coordinators
 
 Account coordinators can add and remove other users and coordinators. <br>
 The account owner is automatically a coordinator.
-
-#### On the Portal
 
 Users and coordinators can be added by entering their ID in the text box and clicking 
 "Add User"(1) or "Add Coordinator"(2) as desired. 
@@ -86,25 +85,7 @@ clicking the "Remove Selected Users" button.
     parent account.
 
 
-#### On the command line
-
-Coordinators can 
-
-```
-my_account add account=<child crch account> user=userid coordinator=user=id
-```
-
-users are granted use access of the account
-coordinators are granted coordinator and use access of the account
-
-To remove users, the `remove` subcommand can be used
-
-```
-my_account remove account=<child crch account> user=userid coordinator=user=id
-```
-
-
-### Create and manage child accounts
+#### Create and manage child accounts
 
 Credit accounts can serve as parents to one or more child accounts, allowing the balance 
 credits in the parent account to be shared with the child accounts.
@@ -115,8 +96,6 @@ of the parent account. Child accounts can have custom suffixes but must inherit 
 For example, for a parent account named `research_cr_default`, the child account 
 `research_crch_professor1` is valid where `research2_crch_default` is not.
 
-    
-#### On the Portal
 
 To create a child account, click the "Add Child" button located next to the top of the 
 account detail box.
@@ -131,23 +110,7 @@ any users(2) and coordinators(3) to be added to the child account. Then click "C
 Once the child account is created, 
 [additional users and coordinators can be added](#on-the-portal) as well.
 
-#### On the command line
-
-To create a child account with the `my_account` utility, you would use the `create` subcommand
-```
-my_account create account=<child crch account> parent=<parent_cr_account>
-```
-
-Users and coordinators can be added at the same time the child account is created, by also 
-including the `user` and `coordinator` arguments
-
-```
-my_account create account=<child_crch_account> parent=<parent_cr_account> user=<userid> 
-coordinator=<coordid>
-```
-
-
-### Setting usage limits
+#### Setting usage limits
 
 The available balance of credits can be set for individual users or child accounts. These 
 limits are completely independent of the total credits available in the account.
@@ -157,9 +120,6 @@ limits are completely independent of the total credits available in the account.
     user or account. They are not bound by the available credits, and it is possible to 
     allow more available credits than is actually in the parent account.
 
-
-    
-#### On the Portal
 
 Available credit balances can be set using the "Set Credit Usage Limits" box. Enter the 
 desired credit amount in the box(1) and select how you want the limit applied. For individual 
@@ -179,8 +139,72 @@ in the limit field.
 
 ![Set relative credit limit on Slurm Account Manager](../img/acct-mgr-rel-limit.png)
 
+### my_account command line utility
 
-#### On the command line
+#### Manage users and coordinators
+
+Account coordinators can add and remove other users and coordinators. <br>
+The account owner is automatically a coordinator.
+
+
+Coordinators can 
+
+```
+my_account add account=<child crch account> user=userid coordinator=user=id
+```
+
+users are granted use access of the account
+coordinators are granted coordinator and use access of the account
+
+To remove users, the `remove` subcommand can be used
+
+```
+my_account remove account=<child crch account> user=userid coordinator=user=id
+```
+
+!!! note Inherited coordinators cannot be removed from child accounts.
+    Child accounts automatically inherit all of the coordinators from the parent account. 
+    These inherited coordinators cannot be removed while they remain coordinators of the 
+    parent account.
+
+
+
+#### Create and manage child accounts
+
+Credit accounts can serve as parents to one or more child accounts, allowing the balance 
+credits in the parent account to be shared with the child accounts.
+
+Child account names take the form of `<prefix>_crch_<suffix>` where the prefix is set to that 
+of the parent account. Child accounts can have custom suffixes but must inherit the prefix of the parent account.
+
+For example, for a parent account named `research_cr_default`, the child account 
+`research_crch_professor1` is valid where `research2_crch_default` is not.
+
+
+
+To create a child account with the `my_account` utility, you would use the `create` subcommand
+```
+my_account create account=<child crch account> parent=<parent_cr_account>
+```
+
+Users and coordinators can be added at the same time the child account is created, by also 
+including the `user` and `coordinator` arguments
+
+```
+my_account create account=<child_crch_account> parent=<parent_cr_account> user=<userid> 
+coordinator=<coordid>
+```
+
+
+#### Setting usage limits
+
+The available balance of credits can be set for individual users or child accounts. These 
+limits are completely independent of the total credits available in the account.
+
+!!! warning "It is possible to over-allocate credits"
+    Available credit limits just limit how many credits can be used by an individual 
+    user or account. They are not bound by the available credits, and it is possible to 
+    allow more available credits than is actually in the parent account.
 
 
 ```
