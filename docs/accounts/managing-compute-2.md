@@ -1,19 +1,18 @@
 # Managing compute 2
 
-When a new compute account is created, only the account owner is added and granted 
+When a new compute account is created, the account owner is automatically added and granted 
 coordinator access. As coordinator, they can add and remove other users and coordinators. 
-For credit accounts, these coordinators can also create and manage child accounts and usage limits.
+For credit accounts, these coordinators can also create and manage child accounts and 
+set or modify usage limits.
 
 ## Reserved allocations
 
 Reserve allocations are administered using the `sacctmgr` utility in a shell session either 
-through the portal or an SSH connection.
+through [the Portal](../running-jobs/portal.md/#command-line-access) or an 
+[SSH connection](../getting-started/connecting.md/#ssh).
 
 
 ### Adding users
-
-Account coordinators can add and remove other users and coordinators. <br>
-The account owner is automatically a coordinator.
 
 To add and remove users of a compute account, use `sacctmgr`:
 
@@ -41,21 +40,27 @@ $ sacctmgr remove coordinator account=<compute-account> name=<userid>
 
 ## Credit accounts
 
-To manage credit accounts, coordinators can either use the graphical Slurm Account Manager 
-found on the Portal or the command line utility `my_account`.
-
-To access the Slurm Account Manager, 
-
+To manage credit accounts, coordinators can either use the graphical 
+[Slurm Account Manager](#slurm-account-manager) found on the [Portal](../running-jobs/portal.md) 
+or the [command line utility `my_account`](#my-account-cli).
 
 ### Slurm Account Manager
 
+To access the Slurm Account Manager, connect to the Portal and then select <<>> from 
+the <<>> menu.
+
+![Access Slurm Account Manager on the Roar Collab Portal](../img/acct-mgr.png)
+
 #### Manage users and coordinators
 
-Account coordinators can add and remove other users and coordinators. <br>
-The account owner is automatically a coordinator.
+Account coordinators can add and remove other users and coordinators.
 
-Users and coordinators can be added by entering their ID in the text box and clicking 
-"Add User"(1) or "Add Coordinator"(2) as desired. 
+##### Adding users or coordinators
+
+To add users or coordinators, locate the account in the list and click the [+] to expand the details.
+
+Under "Add Users(s) or Add coordinators", enter the Penn State Access ID in the text box(1) and click 
+"Add User"(2) or "Add Coordinator"(3) as desired. 
 
 ![Add user or add Coordinator entry box on Slurm Account Manager](../img/acct-mgr-add-user.png)
 
@@ -63,6 +68,7 @@ Users and coordinators can be added by entering their ID in the text box and cli
     The form will accept a list of comma-separated IDs, allowing you to enter several people
     in a single step.
     
+##### Add or remove coordinator access
 
 To change permissions of an existing individual, you can click the buttons next to their 
 entry in the list of Users. To grant a user the role of Coordinator, click "Promote".
@@ -73,6 +79,8 @@ Alternately, to remove Coordinator permissions but continue to allow access as a
 Clicking "Make Coordinator Only"(2) removes only user permissions while maintaining access as a Coordinator.
 
 ![Demote and Make Coordinator Only button on Slurm Account Manager](../img/acct-mgr-demote.png)
+
+##### Removing users and coordinators
 
 To remove all access, select users to remove by clicking the checkbox next to their ID and 
 clicking the "Remove Selected Users" button.
@@ -85,17 +93,16 @@ clicking the "Remove Selected Users" button.
     parent account.
 
 
-#### Create and manage child accounts
+#### Create child accounts
 
-Credit accounts can serve as parents to one or more child accounts, allowing the balance 
-credits in the parent account to be shared with the child accounts.
+Credit accounts can serve as parents to one or more child accounts, allowing the credits 
+in the parent account to be shared with the child accounts.
 
 Child account names take the form of `<prefix>_crch_<suffix>` where the prefix is set to that 
 of the parent account. Child accounts can have custom suffixes but must inherit the prefix of the parent account.
 
 For example, for a parent account named `research_cr_default`, the child account 
 `research_crch_professor1` is valid where `research2_crch_default` is not.
-
 
 To create a child account, click the "Add Child" button located next to the top of the 
 account detail box.
@@ -108,7 +115,7 @@ any users(2) and coordinators(3) to be added to the child account. Then click "C
 ![Create Child Account on Slurm Account Manager](../img/acct-mgr-create.png)
 
 Once the child account is created, 
-[additional users and coordinators can be added](#on-the-portal) as well.
+[additional users and coordinators can be added](#manage-users-and-coordinators) as well.
 
 #### Setting usage limits
 
@@ -139,27 +146,22 @@ in the limit field.
 
 ![Set relative credit limit on Slurm Account Manager](../img/acct-mgr-rel-limit.png)
 
-### my_account command line utility
+
+### my_account CLI
 
 #### Manage users and coordinators
 
-Account coordinators can add and remove other users and coordinators. <br>
-The account owner is automatically a coordinator.
-
-
-Coordinators can 
+Account coordinators can add users and coordinators using `my_account add`. Use the arguments 
+`user=` and `coordinator=` to indicate the role you wish to assign
 
 ```
-my_account add account=<child crch account> user=userid coordinator=user=id
+my_account add account=<child_crch_account> user=<userid> coordinator=<userid>
 ```
 
-users are granted use access of the account
-coordinators are granted coordinator and use access of the account
-
-To remove users, the `remove` subcommand can be used
+To remove users, `my_account remove` can be used
 
 ```
-my_account remove account=<child crch account> user=userid coordinator=user=id
+my_account remove account=<child_crch_account> user=<userid> coordinator=<userid>
 ```
 
 !!! note Inherited coordinators cannot be removed from child accounts.
@@ -168,27 +170,26 @@ my_account remove account=<child crch account> user=userid coordinator=user=id
     parent account.
 
 
-
 #### Create and manage child accounts
 
 Credit accounts can serve as parents to one or more child accounts, allowing the balance 
 credits in the parent account to be shared with the child accounts.
 
 Child account names take the form of `<prefix>_crch_<suffix>` where the prefix is set to that 
-of the parent account. Child accounts can have custom suffixes but must inherit the prefix of the parent account.
+of the parent account. Child accounts can have custom suffixes but must inherit the prefix 
+of the parent account.
 
 For example, for a parent account named `research_cr_default`, the child account 
 `research_crch_professor1` is valid where `research2_crch_default` is not.
 
+Child accounts can be created using `my_account create`.
 
-
-To create a child account with the `my_account` utility, you would use the `create` subcommand
 ```
-my_account create account=<child crch account> parent=<parent_cr_account>
+my_account create account=<child_crch_account> parent=<parent_cr_account>
 ```
 
 Users and coordinators can be added at the same time the child account is created, by also 
-including the `user` and `coordinator` arguments
+including the `user` and `coordinator` arguments.
 
 ```
 my_account create account=<child_crch_account> parent=<parent_cr_account> user=<userid> 
@@ -206,13 +207,37 @@ limits are completely independent of the total credits available in the account.
     user or account. They are not bound by the available credits, and it is possible to 
     allow more available credits than is actually in the parent account.
 
+To set limits, `my_account set` is used with the `available=` argument to set the current 
+level of available credits for the entire account. Please note account limits can only be set 
+on accounts by coordinators of the parent account.
 
 ```
-my_account set available=n account=<child crch account>
+my_account set available=n account=<child_crch_account>
 ```
 
-where n is the desired available balance in the child account
+where n is the desired available balance in the child account.
 
+To set limits for specific users, the `user=` argument is used. When a single ID or a list 
+of comma-separated IDs is passed, the limit will be set for all of the specified users.
+
+```
+my_account set available=n account=<child_crch_account> user=<userid>
+```
+
+Using `user=all` will set the individual limit for all users in the account.
+
+```
+my_account set available=n account=<child_crch_account> user=all
+```
+
+`my_account set` will also accept relative available limit changes using the +n or -n 
+notation. For example, adding 50 credits to all account users' available limit would use 
+this command.
+
+```
+my_account set available=+50 account=<child_crch_account> available=+50 users=all
+
+```
 
 
 ## Monitoring available balance
