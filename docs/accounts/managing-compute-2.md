@@ -1,4 +1,4 @@
-# Managing compute
+# Managing compute 2
 
 When a new compute account is created, only the account owner is added and granted 
 coordinator access. As coordinator, they can add and remove other users and coordinators. 
