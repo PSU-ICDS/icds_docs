@@ -42,7 +42,7 @@ $ sacctmgr remove coordinator account=<compute-account> name=<userid>
 
 To manage credit accounts, coordinators can either use the graphical 
 [Slurm Account Manager](#slurm-account-manager) found on the [Portal](../running-jobs/portal.md) 
-or the [command line utility `my_account`](#my-account-cli).
+or the [command line utility `my_account`](#my_account-cli).
 
 ### Slurm Account Manager
 
