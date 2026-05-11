@@ -99,9 +99,8 @@ Credit accounts can serve as parents to one or more child accounts, allowing the
 in the parent account to be shared with the child accounts.
 
 Child account names take the form of `<prefix>_crch_<suffix>` where the prefix is set to that 
-of the parent account. Child accounts can have custom suffixes but must inherit the prefix of the parent account.
-
-For example, for a parent account named `research_cr_default`, the child account 
+of the parent account. Child accounts can have custom suffixes but must inherit the prefix 
+of the parent account. For example, for a parent account named `research_cr_default`, the child account 
 `research_crch_professor1` is valid where `research2_crch_default` is not.
 
 To create a child account, click the "Add Child" button located next to the top of the 
@@ -115,7 +114,8 @@ any users(2) and coordinators(3) to be added to the child account. Then click "C
 ![Create Child Account on Slurm Account Manager](../img/acct-mgr-create.png)
 
 Once the child account is created, 
-[additional users and coordinators can be added](#manage-users-and-coordinators) as well.
+[additional users and coordinators can be added](#manage-users-and-coordinators) and 
+[credit usage limits](#setting-usage-limits) can be set as well.
 
 #### Setting usage limits
 
@@ -134,9 +134,7 @@ user limits, click the checkbox before each target user and choose the "Selected
 option.
 
 For account level limits, choose "Account"(2). Please note account limits can only be set 
-on accounts by coordinators of the parent account.
-
-Then click "Set"(3) to activate.
+on accounts by coordinators of the parent account. Then click "Set"(3) to activate.
 
 ![Set available credit limits on Slurm Account Manager](../img/acct-mgr-set-limit.png)
 

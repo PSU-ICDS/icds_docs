@@ -87,7 +87,6 @@ Clicking "Make Coordinator Only"(2) removes only user permissions while maintain
 
 To remove all access, select users to remove by clicking the checkbox next to their ID(1) and 
 clicking the "Remove Selected Users" button(2).
->>>>>>> e5b544a (updated my_account details)
 
 ![Remove Selected Users on Slurm Account Manager](../img/acct-mgr-remove.png)
 
@@ -99,14 +98,14 @@ clicking the "Remove Selected Users" button(2).
 #### On the command line
 
 Account coordinators can add users and coordinators using `my_account add`. Use the arguments 
-`user=` and `coordinator=` to indicate the role you wish to assign
+`user=` and `coordinator=` to indicate the role you wish to assign.
 
 ```
 my_account add account=<child_crch_account> user=<userid> coordinator=<userid>
 
 ```
 
-To remove users, `my_account remove` can be used
+To remove users, `my_account remove` can be used.
 
 ```
 my_account remove account=<child_crch_account> user=<userid> coordinator=<userid>
@@ -124,9 +123,8 @@ Credit accounts can serve as parents to one or more child accounts, allowing the
 credits in the parent account to be shared with the child accounts.
 
 Child account names take the form of `<prefix>_crch_<suffix>` where the prefix is set to that 
-of the parent account. Child accounts can have custom suffixes but must inherit the prefix of the parent account.
-
-For example, for a parent account named `research_cr_default`, the child account 
+of the parent account. Child accounts can have custom suffixes but must inherit the prefix 
+of the parent account. For example, for a parent account named `research_cr_default`, the child account 
 `research_crch_professor1` is valid where `research2_crch_default` is not.
 
     
