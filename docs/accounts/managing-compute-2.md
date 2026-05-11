@@ -87,7 +87,7 @@ clicking the "Remove Selected Users" button(2).
 
 ![Remove Selected Users on Slurm Account Manager](../img/acct-mgr-remove.png)
 
-!!! note Inherited coordinators cannot be removed from child accounts.
+!!! note "Inherited coordinators cannot be removed from child accounts.""
     Child accounts automatically inherit all of the coordinators from the parent account. 
     These inherited coordinators cannot be removed while they remain coordinators of the 
     parent account.

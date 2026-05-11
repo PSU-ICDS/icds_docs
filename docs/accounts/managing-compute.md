@@ -112,10 +112,11 @@ To remove users, `my_account remove` can be used
 my_account remove account=<child_crch_account> user=<userid> coordinator=<userid>
 ```
 
-!!! note Inherited coordinators cannot be removed from child accounts.
+!!! note "Inherited coordinators cannot be removed from child accounts."
     Child accounts automatically inherit all of the coordinators from the parent account. 
     These inherited coordinators cannot be removed while they remain coordinators of the 
     parent account.
+
 
 ### Create and manage child accounts
 
