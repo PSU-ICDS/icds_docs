@@ -21,12 +21,3 @@ every Thursday and Friday from 12 pm to 1 pm EST;
 drop by with your questions for real-time support.
 
 [Join Office Hours on Zoom](https://psu.zoom.us/j/98725809058){ .md-button }
-
-### On-demand support
-
-If you are unable to make our scheduled office hours, 
-you can also schedule an on-demand session with one of our support staff.
-
-On-demand sessions are available during business hours, Monday through Friday.
-To schedule a session, go [here](https://tinyurl.com/ICDS-Support){ .md-button }.
-For times outside these hours, [contact us](#contacting-client-support) for more details.
