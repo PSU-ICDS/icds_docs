@@ -82,8 +82,8 @@ Clicking "Make Coordinator Only"(2) removes only user permissions while maintain
 
 ##### Removing users and coordinators
 
-To remove all access, select users to remove by clicking the checkbox next to their ID and 
-clicking the "Remove Selected Users" button.
+To remove all access, select users to remove by clicking the checkbox next to their ID(1) and 
+clicking the "Remove Selected Users" button(2).
 
 ![Remove Selected Users on Slurm Account Manager](../img/acct-mgr-remove.png)
 
@@ -110,7 +110,7 @@ account detail box.
 ![Add Child account on Slurm Account Manager](../img/acct-mgr-add-child.png)
 
 Enter the desired suffix in the text box(1) and if desired, the Penn State Access ID for 
-any users(2) and coordinators(3) to be added to the child account. Then click "Create"(3).
+any users(2) and coordinators(3) to be added to the child account. Then click "Create"(4).
 
 ![Create Child Account on Slurm Account Manager](../img/acct-mgr-create.png)
 
@@ -136,7 +136,7 @@ option.
 For account level limits, choose "Account"(2). Please note account limits can only be set 
 on accounts by coordinators of the parent account.
 
-Then click "Set" to activate.
+Then click "Set"(3) to activate.
 
 ![Set available credit limits on Slurm Account Manager](../img/acct-mgr-set-limit.png)
 

@@ -52,7 +52,6 @@ the <<>> menu.
 
 ![Access Slurm Account Manager on the Roar Collab Portal](../img/acct-mgr.png)
 
-
 ### Manage users and coordinators
 
 Account coordinators can add and remove other users and coordinators. <br>
@@ -85,10 +84,10 @@ Clicking "Make Coordinator Only"(2) removes only user permissions while maintain
 
 ![Demote and Make Coordinator Only button on Slurm Account Manager](../img/acct-mgr-demote.png)
 
-##### Removing users and coordinators
 
-To remove all access, select users to remove by clicking the checkbox next to their ID and 
-clicking the "Remove Selected Users" button.
+To remove all access, select users to remove by clicking the checkbox next to their ID(1) and 
+clicking the "Remove Selected Users" button(2).
+>>>>>>> e5b544a (updated my_account details)
 
 ![Remove Selected Users on Slurm Account Manager](../img/acct-mgr-remove.png)
 
@@ -104,6 +103,7 @@ Account coordinators can add users and coordinators using `my_account add`. Use 
 
 ```
 my_account add account=<child_crch_account> user=<userid> coordinator=<userid>
+
 ```
 
 To remove users, `my_account remove` can be used
@@ -137,7 +137,7 @@ account detail box.
 ![Add Child account on Slurm Account Manager](../img/acct-mgr-add-child.png)
 
 Enter the desired suffix in the text box(1) and if desired, the Penn State Access ID for 
-any users(2) and coordinators(3) to be added to the child account. Then click "Create"(3).
+any users(2) and coordinators(3) to be added to the child account. Then click "Create"(4).
 
 ![Create Child Account on Slurm Account Manager](../img/acct-mgr-create.png)
 
