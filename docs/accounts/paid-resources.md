@@ -27,7 +27,7 @@ PIs can manage the account, adding group members to the list of allowed users.
 PIs can have multiple accounts and allocations, with different user lists, 
 paid by different sources of funds, for different research projects.
 
-## Using credit accounts and allocations
+### Using credit accounts and allocations
 
 All credit accounts and allocations have names.
 A user's free credit account is named `open`;
