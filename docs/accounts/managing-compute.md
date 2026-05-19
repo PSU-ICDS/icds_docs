@@ -19,13 +19,7 @@ When a new compute account is created, the account owner is automatically added 
 coordinator access. As coordinator, they can add and remove other users and coordinators. 
 
 
-### Reserved allocations
-
-Reserve allocations can use [the `my_account` utility](#my_account-cli) in a shell session 
-either through [the Portal](../running-jobs/portal.md/#command-line-access) or an 
-[SSH connection](../getting-started/connecting.md/#ssh) to add and remove users or coordinators.
-
-### Credit accounts
+## Credit accounts
 
 To manage credit accounts, coordinators can either use the graphical 
 [Slurm Account Manager](#slurm-account-manager) found on the [Portal](../running-jobs/portal.md) 
@@ -219,6 +213,12 @@ to set the available limit 100 credits higher than the current limit, +100 can b
 in the limit field.
 
 ![Set relative credit limit on Slurm Account Manager](../img/acct-mgr-rel-limit.png)
+
+## Reserved allocations
+
+Reserve allocations can use [the `my_account` utility](#my_account-cli) in a shell session 
+either through [the Portal](../running-jobs/portal.md/#command-line-access) or an 
+[SSH connection](../getting-started/connecting.md/#ssh) to add and remove users or coordinators.
 
 
 ## Monitoring available balance
