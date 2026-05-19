@@ -212,7 +212,7 @@ Available limits can also be set relative to current levels using a +n or -n ent
 to set the available limit 100 credits higher than the current limit, +100 can be entered 
 in the limit field.
 
-![Set relative credit limit on Slurm Account Manager](../img/acct-mgr-rel-limit.png)
+![Set relative credit limit on Slurm Account Manager](../img/acct-mgr-rel-limit.png){ width=200px }
 
 ## Reserved allocations
 
