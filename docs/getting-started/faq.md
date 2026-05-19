@@ -164,7 +164,7 @@ This can be caused by a few different reasons.
 
 **You don't have an active account on our systems**
 
-If you have not logged into the portal before, you will need to [request a login account](connecting.md/#roar-account-creation) 
+If you have not logged into the portal before, you will need to [request a login account](connecting.md/#login-accounts) 
 before you can access Roar Collab. To verify that your account request went through 
 successfully, you should receive a confirmation email once you submit the form and another 
 email once the account is created.

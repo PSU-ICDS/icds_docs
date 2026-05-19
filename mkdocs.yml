@@ -49,7 +49,6 @@ nav:
         - accounts/read-credits.md
         - accounts/paid-resources.md
         - accounts/managing-compute.md
-        - accounts/managing-compute-2.md
         - accounts/managing-storage.md
     - File system:
         - file-system/file-storage.md
