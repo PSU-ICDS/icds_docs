@@ -43,7 +43,7 @@ To remove users, `my_account remove` can be used
 my_account remove account=<child_crch_account> user=<userid> coordinator=<userid>
 ```
 
-!!! note "Inherited coordinators cannot be removed from child accounts.""
+!!! note "Inherited coordinators cannot be removed from child accounts"
     Child accounts automatically inherit all of the coordinators from the parent account. 
     These inherited coordinators cannot be removed while they remain coordinators of the 
     parent account.
@@ -134,7 +134,7 @@ Under "Add Users(s) or Add coordinators", enter the Penn State Access ID in the 
 
 ![Add user or add Coordinator entry box on Slurm Account Manager](../img/acct-mgr-add-user.png)
 
-!!! tip "Add multiple people at once."
+!!! tip "Add multiple people at once"
     The form will accept a list of comma-separated IDs, allowing you to enter several people
     in a single step.
     
@@ -157,7 +157,7 @@ clicking the "Remove Selected Users" button(2).
 
 ![Remove Selected Users on Slurm Account Manager](../img/acct-mgr-remove.png)
 
-!!! note "Inherited coordinators cannot be removed from child accounts.""
+!!! note "Inherited coordinators cannot be removed from child accounts"
     Child accounts automatically inherit all of the coordinators from the parent account. 
     These inherited coordinators cannot be removed while they remain coordinators of the 
     parent account.
