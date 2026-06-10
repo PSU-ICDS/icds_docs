@@ -141,3 +141,75 @@ You can also use `sacct` for more detailed resource usage:
 sacct -j <SLURMjobID> --format=JobID,JobName,MaxRSS,Elapsed,TotalCPU,State
 ```
 where `<SLURMjobID>` is the SLURM job number assigned to a batch job.
+
+# **Partition Selection Guide**
+
+Choosing the right partition is a critical step in managing your available ICDS credits. As Slurm allocates resources based on the **core-to-memory ratio**, selecting a partition that aligns with your job's requirements may significantly reduce your credit consumption.
+
+## **Understanding the Core-to-Memory Ratio**
+
+In the ICDS RC environment, you are "charged" for whichever resource request is larger: the number of CPU cores or the memory equivalent of those cores. If you request a large amount of memory on a partition with a low memory-per-core ratio, Slurm will reserve (and bill for) additional cores to satisfy that memory requirement.
+
+### **Current Partition Ratios**
+
+| Partition | Memory-to-Core Ratio |
+| :---- | :---- |
+| **Basic** | 4 GB / core |
+| **Standard** | 8 GB / core |
+| **Highmem** | 20 GB / core |
+
+
+**Cost Impact: A Practical Example**
+
+Consider a job requiring **4 cores** and **128 GB** of memory for **48 hours**.
+
+### **1\. Inefficient Allocation (Basic Partition)**
+
+If you submit this job to the basic partition, the cost is inflated because the memory-to-core ratio is only 4 GB/core.
+
+```
+#!/bin/bash  
+#SBATCH --nodes=1  
+#SBATCH --ntasks=4  
+#SBATCH --mem=128GB  
+#SBATCH --time=48:00:00  
+#SBATCH --partition=basic
+```
+
+**The Math:** A 128 GB request on a 4 GB/core partition requires the system to reserve **32 cores** (![][image1]). Even though your application only uses 4 cores, you are billed for 32, resulting in an **8x cost increase**.
+
+* **Estimated Cost:** 2.1327 credits
+
+### **2\. Optimized Allocation (Highmem Partition)**
+
+By switching to the highmem partition, the ratio (20 GB/core) much more closely matches your needs.
+
+* **Estimated Cost (Standard):** 2.1240 credits  
+* **Estimated Cost (Highmem):** 1.1841 credits (**\~45% savings**)
+
+**Right-Sizing Your Requests**
+
+Requesting more memory than your application needs provides no performance benefit and directly drains your credit balance. To optimize your requests, use the seff (Slurm Efficiency) utility to analyze completed jobs.
+
+### **Analyzing Job Efficiency**
+
+As mentioned above,the seff command provides a breakdown of how much of your requested memory was actually utilized.
+
+```
+$ seff 47815487
+  
+Job ID: 47815487  
+State: COMPLETED (exit code 0\)  
+Cores per node: 4  
+CPU Efficiency: 11.69% of 01:06:00 core-walltime  
+Job Wall-clock time: 00:16:30  
+Memory Utilized: 31.97 GB  
+Memory Efficiency: 99.91% of 32.00 GB
+```
+**Note:** In the example above, the user requested 32 GB and used 31.97 GB. This is an ideal request—it maximizes the available resources without wasting credits on unused memory.
+
+### **Next Steps**
+
+* **Review your scripts:** Check if any of your basic partition jobs are requesting more than 4 GB per core.  
+* **Run a test:** Use job\_estimate \<script\_name\> before submitting to see how different partitions affect your predicted cost.  
+* **Run a post-run test:** Use the utility seff  \<Slurm\_job\_id\> after your job concludes to measure your memory usage to guide your future requests.
