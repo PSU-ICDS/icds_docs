@@ -68,7 +68,7 @@ my_account create account=<child_crch_account> parent=<parent_cr_account>
 ```
 
 Users and coordinators can be added at the same time the child account is created, by also 
-including the `user` and `coordinator` arguments.
+including the `user=` and `coordinator=` arguments.
 
 ```
 my_account create account=<child_crch_account> parent=<parent_cr_account> user=<userid> 
