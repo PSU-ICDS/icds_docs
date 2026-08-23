@@ -37,7 +37,7 @@ for larger files, use [Globus](#globus).
 
 !!! warning "Upload Button Issues"
 	The "Upload" button on the Portal fails when transfering files above 1GB. 
-	Instead, use the "Globus" button, which accesses the [Globus](#globus) interface.
+	For uploads over 1GB from your personal computer, use the [Global Connect Personal](#globus-connect-personal) client instead.
 
 ## Globus
 
@@ -61,7 +61,7 @@ ICDS has endpoints for Roar, Archive, and OneDrive:
 To transfer files to or from a laptop,
 use the upload/download buttons on the Globus [web interface][globusweb].
 [globusweb]:  https://www.globus.org
- 
+
 ### Globus Connect Personal
 
 Globus Connect Personal can make files from your personal computer

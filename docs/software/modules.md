@@ -53,16 +53,6 @@ Running `module load` without specifing a version loads the default.
 To load a different version, specify the complete module name,
 as in `module load python/3.9.7`.
 
-### Changing default software stack
-
-In January 2026, ICDS implemented a new software stack based on the Spack package manager. 
-This may cause problems for software installed under the old system. <br>
-To force usage of the old stack, unload the new stack:
-
-```
-module unuse /storage/icds/sw8/modulefiles/Core
-```
-
 ## Tips for batch scripts
 
 Follow these best practices to avoid conflicts between modules and ensure reliable execution:
