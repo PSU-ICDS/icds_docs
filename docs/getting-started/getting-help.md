@@ -17,7 +17,7 @@ Support requests can be submitted in three ways:
 ## Office hours
 
 ICDS Client Support hosts virtual office hours on Zoom 
-every Thursday and Friday from 12 pm to 1 pm EST;
+every Tuesday and Friday from 12 pm to 1 pm EST;
 drop by with your questions for real-time support.
 
 [Join Office Hours on Zoom](https://psu.zoom.us/j/98725809058){ .md-button }
