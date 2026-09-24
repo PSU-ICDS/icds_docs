@@ -65,7 +65,7 @@ A partition is *where* your job runs; Quality of Service (QOS) is *how* your job
 Default QOS settings are applied automatically based on the partition you 
 choose. 
 
-Roar has four QoS :  normal, debug, express, and interactive.  
+Roar has four QoS :  normal, debug, express, interactive, and preempt.  
 Each serves a different purpose, and has different restrictions.
 
 | QOS | description | restrictions |
@@ -74,3 +74,4 @@ Each serves a different purpose, and has different restrictions.
 | debug	| for testing, debugging, and code compilation | one job per user <br> runtime < 4 hours |
 | express | for rush jobs; <br> **charges 2x price** | runtime < 14 days |
 | interactive | for Portal jobs requiring graphical support | one job per user <br> 4 core and 64 GB max <br> runtime < 48 hours |
+| preempt | for interruptable jobs at lower cost; <br> **20% cost discount** | maybe prempted anytime after 15 min <br> runtime < 48 hours |
