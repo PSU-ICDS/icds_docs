@@ -74,4 +74,4 @@ Each serves a different purpose, and has different restrictions.
 | debug	| for testing, debugging, and code compilation | one job per user <br> runtime < 4 hours |
 | express | for rush jobs; <br> **charges 2x price** | runtime < 14 days |
 | interactive | for Portal jobs requiring graphical support | one job per user <br> 4 core and 64 GB max <br> runtime < 48 hours |
-| preempt | for interruptable jobs at lower cost; <br> **20% cost discount** | maybe prempted anytime after 15 min <br> runtime < 48 hours |
+| preempt | for interruptable jobs at lower cost; <br> **20% cost discount** | jobs may be prempted after initial 15 min <br> runtime < 48 hours |
