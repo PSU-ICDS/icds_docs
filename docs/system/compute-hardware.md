@@ -1,3 +1,5 @@
+# Compute hardware
+
 A cluster consists of multiple nodes connected to one or more central filesystems. 
 A node is basically a single computer, roughly comparable to a powerful desktop machine. 
 Some nodes are networked together with fast connections (Infiniband) that enable 
